@@ -10,6 +10,9 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\CrmController;
+use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\DepotsController;
+use App\Http\Controllers\Admin\VendorController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Auth\adminlogincontroller;
 
@@ -70,6 +73,45 @@ Route::get('/update_settings/{id}', [CrmController::class, 'update_settings'])->
 Route::post('/add_settings_process', [CrmController::class, 'add_settings_process'])->name('add_settings_process');
 Route::post('/update_settings_process/{id}', [CrmController::class, 'update_settings_process'])->name('update_settings_process');
 Route::get('/deletesetting/{id}', [CrmController::class, 'deletesetting'])->name('deletesetting');
+
+
+    Route::get('/vendors', [VendorController::class, 'index'])->name('vendors.index');
+    Route::get('/vendors/create', [VendorController::class, 'create'])->name('vendors.create');
+    Route::post('/vendors', [VendorController::class, 'store'])->name('vendors.store');
+    Route::get('/vendors/{id}/edit', [VendorController::class, 'edit'])->name('vendors.edit');
+    Route::put('/vendors/{id}', [VendorController::class, 'update'])->name('vendors.update');
+    Route::delete('/vendors/{vendor}', [VendorController::class, 'destroy'])->name('vendors.destroy');
+    Route::patch('/vendor/{id}/update-status', [VendorController::class, 'updateStatus'])->name('vendors.updateStatus');
+
+    Route::get('/get-cities/{state_id}', [VendorController::class, 'getCities']);
+
+
+
+    Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/category/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    Route::patch('/category/{id}/update-status', [CategoryController::class, 'updateStatus'])->name('category.updateStatus');
+
+    Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
+    Route::get('/products/create', [ProductsController::class, 'create'])->name('products.create');
+    Route::post('/products', [ProductsController::class, 'store'])->name('products.store');
+    Route::get('/products/{id}/edit', [ProductsController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{id}', [ProductsController::class, 'update'])->name('products.update');
+    Route::delete('/products/{id}', [ProductsController::class, 'destroy'])->name('products.destroy');
+    Route::patch('/products/{id}/update-status', [ProductsController::class, 'updateStatus'])->name('products.updateStatus');
+
+
+    Route::get('/depots', [DepotsController::class, 'index'])->name('depots.index');
+    Route::get('/depots/create', [DepotsController::class, 'create'])->name('depots.create');
+    Route::post('/depots', [DepotsController::class, 'store'])->name('depots.store');
+    Route::get('/depots/{id}/edit', [DepotsController::class, 'edit'])->name('depots.edit');
+    Route::put('/depots/{id}', [DepotsController::class, 'update'])->name('depots.update');
+    Route::delete('/depots/{id}', [DepotsController::class, 'destroy'])->name('depots.destroy');
+    Route::patch('/depots/{id}/update-status', [DepotsController::class, 'updateStatus'])->name('depots.updateStatus');
+
 
     });
 

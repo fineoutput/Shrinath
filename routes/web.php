@@ -13,6 +13,12 @@ use App\Http\Controllers\Admin\CrmController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\DepotsController;
 use App\Http\Controllers\Admin\VendorController;
+use App\Http\Controllers\Admin\Slider1Controller;
+use App\Http\Controllers\Admin\Slider2Controller;
+use App\Http\Controllers\Admin\Slider3Controller;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\AppointmentsController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Auth\adminlogincontroller;
 
@@ -111,6 +117,57 @@ Route::get('/deletesetting/{id}', [CrmController::class, 'deletesetting'])->name
     Route::put('/depots/{id}', [DepotsController::class, 'update'])->name('depots.update');
     Route::delete('/depots/{id}', [DepotsController::class, 'destroy'])->name('depots.destroy');
     Route::patch('/depots/{id}/update-status', [DepotsController::class, 'updateStatus'])->name('depots.updateStatus');
+
+
+    
+    Route::get('/slider1', [Slider1Controller::class, 'index'])->name('slider1.index');
+    Route::get('/slider1/create', [Slider1Controller::class, 'create'])->name('slider1.create');
+    Route::post('/slider1', [Slider1Controller::class, 'store'])->name('slider1.store');
+    Route::get('/slider1/{id}/edit', [Slider1Controller::class, 'edit'])->name('slider1.edit');
+    Route::put('/slider1/{id}', [Slider1Controller::class, 'update'])->name('slider1.update');
+    Route::delete('/slider1/{vendor}', [Slider1Controller::class, 'destroy'])->name('slider1.destroy');
+    Route::patch('/slider1/{id}/update-status', [Slider1Controller::class, 'updateStatus'])->name('slider1.updateStatus');
+
+    Route::get('/slider2', [Slider2Controller::class, 'index'])->name('slider2.index');
+    Route::get('/slider2/create', [Slider2Controller::class, 'create'])->name('slider2.create');
+    Route::post('/slider2', [Slider2Controller::class, 'store'])->name('slider2.store');
+    Route::get('/slider2/{id}/edit', [Slider2Controller::class, 'edit'])->name('slider2.edit');
+    Route::put('/slider2/{id}', [Slider2Controller::class, 'update'])->name('slider2.update');
+    Route::delete('/slider2/{vendor}', [Slider2Controller::class, 'destroy'])->name('slider2.destroy');
+    Route::patch('/slider2/{id}/update-status', [Slider2Controller::class, 'updateStatus'])->name('slider2.updateStatus');
+
+    Route::get('/slider3', [Slider3Controller::class, 'index'])->name('slider3.index');
+    Route::get('/slider3/create', [Slider3Controller::class, 'create'])->name('slider3.create');
+    Route::post('/slider3', [Slider3Controller::class, 'store'])->name('slider3.store');
+    Route::get('/slider3/{id}/edit', [Slider3Controller::class, 'edit'])->name('slider3.edit');
+    Route::put('/slider3/{id}', [Slider3Controller::class, 'update'])->name('slider3.update');
+    Route::delete('/slider3/{vendor}', [Slider3Controller::class, 'destroy'])->name('slider3.destroy');
+    Route::patch('/slider3/{id}/update-status', [Slider3Controller::class, 'updateStatus'])->name('slider3.updateStatus');
+
+
+    Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+    Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
+    Route::post('/gallery', [GalleryController::class, 'store'])->name('gallery.store');
+    Route::get('/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('gallery.edit');
+    Route::put('/gallery/{id}', [GalleryController::class, 'update'])->name('gallery.update');
+    Route::delete('/gallery/{vendor}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+    Route::patch('/gallery/{id}/update-status', [GalleryController::class, 'updateStatus'])->name('gallery.updateStatus');
+    
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+    Route::get('/contact/create', [ContactController::class, 'create'])->name('contact.create');
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+    Route::get('/contact/{id}/edit', [ContactController::class, 'edit'])->name('contact.edit');
+    Route::put('/contact/{id}', [ContactController::class, 'update'])->name('contact.update');
+    Route::delete('/contact/{vendor}', [ContactController::class, 'destroy'])->name('contact.destroy');
+    Route::patch('/contact/{id}/update-status', [ContactController::class, 'updateStatus'])->name('contact.updateStatus');
+
+    Route::get('/Appointments', [AppointmentsController::class, 'index'])->name('Appointments.index');
+    Route::get('/Appointments/create', [AppointmentsController::class, 'create'])->name('Appointments.create');
+    Route::post('/Appointments', [AppointmentsController::class, 'store'])->name('Appointments.store');
+    Route::get('/Appointments/{id}/edit', [AppointmentsController::class, 'edit'])->name('Appointments.edit');
+    Route::put('/Appointments/{id}', [AppointmentsController::class, 'update'])->name('Appointments.update');
+    Route::delete('/Appointments/{vendor}', [AppointmentsController::class, 'destroy'])->name('Appointments.destroy');
+    Route::patch('/Appointments/{id}/update-status', [AppointmentsController::class, 'updateStatus'])->name('Appointments.updateStatus');
 
 
     });

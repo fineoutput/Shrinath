@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\DepotsController;
 use App\Http\Controllers\Admin\VendorController;
 use App\Http\Controllers\Admin\Slider1Controller;
+use App\Http\Controllers\Admin\SniPriceController;
 use App\Http\Controllers\Admin\Slider2Controller;
 use App\Http\Controllers\Admin\Slider3Controller;
 use App\Http\Controllers\Admin\GalleryController;
@@ -168,6 +169,24 @@ Route::get('/deletesetting/{id}', [CrmController::class, 'deletesetting'])->name
     Route::put('/Appointments/{id}', [AppointmentsController::class, 'update'])->name('Appointments.update');
     Route::delete('/Appointments/{vendor}', [AppointmentsController::class, 'destroy'])->name('Appointments.destroy');
     Route::patch('/Appointments/{id}/update-status', [AppointmentsController::class, 'updateStatus'])->name('Appointments.updateStatus');
+
+
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/user', [UserController::class, 'store'])->name('user.store');
+    Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/user/{vendor}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::patch('/user/{id}/update-status', [UserController::class, 'updateStatus'])->name('user.updateStatus');
+
+
+    Route::get('/sni_price', [SniPriceController::class, 'index'])->name('sni_price.index');
+    Route::get('/sni_price/create', [SniPriceController::class, 'create'])->name('sni_price.create');
+    Route::post('/sni_price', [SniPriceController::class, 'store'])->name('sni_price.store');
+    Route::get('/sni_price/{id}/edit', [SniPriceController::class, 'edit'])->name('sni_price.edit');
+    Route::put('/sni_price/{id}', [SniPriceController::class, 'update'])->name('sni_price.update');
+    Route::delete('/sni_price/{vendor}', [SniPriceController::class, 'destroy'])->name('sni_price.destroy');
+    Route::patch('/sni_price/{id}/update-status', [SniPriceController::class, 'updateStatus'])->name('sni_price.updateStatus');
 
 
     });

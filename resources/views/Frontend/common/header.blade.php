@@ -423,17 +423,14 @@
                                         <nav id="mobile-main-nav" class="mobile-main-nav">
                                             <ul id="menu-mobile-menu" class="menu">
                                                 <li class="menu-item menu-item-has-children-mobile">
-                                                    <a class="item-menu-mobile current" href="javascript:void(0)">
+                                                    <a class="item-menu-mobile current" href="{{route('/')}}">
                                                         Home
                                                     </a>
                                                   
                                                 </li>
                                                 <li class="menu-item menu-item-has-children-mobile">
-                                                    <a class="item-menu-mobile" href="javascript:void(0)">
-                                                        Page
-                                                        <i class="icon-arrow_down"></i>
-                                                    </a>
-                                                    <ul class="sub-menu-mobile">
+                                                    <a href="{{route('about')}}">About Us</a>
+                                                    {{-- <ul class="sub-menu-mobile">
                                                         <li class="menu-item">
                                                             <a href="about-us.html">About Us</a>
                                                         </li>
@@ -467,26 +464,24 @@
                                                         <li class="menu-item">
                                                             <a href="testimonial.html">Testimonial</a>
                                                         </li>
-                                                    </ul>
+                                                    </ul> --}}
                                                 </li>
                                                 <li class="menu-item menu-item-has-children-mobile">
-                                                    <a class="item-menu-mobile" href="javascript:void(0)">
-                                                        Portfolio
-                                                        <i class="icon-arrow_down"></i>
+                                                    <a class="item-menu-mobile" href="{{route('our_team')}}">
+                                                        Our Team
                                                     </a>
-                                                    <ul class="sub-menu-mobile">
+                                                    {{-- <ul class="sub-menu-mobile">
                                                         <li class="menu-item"><a href="portfolio-style-1.html">Portfolio Style 1</a></li>
                                                         <li class="menu-item"><a href="portfolio-style-2.html">Portfolio Style 2</a></li>
                                                         <li class="menu-item"><a href="portfolio-style-3.html">Portfolio Style 3</a></li>
                                                         <li class="menu-item"><a href="portfolio-details.html">Portfolio Detail</a></li>
-                                                    </ul>
+                                                    </ul> --}}
                                                 </li>
                                                 <li class="menu-item menu-item-has-children-mobile">
-                                                    <a class="item-menu-mobile" href="javascript:void(0)">
-                                                        Shop
-                                                        <i class="icon-arrow_down"></i>
+                                                    <a class="item-menu-mobile" href="{{route('out_products')}}">
+                                                        Products
                                                     </a>
-                                                    <ul class="sub-menu-mobile">
+                                                    {{-- <ul class="sub-menu-mobile">
                                                         <li class="menu-item"><a href="shop-products.html">Shop Product</a></li>
                                                         <li class="menu-item"><a href="shop-details.html">Shop Detail</a></li>
                                                         <li class="menu-item"><a href="shop-cart.html">Shop Cart</a></li>
@@ -495,36 +490,35 @@
                                                         <li class="menu-item"><a href="order-tracking.html">Order Tracking</a></li>
                                                         <li class="menu-item"><a href="my-account.html">My Account</a></li>
                                                         <li class="menu-item"><a href="order-details.html">Order Detail</a></li>
-                                                    </ul>
+                                                    </ul> --}}
                                                 </li>
                                                 <li class="menu-item menu-item-has-children-mobile">
                                                     <a class="item-menu-mobile" href="javascript:void(0)">
                                                         Services
-                                                        <i class="icon-arrow_down"></i>
                                                     </a>
-                                                    <ul class="sub-menu-mobile">
+                                                    {{-- <ul class="sub-menu-mobile">
                                                         <li class="menu-item">
                                                             <a href="our-services.html">Our Services</a>
                                                         </li>
                                                         <li class="menu-item">
                                                             <a href="service-detail.html">Service Detail</a>
                                                         </li>
-                                                    </ul>
+                                                    </ul> --}}
                                                 </li>
                                                 <li class="menu-item menu-item-has-children-mobile">
-                                                    <a class="item-menu-mobile" href="javascript:void(0)">Blog <i class="icon-arrow_down"></i></a>
-                                                    <ul class="sub-menu-mobile">
+                                                    <a class="item-menu-mobile" href="javascript:void(0)">Blog </a>
+                                                    {{-- <ul class="sub-menu-mobile">
                                                         <li class="menu-item"><a href="blog-full-width.html">Blog Full Width</a></li>
                                                         <li class="menu-item"><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
                                                         <li class="menu-item"><a href="blog-single.html">Blog Single</a></li>
-                                                    </ul>
+                                                    </ul> --}}
                                                 </li>
                                                 <li class="menu-item menu-item-has-children-mobile">
                                                     <a class="item-menu-mobile" href="contact-us.html">Contact</a>
                                                 </li>
                                             </ul>
                                         </nav>
-                                        <div class="group-icon">
+                                        {{-- <div class="group-icon">
                                             <a class="site-nav-icon header-search" href="#canvasSearch" data-bs-toggle="offcanvas">
                                                 <i class="icon-magnifying-glass fs-21"> </i>
                                                 Search
@@ -533,7 +527,7 @@
                                                 <i class="icon-basket"></i>
                                                 Shop
                                             </a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="bottom">
                                         <div class="infor-list">
@@ -600,20 +594,20 @@
                                         <div class="main-nav">
                                             <ul class="nav-list">
                                                 <li class="item has-child current-menu">
-                                                    <a href="javascript:void(0)">Home</a>
+                                                    <a href="{{route('/')}}">Home</a>
                                                     
                                                 </li>
                                                 <li class="item has-child">
-                                                    <a href="javascript:void(0)">Page</a>
+                                                    <a href="{{route('about')}}">About Us</a>
                                                     
                                                 </li>
                                                 <li class="item has-child">
-                                                    <a href="javascript:void(0)">Portfolio</a>
+                                                    <a href="{{route('our_team')}}">Our Team</a>
                                                     
                                                 </li>
                                                 <li class="item has-child">
-                                                    <a href="javascript:void(0)">Shop</a>
-                                                    <ul class="sub-nav">
+                                                    <a href="{{route('out_products')}}">Products</a>
+                                                    {{-- <ul class="sub-nav">
                                                         <li><a href="shop-products.html"><span>Shop Products</span></a></li>
                                                         <li><a href="shop-details.html"><span>Shop Details</span></a></li>
                                                         <li><a href="shop-cart.html"><span>Shop Cart</span></a></li>
@@ -622,7 +616,7 @@
                                                         <li><a href="order-tracking.html"><span>Order Tracking</span></a></li>
                                                         <li><a href="my-account.html"><span>My Account</span></a></li>
                                                         <li><a href="order-details.html"><span>Order Detail</span></a></li>
-                                                    </ul>
+                                                    </ul> --}}
                                                 </li>
                                                 <li class="item has-child">
                                                     <a href="javascript:void(0)">Services</a>

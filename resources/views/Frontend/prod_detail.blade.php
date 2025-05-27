@@ -217,8 +217,8 @@
                             </p>
                         </div>
                         <div class="price-wrap price-left">
-                            <span class=" price-1">$5.25</span>
-                            <span class=" price-2">$3.00</span>
+                            <span class=" price-1">₹5.25</span>
+                            <span class=" price-2">₹3.00</span>
                         </div>
                         <p class="sub font-nunito">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut aliquam
@@ -506,7 +506,7 @@
                                     </a>
                                     <div class="pricing-star">
                                         <div class="price-wrap">
-                                            <span class=" price-2">$3.00</span>
+                                            <span class=" price-2">₹3.00</span>
                                         </div>
                                         <div class="wg-rating">
                                             <i class="fa-solid fa-star"></i>
@@ -516,40 +516,7 @@
                                             <i class="fa-solid fa-star"></i>
                                         </div>
                                     </div>
-                                    <div class="product-btn-list">
-                                        <a href="#" class="icon shoping">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Add to card
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </a>
-                                        <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Add Wishlist
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-heart"></i>
-                                        </a>
-                                        <a href="#" class="icon view-product">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Quick View
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-eye"></i>
-                                        </a>
-                                        <a href="#" class="icon">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Compare
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-repeat"></i>
-                                        </a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -564,7 +531,7 @@
                                     </a>
                                     <div class="pricing-star">
                                         <div class="price-wrap">
-                                            <span class=" price-2">$2.87</span>
+                                            <span class=" price-2">₹2.87</span>
                                         </div>
                                         <div class="wg-rating">
                                             <i class="fa-solid fa-star"></i>
@@ -574,40 +541,7 @@
                                             <i class="fa-solid fa-star"></i>
                                         </div>
                                     </div>
-                                    <div class="product-btn-list">
-                                        <a href="#" class="icon shoping">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Add to card
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </a>
-                                        <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Add Wishlist
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-heart"></i>
-                                        </a>
-                                        <a href="#" class="icon view-product">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Quick View
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-eye"></i>
-                                        </a>
-                                        <a href="#" class="icon">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Compare
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-repeat"></i>
-                                        </a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="swiper-slide ">
@@ -629,7 +563,7 @@
                                     </a>
                                     <div class="pricing-star">
                                         <div class="price-wrap">
-                                            <span class=" price-2">$3.00</span>
+                                            <span class=" price-2">₹3.00</span>
                                         </div>
                                         <div class="wg-rating">
                                             <i class="fa-solid fa-star"></i>
@@ -639,40 +573,7 @@
                                             <i class="fa-solid fa-star"></i>
                                         </div>
                                     </div>
-                                    <div class="product-btn-list">
-                                        <a href="#" class="icon shoping">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Add to card
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </a>
-                                        <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Add Wishlist
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-heart"></i>
-                                        </a>
-                                        <a href="#" class="icon view-product">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Quick View
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-eye"></i>
-                                        </a>
-                                        <a href="#" class="icon">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Compare
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-repeat"></i>
-                                        </a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -686,7 +587,7 @@
                                     </a>
                                     <div class="pricing-star">
                                         <div class="price-wrap">
-                                            <span class=" price-2">$2.87</span>
+                                            <span class=" price-2">₹2.87</span>
                                         </div>
                                         <div class="wg-rating">
                                             <i class="fa-solid fa-star"></i>
@@ -696,40 +597,7 @@
                                             <i class="fa-solid fa-star"></i>
                                         </div>
                                     </div>
-                                    <div class="product-btn-list">
-                                        <a href="#" class="icon shoping">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Add to card
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </a>
-                                        <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Add Wishlist
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-heart"></i>
-                                        </a>
-                                        <a href="#" class="icon view-product">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Quick View
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-eye"></i>
-                                        </a>
-                                        <a href="#" class="icon">
-                                            <div class="tt-text">
-                                                <p>
-                                                    Compare
-                                                </p>
-                                            </div>
-                                            <i class="fa-solid fa-repeat"></i>
-                                        </a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

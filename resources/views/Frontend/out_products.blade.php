@@ -85,22 +85,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="sidebar-item ">
-                        <h5 class="sb-title">
-                            Color
-                        </h5>
-                        <div class="sb-content sb-color">
-                            <ul class="color-list">
-                                <li class="color-1"></li>
-                                <li class="active color-2"></li>
-                                <li class="color-3"></li>
-                                <li class="color-4"></li>
-                                <li class="color-5"></li>
-                                <li class="color-6"></li>
-                                <li class="color-7"></li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                     <div class="sidebar-item ">
                         <h5 class="sb-title">
                             Filter by Price
@@ -142,7 +127,7 @@
                                             smoothie for everyday
                                         </a>
                                         <div class="pricing-star">
-                                            <span class=" price font-worksans fw-6">$3.00</span>
+                                            <span class=" price font-worksans fw-6">₹3.00</span>
                                             <div class="wg-rating">
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
@@ -163,7 +148,7 @@
                                             smoothie for everyday
                                         </a>
                                         <div class="pricing-star">
-                                            <span class=" price font-worksans fw-6">$3.00</span>
+                                            <span class=" price font-worksans fw-6">₹3.00</span>
                                             <div class="wg-rating">
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
@@ -184,7 +169,7 @@
                                             smoothie for everyday
                                         </a>
                                         <div class="pricing-star">
-                                            <span class=" price font-worksans fw-6">$3.00</span>
+                                            <span class=" price font-worksans fw-6">₹3.00</span>
                                             <div class="wg-rating">
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
@@ -643,7 +628,7 @@
                             </a>
                             <div class="pricing-star">
                                 <div class="price-wrap">
-                                    <span class=" price-2">$5.00</span>
+                                    <span class=" price-2">₹5.00</span>
                                 </div>
                                 <div class="wg-rating">
                                     <i class="fa-solid fa-star"></i>
@@ -698,7 +683,7 @@
                             </a>
                             <div class="pricing-star">
                                 <div class="price-wrap">
-                                    <span class=" price-2">$2.87</span>
+                                    <span class=" price-2">₹2.87</span>
                                 </div>
                                 <div class="wg-rating">
                                     <i class="fa-solid fa-star"></i>
@@ -753,7 +738,7 @@
                             </a>
                             <div class="pricing-star">
                                 <div class="price-wrap">
-                                    <span class=" price-2">$3.00</span>
+                                    <span class=" price-2">₹3.00</span>
                                 </div>
                                 <div class="wg-rating">
                                     <i class="fa-solid fa-star"></i>
@@ -813,7 +798,7 @@
                             </a>
                             <div class="pricing-star">
                                 <div class="price-wrap">
-                                    <span class=" price-2">$3.00</span>
+                                    <span class=" price-2">₹3.00</span>
                                 </div>
                                 <div class="wg-rating">
                                     <i class="fa-solid fa-star"></i>
@@ -873,7 +858,7 @@
                             </a>
                             <div class="pricing-star">
                                 <div class="price-wrap">
-                                    <span class=" price-2">$3.00</span>
+                                    <span class=" price-2">₹3.00</span>
                                 </div>
                                 <div class="wg-rating">
                                     <i class="fa-solid fa-star"></i>
@@ -933,7 +918,7 @@
                             </a>
                             <div class="pricing-star">
                                 <div class="price-wrap">
-                                    <span class=" price-2">$3.00</span>
+                                    <span class=" price-2">₹3.00</span>
                                 </div>
                                 <div class="wg-rating">
                                     <i class="fa-solid fa-star"></i>

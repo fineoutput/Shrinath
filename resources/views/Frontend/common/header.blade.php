@@ -338,7 +338,7 @@
                                             </li>
                                             <li class="item has-child">
                                                 <a href="javascript:void(0)">Services</a>
-                                                <ul class="sub-nav">
+                                                {{-- <ul class="sub-nav">
                                                     <li>
                                                         <a href="our-services.html">
                                                             <span>
@@ -353,11 +353,11 @@
                                                             </span>
                                                         </a>
                                                     </li>
-                                                </ul>
+                                                </ul> --}}
                                             </li>
                                             <li class="item has-child">
                                                 <a href="javascript:void(0)">Blog</a>
-                                                <ul class="sub-nav">
+                                                {{-- <ul class="sub-nav">
                                                     <li>
                                                         <a href="blog-full-width.html">
                                                             <span>
@@ -379,7 +379,7 @@
                                                             </span>
                                                         </a>
                                                     </li>
-                                                </ul>
+                                                </ul> --}}
                                             </li>
                                             <li class="item has-child">
                                                 <a href="contact-us.html">Contact</a>

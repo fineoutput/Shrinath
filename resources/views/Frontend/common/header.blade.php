@@ -71,7 +71,7 @@
                         <div class="loader">
                         </div>
                         <div class="icon">
-                            <img src="{{ asset('Front/images/logo/logo3x.png') }}" alt="">
+                            <img src="{{ asset('Front/images/logo/sdas.png') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -183,7 +183,7 @@
                                 <div class="header-left">
                                     <div class="logo-site">
                                         <a href="index.html">
-                                            <img src="{{ asset('Front/images/logo/logo.png') }}" alt="">
+                                            <img src="{{ asset('Front/images/logo/sdas.png') }}" alt="">
                                         </a>
                                     </div>
                                     <div class="main-nav">
@@ -401,9 +401,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="wg-welcome btn-open-welcome">
-                                        <i class="icon-fences-icon fs-24"></i>
-                                    </div>
+                                    
 
                                     <div class="mobile-button">
                                         <span></span>
@@ -427,13 +425,8 @@
                                                 <li class="menu-item menu-item-has-children-mobile">
                                                     <a class="item-menu-mobile current" href="javascript:void(0)">
                                                         Home
-                                                        <i class="icon-arrow_down"></i>
                                                     </a>
-                                                    <ul class="sub-menu-mobile">
-                                                        <li class="menu-item"><a href="index.html">Home 1</a></li>
-                                                        <li class="menu-item"><a href="home-2.html">Home 2</a></li>
-                                                        <li class="menu-item current"><a href="home-3.html">Home 3</a></li>
-                                                    </ul>
+                                                  
                                                 </li>
                                                 <li class="menu-item menu-item-has-children-mobile">
                                                     <a class="item-menu-mobile" href="javascript:void(0)">
@@ -601,145 +594,22 @@
                                     <div class="header-left">
                                         <div class="logo-site">
                                             <a href="index.html">
-                                                <img src="{{ asset('Front/images/logo/logo.png') }}" alt="">
+                                                <img src="{{ asset('Front/images/logo/sdas.png') }}" alt="">
                                             </a>
                                         </div>
                                         <div class="main-nav">
                                             <ul class="nav-list">
                                                 <li class="item has-child current-menu">
                                                     <a href="javascript:void(0)">Home</a>
-                                                    <ul class="sub-nav">
-                                                        <li>
-                                                            <a href="index.html">
-                                                                <span>
-                                                                    Home 1
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="home-2.html"><span>
-                                                                    Home 2
-                                                                </span>
-                                                            </a></li>
-                                                        <li class="current-item"><a href="home-3.html"><span>
-                                                                    Home 3
-                                                                </span>
-                                                            </a></li>
-                                                    </ul>
+                                                    
                                                 </li>
                                                 <li class="item has-child">
                                                     <a href="javascript:void(0)">Page</a>
-                                                    <ul class="sub-nav">
-                                                        <li>
-                                                            <a href="about-us.html">
-                                                                <span>
-                                                                    About Us
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="our-commitments.html">
-                                                                <span>
-                                                                    Our Commitments
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="our-events.html">
-                                                                <span>
-                                                                    Our Events
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="our-farmers.html">
-                                                                <span>
-                                                                    Our Farmers
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="our-history.html">
-                                                                <span>
-                                                                    Our History
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="coming-soon.html">
-                                                                <span>
-                                                                    Coming Soon
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="404.html">
-                                                                <span>
-                                                                    404
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="event-detail.html">
-                                                                <span>
-                                                                    Event Detail
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="faq.html">
-                                                                <span>
-                                                                    FAQs
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="gallery.html">
-                                                                <span>
-                                                                    Gallery
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="testimonial.html">
-                                                                <span>
-                                                                    Testimonial
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
+                                                    
                                                 </li>
                                                 <li class="item has-child">
                                                     <a href="javascript:void(0)">Portfolio</a>
-                                                    <ul class="sub-nav">
-                                                        <li>
-                                                            <a href="portfolio-details.html">
-                                                                <span>
-                                                                    Portfolio Details
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="portfolio-style-1.html">
-                                                                <span>
-                                                                    Portfolio Style 1
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="portfolio-style-2.html">
-                                                                <span>
-                                                                    Portfolio Style 2
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="portfolio-style-3.html">
-                                                                <span>
-                                                                    Portfolio Style 3
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
+                                                    
                                                 </li>
                                                 <li class="item has-child">
                                                     <a href="javascript:void(0)">Shop</a>
@@ -819,9 +689,7 @@
                                                 </p>
                                             </div>
                                         </div>
-                                        <div class="wg-welcome btn-open-welcome">
-                                            <i class="icon-fences-icon fs-24"></i>
-                                        </div>
+                                        
 
                                         <div class="mobile-button">
                                             <span></span>

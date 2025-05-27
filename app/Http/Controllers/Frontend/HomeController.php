@@ -33,6 +33,11 @@ class HomeController extends Controller
      
         return view('Frontend/out_products')->withTitle('');
     }
+    public function prod_detail(Request $req)
+    {
+     
+        return view('Frontend/prod_detail')->withTitle('');
+    }
    
     
 }

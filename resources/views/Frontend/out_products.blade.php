@@ -280,7 +280,7 @@
                                 <img src="{{ asset('Front/images/item/first.png') }}" data-src="{{ asset('Front/images/item/first.png') }}" alt=""
                                     class="lazyload">
                             </div>
-                            <a href="shop-details.html" class="name-product font-worksans hover-text-4">
+                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
                                 Kasuri Methi
                             </a>
                             <div class="pricing-star">
@@ -340,7 +340,7 @@
                                 <img src="{{ asset('Front/images/item/Media-(1).png') }}" data-src="{{ asset('Front/images/item/Media-(1).png') }}" alt=""
                                     class="lazyload">
                             </div>
-                            <a href="shop-details.html" class="name-product font-worksans hover-text-4">
+                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
                                 Haldi Powder
                             </a>
                             <div class="pricing-star">
@@ -401,7 +401,7 @@
                                 <img src="{{ asset('Front/images/item/Media-(2).png') }}" data-src="{{ asset('Front/images/item/Media-(2).png') }}" alt=""
                                     class="lazyload">
                             </div>
-                            <a href="shop-details.html" class="name-product font-worksans hover-text-4">
+                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
                                 CUMIN SEED-JEERA
                             </a>
                             <div class="pricing-star">
@@ -465,7 +465,7 @@
                                 <img src="{{ asset('Front/images/item/Media-(3).png') }}" data-src="{{ asset('Front/images/item/Media-(3).png') }}"
                                     alt="" class="lazyload">
                             </div>
-                            <a href="shop-details.html" class="name-product font-worksans hover-text-4">
+                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
                                 Jeera
                             </a>
                             <div class="pricing-star">
@@ -520,7 +520,7 @@
                                 <img src="{{ asset('Front/images/item/Media-(4).png') }}"
                                     data-src="{{ asset('Front/images/item/Media-(4).png') }}" alt="" class="lazyload">
                             </div>
-                            <a href="shop-details.html" class="name-product font-worksans hover-text-4">
+                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
                                 Natural Spices
                             </a>
                             <div class="pricing-star">
@@ -583,7 +583,7 @@
                                 <img src="{{ asset('Front/images/item/Media-(5).png') }}" data-src="{{ asset('Front/images/item/Media-(5).png') }}" alt=""
                                     class="lazyload">
                             </div>
-                            <a href="shop-details.html" class="name-product font-worksans hover-text-4">
+                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
                                 CUMIN SEED-JEERA
                             </a>
                             <div class="pricing-star">
@@ -638,7 +638,7 @@
                                 <img src="{{ asset('Front/images/item/avocado.png') }}" data-src="{{ asset('Front/images/item/avocado.png') }}" alt=""
                                     class="lazyload">
                             </div>
-                            <a href="shop-details.html" class="name-product font-worksans hover-text-4">
+                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
                                 Handmade And Created
                             </a>
                             <div class="pricing-star">
@@ -693,7 +693,7 @@
                                 <img src="{{ asset('Front/images/item/banana.png') }}" data-src="{{ asset('Front/images/item/banana.png') }}" alt=""
                                     class="lazyload">
                             </div>
-                            <a href="shop-details.html" class="name-product font-worksans hover-text-4">
+                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
                                 Avocado The Most Nutrient
                             </a>
                             <div class="pricing-star">
@@ -748,7 +748,7 @@
                                 <img src="{{ asset('Front/images/item/flover.png') }}" data-src="{{ asset('Front/images/item/flover.png') }}" alt=""
                                     class="lazyload">
                             </div>
-                            <a href="shop-details.html" class="name-product font-worksans hover-text-4">
+                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
                                 Golden Curcuma Flavored
                             </a>
                             <div class="pricing-star">
@@ -808,7 +808,7 @@
                                 <img src="{{ asset('Front/images/item/dense.png') }}" data-src="{{ asset('Front/images/item/dense.png') }}" alt=""
                                     class="lazyload">
                             </div>
-                            <a href="shop-details.html" class="name-product font-worksans hover-text-4">
+                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
                                 Dense Superfood Available
                             </a>
                             <div class="pricing-star">
@@ -868,7 +868,7 @@
                                 <img src="{{ asset('Front/images/item/beef.png') }}" data-src="{{ asset('Front/images/item/beef.png') }}" alt=""
                                     class="lazyload">
                             </div>
-                            <a href="shop-details.html" class="name-product font-worksans hover-text-4">
+                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
                                 Organic Beef Box 1kg
                             </a>
                             <div class="pricing-star">
@@ -928,7 +928,7 @@
                                 <img src="{{ asset('Front/images/item/from.png') }}" data-src="{{ asset('Front/images/item/from.png') }}" alt=""
                                     class="lazyload">
                             </div>
-                            <a href="shop-details.html" class="name-product font-worksans hover-text-4">
+                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
                                 Orange Juice From Fruits
                             </a>
                             <div class="pricing-star">

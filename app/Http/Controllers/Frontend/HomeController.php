@@ -18,5 +18,15 @@ class HomeController extends Controller
      
         return view('Frontend/index')->withTitle('');
     }
+    public function about(Request $req)
+    {
+     
+        return view('Frontend/about')->withTitle('');
+    }
+    public function our_team(Request $req)
+    {
+     
+        return view('Frontend/our_team')->withTitle('');
+    }
     
 }

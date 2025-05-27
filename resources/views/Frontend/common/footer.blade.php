@@ -92,7 +92,7 @@
                                     </li>
                                     <li> <i class="icon-package-box"></i>
                                         <p class="email fs-15">
-                                            Mail: Donalfarms@gmail.com
+                                            Mail: Shrinaths@gmail.com
                                         </p>
                                     </li>
                                     <li>

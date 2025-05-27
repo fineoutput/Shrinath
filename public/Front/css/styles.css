@@ -2188,7 +2188,7 @@ a.text-white {
 .header-wrap {
   width: 100%;
   z-index: 3;
-  top: 48px;
+  top: 0px;
   padding: 0px 30px;
 }
 
@@ -12886,7 +12886,7 @@ i.fs-12 {
 }
 
 .page-title-home-2 {
-  margin-top: 48px;
+  margin-top: 12px;
   padding: 0px 30px;
 }
 

@@ -167,7 +167,7 @@
                                             <img src="{{ asset('Front/images/item/rice-plant-2.png') }}" class="tf-animate-1" alt="" />
                                         </div>
                                         <p class="sub-title">
-                                            Welcome to DonalFarm Agriculture & Organic Farms
+                                            Welcome to Shrinath Agriculture & Organic Farms
                                         </p>
                                         <p class="title text-anime-style-2">
                                             What You Plant Now, <br>
@@ -507,7 +507,7 @@
                     <div class="heading-section style-3 has-text">
                         <p class="sub-title">What We Do</p>
                         <p class="title text-anime-style-1">
-                            At DonalFarm,
+                            At Shrinath,
                             We Aim To Unite Men
                             And Nature!
                         </p>
@@ -1424,7 +1424,7 @@
                                                 Contact Us
                                             </p>
                                             <p class="text">
-                                                Donalfarms@gmail.com <br>
+                                                Shrinaths@gmail.com <br>
                                                 Call Us 24/7: +1 987 654 3210
                                             </p>
                                         </div>
@@ -1458,7 +1458,7 @@
                                         <img src="{{ asset('images/item/rice-plant-2.png') }}" class="tf-animate-1" alt="" />
                                     </div>
                                 </div>
-                                <form id="contactform" method="post" action="https://themesflat.co/html/donalfarm/contact/contact-process.php"
+                                <form id="contactform" method="post" action="https://themesflat.co/html/Shrinath/contact/contact-process.php"
                                     novalidate="novalidate" class="form-send-message style-2">
                                     <div class="cols style-2 mb-15">
                                         <fieldset>

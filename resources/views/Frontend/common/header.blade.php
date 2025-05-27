@@ -9,7 +9,7 @@
     <title>Donal Farm HTML Template</title>
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <meta name="description"
-        content="DonalFarm is a minimal, clean, and modern One Page HTML Template designed for farms and other agriculture-related businesses, such as organic farms, agricultural research centers, or produce stores.">
+        content="Shrinath is a minimal, clean, and modern One Page HTML Template designed for farms and other agriculture-related businesses, such as organic farms, agricultural research centers, or produce stores.">
     <meta name="keywords"
         content=" dairy farm, poultry farm, livestock, organic produce, fresh vegetables, fruits, grains, sustainable agriculture, eco-friendly farming, farm machinery, irrigation, tractor">
     <meta name="author" content="themesflat.com">
@@ -59,7 +59,7 @@
         <!-- Bg-page -->
         <div class="bg-page absolute">
             <div class="image">
-                <img class="lazyload" src="{{ asset('Front/images/item/yellow-field.jpg') }}" alt="">
+                <img class="not" class="lazyload" src="{{ asset('Front/images/item/yellow-field.jpg') }}" alt="">
             </div>
         </div><!-- /.Bg-page -->
 
@@ -120,7 +120,7 @@
                                                     Contact & Support
                                                 </p>
                                                 <p class="text">
-                                                    Mail Us: Donalfarms@gmail.com <br>
+                                                    Mail Us: Shrinaths@gmail.com <br>
                                                     Call Us 24/7: +1 987 654 3210
                                                 </p>
                                             </div>
@@ -176,7 +176,7 @@
 
             <!-- Header -->
             <header class="header style-3 has-item-bot" id="header-main">
-                <div class="tf-container w-1620">
+                <div class="tf-container w-1620 yutes">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="header-inner">
@@ -189,7 +189,7 @@
                                     <div class="main-nav">
                                         <ul class="nav-list">
                                             <li class="item has-child current-menu">
-                                                <a href="javascript:void(0)">Home</a>
+                                                <a href="{{route('/')}}">Home</a>
                                                 {{-- <ul class="sub-nav">
                                                     <li>
                                                         <a href="index.html">
@@ -209,10 +209,10 @@
                                                 </ul> --}}
                                             </li>
                                             <li class="item has-child">
-                                                <a href="javascript:void(0)">Page</a>
-                                                <ul class="sub-nav">
+                                                <a href="{{route('about')}}">About Us</a>
+                                                {{-- <ul class="sub-nav">
                                                     <li>
-                                                        <a href="about-us.html">
+                                                        <a href="{{route('about')}}">
                                                             <span>
                                                                 About Us
                                                             </span>
@@ -288,11 +288,11 @@
                                                             </span>
                                                         </a>
                                                     </li>
-                                                </ul>
+                                                </ul> --}}
                                             </li>
                                             <li class="item has-child">
-                                                <a href="javascript:void(0)">Portfolio</a>
-                                                <ul class="sub-nav">
+                                                <a href="{{route('our_team')}}">Our Team</a>
+                                                {{-- <ul class="sub-nav">
                                                     <li>
                                                         <a href="portfolio-style-1.html">
                                                             <span>
@@ -321,7 +321,7 @@
                                                             </span>
                                                         </a>
                                                     </li>
-                                                </ul>
+                                                </ul> --}}
                                             </li>
                                             <li class="item has-child">
                                                 <a href="javascript:void(0)">Shop</a>
@@ -566,7 +566,7 @@
                                                         Email:
                                                     </h5>
                                                     <p>
-                                                        Donalfarms@gmail.com
+                                                        Shrinaths@gmail.com
                                                     </p>
                                                 </li>
                                             </ul>

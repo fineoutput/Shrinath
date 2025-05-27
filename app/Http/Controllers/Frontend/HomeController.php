@@ -28,5 +28,11 @@ class HomeController extends Controller
      
         return view('Frontend/our_team')->withTitle('');
     }
+    public function out_products(Request $req)
+    {
+     
+        return view('Frontend/out_products')->withTitle('');
+    }
+   
     
 }

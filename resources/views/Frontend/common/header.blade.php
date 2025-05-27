@@ -324,8 +324,8 @@
                                                 </ul> --}}
                                             </li>
                                             <li class="item has-child">
-                                                <a href="javascript:void(0)">Shop</a>
-                                                <ul class="sub-nav">
+                                                <a href="{{route('out_products')}}">Products</a>
+                                                {{-- <ul class="sub-nav">
                                                     <li><a href="shop-products.html"><span>Shop Products</span></a></li>
                                                     <li><a href="shop-details.html"><span>Shop Details</span></a></li>
                                                     <li><a href="shop-cart.html"><span>Shop Cart</span></a></li>
@@ -334,7 +334,7 @@
                                                     <li><a href="order-tracking.html"><span>Order Tracking</span></a></li>
                                                     <li><a href="my-account.html"><span>My Account</span></a></li>
                                                     <li><a href="order-details.html"><span>Order Detail</span></a></li>
-                                                </ul>
+                                                </ul> --}}
                                             </li>
                                             <li class="item has-child">
                                                 <a href="javascript:void(0)">Services</a>

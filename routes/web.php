@@ -47,6 +47,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('/');
     Route::get('about', [HomeController::class, 'about'])->name('about');
     Route::get('our_team', [HomeController::class, 'our_team'])->name('our_team');
+    Route::get('out_products', [HomeController::class, 'out_products'])->name('out_products');
 });
 
 //======================================= ADMIN ===================================================

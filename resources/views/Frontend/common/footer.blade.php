@@ -222,7 +222,7 @@
                     <div class="col-lg-12">
                         <div class="footer-bottom">
                             <p class="no-copy font-nunito">
-                                Copyright © 2024 Donal Farm by
+                                Copyright © 2024 Shrinath by
                                 <span>
                                     <a href="https://themeforest.net/user/themesflat/portfolio" target="_blank">
                                         Themesflat</a>.</span>

@@ -6,7 +6,7 @@
 <head>
     <!-- Basic Page Needs -->
     <meta charset="utf-8" />
-    <title>Donal Farm HTML Template</title>
+    <title>Shreenath</title>
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <meta name="description"
         content="Shrinath is a minimal, clean, and modern One Page HTML Template designed for farms and other agriculture-related businesses, such as organic farms, agricultural research centers, or produce stores.">

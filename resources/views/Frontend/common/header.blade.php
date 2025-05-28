@@ -42,8 +42,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('Front/icons/fontawesome/css/all.min.css') }}" />
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="{{ asset('Front/images/logo/logo3x.png') }}" />
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('Front/images/logo/logo3x.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('Front/images/logo/sdas.png') }}" />
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('Front/images/logo/sdas.png') }}" />
 
     <!--[if lt IE 9]>
         <script src="javascript/html5shiv.js"></script>

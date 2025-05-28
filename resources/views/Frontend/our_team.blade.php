@@ -131,7 +131,7 @@
                             </a>- Talk
                         </p>
                         <p class="duty">
-                            Farm Owner Donald Farm Happiness
+                            Farm Owner Shrinath Happiness
                         </p>
                     </div>
                     <a href="testimonial.html" class="tf-btn-read hover-text-4">

@@ -55,13 +55,14 @@
 </div><!-- /.Page-title -->
 
 <!-- Main-content -->
+
 <div class="main-content page-shop-product pt-0">
     <div class="tf-container">
         <div class="row">
             <div class="col-lg-4">
                 <div class="tf-sidebar">
                     <div class="sidebar-item sb-category">
-                        <h5 class="sb-title">
+                        <h5 class="sb-title" id="roats">
                             Categories
                         </h5>
                         <div class="sb-content">
@@ -981,6 +982,10 @@
             </div>
         </div>
     </div>
+
 </div><!-- /.Main-content -->
+
+
+
 
 @endsection

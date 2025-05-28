@@ -38,6 +38,11 @@ class HomeController extends Controller
      
         return view('Frontend/prod_detail')->withTitle('');
     }
+    public function our_gallery(Request $req)
+    {
+     
+        return view('Frontend/our_gallery')->withTitle('');
+    }
    
     
 }

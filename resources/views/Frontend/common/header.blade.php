@@ -337,7 +337,7 @@
                                                 </ul> --}}
                                             </li>
                                             <li class="item has-child">
-                                                <a href="javascript:void(0)">Services</a>
+                                                <a href="{{route('our_gallery')}}">Gallery</a>
                                                 {{-- <ul class="sub-nav">
                                                     <li>
                                                         <a href="our-services.html">
@@ -355,32 +355,7 @@
                                                     </li>
                                                 </ul> --}}
                                             </li>
-                                            <li class="item has-child">
-                                                <a href="javascript:void(0)">Blog</a>
-                                                {{-- <ul class="sub-nav">
-                                                    <li>
-                                                        <a href="blog-full-width.html">
-                                                            <span>
-                                                                Blog Full Width
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="blog-right-sidebar.html">
-                                                            <span>
-                                                                Blog Right Sidebar
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="blog-single.html">
-                                                            <span>
-                                                                Blog Single
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                </ul> --}}
-                                            </li>
+                                            
                                             <li class="item has-child">
                                                 <a href="contact-us.html">Contact</a>
                                             </li>
@@ -493,8 +468,8 @@
                                                     </ul> --}}
                                                 </li>
                                                 <li class="menu-item menu-item-has-children-mobile">
-                                                    <a class="item-menu-mobile" href="javascript:void(0)">
-                                                        Services
+                                                    <a class="item-menu-mobile" href="{{route('our_gallery')}}">
+                                                        Gallery
                                                     </a>
                                                     {{-- <ul class="sub-menu-mobile">
                                                         <li class="menu-item">
@@ -505,14 +480,7 @@
                                                         </li>
                                                     </ul> --}}
                                                 </li>
-                                                <li class="menu-item menu-item-has-children-mobile">
-                                                    <a class="item-menu-mobile" href="javascript:void(0)">Blog </a>
-                                                    {{-- <ul class="sub-menu-mobile">
-                                                        <li class="menu-item"><a href="blog-full-width.html">Blog Full Width</a></li>
-                                                        <li class="menu-item"><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                                        <li class="menu-item"><a href="blog-single.html">Blog Single</a></li>
-                                                    </ul> --}}
-                                                </li>
+                                                
                                                 <li class="menu-item menu-item-has-children-mobile">
                                                     <a class="item-menu-mobile" href="contact-us.html">Contact</a>
                                                 </li>
@@ -637,32 +605,7 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li class="item has-child">
-                                                    <a href="javascript:void(0)">Blog</a>
-                                                    <ul class="sub-nav">
-                                                        <li>
-                                                            <a href="blog-full-width.html">
-                                                                <span>
-                                                                    Blog Full Width
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="blog-right-sidebar.html">
-                                                                <span>
-                                                                    Blog Right Sidebar
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="blog-single.html">
-                                                                <span>
-                                                                    Blog Single
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
+                                               
                                                 <li class="item has-child">
                                                     <a href="contact-us.html">Contact</a>
                                                 </li>

@@ -587,8 +587,8 @@
                                                     </ul> --}}
                                                 </li>
                                                 <li class="item has-child">
-                                                    <a href="javascript:void(0)">Services</a>
-                                                    <ul class="sub-nav">
+                                                    <a href="{{route('our_gallery')}}">Gallery</a>
+                                                    {{-- <ul class="sub-nav">
                                                         <li>
                                                             <a href="our-services.html">
                                                                 <span>
@@ -603,7 +603,7 @@
                                                                 </span>
                                                             </a>
                                                         </li>
-                                                    </ul>
+                                                    </ul> --}}
                                                 </li>
                                                
                                                 <li class="item has-child">

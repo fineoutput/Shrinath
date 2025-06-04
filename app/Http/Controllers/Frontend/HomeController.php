@@ -43,6 +43,11 @@ class HomeController extends Controller
      
         return view('Frontend/our_gallery')->withTitle('');
     }
+    public function blog(Request $req)
+    {
+     
+        return view('Frontend/blog')->withTitle('');
+    }
    
     
 }

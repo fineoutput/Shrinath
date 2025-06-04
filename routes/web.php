@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\SniPriceController;
 use App\Http\Controllers\Admin\Slider2Controller;
 use App\Http\Controllers\Admin\Slider3Controller;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\BlockController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\AppointmentsController;
 use App\Http\Controllers\Admin\OrderController;
@@ -193,6 +194,13 @@ Route::get('/deletesetting/{id}', [CrmController::class, 'deletesetting'])->name
     Route::delete('/sni_price/{vendor}', [SniPriceController::class, 'destroy'])->name('sni_price.destroy');
     Route::patch('/sni_price/{id}/update-status', [SniPriceController::class, 'updateStatus'])->name('sni_price.updateStatus');
 
+       Route::get('/block', [BlockController::class, 'index'])->name('block.index');
+    Route::get('/block/create', [BlockController::class, 'create'])->name('block.create');
+    Route::post('/block', [BlockController::class, 'store'])->name('block.store');
+    Route::get('/block/{id}/edit', [BlockController::class, 'edit'])->name('block.edit');
+    Route::put('/block/{id}', [BlockController::class, 'update'])->name('block.update');
+    Route::delete('/block/{vendor}', [BlockController::class, 'destroy'])->name('block.destroy');
+    Route::patch('/block/{id}/update-status', [BlockController::class, 'updateStatus'])->name('block.updateStatus');
 
     });
 

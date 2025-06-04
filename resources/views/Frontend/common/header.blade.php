@@ -354,6 +354,9 @@
                                             <li class="item has-child">
                                                 <a href="contact-us.html">Contact</a>
                                             </li>
+                                            <li class="item has-child">
+                                                <a href="{{route('blog')}}">Blog</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -479,6 +482,9 @@
                                                 <li class="menu-item menu-item-has-children-mobile">
                                                     <a class="item-menu-mobile" href="contact-us.html">Contact</a>
                                                 </li>
+                                                <li class="item has-child">
+                                                <a href="{{route('blog')}}">Blog</a>
+                                            </li>
                                             </ul>
                                         </nav>
                                         {{-- <div class="group-icon">
@@ -604,6 +610,9 @@
                                                 <li class="item has-child">
                                                     <a href="contact-us.html">Contact</a>
                                                 </li>
+                                                <li class="item has-child">
+                                                <a href="{{route('blog')}}">Blog</a>
+                                            </li>
                                             </ul>
                                         </div>
                                     </div>

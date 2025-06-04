@@ -16,7 +16,33 @@ class HomeController extends Controller
     public function index(Request $req)
     {
      
-        return view('welcome')->withTitle('');
+        return view('Frontend/index')->withTitle('');
     }
+    public function about(Request $req)
+    {
+     
+        return view('Frontend/about')->withTitle('');
+    }
+    public function our_team(Request $req)
+    {
+     
+        return view('Frontend/our_team')->withTitle('');
+    }
+    public function out_products(Request $req)
+    {
+     
+        return view('Frontend/out_products')->withTitle('');
+    }
+    public function prod_detail(Request $req)
+    {
+     
+        return view('Frontend/prod_detail')->withTitle('');
+    }
+    public function our_gallery(Request $req)
+    {
+     
+        return view('Frontend/our_gallery')->withTitle('');
+    }
+   
     
 }

@@ -46,6 +46,11 @@ use App\Http\Controllers\Auth\adminlogincontroller;
 
 Route::group(['prefix' => '/'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('/');
+    Route::get('about', [HomeController::class, 'about'])->name('about');
+    Route::get('our_team', [HomeController::class, 'our_team'])->name('our_team');
+    Route::get('out_products', [HomeController::class, 'out_products'])->name('out_products');
+    Route::get('prod_detail', [HomeController::class, 'prod_detail'])->name('prod_detail');
+    Route::get('our_gallery', [HomeController::class, 'our_gallery'])->name('our_gallery');
 });
 
 //======================================= ADMIN ===================================================

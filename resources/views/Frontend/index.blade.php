@@ -872,6 +872,151 @@
             </div>
         </section><!-- /.Section project -->
 
+         <section class="s-shopping">
+            <div class="tf-container w-1620">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="content-wrap">
+                            <div class="content-section">
+                                <div class="heading-section style-2 has-text">
+                                    <div class="img-item">
+                                        <div class="item">
+                                            <img class="tf-animate-1" src="images/item/rice-plant-2.png" alt="" />
+                                        </div>
+                                        <p class="sub-title">
+                                            Shopping Today
+                                        </p>
+                                    </div>
+
+                                    <p class="title  wow fadeInLeft" data-wow-delay="0s">
+                                        We Provide High <br>
+                                        Quality Agricultural <br>
+                                        Products.
+                                    </p>
+                                    <p class="text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ex
+                                        igula, pulvinar ultrices justo sed, bibendum lobortis nibh. Pellentesque
+                                        mattis eros sit amet lorem tristique faucibus.
+                                    </p>
+                                </div>
+                                <a href="{{route('out_products')}}" class="tf-btn scale-40">
+                                    <span class="text-style ">
+                                        View All The Shop
+                                    </span>
+
+                                    <div class="icon">
+                                        <i class="icon-arrow_right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="s-slider">
+                                <div class="swiper-container slider-shopping-card">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="card-product mw-unset style-2 type-2 wow fadeInUp"
+                                                data-wow-delay="0s">
+                                                <ul class="trendy-list">
+                                                    <li class="trendy-item ">
+                                                        <p class="color-1">Sale!</p>
+                                                    </li>
+                                                </ul>
+                                                <div class="image">
+                                                   <img src="{{ asset('Front/images/item/first.png') }}" data-src="{{ asset('Front/images/item/first.png') }}" alt=""
+                                    class="lazyload">
+                                                </div>
+                                                <a href="{{route('out_products')}}"
+                                                    class="name-product font-worksans hover-text-4">
+                                                    Kasuri Pan Methi
+                                                </a>
+                                                <div class="pricing-star">
+                                                    <div class="price-wrap">
+                                                        <span class=" price-1">₹ 200</span>
+                                                        <span class=" price-2">₹ 500</span>
+                                                    </div>
+                                                    <div class="wg-rating">
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="card-product mw-unset style-2 type-2 wow fadeInUp"
+                                                data-wow-delay="0.1s">
+                                                <ul class="trendy-list">
+                                                    <li class="trendy-item ">
+                                                        <p class="color-1">Sale!</p>
+                                                    </li>
+                                                </ul>
+                                                <div class="image">
+                                                    <img src="{{ asset('Front/images/item/Media-(1).png') }}" data-src="{{ asset('Front/images/item/Media-(1).png') }}" alt=""
+                                    class="lazyload">
+                                                </div>
+                                                <a href="{{route('out_products')}}"
+                                                    class="name-product font-worksans hover-text-4">
+                                                    Mor Pankh Spice
+
+                                                </a>
+                                                <div class="pricing-star">
+                                                    <div class="price-wrap">
+                                                        <span class=" price-1">₹ 200</span>
+                                                        <span class=" price-2">₹ 500</span>
+                                                    </div>
+                                                    <div class="wg-rating">
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                    </div>
+                                                </div>
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-slide-wrap">
+                                <div class="btn-prev btn-slider-shopping">
+                                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="68px" height="18px"
+                                        viewBox="0 0 68 18" preserveAspectRatio="xMidYMid meet">
+
+                                        <g fill="#0d401c">
+                                            <path
+                                                d="M6.3 14.3 c-3.5 -2.1 -6.3 -4.2 -6.3 -4.9 0 -0.6 2.7 -3 6 -5.3 6.4 -4.5 8.3 -4.1 2.6 0.6 l-3.5 2.8 24.7 0 c23.6 0 38.2 0.9 38.2 2.3 0 0.4 -7.3 0.3 -16.3 -0.1 -9 -0.5 -23.3 -0.5 -31.8 0 l-15.4 0.8 5.3 2.9 c5 2.8 6.6 4.6 4 4.6 -0.7 0 -4.1 -1.7 -7.5 -3.7z" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="btn-next btn-slider-shopping">
+                                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="68px" height="18px"
+                                        viewBox="0 0 80 20" preserveAspectRatio="xMidYMid meet">
+                                        <g fill="#0d401c">
+                                            <path
+                                                d="M63 19 c0 -0.5 2.6 -2.4 5.8 -4.2 l5.7 -3.3 -19.5 -0.8 c-11 -0.5 -27.1 -0.5 -37 0.1 -9.6 0.5 -17.7 0.7 -17.9 0.5 -2.4 -1.9 22 -3.5 48.7 -3.1 l25.2 0.3 -4.6 -3.9 c-2.5 -2.1 -4.3 -4 -4 -4.3 0.7 -0.7 14.6 8.9 14.6 10.2 0 1.1 -14.3 9.5 -16.2 9.5 -0.4 0 -0.8 -0.4 -0.8 -1z" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="s-img-item item-1">
+                <img src="images/item/page-title-top.png" alt="">
+            </div>
+            <div class="s-img-item item-2 wow zoomIn">
+                <div class="nhapNhap">
+
+                    <img src="images/item/house-mountain-3.png" alt="">
+                </div>
+            </div>
+        </section><!-- /.Section shopping today  -->
+
         <!-- Section testimonial -->
         <section class="s-testimonial-2">
             <div class="tf-container w-1290">

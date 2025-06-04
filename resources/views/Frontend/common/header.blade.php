@@ -37,8 +37,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('Front/icons/fontawesome/css/all.min.css') }}" />
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="{{ asset('Front/images/logo/sdas.png') }}" />
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('Front/images/logo/sdas.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('Front/images/logo/logo_red.png') }}" />
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('Front/images/logo/logo_red.png') }}" />
 
     <!--[if lt IE 9]>
         <script src="javascript/html5shiv.js"></script>
@@ -66,7 +66,7 @@
                         <div class="loader">
                         </div>
                         <div class="icon">
-                            <img src="{{ asset('Front/images/logo/sdas.png') }}" alt="">
+                            <img src="{{ asset('Front/images/logo/logo_red.png') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
 
                                 <div class="topbar-left">
                                     <div class="logo">
-                                        <a href="index.html">
+                                        <a href="{{route('/')}}">
                                             <img src="{{ asset('Front/images/logo/logo.png') }}" data-src="{{ asset('Front/images/logo/logo-2.png') }}" alt="" class="lazyload">
                                         </a>
                                     </div>
@@ -176,9 +176,9 @@
                         <div class="col-lg-12">
                             <div class="header-inner">
                                 <div class="header-left">
-                                    <div class="logo-site">
-                                        <a href="index.html">
-                                            <img src="{{ asset('Front/images/logo/sdas.png') }}" alt="">
+                                    <div class="logo-site"> 
+                                        <a href="{{route('/')}}">
+                                            <img src="{{ asset('Front/images/logo/logo_red.png') }}" alt="">
                                         </a>
                                     </div>
                                     <div class="main-nav">
@@ -187,7 +187,7 @@
                                                 <a href="{{route('/')}}">Home</a>
                                                 {{-- <ul class="sub-nav">
                                                     <li>
-                                                        <a href="index.html">
+                                                        <a href="{{route('/')}}">
                                                             <span>
                                                                 Home 1
                                                             </span>
@@ -383,7 +383,7 @@
                                 <div class="inner-mobile-nav overflow-y-auto">
                                     <div class="top">
                                         <div class="logo">
-                                            <a href="index.html" rel="home" class="main-logo">
+                                            <a href="{{route('/')}}" rel="home" class="main-logo">
                                                 <img id="mobile-logo_header" alt="" src="{{ asset('Front/images/logo/logo-2.png') }}">
                                             </a>
                                             <div class="mobile-nav-close">
@@ -550,8 +550,8 @@
                                 <div class="header-inner">
                                     <div class="header-left">
                                         <div class="logo-site">
-                                            <a href="index.html">
-                                                <img src="{{ asset('Front/images/logo/sdas.png') }}" alt="">
+                                            <a href="{{route('/')}}">
+                                                <img src="{{ asset('Front/images/logo/logo_red.png') }}" alt="">
                                             </a>
                                         </div>
                                         <div class="main-nav">

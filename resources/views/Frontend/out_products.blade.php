@@ -61,57 +61,9 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="tf-sidebar">
-                    <div class="sidebar-item sb-category">
-                        <h5 class="sb-title" id="roats">
-                            Categories
-                        </h5>
-                        <div class="sb-content">
-                            <ul class="category-list">
-                                <li class="item">
-                                    <a href="#tf-shop-control">Jam And Jelly (2)</a>
-                                </li>
-                                <li class="item">
-                                    <a href="#tf-shop-control">Superfood (5)
-                                    </a>
-                                </li>
-                                <li class="item">
-                                    <a href="#tf-shop-control">Vegetables (6)</a>
-                                </li>
-                                <li class="item">
-                                    <a href="#tf-shop-control">Premium Nuts (3)</a>
-                                </li>
-                                <li class="item">
-                                    <a href="#tf-shop-control">Detox Drinks (1)</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                   
                     
-                    <div class="sidebar-item ">
-                        <h5 class="sb-title">
-                            Filter by Price
-                        </h5>
-                        <div class="sb-content sb-filter-price">
-                            <div class="range-slider">
-                                <div id="range-two-val"></div>
-                                <div class="bottom">
-                                    <div class="price-wrap">
-                                        <span class="text font-nunito">
-                                            Price:
-                                        </span>
-                                        <div class="value">
-                                            <div id="skip-value-lower"></div>
-                                            <span class="line">
-                                            </span>
-                                            <div id="skip-value-upper"></div>
-                                        </div>
-                                    </div>
-                                    <a href="#"
-                                        class="tf-btn-read btn-filter font-worksans fw-5 hover-text-4">Filter</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="sidebar-item sb-latest-new">
                         <h5 class="sb-title">
                             Popular Products
@@ -184,33 +136,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="sidebar-item sb-tag">
-                        <h5 class="sb-title">
-                            Tags
-                        </h5>
-                        <div class="sb-content">
-                            <ul class="tag-list">
-                                <li class="item">
-                                    <a href="#">bread</a>
-                                </li>
-                                <li class="item">
-                                    <a href="#">fruits</a>
-                                </li>
-                                <li class="item">
-                                    <a href="#">healthy</a>
-                                </li>
-                                <li class="item">
-                                    <a href="#">juices</a>
-                                </li>
-                                <li class="item">
-                                    <a href="#">organic</a>
-                                </li>
-                                <li class="item">
-                                    <a href="#">vegatables</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-lg-8">

@@ -72,12 +72,11 @@
                             <ul class="latest-list style-2">
                                 <li class="item img-hover">
                                     <div class="image hover-item">
-                                        <img src="{{ asset('Front/images/widget/sb-new.jpg') }}" alt="">
+                                        <img src="{{ asset('Front/images/item/first.png') }}" alt="">
                                     </div>
                                     <div class="content">
                                         <a href="#" class="name font-worksans fw-5 hover-text-4">
-                                            Green prganic mix
-                                            smoothie for everyday
+                                            Kasuri Methi
                                         </a>
                                         <div class="pricing-star">
                                             <span class=" price font-worksans fw-6">₹3.00</span>
@@ -93,12 +92,11 @@
                                 </li>
                                 <li class="item img-hover">
                                     <div class="image hover-item">
-                                        <img src="{{ asset('Front/images/widget/sb-new-2.jpg') }}" alt="">
+                                        <img src="{{ asset('Front/images/item/Media-(1).png') }}" alt="">
                                     </div>
                                     <div class="content">
                                         <a href="#" class="name font-worksans fw-5 hover-text-4">
-                                            Green prganic mix
-                                            smoothie for everyday
+                                            Haldi Powder
                                         </a>
                                         <div class="pricing-star">
                                             <span class=" price font-worksans fw-6">₹3.00</span>
@@ -114,12 +112,11 @@
                                 </li>
                                 <li class="item img-hover">
                                     <div class="image hover-item">
-                                        <img src="{{ asset('Front/images/widget/sb-new-3.jpg') }}" alt="">
+                                        <img src="{{ asset('Front/images/item/Media-(2).png') }}" alt="">
                                     </div>
                                     <div class="content">
                                         <a href="#" class="name font-worksans fw-5 hover-text-4">
-                                            Green prganic mix
-                                            smoothie for everyday
+                                            Cumin Seeds Jeera
                                         </a>
                                         <div class="pricing-star">
                                             <span class=" price font-worksans fw-6">₹3.00</span>

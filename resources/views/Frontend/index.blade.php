@@ -1555,8 +1555,7 @@
                                             </p>
                                             <div class="text">
                                             <p class="text">
-                                                Prinsengracht 250, 2501016 PM
-                                                Amsterdam Netherlands
+                                                H-16, Krishi Upaj Mandi, Nagaur-341001(Raj.)
                                             </p>
                                         </div>
                                     </li>

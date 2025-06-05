@@ -370,7 +370,7 @@
                                                 Call Us Support Today
                                             </p>
                                             <p class="number font-worksans">
-                                                (234) 109-6666
+                                                +91 7014928528
                                             </p>
                                         </div>
                                     </div>
@@ -626,7 +626,7 @@
                                                     Call Us Support Today
                                                 </p>
                                                 <p class="number font-worksans">
-                                                    (234) 109-6666
+                                                    +91 7014928528
                                                 </p>
                                             </div>
                                         </div>

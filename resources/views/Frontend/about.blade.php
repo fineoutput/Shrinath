@@ -131,17 +131,18 @@
                     <div class="col-lg-7">
                         <div class="text-wrap">
                             <p class="text-1 wow fadeInUp" data-wow-delay="0s">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus odio,
-                                egestas vitae augue sed, vulputate viverra velit. Quisque fringilla viverra
-                                turpis, at condimentum arcu convallis sit amet. Class aptent taciti sociosqu ad
-                                litora torquent per conubia nostra, per inceptos himenaeos. Fusce laoreet lectus
-                                in velit euismod.
+                               At Shreenath, we are committed to delivering the finest quality spices straight from the heart of India's spice-growing regions. With deep roots in the industry, we specialize in premium cumin seeds, Kasuri methi, and a variety of whole and blended spices. Our meticulously sourced ingredients ensure authentic flavors that enhance every dish.
+
+
+
+
+
+
                             </p>
                             <p class="text-2 wow fadeInUp" data-wow-delay="0s">
-                                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-                                himenaeos. Fusce laoreet lectus in velit euismod. Praesent fermentum dignissim
-                                sapien ornare sagittis. Cras erat lorem, vulputate non magna ac, molestie
-                                bibendum felis.
+                               
+With a state-of-the-art manufacturing unit and depots across India, we uphold the highest standards of quality, hygiene, and purity. Our commitment to excellence has made Shreenath a trusted name among households, wholesalers, and retailers alike.
+
                             </p>
                         </div>
                     </div>
@@ -274,9 +275,7 @@
                                 </p>
                             </div>
                             <p class="text mb-20">
-                                Mauris quam tellus, pellentesque ut faucibus pretium, aliquet vitae est. Nullam
-                                non lorem metus. Nulla pretium dui a diam faucibus. vehicula efficitur enim maximus. Proin
-                                sollicitudin erat eu auctor egestas.
+                               We cater to both B2B and D2C markets, offering bulk and retail packaging solutions. Whether you're a distributor, a restaurant owner, or a home chef, Shreenath brings you spices that guarantee purity, aroma, and taste in every pinch.
                             </p>
                             <div class="wg-progress mb-29">
                                 <div class="top">
@@ -457,65 +456,6 @@
     </section><!-- /.Section quality of life -->
 
     <!-- Section our history -->
-    <section class="s-our-history has-img-item tf-pt-0">
-        <div class="tf-container w-1620">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="content-section img-hover">
-                        <div class="image hover-item">
-                            <img src="{{ asset('Front/images/section/our-history.jpg') }}"
-                                data-src="{{ asset('Front/images/section/our-history.jpg') }}" alt="" class="lazyload">
-                        </div>
-                        <div class="heading-section style-4 has-text style-3">
-                            <div class="img-item">
-                                <div class="item">
-                                    <img class="tf-animate-1" src="{{ asset('Front/images/item/rice-plant-2.png') }}" alt="">
-                                </div>
-                                <p class="sub-title">
-                                    Our History
-                                </p>
-                            </div>
-                            <p class="title text-anime-style-1">
-                                Important Historical <br>
-                                Milestones Of Our Farm
-                            </p>
-                            <p class="text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus odio,
-                                egestas vitae augue sed, vulputate viverra velit. Quisque fringilla viverra
-                                turpis, at condimentum arcu convallis sit amet. Proin quis rhoncus nibh.
-                                Pellentesque consectetur nunc ac nunc convallis placerat.
-                            </p>
-                            <a href="our-history.html" class="tf-btn bg-white wow fadeInUp" data-wow-delay="0s">
-                                <span class="text-style cl-primary">
-                                    Read More
-                                </span>
-                                <div class="icon">
-                                    <i class="icon-arrow_right"></i>
-                                </div>
-                            </a>
-                            <div class="wg-exprerience text-center z-5 tf-rotate-back-and-forth">
-                                <p class="year">65</p>
-                                <p class="text">
-                                    Years Of <br> Experience
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="s-img-item item-1">
-            <img src="{{ asset('Front/images/item/brown-top.png') }}" alt="">
-        </div>
-        <div class="s-img-item item-bottom">
-            <img src="{{ asset('Front/images/item/brown-bottom.png') }}" alt="">
-        </div>
-        <div class="s-img-item item-3 wow zoomIn">
-            <div class="scroll-element-3">
-                <img src="{{ asset('Front/images/item/windmill-2.png') }}" alt="">
-            </div>
-        </div>
-    </section><!-- /.Section our history -->
 
     <!-- Section farmer tour -->
     <section class="s-farm-tour">
@@ -591,8 +531,7 @@
                                             Farm Address
                                         </p>
                                         <p class="text">
-                                            Prinsengracht 250, 2501016 PM <br>
-                                            Amsterdam Netherlands
+                                          H-16, Krishi Upaj Mandi, Nagaur-341001(Raj.)
                                         </p>
                                     </div>
                                 </li>

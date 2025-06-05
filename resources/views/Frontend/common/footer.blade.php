@@ -46,9 +46,11 @@
                                     </a>
                                 </div>
                                 <p class="text font-nunito">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim dolor
-                                    eget
-                                    lacus vestibulum facilisis.
+                                  Our Highest Quality Standards is something that has been
+
+passed on from generation to generation and it's something that
+
+we at Shreenath Industries have inherited.
                                 </p>
                                 <div class="wg-social">
                                     <ul class="list">
@@ -80,14 +82,15 @@
                                     <li>
                                         <i class="fa-solid fa-location-dot fs-17"></i>
                                         <p class="address">
-                                            Prinsengracht 250, 2501016 PM
-                                            Amsterdam Netherlands
+                                            H-16, Krishi Upaj Mandi,
+
+Nagaur-341001(Raj.)
                                         </p>
                                     </li>
                                     <li>
                                         <i class="fa-solid fa-phone"></i>
                                         <p class="phone-number fs-15">
-                                            Call us: (234) 109-6666
+                                            Call us: +91 7014928528
                                         </p>
                                     </li>
                                     <li> <i class="icon-package-box"></i>
@@ -222,10 +225,7 @@
                     <div class="col-lg-12">
                         <div class="footer-bottom">
                             <p class="no-copy font-nunito">
-                                Copyright © 2024 Shrinath by
-                                <span>
-                                    <a href="https://themeforest.net/user/themesflat/portfolio" target="_blank">
-                                        Themesflat</a>.</span>
+                                Copyright © 2025 Shrinath 
                                 All Rights Reserved.
                             </p>
                             <ul class="policy-list">

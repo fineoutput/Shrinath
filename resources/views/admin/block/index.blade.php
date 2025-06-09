@@ -6,10 +6,10 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="page-title-box">
-          <h4 class="page-title">View Block List</h4>
+          <h4 class="page-title">View Blog List</h4>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Block List</a></li>
-            <li class="breadcrumb-item active">View Block List</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0);">Blog List</a></li>
+            <li class="breadcrumb-item active">View Blog List</li>
           </ol>
         </div>
       </div>
@@ -35,9 +35,9 @@
               @endif
               <div class="row">
                 <div class="col-md-10">
-                  <h4 class="mt-0 header-title">View Block List</h4>
+                  <h4 class="mt-0 header-title">View Blog List</h4>
                 </div>
-                <div class="col-md-2"> <a class="btn btn-info cticket" href="{{ route('block.create')}}" role="button" style="margin-left: 20px;"> Add Block</a></div>
+                <div class="col-md-2"> <a class="btn btn-info cticket" href="{{ route('block.create')}}" role="button" style="margin-left: 20px;"> Add Blog</a></div>
               </div>
               <hr style="margin-bottom: 50px;background-color: darkgrey;">
               <div class="table-rep-plugin">

@@ -16,11 +16,11 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
-                    <h4 class="page-title">Add Block</h4>
+                    <h4 class="page-title">Add Blog</h4>
                     <ol class="breadcrumb" style="display:none">
                         <!-- <li class="breadcrumb-item"><a href="javascript:void(0);">CMS</a></li> -->
-                        <li class="breadcrumb-item"><a href="javascript:void(0);">Block</a></li>
-                        <li class="breadcrumb-item active">Add Block</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Blog</a></li>
+                        <li class="breadcrumb-item active">Add Blog</li>
                     </ol>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                             </div>
                             @endif
                             <!-- End show success and error messages -->
-                            <h4 class="mt-0 header-title">Add Block Form</h4>
+                            <h4 class="mt-0 header-title">Add Blog Form</h4>
                             <hr style="margin-bottom: 50px;background-color: darkgrey;">
 
                        <form action="{{ route('block.store') }}" method="POST" enctype="multipart/form-data">

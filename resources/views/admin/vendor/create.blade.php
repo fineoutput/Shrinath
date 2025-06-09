@@ -144,7 +144,7 @@
             var stateID = $(this).val();
             if (stateID) {
                 $.ajax({
-                    url: '/public/get-cities/' + stateID,
+                    url: 'https://fineoutput.co.in/shreenath/public/get-cities/' + stateID,
                     type: "GET",
                     dataType: "json",
                     success: function (data) {

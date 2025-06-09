@@ -152,7 +152,7 @@
 
             if (stateID) {
                 $.ajax({
-                    url: '/public/get-cities/' + stateID,
+                    url: '/shreenath/public/get-cities/' + stateID,
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
@@ -173,7 +173,7 @@
         // Preload cities (for edit)
         @if(old('state_id', $vendor->state_id ?? false))
             $.ajax({
-                url: '/public/get-cities/{{ old("state_id", $vendor->state_id ?? 0) }}',
+                url: '/shreenath/public/get-cities/{{ old("state_id", $vendor->state_id ?? 0) }}',
                 type: "GET",
                 dataType: "json",
                 success: function (data) {

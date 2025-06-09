@@ -15,8 +15,8 @@ use App\Http\Controllers\Api\AuthController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/profile', [AuthController::class, 'profile']);
 });
 
 Route::get('/blog', [BlockController::class, 'getBlock']);
@@ -28,5 +28,13 @@ Route::get('/depots', [BlockController::class, 'getAllDepots']);
 
 
 Route::post('/register', [AuthController::class, 'register']);
+Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
 
 
+
+Route::get('/states', [AuthController::class, 'getAllStates']);
+Route::post('/cities-by-state', [AuthController::class, 'getCitiesByState']);
+
+
+Route::post('/login/request-otp', [AuthController::class, 'loginRequestOtp']);
+Route::post('/login/verify-otp', [AuthController::class, 'loginVerifyOtp']);

@@ -9,9 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class Vendor extends Model
+class Vendor extends Authenticatable
 {
-    use HasFactory;
+      use HasApiTokens;
 
     protected $table = 'vendor';
     protected $fillable = [

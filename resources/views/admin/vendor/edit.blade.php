@@ -141,10 +141,16 @@
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     $(document).ready(function () {
-        $('#stateDropdown').on('change', function () {
+        console.log("jQuery ready");
+
+        // Fix: use event delegation for dynamically loaded elements
+        $(document).on('change', '#stateDropdown', function () {
             var stateID = $(this).val();
+            console.log("State changed to:", stateID);
+
             if (stateID) {
                 $.ajax({
                     url: '/public/get-cities/' + stateID,
@@ -155,6 +161,9 @@
                         $.each(data, function (key, value) {
                             $('#cityDropdown').append('<option value="' + value.id + '">' + value.city_name + '</option>');
                         });
+                    },
+                    error: function (xhr) {
+                        console.error("Error loading cities:", xhr.responseText);
                     }
                 });
             } else {
@@ -162,10 +171,10 @@
             }
         });
 
-        // Preload cities if vendor exists (edit page)
+        // Preload cities (for edit)
         @if(old('state_id', $vendor->state_id ?? false))
             $.ajax({
-                url: '/get-cities/{{ old("state_id", $vendor->state_id ?? 0) }}',
+                url: '/public/get-cities/{{ old("state_id", $vendor->state_id ?? 0) }}',
                 type: "GET",
                 dataType: "json",
                 success: function (data) {

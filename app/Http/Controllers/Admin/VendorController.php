@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\adminmodel\Team;
+use App\Models\City;
 use App\Models\Depots;
 use App\Models\Vendor;
 use App\Models\State;
@@ -20,7 +21,7 @@ class VendorController extends Controller
 
     public function getCities($state_id)
     {
-        $cities = \App\Models\City::where('state_id', $state_id)->get();
+        $cities = City::where('state_id', $state_id)->get();
         return response()->json($cities);
     }
 

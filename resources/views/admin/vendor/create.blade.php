@@ -144,7 +144,7 @@
             var stateID = $(this).val();
             if (stateID) {
                 $.ajax({
-                    url: '/get-cities/' + stateID,
+                    url: '/public/get-cities/' + stateID,
                     type: "GET",
                     dataType: "json",
                     success: function (data) {

@@ -50,9 +50,11 @@
                         <th data-priority="1">Business Name</th>
                         <th data-priority="1">Email</th>
                         <th data-priority="1">Phone No</th>
-                        <th data-priority="1">Depot</th>
-                        <th data-priority="1">State</th>
+                        {{-- <th data-priority="1">Depot</th> --}}
+                        {{-- <th data-priority="1">State</th> --}}
                         <th data-priority="1">City</th>
+                        <th data-priority="1">Address</th>
+                        <th data-priority="1">Type</th>
                         <th data-priority="1">Status</th>
                         <th data-priority="1">Action</th>
                       </tr>
@@ -67,7 +69,13 @@
                         <td>{{$value->phone ?? ''}}</td>
                         <td>{{$value->city ?? ''}}</td>
                         <td>{{$value->address ?? ''}}</td>
-                        <td>{{$value->type ?? ''}}</td>
+                        <td>
+                          @if ($value->type == '1')
+                              Normal User
+                          @else
+                            Retailer
+                          @endif
+                        </td>
 
                         <td>
                           

@@ -9,14 +9,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class Vendor extends Model
+class UnverifyVendor extends Model
 {
     use HasFactory;
 
-    protected $table = 'vendor';
+    protected $table = 'unverify_vendor';
     protected $fillable = [
         'name',
-        'auth',
         'business_name',
         'phone_no',
         'email',

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\BlockController;
+use App\Http\Controllers\Api\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,5 +25,8 @@ Route::get('/sliders1', [BlockController::class, 'getAllSliders1']);
 Route::get('/categories', [BlockController::class, 'getAllCategories']);
 Route::post('/products-by-category', [BlockController::class, 'getProductsByCategory']);
 Route::get('/depots', [BlockController::class, 'getAllDepots']);
+
+
+Route::post('/register', [AuthController::class, 'register']);
 
 

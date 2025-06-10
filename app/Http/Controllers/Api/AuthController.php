@@ -373,7 +373,7 @@ class AuthController extends Controller
         $user->save();
 
         return response()->json([
-            'status' => true,
+            'status' => 200,
             'message' => 'Login successful',
             'token' => $token,
             'user' => $user,
@@ -391,7 +391,7 @@ class AuthController extends Controller
         }
 
         return response()->json([
-            'status' => true,
+            'status' => 200,
             'message' => 'Profile fetched successfully',
             'type' => $type,
             'user' => $user,
@@ -404,7 +404,7 @@ class AuthController extends Controller
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
-            'status' => true,
+            'status' => 200,
             'message' => 'Logged out successfully',
         ]);
     }

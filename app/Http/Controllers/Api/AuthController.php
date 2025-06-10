@@ -209,7 +209,7 @@ class AuthController extends Controller
                 'status' => 200,
                 'message' => 'User verified and registered successfully',
                 'token' => $token,
-                'user' => $user,
+                'data' => $user,
             ]);
         }
     }
@@ -376,7 +376,7 @@ class AuthController extends Controller
             'status' => 200,
             'message' => 'Login successful',
             'token' => $token,
-            'user' => $user,
+            'data' => $user,
         ]);
     }
 
@@ -394,7 +394,7 @@ class AuthController extends Controller
             'status' => 200,
             'message' => 'Profile fetched successfully',
             'type' => $type,
-            'user' => $user,
+            'data' => $user,
         ]);
     }
 

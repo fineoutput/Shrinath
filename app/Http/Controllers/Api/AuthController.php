@@ -129,8 +129,8 @@ class AuthController extends Controller
             ], 400);
         }
 
-        $otpRecord->is_active = 0;
-        $otpRecord->save();
+        // Delete OTP after verification
+        $otpRecord->delete();
 
         if ($request->type == 3) {
             if (Vendor::where('phone_no', $request->number)->exists()) {
@@ -160,8 +160,8 @@ class AuthController extends Controller
                 'status' => 1,
             ]);
 
-            $unverified->status = 2;
-            $unverified->save();
+            // Delete the unverified record
+            $unverified->delete();
 
             $token = $vendor->createToken('auth')->plainTextToken;
 
@@ -200,8 +200,8 @@ class AuthController extends Controller
                 'status' => 1,
             ]);
 
-            $unverified->status = 2;
-            $unverified->save();
+            // Delete the unverified record
+            $unverified->delete();
 
             $token = $user->createToken('auth')->plainTextToken;
 
@@ -329,7 +329,7 @@ class AuthController extends Controller
 
 
 
-    public function loginVerifyOtp(Request $request)
+   public function loginVerifyOtp(Request $request)
     {
         $request->validate([
             'number' => 'required|string',
@@ -349,13 +349,14 @@ class AuthController extends Controller
             ], 400);
         }
 
-        $otp->is_active = 0;
-        $otp->save();
+        $otp->delete();
 
         if ($request->type == 3) {
             $user = Vendor::where('phone_no', $request->number)->first();
         } else {
-            $user = User::where('phone', $request->number)->where('type',$request->type)->first();
+            $user = User::where('phone', $request->number)
+                        ->where('type', $request->type)
+                        ->first();
         }
 
         if (!$user) {
@@ -379,17 +380,14 @@ class AuthController extends Controller
         ]);
     }
 
-
-
     public function profile(Request $request)
     {
-        $user = $request->user(); // Logged-in user (could be User or Vendor)
+        $user = $request->user();
 
-        // Determine type from database (you can also store token_owner_type if needed)
         if ($user instanceof \App\Models\User) {
-            $type = $user->type; // 1 = user, 2 = retailer
+            $type = $user->type; 
         } else {
-            $type = 3; // vendor
+            $type = 3; 
         }
 
         return response()->json([

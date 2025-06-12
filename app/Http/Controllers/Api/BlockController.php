@@ -126,7 +126,7 @@ class BlockController extends Controller
         $formattedCategories = $categories->map(function ($category) {
             return [
                 'category_name' => $category->category_name,
-                'image' => asset('images/' . $category->image), 
+                'image' => asset($category->image), 
                 'description' => strip_tags($category->description),
                 'status' => $category->status,
                 'id' => $category->id,

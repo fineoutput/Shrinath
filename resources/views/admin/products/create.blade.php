@@ -74,6 +74,29 @@
                             
                                 <div class="form-group row">
 
+                                  <div class="col-sm-6">
+                                        <label>Price</label>
+                                        <input type="number" name="price" class="form-control"  required>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label>MRP</label>
+                                        <input type="number" name="mrp" class="form-control"  required>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
+
+                                  <div class="col-sm-6">
+                                        <label>Weight</label>
+                                        <input type="number" name="weight" class="form-control"  required>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
+
                                     <div class="col-sm-6">
                                         <label>Image 1</label>
                                         <input type="file" name="image_1" class="form-control"  required>

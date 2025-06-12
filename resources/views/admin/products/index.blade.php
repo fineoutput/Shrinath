@@ -48,6 +48,9 @@
                         <th>#</th>
                         <th data-priority="1">Products Name</th>
                         <th data-priority="1">Category Name</th>
+                        <th data-priority="1">Price</th>
+                        <th data-priority="1">MRP</th>
+                        <th data-priority="1">Weight</th>
                         <th data-priority="1">Description</th>
                         <th data-priority="1">Image 1</th>
                         <th data-priority="1">Image 2</th>
@@ -63,6 +66,9 @@
                         <td>{{$key+1}}</td>
                         <td>{{$value->name ?? ''}}</td>
                         <td>{{$value->Category->category_name ?? ''}}</td>
+                        <td>{{$value->price ?? ''}}</td>
+                        <td>{{$value->mrp ?? ''}}</td>
+                        <td>{{$value->weight ?? ''}}</td>
                         <td>{!!$value->description !!}</td>
                         <td>
                             <img width="100" src="{{asset($value->image_1)}}" alt="">

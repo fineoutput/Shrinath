@@ -213,8 +213,8 @@ class BlockController extends Controller
                 'contact' => $depot->contact,
                 'pincode' => $depot->pincode,
                 'officetype' => $depot->officetype,
-                'state' => $depot->state->state_name,
-                'city' => $depot->city->city_name,
+                'state' => $depot->state->state_name ?? '',
+                'city' => $depot->city->city_name ?? '',
                 'image' => asset($depot->img),
                 'status' => $depot->status,
             ];

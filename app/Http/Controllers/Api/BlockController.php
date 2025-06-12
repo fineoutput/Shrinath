@@ -70,7 +70,7 @@ class BlockController extends Controller
         $formattedSliders = $sliders->map(function ($slider) {
             return [
                 'title' => $slider->title,
-                'image' => asset('images/' . $slider->image), 
+                'image' => asset($slider->image), 
                 'status' => $slider->status,
             ];
         });
@@ -98,7 +98,7 @@ class BlockController extends Controller
         $formattedSliders = $sliders->map(function ($slider) {
             return [
                 'title' => $slider->title,
-                'image' => asset('images/' . $slider->image), 
+                'image' => asset($slider->image), 
                 'status' => $slider->status,
             ];
         });
@@ -168,10 +168,10 @@ class BlockController extends Controller
                 'category_id' => $product->category_id,
                 'description' => strip_tags($product->description),
                 'status' => $product->status,
-                'image_1' => $product->image_1 ? asset('images/' . $product->image_1) : null,
-                'image_2' => $product->image_2 ? asset('images/' . $product->image_2) : null,
-                'image_3' => $product->image_3 ? asset('images/' . $product->image_3) : null,
-                'image_4' => $product->image_4 ? asset('images/' . $product->image_4) : null,
+                'image_1' => $product->image_1 ? asset($product->image_1) : null,
+                'image_2' => $product->image_2 ? asset($product->image_2) : null,
+                'image_3' => $product->image_3 ? asset($product->image_3) : null,
+                'image_4' => $product->image_4 ? asset($product->image_4) : null,
             ];
         });
 

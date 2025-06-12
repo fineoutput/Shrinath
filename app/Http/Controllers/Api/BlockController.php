@@ -163,7 +163,6 @@ class BlockController extends Controller
         }
 
         $formattedProducts = $products->map(function ($product) {
-            // Collect all images into one array
             $images = array_filter([
                 $product->image_1 ? asset($product->image_1) : null,
                 $product->image_2 ? asset($product->image_2) : null,
@@ -179,7 +178,7 @@ class BlockController extends Controller
                 'category_id' => $product->category_id,
                 'description' => strip_tags($product->description),
                 'status' => $product->status,
-                'images' => array_values($images), // Reset array index
+                'images' => array_values($images),
             ];
         });
 

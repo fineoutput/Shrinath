@@ -140,7 +140,7 @@ class BlockController extends Controller
     }
 
 
-    public function getProductsByCategory(Request $request)
+  public function getProductsByCategory(Request $request)
     {
         $categoryId = $request->input('category_id');
 
@@ -163,21 +163,26 @@ class BlockController extends Controller
         }
 
         $formattedProducts = $products->map(function ($product) {
+            // Collect all images into one array
+            $images = array_filter([
+                $product->image_1 ? asset($product->image_1) : null,
+                $product->image_2 ? asset($product->image_2) : null,
+                $product->image_3 ? asset($product->image_3) : null,
+                $product->image_4 ? asset($product->image_4) : null,
+            ]);
+
             return [
                 'name' => $product->name,
                 'category_id' => $product->category_id,
                 'description' => strip_tags($product->description),
                 'status' => $product->status,
-                'image_1' => $product->image_1 ? asset($product->image_1) : null,
-                'image_2' => $product->image_2 ? asset($product->image_2) : null,
-                'image_3' => $product->image_3 ? asset($product->image_3) : null,
-                'image_4' => $product->image_4 ? asset($product->image_4) : null,
+                'images' => array_values($images), // Reset array index
             ];
         });
 
         return response()->json([
             'status' => 200,
-            'message' => 'Products fetched successfully',
+            'message' => 'Products retrieved successfully',
             'data' => $formattedProducts
         ]);
     }

@@ -33,10 +33,10 @@ class BlockController extends Controller
 
             if (is_array($imageArray)) {
                 $images = array_map(function ($img) {
-                    return asset('images/' . $img);
+                    return asset($img);
                 }, $imageArray);
             } else {
-                $images[] = asset('images/' . $block->image);
+                $images[] = asset($block->image);
             }
 
             return [

@@ -205,6 +205,7 @@ class BlockController extends Controller
 
         $formattedDepots = $depots->map(function ($depot) {
             return [
+                'id' => $depot->id,
                 'name' => $depot->name,
                 'latitude' => $depot->latitude,
                 'longitude' => $depot->longitude,

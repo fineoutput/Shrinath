@@ -15,7 +15,7 @@ class DepotsController extends Controller
 
     public function index()
     {
-        $depots = Depots::all();
+        $depots = Depots::orderBy('id','DESC')->get();
         return view('admin.depots.index', compact('depots'));
     }
 

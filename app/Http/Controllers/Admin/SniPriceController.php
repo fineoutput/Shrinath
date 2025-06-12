@@ -12,7 +12,7 @@ class SniPriceController extends Controller
     
     public function index()
     {
-        $prices = SniPrice::all();
+        $prices = SniPrice::orderBy('id','DESC')->get();
         return view('admin.sni_prices.index', compact('prices'));
     }
 

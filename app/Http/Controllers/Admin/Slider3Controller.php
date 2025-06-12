@@ -15,7 +15,7 @@ class Slider3Controller extends Controller
 
     public function index()
     {
-        $slider = Slider3::all();
+        $slider = Slider3::orderBy('id','DESC')->get();
         return view('admin.slider3.index', compact('slider'));
     }
 

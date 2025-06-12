@@ -15,7 +15,7 @@ class Slider2Controller extends Controller
 
     public function index()
     {
-        $slider = Slider2::all();
+        $slider = Slider2::orderBy('id','DESC')->get();
         return view('admin.slider2.index', compact('slider'));
     }
 

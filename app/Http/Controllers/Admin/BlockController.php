@@ -12,7 +12,7 @@ class BlockController extends Controller
   
     public function index()
     {
-        $block = Block::all();
+        $block = Block::orderBy('id','DESC')->get();
         return view('admin.block.index', compact('block'));
     }
 

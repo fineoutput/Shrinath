@@ -23,6 +23,12 @@ class Depots extends Model
         'manager',
         'email',
         'working_hours',
+        'img',
+        'officetype',
+        'pincode',
+        'contact',
+        'state_id',
+        'city_id',
         'status',
     ];
 
@@ -30,6 +36,14 @@ class Depots extends Model
     public function Category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 
  

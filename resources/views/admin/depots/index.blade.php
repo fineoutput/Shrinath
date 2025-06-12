@@ -54,6 +54,12 @@
                         <th data-priority="1">Latitude</th>
                         <th data-priority="1">Longitude</th>
                         <th data-priority="1">Location</th>
+                        <th data-priority="1">Office Type</th>
+                        <th data-priority="1">Pincode</th>
+                        <th data-priority="1">Contact</th>
+                        <th data-priority="1">State</th>
+                        <th data-priority="1">City</th>
+                        <th data-priority="1">Image</th>
                         <th data-priority="1">Status</th>
                         <th data-priority="1">Action</th>
                       </tr>
@@ -64,12 +70,20 @@
                         <td>{{$key+1}}</td>
                         <td>{{$value->name ?? ''}}</td>
                         <td>{{$value->manager ?? ''}}</td>
-                        <td>{!!$value->contact_person_name !!}</td>
-                        <td>{!!$value->email !!}</td>
-                        <td>{!!$value->working_hours !!}</td>
-                        <td>{!!$value->latitude !!}</td>
-                        <td>{!!$value->longitude !!}</td>
-                        <td>{!!$value->location !!}</td>
+                        <td>{{$value->contact_person_name ?? '' }}</td>
+                        <td>{{$value->email ?? '' }}</td>
+                        <td>{{$value->working_hours ?? '' }}</td>
+                        <td>{{$value->latitude ?? '' }}</td>
+                        <td>{{$value->longitude ?? '' }}</td>
+                        <td>{{$value->location ?? '' }}</td>
+                        <td>{{$value->officetype ?? '' }}</td>
+                        <td>{{$value->pincode ?? '' }}</td>
+                        <td>{{$value->contact ?? '' }}</td>
+                        <td>{{$value->state->state_name  ?? ''}}</td>
+                        <td>{{$value->city->city_name ?? '' }}</td>
+                        <td>
+                          <img width="100" height="100" src="{{asset($value->img)}}" alt="">
+                        </td>
 
                         <td>
                           

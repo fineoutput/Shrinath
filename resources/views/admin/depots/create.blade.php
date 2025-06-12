@@ -50,9 +50,9 @@
                             <h4 class="mt-0 header-title">Add Products Form</h4>
                             <hr style="margin-bottom: 50px;background-color: darkgrey;">
 
-                            <form action="{{ route('depots.store') }}" method="POST">
+                            <form action="{{ route('depots.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                            
+
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <label>Name</label>
@@ -63,7 +63,7 @@
                                         <input type="text" name="latitude" class="form-control" required>
                                     </div>
                                 </div>
-                            
+
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <label>Longitude</label>
@@ -74,7 +74,7 @@
                                         <input type="text" name="location" class="form-control" required>
                                     </div>
                                 </div>
-                            
+
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <label>Contact Person Name</label>
@@ -85,7 +85,7 @@
                                         <input type="text" name="manager" class="form-control" required>
                                     </div>
                                 </div>
-                            
+
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <label>Email</label>
@@ -96,7 +96,48 @@
                                         <input type="text" name="working_hours" class="form-control" required>
                                     </div>
                                 </div>
-                            
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>Office Type</label>
+                                        <input type="text" name="officetype" class="form-control">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Contact</label>
+                                        <input type="text" name="contact" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>Pincode</label>
+                                        <input type="text" name="pincode" class="form-control">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Image</label>
+                                        <input type="file" name="img" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>State</label>
+                                        <select name="state" id="state" class="form-control" required>
+                                            <option value="">Select State</option>
+                                            @foreach($states as $state)
+                                                <option value="{{ $state->id }}">{{ $state->state_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label>City</label>
+                                        <select name="city" id="city" class="form-control" required>
+                                            <option value="">Select City</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row">
                                     <div class="w-100 text-center">
                                         <button type="submit" class="btn btn-primary mt-3">
@@ -105,6 +146,7 @@
                                     </div>
                                 </div>
                             </form>
+
                             
                             
                             
@@ -117,6 +159,28 @@
     </div> <!-- container-fluid -->
 </div> <!-- content -->
 
+
+
+<script>
+    $('#state').on('change', function () {
+        var stateID = $(this).val();
+        if (stateID) {
+            $.ajax({
+                url: '{{ url("get-cities") }}/' + stateID,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $('#city').empty().append('<option value="">Select City</option>');
+                    $.each(data, function (key, value) {
+                        $('#city').append('<option value="' + value.id + '">' + value.city_name + '</option>');
+                    });
+                }
+            });
+        } else {
+            $('#city').empty().append('<option value="">Select City</option>');
+        }
+    });
+</script>
 
 <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 

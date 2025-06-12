@@ -125,6 +125,7 @@ Route::get('/deletesetting/{id}', [CrmController::class, 'deletesetting'])->name
     Route::put('/depots/{id}', [DepotsController::class, 'update'])->name('depots.update');
     Route::delete('/depots/{id}', [DepotsController::class, 'destroy'])->name('depots.destroy');
     Route::patch('/depots/{id}/update-status', [DepotsController::class, 'updateStatus'])->name('depots.updateStatus');
+Route::get('/get-cities/{state_id}', [DepotsController::class, 'getCities']);
 
 
     

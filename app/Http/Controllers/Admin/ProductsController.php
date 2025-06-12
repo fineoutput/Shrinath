@@ -30,6 +30,9 @@ class ProductsController extends Controller
             'name' => 'required',
             'category_id' => 'required',
             'description' => 'required',
+            'price' => 'required',
+            'mrp' => 'required',
+            'weight' => 'required',
             'image_1' => 'nullable',
             'image_2' => 'nullable',
             'image_3' => 'nullable',
@@ -38,6 +41,9 @@ class ProductsController extends Controller
     
         $product = new Products;
         $product->name = $request->name;
+        $product->price = $request->price;
+        $product->mrp = $request->mrp;
+        $product->weight = $request->weight;
         $product->category_id = $request->category_id;
         $product->description = $request->description;
         $product->status = 1;
@@ -69,6 +75,9 @@ class ProductsController extends Controller
             'name' => 'required',
             'category_id' => 'required',
             'description' => 'required',
+            'price' => 'required',
+            'mrp' => 'required',
+            'weight' => 'required',
             'image_1' => 'nullable',
             'image_2' => 'nullable',
             'image_3' => 'nullable',
@@ -77,6 +86,9 @@ class ProductsController extends Controller
 
         $product = Products::findOrFail($id);
         $product->name = $request->name;
+        $product->price = $request->price;
+        $product->mrp = $request->mrp;
+        $product->weight = $request->weight;
         $product->category_id = $request->category_id;
         $product->description = $request->description;
 

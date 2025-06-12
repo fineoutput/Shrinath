@@ -173,6 +173,9 @@ class BlockController extends Controller
 
             return [
                 'name' => $product->name,
+                'price' => $product->price,
+                'mrp' => $product->mrp,
+                'weight' => $product->weight,
                 'category_id' => $product->category_id,
                 'description' => strip_tags($product->description),
                 'status' => $product->status,

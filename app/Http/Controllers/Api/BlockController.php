@@ -129,6 +129,7 @@ class BlockController extends Controller
                 'image' => asset('images/' . $category->image), 
                 'description' => strip_tags($category->description),
                 'status' => $category->status,
+                'id' => $category->id,
             ];
         });
 

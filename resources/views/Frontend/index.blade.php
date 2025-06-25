@@ -10,16 +10,16 @@
        <div class="page-title-home-2">
             <div class="swiper-container slider-home-2">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                    @foreach ($slider1 as $value)
+                        <div class="swiper-slide">
                         <div class="slide-home-2">
                             <div class="image overflow-hidden">
-                                <img src="{{ asset('Front/images/page-title/home-2-1.jpg') }}" data-src="{{ asset('Front/images/page-title/home-2-1.jpg') }}"
+                                <img src="{{ asset($value->image ?? '') }}" data-src="{{ asset($value->image ?? '') }}"
                                     alt="" class="lazyload tf-animate-zoom-in-out">
                             </div>
                             <div class="content">
                                 <h1 class="title  font-farmhouse tf-fade-top fade-item-2">
-                                    Every Crop Counts, <br>
-                                    Every Farmer Matters
+                                   {{ $value->title ?? ''}}
                                 </h1>
                                 <div class="img-item">
                                     <img class="tf-trainsition-draw-left access-trainsition"
@@ -41,7 +41,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    @endforeach
+
+
+                    {{-- <div class="swiper-slide">
                         <div class="slide-home-2">
                             <div class="image overflow-hidden">
                                 <img src="{{ asset('Front/images/page-title/home-2-2.jpg') }}" data-src="{{ asset('Front/images/page-title/home-2-2.jpg') }}"
@@ -71,7 +74,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class=" btn-slide-home-2 btn-next">
                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="80px" height="20px" viewBox="0 0 80 20"
@@ -313,11 +316,12 @@
             <div class="slider-wrap">
                 <div class="swiper-container slider-s-service-2">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
+                        @foreach ($slider2 as $value)
+                                                    <div class="swiper-slide">
                             <div class="box-infor style-2 ic-hover img-hover">
                                 <div class="image hover-icon hover-item">
-                                    <img src="{{ asset('Front/images/widget/provide-item-1-1.jpg') }}"
-                                        data-src="{{ asset('Front/images/widget/provide-item-1-1.jpg') }}" alt="" class=" lazyload">
+                                    <img src="{{ asset($value->image ?? '') }}"
+                                        data-src="{{ asset($value->image ?? '') }}" alt="" class=" lazyload">
                                     <div class="icon style-circle">
                                         <i class="icon-salad"></i>
                                     </div>
@@ -325,7 +329,7 @@
                                 <div class="content">
                                     <a href="service-detail.html"
                                         class="title fs-23 fw-6 font-worksans hover-text-secondary">
-                                        Clean Vegetables
+                                        {{$value->title ?? ''}}
                                     </a>
                                     <p class="text font-nunito">
                                         Ultrices sagittis orci a scelerisque purus semper eget duis at. Sollicitudin
@@ -337,54 +341,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="box-infor style-2 ic-hover img-hover">
-                                <div class="image hover-icon hover-item">
-                                    <img src="{{ asset('Front/images/widget/provide-item-2-2.jpg') }}"
-                                        data-src="{{ asset('Front/images/widget/provide-item-2-2.jpg') }}" alt="" class=" lazyload">
-                                    <div class="icon style-circle">
-                                        <i class="icon-cow"></i>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <a href="service-detail.html"
-                                        class="title fs-23 fw-6 font-worksans hover-text-secondary">
-                                        Pure Cow's Milk
-                                    </a>
-                                    <p class="text font-nunito">
-                                        Ultrices sagittis orci a scelerisque purus semper eget duis at. Sollicitudin
-                                        nibh sit amet
-                                        commodo nulla.
-                                    </p>
-                                    <a href="our-services.html" class="tf-btn-read text-white hover-text-secondary">Read
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="box-infor style-2 ic-hover img-hover">
-                                <div class="image hover-icon hover-item">
-                                    <img src="{{ asset('Front/images/widget/provide-item-3-3.jpg') }}"
-                                        data-src="{{ asset('Front/images/widget/provide-item-3-3.jpg') }}" alt="" class=" lazyload">
-                                    <div class="icon style-circle">
-                                        <i class="icon-chicken-2"></i>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <a href="service-detail.html"
-                                        class="title fs-23 fw-6 font-worksans hover-text-secondary">
-                                        Clean Chicken And Egg
-                                    </a>
-                                    <p class="text font-nunito">
-                                        Ultrices sagittis orci a scelerisque purus semper eget duis at. Sollicitudin
-                                        nibh sit amet
-                                        commodo nulla.
-                                    </p>
-                                    <a href="our-services.html" class="tf-btn-read text-white hover-text-secondary">Read
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
+
+                      
                     </div>
                 </div>
             </div>
@@ -762,11 +721,12 @@
                         <div class="col-lg-12">
                             <div class="swiper-container slider-s-project">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
+                                    @foreach ($slider3 as $value)
+                                           <div class="swiper-slide">
                                         <div class="box-portfolio style-5">
                                             <div class="image">
-                                                <img src="{{ asset('Front/images/section/s-project-1.jpg') }}"
-                                                    data-src="{{ asset('Front/images/section/s-project-1.jpg') }}" alt=""
+                                                <img src="{{ asset($value->image ?? '') }}"
+                                                    data-src="{{ asset($value->image ?? '') }}" alt=""
                                                     class="lazyload" />
                                             </div>
                                             <div class="content">
@@ -774,9 +734,7 @@
                                                     Agriculture - farm
                                                 </p>
                                                 <a href="portfolio-details.html"
-                                                    class="title fs-23 font-worksans fw-6 hover-text-secondary">The
-                                                    Joy
-                                                    Of Sheep Farming</a>
+                                                    class="title fs-23 font-worksans fw-6 hover-text-secondary">{{ $value->title ?? ''}}</a>
                                                 <div class="bot">
                                                     <p class="text font-nunito">
                                                         Lorem ipsum dolor sit amet,
@@ -792,66 +750,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="box-portfolio style-5">
-                                            <div class="image">
-                                                <img src="{{ asset('Front/images/section/s-project-2.jpg') }}"
-                                                    data-src="{{ asset('Front/images/section/s-project-2.jpg') }}" alt=""
-                                                    class="lazyload" />
-                                            </div>
-                                            <div class="content">
-                                                <p class="sub font-farmhouse text-upper">
-                                                    Agriculture - farm
-                                                </p>
-                                                <a href="portfolio-details.html"
-                                                    class="title fs-23 font-worksans fw-6 hover-text-secondary">The
-                                                    Joy
-                                                    Of Sheep Farming</a>
-                                                <div class="bot">
-                                                    <p class="text font-nunito">
-                                                        Lorem ipsum dolor sit amet,
-                                                        consectetur adipiscing <br> elit. Sed
-                                                        a cursus massa. Cras ut dui nec
-                                                        nibh <br> vehicula fermentum. natoque
-                                                        penatibus.
-                                                    </p>
-                                                    <a href="portfolio-style-2.html" class="btn-read icon style-circle">
-                                                        <i class="icon-arrow_right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="box-portfolio style-5">
-                                            <div class="image">
-                                                <img src="{{ asset('Front/images/section/s-project-3.jpg') }}"
-                                                    data-src="{{ asset('Front/images/section/s-project-3.jpg') }}" alt=""
-                                                    class="lazyload" />
-                                            </div>
-                                            <div class="content">
-                                                <p class="sub font-farmhouse text-upper">
-                                                    Agriculture - farm
-                                                </p>
-                                                <a href="portfolio-details.html"
-                                                    class="title fs-23 font-worksans fw-6 hover-text-secondary">The
-                                                    Joy
-                                                    Of Sheep Farming</a>
-                                                <p class="text font-nunito">
-                                                    Lorem ipsum dolor sit amet,
-                                                    consectetur adipiscing elit. Sed
-                                                    a cursus massa. Cras ut dui nec
-                                                    nibhvehicula fermentum. natoque
-                                                    penatibus.
-                                                </p>
-                                                <div class="bot">
-                                                    <a href="portfolio-style-3.html" class="btn-read icon style-circle">
-                                                        <i class="icon-arrow_right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
+                                 
+
                                 </div>
 
                             </div>
@@ -912,7 +813,8 @@
                             <div class="s-slider">
                                 <div class="swiper-container slider-shopping-card">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
+                                        @foreach ($product as $value)
+                                              <div class="swiper-slide">
                                             <div class="card-product mw-unset style-2 type-2 wow fadeInUp"
                                                 data-wow-delay="0s">
                                                 <ul class="trendy-list">
@@ -921,17 +823,16 @@
                                                     </li>
                                                 </ul>
                                                 <div class="image">
-                                                   <img src="{{ asset('Front/images/item/first.png') }}" data-src="{{ asset('Front/images/item/first.png') }}" alt=""
-                                    class="lazyload">
+                                                   <img src="{{ asset($value->image_1 ?? '') }}" data-src="{{ asset($value->image_1 ?? '') }}" alt="" class="lazyload">
                                                 </div>
                                                 <a href="{{route('out_products')}}"
                                                     class="name-product font-worksans hover-text-4">
-                                                    Kasuri Pan Methi
+                                                    {{ $value->name ?? ''}}
                                                 </a>
                                                 <div class="pricing-star">
                                                     <div class="price-wrap">
-                                                        <span class=" price-1">₹ 200</span>
-                                                        <span class=" price-2">₹ 500</span>
+                                                        <span class=" price-1">₹ {{ $value->price ?? ''}}</span>
+                                                        <span class=" price-2">₹ {{ $value->mrp ?? ''}}</span>
                                                     </div>
                                                     <div class="wg-rating">
                                                         <i class="fa-solid fa-star"></i>
@@ -944,39 +845,9 @@
                                                 
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="card-product mw-unset style-2 type-2 wow fadeInUp"
-                                                data-wow-delay="0.1s">
-                                                <ul class="trendy-list">
-                                                    <li class="trendy-item ">
-                                                        <p class="color-1">Sale!</p>
-                                                    </li>
-                                                </ul>
-                                                <div class="image">
-                                                    <img src="{{ asset('Front/images/item/Media-(1).png') }}" data-src="{{ asset('Front/images/item/Media-(1).png') }}" alt=""
-                                    class="lazyload">
-                                                </div>
-                                                <a href="{{route('out_products')}}"
-                                                    class="name-product font-worksans hover-text-4">
-                                                    Mor Pankh Spice
+                                        @endforeach
+                                      
 
-                                                </a>
-                                                <div class="pricing-star">
-                                                    <div class="price-wrap">
-                                                        <span class=" price-1">₹ 200</span>
-                                                        <span class=" price-2">₹ 500</span>
-                                                    </div>
-                                                    <div class="wg-rating">
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                    </div>
-                                                </div>
-                                              
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1258,169 +1129,37 @@
                         <div class="col-lg-12">
                             <div class="swiper-container slider-blog-post">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
+
+                                    @foreach ($blogs as $value)
+                                              <div class="swiper-slide">
                                         <article class="article-blog-item type-3 style-2 img-hover wow fadeInUp"
                                             data-wow-delay="0s">
                                             <div class="image">
                                                 <div class="video-wrap hover-item">
-                                                    <img class="lazyload" data-src="{{ asset('Front/images/blog/blog-1.jpg') }}"
-                                                        src="{{ asset('Front/images/blog/blog-1.jpg') }}" alt="" />
-                                                    <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
-                                                        class="style-icon-play popup-youtube">
-                                                        <i class="fa-solid fa-play"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="entry-date">
-                                                    <p class="day">
-                                                        08
-                                                    </p>
-                                                    <p class="month-year">
-                                                        Jun 24
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="content">
-                                                <ul class="entry-meta">
-                                                    <li class="entry author">
-                                                        <i class="fa-solid fa-circle-user"></i>
-                                                        <p>
-                                                            <a class="" href="#">
-                                                                By
-                                                                Hardson
-                                                            </a>
-                                                        </p>
-                                                    </li>
-                                                    <li class="entry tags">
-                                                        <i class="fa-solid fa-tag"></i>
-                                                        <p>
-                                                            <a href="#">Agriculture</a>,
-                                                            <a href="#">Farm</a>
-                                                        </p>
-                                                    </li>
-                                                    <li class="entry comment">
-                                                        <i class="fa-solid fa-comment"></i>
-                                                        <p>
-                                                            <a href="#">0
-                                                                Comments</a>
-                                                        </p>
-                                                    </li>
-                                                </ul>
-                                                <h3 class="title fw-6">
-                                                    <a href="blog-single.html">
-                                                        How to Care for
-                                                        Cows to have the
-                                                        Best Quality
-                                                        Meat
-                                                    </a>
-                                                </h3>
-                                                <p class="text">
-                                                    Duis eleifend
-                                                    euismod arcu, nec
-                                                    faucibus mauris
-                                                    finibus id. Integer
-                                                    mattis, tellus non
-                                                    finibus rutrum quam
-                                                    lorem dignissim
-                                                    nulla.
-                                                </p>
-                                                <div class="bot">
-                                                    <a href="blog-single.html" class="tf-btn-read hover-text-4">Continue
-                                                        Reading</a>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <article class="article-blog-item type-3 style-2 img-hover wow fadeInUp"
-                                            data-wow-delay="0.1s">
-                                            <div class="image">
-                                                <div class="video-wrap hover-item">
-                                                    <img class="lazyload" data-src="{{ asset('Front/images/blog/blog-2.jpg') }}"
-                                                        src="{{ asset('Front/images/blog/blog-2.jpg') }}" alt="" />
-                                                    <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
-                                                        class="style-icon-play popup-youtube">
-                                                        <i class="fa-solid fa-play"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="entry-date">
-                                                    <p class="day">
-                                                        08
-                                                    </p>
-                                                    <p class="month-year">
-                                                        Jun 24
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="content">
-                                                <ul class="entry-meta">
-                                                    <li class="entry author">
-                                                        <i class="fa-solid fa-circle-user"></i>
-                                                        <p>
-                                                            <a class="" href="#">
-                                                                By
-                                                                Hardson
-                                                            </a>
-                                                        </p>
-                                                    </li>
-                                                    <li class="entry tags">
-                                                        <i class="fa-solid fa-tag"></i>
-                                                        <p>
-                                                            <a href="#">Agriculture</a>,
-                                                            <a href="#">Farm</a>
-                                                        </p>
-                                                    </li>
-                                                    <li class="entry comment">
-                                                        <i class="fa-solid fa-comment"></i>
-                                                        <p>
-                                                            <a href="#">0
-                                                                Comments</a>
-                                                        </p>
-                                                    </li>
-                                                </ul>
-                                                <h3 class="title fw-6">
-                                                    <a href="blog-single.html">
-                                                        The Best Time to Harvest
-                                                        Corn Without Wilting
+                                                       @php
+                                                            $images = json_decode($value->image, true); // decode as array
+                                                            $firstImage = !empty($images) ? $images[0] : null;
+                                                        @endphp
 
-                                                    </a>
-                                                </h3>
-                                                <p class="text">
-                                                    Duis eleifend
-                                                    euismod arcu, nec
-                                                    faucibus mauris
-                                                    finibus id. Integer
-                                                    mattis, tellus non
-                                                    finibus rutrum quam
-                                                    lorem dignissim
-                                                    nulla.
-                                                </p>
-                                                <div class="bot">
-                                                    <a href="blog-single.html" class="tf-btn-read hover-text-4">Continue
-                                                        Reading</a>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <article class="article-blog-item type-3 style-2 img-hover wow fadeInUp"
-                                            data-wow-delay="0.2s">
-                                            <div class="image">
-                                                <div class="video-wrap hover-item">
-                                                    <img class="lazyload" data-src="{{ asset('Front/images/blog/blog-3.jpg') }}"
-                                                        src="{{ asset('Front/images/blog/blog-3.jpg') }}" alt="" />
+                                                    @if ($firstImage)
+                                        <img class="lazyload" data-src="{{ asset($firstImage) }}" src="{{ asset($firstImage) }}" alt="">
+                                    @endif
+
                                                     <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
                                                         class="style-icon-play popup-youtube">
                                                         <i class="fa-solid fa-play"></i>
                                                     </a>
                                                 </div>
-                                                <div class="entry-date">
-                                                    <p class="day">
-                                                        08
-                                                    </p>
-                                                    <p class="month-year">
-                                                        Jun 24
-                                                    </p>
-                                                </div>
+                                                @php
+                                    $date = \Carbon\Carbon::parse($value->created_at);
+                                @endphp
+
+                                <div class="entry-date">
+                                    <p class="day">{{ $date->format('d') }}</p>
+                                    <p class="month-year">
+                                        {{ $date->format('M y') }}
+                                    </p>
+                                </div>
                                             </div>
                                             <div class="content">
                                                 <ul class="entry-meta">
@@ -1450,19 +1189,11 @@
                                                 </ul>
                                                 <h3 class="title fw-6">
                                                     <a href="blog-single.html">
-                                                        The Joy of Working Every Day
-                                                        on a Sheep Farm
+                                                        {{ $value->title ?? ''}}
                                                     </a>
                                                 </h3>
                                                 <p class="text">
-                                                    Duis eleifend
-                                                    euismod arcu, nec
-                                                    faucibus mauris
-                                                    finibus id. Integer
-                                                    mattis, tellus non
-                                                    finibus rutrum quam
-                                                    lorem dignissim
-                                                    nulla.
+                                                      {!! $value->description !!}
                                                 </p>
                                                 <div class="bot">
                                                     <a href="blog-single.html" class="tf-btn-read hover-text-4">Continue
@@ -1471,6 +1202,9 @@
                                             </div>
                                         </article>
                                     </div>
+                                    @endforeach
+                              
+                                    
                                 </div>
                             </div>
                         </div>

@@ -141,11 +141,19 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="wrap-blog-list mb-50">
-                        <article class="article-blog-item mb-35 wow fadeInUp" data-wow-delay="0s">
+
+                        @foreach ($blog as $value)
+                            <article class="article-blog-item mb-35 wow fadeInUp" data-wow-delay="0s">
                             <div class="image">
                                 <div class="video-wrap">
-                                    <img class="lazyload" data-src="{{ asset('Front/images/blog/blog-1.jpg') }}"
-                                        src="{{ asset('Front/images/blog/blog-1.jpg') }}" alt="">
+                                   @php
+                                        $images = json_decode($value->image, true); // decode as array
+                                        $firstImage = !empty($images) ? $images[0] : null;
+                                    @endphp
+
+                                    @if ($firstImage)
+                                        <img class="lazyload" data-src="{{ asset($firstImage) }}" src="{{ asset($firstImage) }}" alt="">
+                                    @endif
                                     <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
                                         class="style-icon-play popup-youtube">
                                         <i class="fa-solid fa-play"></i>
@@ -153,10 +161,14 @@
                                         <div class="wave-1"></div>
                                     </a>
                                 </div>
+                               @php
+                                    $date = \Carbon\Carbon::parse($value->created_at);
+                                @endphp
+
                                 <div class="entry-date">
-                                    <p class="day">08</p>
+                                    <p class="day">{{ $date->format('d') }}</p>
                                     <p class="month-year">
-                                        Jun 24
+                                        {{ $date->format('M y') }}
                                     </p>
                                 </div>
                             </div>
@@ -192,15 +204,11 @@
                                 </ul>
                                 <h3 class="title fw-7">
                                     <a href="blog-single.html">
-                                        How to Care for Cows to have the Best Quality Meat
+                                         {{ $value->title ?? ''}}
                                     </a>
                                 </h3>
                                 <p class="text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus odio,
-                                    egestas vitae augue sed, vulputate viverra
-                                    velit. Quisque fringilla viverra turpis, at condimentum arcu convallis sit amet.
-                                    Class aptent taciti sociosqu ad litora
-                                    torquent per conubia nostra...
+                                    {!! $value->description !!}
                                 </p>
                                 <div class="bot">
                                     <a class="tf-btn gap-35" href="blog-single.html">
@@ -244,109 +252,8 @@
                                 </div>
                             </div>
                         </article>
-                        <article class="article-blog-item mb-35 type-2 wow fadeInUp" data-wow-delay="0s">
-                            <div class="image h-360">
-                                <div class="video-wrap">
-                                    <img class="lazyload" src="{{ asset('Front/images/blog/blog-2.jpg') }}"
-                                        data-src="{{ asset('Front/images/blog/blog-2.jpg') }}" alt="">
-                                    <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
-                                        class="style-icon-play popup-youtube">
-                                        <i class="fa-solid fa-play"></i>
-                                        <div class="wave"></div>
-                                        <div class="wave-1"></div>
-                                    </a>
-                                </div>
-                                <div class="entry-date">
-                                    <p class="day">08</p>
-                                    <p class="month-year">
-                                        Jun 24
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <ul class="entry-meta">
-                                    <li class="entry author">
-                                        <i class="fa-solid fa-circle-user"></i>
-                                        <p>
-                                            <a href="#">
-                                                By Hardson
-                                            </a>
-                                        </p>
-                                    </li>
-                                    <li class="entry tags">
-                                        <i class="fa-solid fa-tag"></i>
-                                        <p>
-                                            <a href="#">Agriculture</a>,
-                                            <a href="#">Farm</a>
-                                        </p>
-                                    </li>
-                                    <li class="entry comment">
-                                        <i class="fa-solid fa-comment"></i>
-                                        <p>
-                                            <a href="#">0 Comments</a>
-                                        </p>
-                                    </li>
-                                    <li class="entry view">
-                                        <i class="fa-solid fa-eye"></i>
-                                        <p>
-                                            <a href="#">350 View</a>
-                                        </p>
-                                    </li>
-                                </ul>
-                                <h3 class="title fw-7">
-                                    <a href="blog-single.html">
-                                        The Best Time to Harvest Corn Without Wilting
-                                    </a>
-                                </h3>
-                                <p class="text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus odio,
-                                    egestas vitae augue sed, vulputate viverra
-                                    velit. Quisque fringilla viverra turpis, at condimentum arcu convallis sit amet.
-                                    Class aptent taciti sociosqu ad litora
-                                    torquent per conubia nostra...
-                                </p>
-                                <div class="bot">
-                                    <a class="tf-btn gap-35" href="blog-single.html">
-                                        <span class="text-style">
-                                            Continue Reading
-                                        </span>
-                                        <div class="icon">
-                                            <i class="icon-arrow_right"></i>
-                                        </div>
-                                    </a>
-                                    <div class="share">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-share-nodes"></i>
-                                        </div>
-                                        <p class="fw-5 font-worksans mr-23">
-                                            Share:
-                                        </p>
-                                        <ul class="social-list style-2">
-                                            <li class="item">
-                                                <a href="#">
-                                                    <i class="icon-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">
-                                                    <i class="icon-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">
-                                                    <i class="fa-brands fa-skype"></i>
-                                                </a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">
-                                                    <i class="fa-brands fa-telegram"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
+                        @endforeach
+                        
                         <div class="block-quote mb-35 wow fadeInUp" data-wow-delay="0s">
                             <div class="has-border">
                                 <div class="quote">
@@ -384,11 +291,19 @@
                                 </div>
                             </div>
                         </div>
-                        <article class="article-blog-item type-2 mb-35 wow fadeInUp" data-wow-delay="0s">
-                            <div class="image h-360">
+
+                         @foreach ($blog2 as $value)
+                            <article class="article-blog-item mb-35 wow fadeInUp" data-wow-delay="0s">
+                            <div class="image">
                                 <div class="video-wrap">
-                                    <img class="lazyload" src="{{ asset('Front/images/blog/blog-3.jpg') }}"
-                                        data-src="{{ asset('Front/images/blog/blog-3.jpg') }}" alt="">
+                                   @php
+                                        $images = json_decode($value->image, true); // decode as array
+                                        $firstImage = !empty($images) ? $images[0] : null;
+                                    @endphp
+
+                                    @if ($firstImage)
+                                        <img class="lazyload" data-src="{{ asset($firstImage) }}" src="{{ asset($firstImage) }}" alt="">
+                                    @endif
                                     <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
                                         class="style-icon-play popup-youtube">
                                         <i class="fa-solid fa-play"></i>
@@ -396,10 +311,14 @@
                                         <div class="wave-1"></div>
                                     </a>
                                 </div>
+                               @php
+                                    $date = \Carbon\Carbon::parse($value->created_at);
+                                @endphp
+
                                 <div class="entry-date">
-                                    <p class="day">08</p>
+                                    <p class="day">{{ $date->format('d') }}</p>
                                     <p class="month-year">
-                                        Jun 24
+                                        {{ $date->format('M y') }}
                                     </p>
                                 </div>
                             </div>
@@ -408,7 +327,7 @@
                                     <li class="entry author">
                                         <i class="fa-solid fa-circle-user"></i>
                                         <p>
-                                            <a href="#">
+                                            <a class="" href="#">
                                                 By Hardson
                                             </a>
                                         </p>
@@ -435,15 +354,11 @@
                                 </ul>
                                 <h3 class="title fw-7">
                                     <a href="blog-single.html">
-                                        The Joy of Working Every Day on a Sheep Farm
+                                         {{ $value->title ?? ''}}
                                     </a>
                                 </h3>
                                 <p class="text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus odio,
-                                    egestas vitae augue sed, vulputate viverra
-                                    velit. Quisque fringilla viverra turpis, at condimentum arcu convallis sit amet.
-                                    Class aptent taciti sociosqu ad litora
-                                    torquent per conubia nostra...
+                                    {!! $value->description !!}
                                 </p>
                                 <div class="bot">
                                     <a class="tf-btn gap-35" href="blog-single.html">
@@ -487,6 +402,8 @@
                                 </div>
                             </div>
                         </article>
+                        @endforeach
+
                         <div class="block-quote style-2 wow fadeInUp" data-wow-delay="0s">
                             <div class="has-border">
                                 <div class="quote">
@@ -524,22 +441,33 @@
                                 </div>
                             </div>
                         </div>
-                        <article class="article-blog-item type-2 wow fadeInUp" data-wow-delay="0s">
+                        @foreach ($blog3 as $value)
+                            <article class="article-blog-item mb-35 wow fadeInUp" data-wow-delay="0s">
                             <div class="image">
                                 <div class="video-wrap">
-                                    <img class="lazyload" src="{{ asset('Front/images/blog/blog-4.jpg') }}"
-                                        data-src="{{ asset('Front/images/blog/blog-4.jpg') }}" alt="">
+                                   @php
+                                        $images = json_decode($value->image, true); // decode as array
+                                        $firstImage = !empty($images) ? $images[0] : null;
+                                    @endphp
+
+                                    @if ($firstImage)
+                                        <img class="lazyload" data-src="{{ asset($firstImage) }}" src="{{ asset($firstImage) }}" alt="">
+                                    @endif
                                     <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
                                         class="style-icon-play popup-youtube">
-                                        <i class="fa-solid fa-volume-high"></i>
+                                        <i class="fa-solid fa-play"></i>
                                         <div class="wave"></div>
                                         <div class="wave-1"></div>
                                     </a>
                                 </div>
+                               @php
+                                    $date = \Carbon\Carbon::parse($value->created_at);
+                                @endphp
+
                                 <div class="entry-date">
-                                    <p class="day">08</p>
+                                    <p class="day">{{ $date->format('d') }}</p>
                                     <p class="month-year">
-                                        Jun 24
+                                        {{ $date->format('M y') }}
                                     </p>
                                 </div>
                             </div>
@@ -548,7 +476,7 @@
                                     <li class="entry author">
                                         <i class="fa-solid fa-circle-user"></i>
                                         <p>
-                                            <a href="#">
+                                            <a class="" href="#">
                                                 By Hardson
                                             </a>
                                         </p>
@@ -575,15 +503,11 @@
                                 </ul>
                                 <h3 class="title fw-7">
                                     <a href="blog-single.html">
-                                        The Case for Investing in Greenhouses
+                                         {{ $value->title ?? ''}}
                                     </a>
                                 </h3>
                                 <p class="text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacus odio,
-                                    egestas vitae augue sed, vulputate viverra
-                                    velit. Quisque fringilla viverra turpis, at condimentum arcu convallis sit amet.
-                                    Class aptent taciti sociosqu ad litora
-                                    torquent per conubia nostra...
+                                    {!! $value->description !!}
                                 </p>
                                 <div class="bot">
                                     <a class="tf-btn gap-35" href="blog-single.html">
@@ -627,23 +551,39 @@
                                 </div>
                             </div>
                         </article>
+                        @endforeach
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="blog-pagination">
-                        <ul>
-                            <li>
-                                <a class="active" href="javascript:void(0)">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                        </ul>
+                @if ($paginator->hasPages())
+                    <div class="col-lg-12">
+                        <div class="blog-pagination">
+                            <ul>
+                                {{-- Previous Page Link --}}
+                                @if ($paginator->onFirstPage())
+                                    <li><a href="javascript:void(0)"><i class="fa fa-angle-left"></i></a></li>
+                                @else
+                                    <li><a href="{{ $paginator->previousPageUrl() }}"><i class="fa fa-angle-left"></i></a></li>
+                                @endif
+
+                                {{-- Pagination Elements --}}
+                                @foreach ($paginator->getUrlRange(1, $paginator->lastPage()) as $page => $url)
+                                    <li>
+                                        <a href="{{ $url }}" class="{{ $paginator->currentPage() == $page ? 'active' : '' }}">
+                                            {{ $page }}
+                                        </a>
+                                    </li>
+                                @endforeach
+
+                                {{-- Next Page Link --}}
+                                @if ($paginator->hasMorePages())
+                                    <li><a href="{{ $paginator->nextPageUrl() }}"><i class="fa fa-angle-right"></i></a></li>
+                                @else
+                                    <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i></a></li>
+                                @endif
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </section><!-- /.Section blog full wrap -->

@@ -57,35 +57,55 @@ class BlockController extends Controller
         return view('admin.block.edit', compact('block'));
     }
 
-   public function update(Request $request, $id)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'image' => 'nullable',
-        ]);
+ public function update(Request $request, $id)
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'image' => 'nullable',
+    ]);
 
-        $block = Block::findOrFail($id);
-        $block->title = $request->title;
-        $block->description = $request->description;
+    $block = Block::findOrFail($id);
+    $block->title = $request->title;
+    $block->description = $request->description;
 
-        // Get existing images
-        $existingImages = json_decode($block->image, true) ?? [];
+    // Get existing images
+    $existingImages = json_decode($block->image, true) ?? [];
 
-        // Handle new images if uploaded
-        if ($request->hasFile('image')) {
-            foreach ($request->file('image') as $image) {
-                $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('uploads/blocks'), $filename);
-                $existingImages[] = 'uploads/blocks/' . $filename;
+    // ✅ Handle image removal
+    if ($request->has('remove_images')) {
+        foreach ($request->remove_images as $removeImage) {
+            if (($key = array_search($removeImage, $existingImages)) !== false) {
+                unset($existingImages[$key]);
+
+                // Delete file from public folder
+                $filePath = public_path($removeImage);
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
             }
         }
 
-        $block->image = json_encode($existingImages);
-        $block->save();
-
-        return redirect()->route('block.index')->with('success', 'Block updated successfully.');
+        // Re-index array after unsetting
+        $existingImages = array_values($existingImages);
     }
+
+    // ✅ Handle new image uploads
+    if ($request->hasFile('image')) {
+        foreach ($request->file('image') as $image) {
+            $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads/blocks'), $filename);
+            $existingImages[] = 'uploads/blocks/' . $filename;
+        }
+    }
+
+    // ✅ Save updated image list
+    $block->image = json_encode($existingImages);
+    $block->save();
+
+    return redirect()->route('block.index')->with('success', 'Block updated successfully.');
+}
+
 
     public function destroy($id)
     {

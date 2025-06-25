@@ -66,70 +66,25 @@
                     
                     <div class="sidebar-item sb-latest-new">
                         <h5 class="sb-title">
-                            Popular Products
+                            {{-- Popular Products --}}
+                            Category
                         </h5>
                         <div class="sb-content sb-popular-product">
                             <ul class="latest-list style-2">
+
+                              @foreach ($category as $value)
                                 <li class="item img-hover">
                                     <div class="image hover-item">
-                                        <img src="{{ asset('Front/images/item/first.png') }}" alt="">
+                                        <img src="{{ asset($value->image) }}" alt="">
                                     </div>
                                     <div class="content">
-                                        <a href="#" class="name font-worksans fw-5 hover-text-4">
-                                            Kasuri Methi
+                                        <a href="{{ route('out_products', $value->id) }}" class="name font-worksans fw-5 hover-text-4 {{ $selected_category_id == $value->id ? 'text-primary' : '' }}">
+                                            {{ $value->category_name ?? '' }}
                                         </a>
-                                        <div class="pricing-star">
-                                            <span class=" price font-worksans fw-6">₹3.00</span>
-                                            <div class="wg-rating">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
                                     </div>
                                 </li>
-                                <li class="item img-hover">
-                                    <div class="image hover-item">
-                                        <img src="{{ asset('Front/images/item/Media-(1).png') }}" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <a href="#" class="name font-worksans fw-5 hover-text-4">
-                                            Haldi Powder
-                                        </a>
-                                        <div class="pricing-star">
-                                            <span class=" price font-worksans fw-6">₹3.00</span>
-                                            <div class="wg-rating">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item img-hover">
-                                    <div class="image hover-item">
-                                        <img src="{{ asset('Front/images/item/Media-(2).png') }}" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <a href="#" class="name font-worksans fw-5 hover-text-4">
-                                            Cumin Seeds Jeera
-                                        </a>
-                                        <div class="pricing-star">
-                                            <span class=" price font-worksans fw-6">₹3.00</span>
-                                            <div class="wg-rating">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                            @endforeach
+ 
                             </ul>
                         </div>
                     </div>
@@ -182,731 +137,68 @@
                         </div>
                     </div>
                 </div>
-                <div class="wg-shop-content ">
-                    <div class="grid-layout-3 gap-30-20">
-                        <div class="card-product style-2 wow fadeInUp" data-wow-delay="0s">
-                            <div class="image">
-                                <img src="{{ asset('Front/images/item/first.png') }}" data-src="{{ asset('Front/images/item/first.png') }}" alt=""
-                                    class="lazyload">
-                            </div>
-                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
-                                Kasuri Methi
-                            </a>
-                            <div class="pricing-star">
-                                <div class="price-wrap">
-                                    <span class=" price-2">₹ 200</span>
-                                </div>
-                                <div class="wg-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            {{-- <div class="product-btn-list">
-                                <a href="#addcart" class="icon shoping" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add to card
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a>
-                                <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add Wishlist
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                                <a href="#" class="icon view-product">
-                                    <div class="tt-text">
-                                        <p>
-                                            Quick View
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="#" class="icon">
-                                    <div class="tt-text">
-                                        <p>
-                                            Compare
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-repeat"></i>
-                                </a>
-                            </div> --}}
-                        </div>
-                        <div class="card-product style-2 wow fadeInUp" data-wow-delay="0.1s">
-                            <ul class="trendy-list">
-                                <li class="trendy-item ">
-                                    <p class="color-1">Hot</p>
-                                </li>
-                            </ul>
-                            <div class="image">
-                                <img src="{{ asset('Front/images/item/Media-(1).png') }}" data-src="{{ asset('Front/images/item/Media-(1).png') }}" alt=""
-                                    class="lazyload">
-                            </div>
-                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
-                                Haldi Powder
-                            </a>
-                            <div class="pricing-star">
-                                <div class="price-wrap">
-                                    <span class=" price-1">₹ 150 </span>
-                                    <span class=" price-2">₹ 100</span>
-                                </div>
-                                <div class="wg-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            {{-- <div class="product-btn-list">
-                                <a href="#addcart" class="icon shoping" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add to card
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a>
-                                <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add Wishlist
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                                <a href="#" class="icon view-product">
-                                    <div class="tt-text">
-                                        <p>
-                                            Quick View
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="#" class="icon">
-                                    <div class="tt-text">
-                                        <p>
-                                            Compare
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-repeat"></i>
-                                </a>
-                            </div> --}}
-                        </div>
-                        <div class="card-product style-2 wow fadeInUp" data-wow-delay="0.2s">
-                            <ul class="trendy-list">
-                                <li class="trendy-item ">
-                                    <p class="color-1">Sale</p>
-                                </li>
-                            </ul>
-                            <div class="image">
-                                <img src="{{ asset('Front/images/item/Media-(2).png') }}" data-src="{{ asset('Front/images/item/Media-(2).png') }}" alt=""
-                                    class="lazyload">
-                            </div>
-                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
-                                CUMIN SEED-JEERA
-                            </a>
-                            <div class="pricing-star">
-                                <div class="price-wrap">
-                                    <span class=" price-1">₹500</span>
-                                    <span class=" price-2">₹450</span>
-                                </div>
-                                <div class="wg-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            {{-- <div class="product-btn-list">
-                                <a href="#addcart" class="icon shoping" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add to card
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a>
-                                <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add Wishlist
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                                <a href="#" class="icon view-product">
-                                    <div class="tt-text">
-                                        <p>
-                                            Quick View
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="#" class="icon">
-                                    <div class="tt-text">
-                                        <p>
-                                            Compare
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-repeat"></i>
-                                </a>
-                            </div> --}}
-                        </div>
-                        <div class="card-product style-2 wow fadeInUp" data-wow-delay="0s">
-                            <ul class="trendy-list">
-                                <li class="trendy-item ">
-                                    <p class="color-2">New</p>
-                                </li>
-                                <li class="trendy-item ">
-                                    <p class="color-3">Hot</p>
-                                </li>
-                            </ul>
-                            <div class="image">
-                                <img src="{{ asset('Front/images/item/Media-(3).png') }}" data-src="{{ asset('Front/images/item/Media-(3).png') }}"
-                                    alt="" class="lazyload">
-                            </div>
-                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
-                                Jeera
-                            </a>
-                            <div class="pricing-star">
-                                <div class="price-wrap">
-                                    <span class=" price-2">₹250</span>
-                                </div>
-                                <div class="wg-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            {{-- <div class="product-btn-list">
-                                <a href="#addcart" class="icon shoping" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add to card
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a>
-                                <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add Wishlist
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                                <a href="#" class="icon view-product">
-                                    <div class="tt-text">
-                                        <p>
-                                            Quick View
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="#" class="icon">
-                                    <div class="tt-text">
-                                        <p>
-                                            Compare
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-repeat"></i>
-                                </a>
-                            </div> --}}
-                        </div>
-                        <div class="card-product style-2 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="image">
-                                <img src="{{ asset('Front/images/item/Media-(4).png') }}"
-                                    data-src="{{ asset('Front/images/item/Media-(4).png') }}" alt="" class="lazyload">
-                            </div>
-                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
-                                Natural Spices
-                            </a>
-                            <div class="pricing-star">
-                                <div class="price-wrap">
-                                    <span class=" price-2">₹300</span>
-                                </div>
-                                <div class="wg-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            {{-- <div class="product-btn-list">
-                                <a href="#addcart" class="icon shoping" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add to card
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a>
-                                <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add Wishlist
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                                <a href="#" class="icon view-product">
-                                    <div class="tt-text">
-                                        <p>
-                                            Quick View
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="#" class="icon">
-                                    <div class="tt-text">
-                                        <p>
-                                            Compare
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-repeat"></i>
-                                </a>
-                            </div> --}}
-                        </div>
-                        <div class="card-product style-2 wow fadeInUp" data-wow-delay="0.2s">
-                            <ul class="trendy-list">
-                                <li class="trendy-item ">
-                                    <p class="color-2">New</p>
-                                </li>
-                                <li class="trendy-item ">
-                                    <p class="color-4">Seasonal</p>
-                                </li>
-                            </ul>
-                            <div class="image">
-                                <img src="{{ asset('Front/images/item/Media-(5).png') }}" data-src="{{ asset('Front/images/item/Media-(5).png') }}" alt=""
-                                    class="lazyload">
-                            </div>
-                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
-                                CUMIN SEED-JEERA
-                            </a>
-                            <div class="pricing-star">
-                                <div class="price-wrap">
-                                    <span class=" price-2">₹500</span>
-                                </div>
-                                <div class="wg-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            {{-- <div class="product-btn-list">
-                                <a href="#addcart" class="icon shoping" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add to card
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a>
-                                <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add Wishlist
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                                <a href="#" class="icon view-product">
-                                    <div class="tt-text">
-                                        <p>
-                                            Quick View
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="#" class="icon">
-                                    <div class="tt-text">
-                                        <p>
-                                            Compare
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-repeat"></i>
-                                </a>
-                            </div> --}}
-                        </div>
-                        {{-- <div class="card-product style-2 wow fadeInUp" data-wow-delay="0s">
-                            <div class="image">
-                                <img src="{{ asset('Front/images/item/avocado.png') }}" data-src="{{ asset('Front/images/item/avocado.png') }}" alt=""
-                                    class="lazyload">
-                            </div>
-                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
-                                Handmade And Created
-                            </a>
-                            <div class="pricing-star">
-                                <div class="price-wrap">
-                                    <span class=" price-2">₹5.00</span>
-                                </div>
-                                <div class="wg-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-btn-list">
-                                <a href="#addcart" class="icon shoping" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add to card
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a>
-                                <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add Wishlist
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                                <a href="#" class="icon view-product">
-                                    <div class="tt-text">
-                                        <p>
-                                            Quick View
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="#" class="icon">
-                                    <div class="tt-text">
-                                        <p>
-                                            Compare
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-repeat"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-product style-2 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="image">
-                                <img src="{{ asset('Front/images/item/banana.png') }}" data-src="{{ asset('Front/images/item/banana.png') }}" alt=""
-                                    class="lazyload">
-                            </div>
-                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
-                                Avocado The Most Nutrient
-                            </a>
-                            <div class="pricing-star">
-                                <div class="price-wrap">
-                                    <span class=" price-2">₹2.87</span>
-                                </div>
-                                <div class="wg-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-btn-list">
-                                <a href="#addcart" class="icon shoping" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add to card
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a>
-                                <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add Wishlist
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                                <a href="#" class="icon view-product">
-                                    <div class="tt-text">
-                                        <p>
-                                            Quick View
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="#" class="icon">
-                                    <div class="tt-text">
-                                        <p>
-                                            Compare
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-repeat"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-product style-2 wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="image">
-                                <img src="{{ asset('Front/images/item/flover.png') }}" data-src="{{ asset('Front/images/item/flover.png') }}" alt=""
-                                    class="lazyload">
-                            </div>
-                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
-                                Golden Curcuma Flavored
-                            </a>
-                            <div class="pricing-star">
-                                <div class="price-wrap">
-                                    <span class=" price-2">₹3.00</span>
-                                </div>
-                                <div class="wg-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-btn-list">
-                                <a href="#addcart" class="icon shoping" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add to card
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a>
-                                <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add Wishlist
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                                <a href="#" class="icon view-product">
-                                    <div class="tt-text">
-                                        <p>
-                                            Quick View
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="#" class="icon">
-                                    <div class="tt-text">
-                                        <p>
-                                            Compare
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-repeat"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-product style-2 wow fadeInUp" data-wow-delay="0s">
-                            <ul class="trendy-list">
-                                <li class="trendy-item ">
-                                    <p class="color-3">Hot</p>
-                                </li>
-                            </ul>
-                            <div class="image">
-                                <img src="{{ asset('Front/images/item/dense.png') }}" data-src="{{ asset('Front/images/item/dense.png') }}" alt=""
-                                    class="lazyload">
-                            </div>
-                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
-                                Dense Superfood Available
-                            </a>
-                            <div class="pricing-star">
-                                <div class="price-wrap">
-                                    <span class=" price-2">₹3.00</span>
-                                </div>
-                                <div class="wg-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-btn-list">
-                                <a href="#addcart" class="icon shoping" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add to card
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a>
-                                <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add Wishlist
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                                <a href="#" class="icon view-product">
-                                    <div class="tt-text">
-                                        <p>
-                                            Quick View
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="#" class="icon">
-                                    <div class="tt-text">
-                                        <p>
-                                            Compare
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-repeat"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-product style-2 wow fadeInUp" data-wow-delay="0.1s">
-                            <ul class="trendy-list">
-                                <li class="trendy-item ">
-                                    <p class="color-3">Hot</p>
-                                </li>
-                            </ul>
-                            <div class="image">
-                                <img src="{{ asset('Front/images/item/beef.png') }}" data-src="{{ asset('Front/images/item/beef.png') }}" alt=""
-                                    class="lazyload">
-                            </div>
-                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
-                                Organic Beef Box 1kg
-                            </a>
-                            <div class="pricing-star">
-                                <div class="price-wrap">
-                                    <span class=" price-2">₹3.00</span>
-                                </div>
-                                <div class="wg-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-btn-list">
-                                <a href="#addcart" class="icon shoping" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add to card
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a>
-                                <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add Wishlist
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                                <a href="#" class="icon view-product">
-                                    <div class="tt-text">
-                                        <p>
-                                            Quick View
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="#" class="icon">
-                                    <div class="tt-text">
-                                        <p>
-                                            Compare
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-repeat"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-product style-2 wow fadeInUp" data-wow-delay="0.2s">
-                            <ul class="trendy-list">
-                                <li class="trendy-item ">
-                                    <p class="color-4">Seasonal</p>
-                                </li>
-                            </ul>
-                            <div class="image">
-                                <img src="{{ asset('Front/images/item/from.png') }}" data-src="{{ asset('Front/images/item/from.png') }}" alt=""
-                                    class="lazyload">
-                            </div>
-                            <a href="{{route('prod_detail')}}" class="name-product font-worksans hover-text-4">
-                                Orange Juice From Fruits
-                            </a>
-                            <div class="pricing-star">
-                                <div class="price-wrap">
-                                    <span class=" price-2">₹3.00</span>
-                                </div>
-                                <div class="wg-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-btn-list">
-                                <a href="#addcart" class="icon shoping" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add to card
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a>
-                                <a href="#wishlist" class="icon white-list" data-bs-toggle="modal">
-                                    <div class="tt-text">
-                                        <p>
-                                            Add Wishlist
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-heart"></i>
-                                </a>
-                                <a href="#" class="icon view-product">
-                                    <div class="tt-text">
-                                        <p>
-                                            Quick View
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="#" class="icon">
-                                    <div class="tt-text">
-                                        <p>
-                                            Compare
-                                        </p>
-                                    </div>
-                                    <i class="fa-solid fa-repeat"></i>
-                                </a>
-                            </div>
-                        </div> --}}
+               <div class="wg-shop-content">
+    <div class="grid-layout-3 gap-30-20">
+        @foreach ($product as $value)
+            <div class="card-product style-2 wow fadeInUp" data-wow-delay="0s">
+                <div class="image">
+                    <img src="{{ asset($value->image_1 ?? '') }}" data-src="{{ asset($value->image_1 ?? '') }}" alt=""
+                        class="lazyload">
+                </div>
+                <a href="{{ route('prod_detail', $value->id) }}" class="name-product font-worksans hover-text-4">
+                    {{$value->name ?? ''}}
+                </a>
+                <div class="pricing-star">
+                    <div class="price-wrap">
+                        <span class=" price-2">₹ {{ $value->mrp ?? ''}}</span>
+                    </div>
+                    <div class="wg-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
                     </div>
                 </div>
-                <div class=" tf-page-pagination">
-                    <ul>
-                        <li>
-                            <a class="active" href="javascript:void(0)">1</a>
-                        </li>
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                    </ul>
-                </div>
+            </div>
+        @endforeach
+    </div>
+</div>
+
+<!-- Pagination -->
+<div class="tf-page-pagination">
+    @if ($product->hasPages())
+        <ul>
+            {{-- Previous Page Link --}}
+            @if ($product->onFirstPage())
+                <li><a href="javascript:void(0)" aria-disabled="true"><i class="fa fa-angle-left"></i></a></li>
+            @else
+                <li><a href="{{ $product->previousPageUrl() }}"><i class="fa fa-angle-left"></i></a></li>
+            @endif
+
+            {{-- Pagination Elements --}}
+            @foreach ($product->getUrlRange(1, $product->lastPage()) as $page => $url)
+                <li>
+                    <a href="{{ $url }}" class="{{ $product->currentPage() == $page ? 'active' : '' }}">
+                        {{ $page }}
+                    </a>
+                </li>
+            @endforeach
+
+            {{-- Next Page Link --}}
+            @if ($product->hasMorePages())
+                <li><a href="{{ $product->nextPageUrl() }}"><i class="fa fa-angle-right"></i></a></li>
+            @else
+                <li><a href="javascript:void(0)" aria-disabled="true"><i class="fa fa-angle-right"></i></a></li>
+            @endif
+        </ul>
+    @endif
+</div>
             </div>
         </div>
     </div>
 
-</div><!-- /.Main-content -->
+</div>
 
 
 

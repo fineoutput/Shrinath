@@ -75,7 +75,15 @@
                                         <label>Existing Images:</label>
                                         <div class="d-flex flex-wrap gap-2">
                                             @foreach(json_decode($block->image, true) as $img)
-                                                <img src="{{ asset($img) }}" alt="Block Image" style="height: 80px; width: auto; margin: 5px; border:1px solid #ddd;">
+                                                <div style="position: relative; margin: 5px; text-align: center;">
+                                                    <img src="{{ asset($img) }}" alt="Block Image"
+                                                        style="height: 80px; width: auto; border:1px solid #ddd; display: block; margin-bottom: 5px;">
+
+                                                    <!-- Remove Checkbox -->
+                                                    <label style="font-size: 12px;">
+                                                        <input type="checkbox" name="remove_images[]" value="{{ $img }}"> Remove
+                                                    </label>
+                                                </div>
                                             @endforeach
                                         </div>
                                     </div>

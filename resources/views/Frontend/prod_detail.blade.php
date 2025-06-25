@@ -132,33 +132,33 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="image item">
-                                        <img src="{{ asset('Front/images/item/Media-(1).png') }}"
-                                            data-src="{{ asset('Front/images/item/Media-(1).png') }}"
-                                            data-zoom="{{ asset('Front/images/item/Media-(1).png') }}" alt=""
+                                        <img src="{{ asset($product->image_1 ?? '') }}"
+                                            data-src="{{ asset($product->image_1 ?? '') }}"
+                                            data-zoom="{{ asset($product->image_1 ?? '') }}" alt=""
                                             class="lazyload tf-image-zoom">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="image item ">
-                                        <img src="{{ asset('Front/images/item/Media-(2).png') }}"
-                                            data-src="{{ asset('Front/images/item/Media-(2).png') }}"
-                                            data-zoom="{{ asset('Front/images/item/Media-(2).png') }}" alt=""
+                                        <img src="{{ asset($product->image_2 ?? '') }}"
+                                            data-src="{{ asset($product->image_2 ?? '') }}"
+                                            data-zoom="{{ asset($product->image_2 ?? '') }}" alt=""
                                             class="lazyload  tf-image-zoom">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="image item ">
-                                        <img src="{{ asset('Front/images/item/Media-(3).png') }}"
-                                            data-src="{{ asset('Front/images/item/Media-(3).png') }}"
-                                            data-zoom="{{ asset('Front/images/item/Media-(3).png') }}" alt=""
+                                        <img src="{{ asset($product->image_3 ?? '') }}"
+                                            data-src="{{ asset($product->image_3 ?? '') }}"
+                                            data-zoom="{{ asset($product->image_3 ?? '') }}" alt=""
                                             class="lazyload tf-image-zoom">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="image item">
-                                        <img src="{{ asset('Front/images/item/Media-(4).png') }}"
-                                            data-src="{{ asset('Front/images/item/Media-(4).png') }}"
-                                            data-zoom="{{ asset('Front/images/item/Media-(4).png') }}" alt=""
+                                        <img src="{{ asset($product->image_4 ?? '') }}"
+                                            data-src="{{ asset($product->image_4 ?? '') }}"
+                                            data-zoom="{{ asset($product->image_4 ?? '') }}" alt=""
                                             class="lazyload tf-image-zoom">
                                     </div>
                                 </div>
@@ -168,29 +168,29 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="image item">
-                                        <img src="{{ asset('Front/images/item/Media-(1).png') }}"
-                                            data-src="{{ asset('Front/images/item/Media-(1).png') }}" alt=""
+                                        <img src="{{ asset($product->image_1 ?? '') }}"
+                                            data-src="{{ asset($product->image_1 ?? '') }}" alt=""
                                             class="lazyload">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="image item">
-                                        <img src="{{ asset('Front/images/item/Media-(2).png') }}"
-                                            data-src="{{ asset('Front/images/item/Media-(2).png') }}" alt=""
+                                        <img src="{{ asset($product->image_2 ?? '') }}"
+                                            data-src="{{ asset($product->image_2 ?? '') }}" alt=""
                                             class="lazyload">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="image item">
-                                        <img src="{{ asset('Front/images/item/Media-(3).png') }}"
-                                            data-src="{{ asset('Front/images/item/Media-(3).png') }}" alt=""
+                                        <img src="{{ asset($product->image_3 ?? '') }}"
+                                            data-src="{{ asset($product->image_3 ?? '') }}" alt=""
                                             class="lazyload">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="image item">
-                                        <img src="{{ asset('Front/images/item/Media-(4).png') }}"
-                                            data-src="{{ asset('Front/images/item/Media-(4).png') }}" alt=""
+                                        <img src="{{ asset($product->image_4 ?? '') }}"
+                                            data-src="{{ asset($product->image_4 ?? '') }}" alt=""
                                             class="lazyload">
                                     </div>
                                 </div>
@@ -202,7 +202,7 @@
                     <div class="tf-zoom-main"></div>
                     <div class="content-inner">
                         <h3 class="fw-6 name font-worksans title">
-                            Bag Of Succulent Oranges
+                            {{$product->name ?? ''}}
                         </h3>
                         <div class="rating-wrap">
                             <div class="wg-rating">
@@ -217,10 +217,11 @@
                             </p>
                         </div>
                         <div class="price-wrap price-left">
-                            <span class=" price-1">₹5.25</span>
-                            <span class=" price-2">₹3.00</span>
+                            <span class=" price-1">₹{{$product->price ?? ''}}</span>
+                            <span class=" price-2">₹{{$product->mrp ?? ''}}</span>
                         </div>
-                        <p class="sub font-nunito">
+                        <p>{!! $product->description !!}</p>
+                        {{-- <p class="sub font-nunito">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut aliquam
                             mauris.
                             Maecenas porta odio lorem, in aliquet
@@ -316,7 +317,7 @@
                                 <p>Tags:<a href="#">FOOD</a>/<a href="#">NUTS</a>/<a href="#">ORGANIC</a>
                                 </p>
                             </li>
-                        </ul>
+                        </ul> --}}
                         <div class="bot">
                             <p class="font-worksans fw-5 text">Share:</p>
                             <div class="wg-social style-3">
@@ -362,32 +363,7 @@
                         </div>
                         <div class="widget-content-tab">
                             <div class="widget-content-inner active">
-                                <p class="text-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Vivamus lacus
-                                    odio, egestas
-                                    vitae augue sed, vulputate viverra
-                                    velit. Quisque fringilla viverra turpis, at condimentum arcu convallis
-                                    sit
-                                    amet. Class
-                                    aptent taciti sociosqu ad litora
-                                    torquent per conubia nostra, per inceptos himenaeos. Fusce laoreet
-                                    lectus in
-                                    velit
-                                    euismod.
-                                </p>
-                                <p class="text-2">
-                                    Nulla accumsan sapien purus, at ultrices eros sagittis at. Duis leo
-                                    purus,
-                                    gravida ut
-                                    consequat in, hendrerit a neque.
-                                    Sed nec placerat odio, ut ultrices magna. Etiam in ligula pulvinar,
-                                    semper
-                                    dolor eu,
-                                    commodo lorem. In interdum neque
-                                    libero. eget volutpat nibh commodo et. Aenean sem erat, viverra in
-                                    condimentum in,
-                                    efficitur id massa.
-                                </p>
+                                <p class="text-1">{!! $product->description !!}</p>
                             </div>
                             <div class="widget-content-inner">
                                 <div class="table-infor">

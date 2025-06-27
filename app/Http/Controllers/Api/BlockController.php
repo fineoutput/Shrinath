@@ -85,7 +85,7 @@ class BlockController extends Controller
 
     public function getAllSliders1()
     {
-        $sliders = Slider1::latest()->get();
+        $sliders = Slider1::where('type','app')->orderBy('id','DESC')->get();
 
         if ($sliders->isEmpty()) {
             return response()->json([

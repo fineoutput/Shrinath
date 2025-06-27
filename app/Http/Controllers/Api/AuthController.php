@@ -309,7 +309,8 @@ class AuthController extends Controller
             ], 404);
         }
 
-        $otpCode = rand(100000, 999999);
+        // $otpCode = rand(100000, 999999);
+        $otpCode = 123456;
 
         Otp::updateOrCreate(
             ['contact_no' => $number],

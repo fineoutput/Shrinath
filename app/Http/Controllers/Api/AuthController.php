@@ -571,7 +571,7 @@ class AuthController extends Controller
                 'fcm_token' => $user->fcm_token,
                 'entry_date' => $user->entry_date,
             ]
-        ]);
+        ],200);
     }
 
     

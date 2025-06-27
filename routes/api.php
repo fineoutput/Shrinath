@@ -39,3 +39,4 @@ Route::post('/cities-by-state', [AuthController::class, 'getCitiesByState']);
 
 Route::post('/login/request-otp', [AuthController::class, 'loginRequestOtp']);
 Route::post('/login/verify-otp', [AuthController::class, 'loginVerifyOtp']);
+Route::post('/deviceid-update', [AuthController::class, 'deviceidupdate']);

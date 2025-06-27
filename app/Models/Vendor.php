@@ -24,6 +24,9 @@ class Vendor extends Authenticatable
         'state_id',
         'city_id',
         'gst_no',
+        'device_id',
+        'fcm_token',
+        'entry_date',
         'status',
     ];
 

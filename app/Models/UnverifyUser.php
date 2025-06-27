@@ -27,6 +27,9 @@ class UnverifyUser extends Authenticatable
         'city',
         'address',
         'gst_no',
+        'device_id',
+        'fcm_token',
+        'entry_date',
         'status',
     ];
 

@@ -111,14 +111,124 @@ class AuthController extends Controller
 
 
 
-  public function verifyOtp(Request $request)
+//   public function verifyOtp(Request $request)
+//     {
+//         $request->validate([
+//             'number' => 'required|string',
+//             'otp' => 'required|numeric',
+//             'type' => 'required|in:1,2,3',
+//         ]);
+
+//         $otpRecord = Otp::where('contact_no', $request->number)
+//                         ->where('otp', $request->otp)
+//                         ->where('is_active', 1)
+//                         ->first();
+
+//         if (!$otpRecord) {
+//             return response()->json([
+//                 'status' => 201,
+//                 'message' => 'Invalid OTP or number',
+//             ], 400);
+//         }
+
+//         // Delete OTP after verification
+//         $otpRecord->delete();
+
+//         if ($request->type == 3) {
+//             if (Vendor::where('phone_no', $request->number)->exists()) {
+//                 return response()->json([
+//                     'status' => 201,
+//                     'message' => 'Vendor with this number already exists.',
+//                 ], 409);
+//             }
+
+//             $unverified = UnverifyVendor::where('phone_no', $request->number)->first();
+
+//             if (!$unverified) {
+//                 return response()->json([
+//                     'status' => 201,
+//                     'message' => 'Vendor not found',
+//                 ], 404);
+//             }
+
+//             $vendor = Vendor::create([
+//                 'name' => $unverified->name,
+//                 'business_name' => $unverified->business_name,
+//                 'phone_no' => $unverified->phone_no,
+//                 'email' => $unverified->email,
+//                 'depot_id' => $unverified->depot_id,
+//                 'state_id' => $unverified->state_id,
+//                 'city_id' => $unverified->city_id,
+//                 'gst_no' => $unverified->gst_no ?? '',
+//                 'status' => 1,
+//             ]);
+
+//             // Delete the unverified record
+//             $unverified->delete();
+
+//             $token = $vendor->createToken('auth')->plainTextToken;
+
+//             return response()->json([
+//                 'status' => 200,
+//                 'message' => 'Vendor verified and registered successfully',
+//                 'token' => $token,
+//                 'user' => $vendor,
+//             ]);
+
+//         } else {
+//             if (User::where('phone', $request->number)->exists()) {
+//                 return response()->json([
+//                     'status' => 201,
+//                     'message' => 'User with this number already exists.',
+//                 ], 409);
+//             }
+
+//             $unverified = UnverifyUser::where('phone', $request->number)->first();
+
+//             if (!$unverified) {
+//                 return response()->json([
+//                     'status' => 201,
+//                     'message' => 'User not found',
+//                 ], 404);
+//             }
+
+//             $user = User::create([
+//                 'name' => $unverified->name,
+//                 'email' => $unverified->email,
+//                 'phone' => $unverified->phone,
+//                 'type' => $unverified->type,
+//                 'business_name' => $unverified->business_name,
+//                 'city' => $unverified->city,
+//                 'address' => $unverified->address,
+//                 'gst_no' => $unverified->gst_no,
+//                 'status' => 1,
+//             ]);
+
+//             // Delete the unverified record
+//             $unverified->delete();
+
+//             $token = $user->createToken('auth')->plainTextToken;
+
+//             return response()->json([
+//                 'status' => 200,
+//                 'message' => 'User verified and registered successfully',
+//                 'token' => $token,
+//                 'data' => $user,
+//             ]);
+//         }
+//     }
+
+
+ public function verifyOtp(Request $request)
     {
         $request->validate([
-            'number' => 'required|string',
-            'otp' => 'required|numeric',
-            'type' => 'required|in:1,2,3',
+            'number'     => 'required|string',
+            'otp'        => 'required|numeric',
+            'type'       => 'required|in:1,2,3',
+            'device_id'  => 'required|string'
         ]);
 
+        // 🔍 Check OTP
         $otpRecord = Otp::where('contact_no', $request->number)
                         ->where('otp', $request->otp)
                         ->where('is_active', 1)
@@ -131,9 +241,33 @@ class AuthController extends Controller
             ], 400);
         }
 
-        // Delete OTP after verification
+        // ❌ Delete OTP after verification
         $otpRecord->delete();
 
+        // 🔁 Handle existing User by device_id
+        $existingUser = User::where('device_id', $request->device_id)->first();
+
+        if ($existingUser) {
+            if ($request->type == 3) {
+                // ✅ Move user to Vendor if type is 3
+                $vendor = Vendor::create([
+                    'name'          => $existingUser->name,
+                    'business_name' => $existingUser->business_name,
+                    'phone_no'      => $request->number,
+                    'email'         => $existingUser->email,
+                    'gst_no'        => $existingUser->gst_no ?? '',
+                    'status'        => 1,
+                ]);
+
+                $existingUser->delete(); // delete user after migration
+            } else {
+                // 🔄 Just update the phone if type is not 3
+                $existingUser->phone = $request->number;
+                $existingUser->save();
+            }
+        }
+
+        // ✅ Type 3: Vendor registration
         if ($request->type == 3) {
             if (Vendor::where('phone_no', $request->number)->exists()) {
                 return response()->json([
@@ -152,19 +286,18 @@ class AuthController extends Controller
             }
 
             $vendor = Vendor::create([
-                'name' => $unverified->name,
+                'name'          => $unverified->name,
                 'business_name' => $unverified->business_name,
-                'phone_no' => $unverified->phone_no,
-                'email' => $unverified->email,
-                'depot_id' => $unverified->depot_id,
-                'state_id' => $unverified->state_id,
-                'city_id' => $unverified->city_id,
-                'gst_no' => $unverified->gst_no ?? '',
-                'status' => 1,
+                'phone_no'      => $unverified->phone_no,
+                'email'         => $unverified->email,
+                'depot_id'      => $unverified->depot_id,
+                'state_id'      => $unverified->state_id,
+                'city_id'       => $unverified->city_id,
+                'gst_no'        => $unverified->gst_no ?? '',
+                'status'        => 1,
             ]);
 
-            // Delete the unverified record
-            $unverified->delete();
+            $unverified->delete(); // Remove unverified record
 
             $token = $vendor->createToken('auth')->plainTextToken;
 
@@ -174,48 +307,48 @@ class AuthController extends Controller
                 'token' => $token,
                 'user' => $vendor,
             ]);
-
-        } else {
-            if (User::where('phone', $request->number)->exists()) {
-                return response()->json([
-                    'status' => 201,
-                    'message' => 'User with this number already exists.',
-                ], 409);
-            }
-
-            $unverified = UnverifyUser::where('phone', $request->number)->first();
-
-            if (!$unverified) {
-                return response()->json([
-                    'status' => 201,
-                    'message' => 'User not found',
-                ], 404);
-            }
-
-            $user = User::create([
-                'name' => $unverified->name,
-                'email' => $unverified->email,
-                'phone' => $unverified->phone,
-                'type' => $unverified->type,
-                'business_name' => $unverified->business_name,
-                'city' => $unverified->city,
-                'address' => $unverified->address,
-                'gst_no' => $unverified->gst_no,
-                'status' => 1,
-            ]);
-
-            // Delete the unverified record
-            $unverified->delete();
-
-            $token = $user->createToken('auth')->plainTextToken;
-
-            return response()->json([
-                'status' => 200,
-                'message' => 'User verified and registered successfully',
-                'token' => $token,
-                'data' => $user,
-            ]);
         }
+
+        // ✅ Type 1/2: User registration
+        if (User::where('phone', $request->number)->exists()) {
+            return response()->json([
+                'status' => 201,
+                'message' => 'User with this number already exists.',
+            ], 409);
+        }
+
+        $unverified = UnverifyUser::where('phone', $request->number)->first();
+
+        if (!$unverified) {
+            return response()->json([
+                'status' => 201,
+                'message' => 'User not found',
+            ], 404);
+        }
+
+        $user = User::create([
+            'name'          => $unverified->name,
+            'email'         => $unverified->email,
+            'phone'         => $unverified->phone,
+            'type'          => $unverified->type,
+            'business_name' => $unverified->business_name,
+            'city'          => $unverified->city,
+            'address'       => $unverified->address,
+            'gst_no'        => $unverified->gst_no,
+            'device_id'     => $request->device_id, // ✅ assign device_id here
+            'status'        => 1,
+        ]);
+
+        $unverified->delete(); // delete temp record
+
+        $token = $user->createToken('auth')->plainTextToken;
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'User verified and registered successfully',
+            'token' => $token,
+            'data' => $user,
+        ]);
     }
 
 

@@ -413,5 +413,33 @@ class AuthController extends Controller
             'message' => 'Logged out successfully',
         ]);
     }
+
+
+
+ public function deviceIdUpdate(Request $request)
+    {
+        $request->validate([
+            'device_id' => 'required|string|max:255',
+            'fcm_token' => 'nullable|string',
+        ]);
+
+        $user = new User;
+
+        $user->device_id = $request->device_id;
+        $user->fcm_token = $request->fcm_token ?? null;
+        $user->entry_date = Carbon::now();
+        $user->save();
+
+        return response()->json([
+            'message' => 'Device info updated successfully',
+            'status' => 200,
+            'data' => [
+                'device_id' => $user->device_id,
+                'fcm_token' => $user->fcm_token,
+                'entry_date' => $user->entry_date,
+            ]
+        ]);
+    }
+
     
 }

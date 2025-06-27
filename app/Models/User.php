@@ -26,6 +26,9 @@ class User extends Authenticatable
         'business_name',
         'city',
         'gst_no',
+        'device_id',
+        'fcm_token',
+        'entry_date',
         'address',
         'status',
     ];

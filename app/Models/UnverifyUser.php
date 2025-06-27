@@ -26,6 +26,7 @@ class UnverifyUser extends Authenticatable
         'business_name',
         'city',
         'address',
+        'gst_no',
         'status',
     ];
 

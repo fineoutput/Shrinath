@@ -22,6 +22,7 @@ class UnverifyVendor extends Model
         'depot_id',
         'state_id',
         'city_id',
+        'gst_no',
         'status',
     ];
 

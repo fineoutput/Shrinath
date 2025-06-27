@@ -52,6 +52,7 @@ class AuthController extends Controller
                 'depot_id' => $request->depot_id ?? null,
                 'state_id' => $request->state_id ?? null,
                 'city_id' => $request->city_id ?? null,
+                'gst_no' => $request->gst_no ?? null,
                 'status' => 0,  
             ];
 
@@ -84,6 +85,7 @@ class AuthController extends Controller
                 'business_name' => $request->business_name ?? null,
                 'city' => $request->city ?? null,
                 'address' => $request->address ?? null,
+                'gst_no' => $request->gst_no ?? null,
                 'status' => 0, 
             ];
 
@@ -157,6 +159,7 @@ class AuthController extends Controller
                 'depot_id' => $unverified->depot_id,
                 'state_id' => $unverified->state_id,
                 'city_id' => $unverified->city_id,
+                'gst_no' => $unverified->gst_no ?? '',
                 'status' => 1,
             ]);
 
@@ -197,6 +200,7 @@ class AuthController extends Controller
                 'business_name' => $unverified->business_name,
                 'city' => $unverified->city,
                 'address' => $unverified->address,
+                'gst_no' => $unverified->gst_no,
                 'status' => 1,
             ]);
 

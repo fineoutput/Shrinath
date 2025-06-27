@@ -25,6 +25,7 @@ class User extends Authenticatable
         'type',
         'business_name',
         'city',
+        'gst_no',
         'address',
         'status',
     ];

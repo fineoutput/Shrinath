@@ -23,6 +23,7 @@ class Vendor extends Authenticatable
         'depot_id',
         'state_id',
         'city_id',
+        'gst_no',
         'status',
     ];
 

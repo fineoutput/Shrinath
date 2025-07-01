@@ -549,45 +549,46 @@ class AuthController extends Controller
 
 
 
- public function deviceIdUpdate(Request $request)
-{
-    $request->validate([
-        'device_id' => 'required|string|max:255',
-        'fcm_token' => 'nullable|string',
-    ]);
+   public function deviceIdUpdate(Request $request)
+    {
+        $request->validate([
+            'device_id' => 'required|string|max:255',
+            'fcm_token' => 'nullable|string',
+        ]);
 
-    // 🔍 Check if device_id already exists
-    $existingUser = User::where('device_id', $request->device_id)->first();
+        // 🔍 Check if device_id already exists
+        $existingUser = User::where('device_id', $request->device_id)->first();
 
-    if ($existingUser) {
+        if ($existingUser) {
+            return response()->json([
+                'message' => 'Device ID already exists, not saved again.',
+                'status' => 200,
+                'data' => [
+                    'device_id' => $existingUser->device_id,
+                    'fcm_token' => $existingUser->fcm_token,
+                    'status' => 4,
+                    'entry_date' => $existingUser->entry_date,
+                ]
+            ], 200);
+        }
+
+        // ➕ Create new user with this device_id
+        $user = new User;
+        $user->device_id = $request->device_id;
+        $user->fcm_token = $request->fcm_token ?? null;
+        $user->entry_date = Carbon::now();
+        $user->save();
+
         return response()->json([
-            'message' => 'Device ID already exists, not saved again.',
+            'message' => 'Device info saved successfully.',
             'status' => 200,
             'data' => [
-                'device_id' => $existingUser->device_id,
-                'fcm_token' => $existingUser->fcm_token,
-                'entry_date' => $existingUser->entry_date,
+                'device_id' => $user->device_id,
+                'fcm_token' => $user->fcm_token,
+                'entry_date' => $user->entry_date,
             ]
         ], 200);
     }
-
-    // ➕ Create new user with this device_id
-    $user = new User;
-    $user->device_id = $request->device_id;
-    $user->fcm_token = $request->fcm_token ?? null;
-    $user->entry_date = Carbon::now();
-    $user->save();
-
-    return response()->json([
-        'message' => 'Device info saved successfully.',
-        'status' => 200,
-        'data' => [
-            'device_id' => $user->device_id,
-            'fcm_token' => $user->fcm_token,
-            'entry_date' => $user->entry_date,
-        ]
-    ], 200);
-}
 
     
 }

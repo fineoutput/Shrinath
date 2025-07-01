@@ -23,6 +23,8 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\AppointmentsController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Auth\adminlogincontroller;
+use Kreait\Firebase\Factory;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +54,12 @@ Route::group(['prefix' => '/'], function () {
     Route::get('prod_detail/{product_id}', [HomeController::class, 'prod_detail'])->name('prod_detail');
     Route::get('our_gallery', [HomeController::class, 'our_gallery'])->name('our_gallery');
     Route::get('blog', [HomeController::class, 'blog'])->name('blog');
+});
+
+Route::get('/test-firebase', function () {
+    $factory = (new Factory)->withServiceAccount(storage_path('app/firebase/serviceAccount.json'));
+    $messaging = $factory->createMessaging();
+    return 'Firebase SDK working!';
 });
 
 //======================================= ADMIN ===================================================

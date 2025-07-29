@@ -27,7 +27,7 @@ Route::get('/categories', [BlockController::class, 'getAllCategories']);
 Route::post('/products-by-category', [BlockController::class, 'getProductsByCategory']);
 Route::get('/depots', [BlockController::class, 'getAllDepots']);
 
-
+Route::post('test-code', [AuthController::class, 'test']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
 

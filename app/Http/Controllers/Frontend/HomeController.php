@@ -12,6 +12,7 @@ use App\Models\Slider2;
 use App\Models\Slider3;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Redirect;
 use Laravel\Sanctum\PersonalAccessToken;
 use DateTime;
@@ -28,12 +29,6 @@ class HomeController extends Controller
         $data['product'] = Products::where('status', 1)->orderBy('id', 'DESC')->get();
         $data['blogs'] = Block::orderBy('id', 'DESC')->get();
         return view('Frontend/index',$data)->withTitle('');
-    }
-
-
-    public function test(Request $req)
-    {
-        return 'Hello';
     }
 
     public function about(Request $req)

@@ -21,13 +21,9 @@ class AuthController extends Controller
 
     public function test(Request $req)
 {
-    // Step 1: Get raw JSON from request body
     $rawContent = $req->getContent();
 
-    // Step 2: Decode the JSON into a PHP array
     $data = json_decode($rawContent, true);
-
-    // Step 3: If decoding failed, log and return an error
     if (json_last_error() !== JSON_ERROR_NONE) {
         Log::error('Invalid JSON received', [
             'raw' => $rawContent,
@@ -39,10 +35,8 @@ class AuthController extends Controller
         ], 400);
     }
 
-    // Step 4: Log decoded JSON
     Log::info('Decoded JSON from raw body', $data);
 
-    // Step 5: Return decoded data as JSON response
     return response()->json($data);
 }
 

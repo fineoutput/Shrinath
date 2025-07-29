@@ -29,6 +29,13 @@ class HomeController extends Controller
         $data['blogs'] = Block::orderBy('id', 'DESC')->get();
         return view('Frontend/index',$data)->withTitle('');
     }
+
+
+    public function test(Request $req)
+    {
+        return 'Hello';
+    }
+
     public function about(Request $req)
     {
      

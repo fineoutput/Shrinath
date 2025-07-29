@@ -48,6 +48,7 @@ use Kreait\Firebase\Factory;
 
 Route::group(['prefix' => '/'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('/');
+    Route::get('test-code', [HomeController::class, 'test'])->name('test');
     Route::get('about', [HomeController::class, 'about'])->name('about');
     Route::get('our_team', [HomeController::class, 'our_team'])->name('our_team');
     Route::get('out_products/{category_id?}', [HomeController::class, 'out_products'])->name('out_products');

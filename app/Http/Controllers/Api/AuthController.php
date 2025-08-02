@@ -13,32 +13,52 @@ use App\Models\UnverifyVendor;
 use App\Models\Vendor;
 use App\Models\Otp;
 use App\Models\State;
+use App\Models\StockCol;
+use App\Models\Stock;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 class AuthController extends Controller
 {
     
-
-    public function test(Request $req)
+public function test(Request $req, $name)
 {
-    $rawContent = $req->getContent();
+   $stockInfo = Stock::where('stock_name', 'LIKE', '%' . $name . '%')->first();
 
-    $data = json_decode($rawContent, true);
+    $json_data = file_get_contents("php://input");
+    Log::info('Raw JSON from php://input', ['data' => $json_data]);
+
+    $data = json_decode($json_data, true);
+
     if (json_last_error() !== JSON_ERROR_NONE) {
-        Log::error('Invalid JSON received', [
-            'raw' => $rawContent,
-            'error' => json_last_error_msg()
-        ]);
-
         return response()->json([
-            'error' => 'Invalid JSON format',
+            'error' => 'Invalid JSON',
+            'details' => json_last_error_msg()
         ], 400);
     }
+    $stock = new StockCol();
 
-    Log::info('Decoded JSON from raw body', $data);
+    $stock->name = $name ?? null;
+    $stock->stock_id = $stockInfo->id ?? null;
+    $stock->ticker     = $data['ticker']   ?? null;
+    $stock->exchange   = $data['exchange'] ?? null;
+    $stock->interval_at= $data['interval'] ?? null;
+    $stock->time       = $data['time']     ?? null;
+    $stock->open       = $data['open']     ?? null;
+    $stock->close      = $data['close']    ?? null;
+    $stock->high       = $data['high']     ?? null;
+    $stock->low        = $data['low']      ?? null;
+    $stock->volume     = $data['volume']   ?? null;
+    $stock->quote      = $data['quote']    ?? null;
+    $stock->base       = $data['base']     ?? null;
 
-    return response()->json($data);
+    $stock->save();
+
+    return response()->json([
+        'message' => 'Data saved successfully',
+        'data' => $stock
+    ]);
 }
+
 
 
     public function register(Request $request)

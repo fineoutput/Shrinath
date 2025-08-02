@@ -19,8 +19,10 @@ use App\Http\Controllers\Admin\Slider2Controller;
 use App\Http\Controllers\Admin\Slider3Controller;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\BlockController;
+use App\Http\Controllers\Admin\StockController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\AppointmentsController;
+use App\Http\Controllers\Admin\StockColController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Auth\adminlogincontroller;
 use Kreait\Firebase\Factory;
@@ -116,6 +118,18 @@ Route::get('/deletesetting/{id}', [CrmController::class, 'deletesetting'])->name
     Route::put('/category/{id}', [CategoryController::class, 'update'])->name('category.update');
     Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
     Route::patch('/category/{id}/update-status', [CategoryController::class, 'updateStatus'])->name('category.updateStatus');
+
+    Route::get('/stock', [StockController::class, 'index'])->name('stock.index');
+    Route::get('/stock/create', [StockController::class, 'create'])->name('stock.create');
+    Route::post('/stock', [StockController::class, 'store'])->name('stock.store');
+    Route::get('/stock/{id}/edit', [StockController::class, 'edit'])->name('stock.edit');
+    Route::put('/stock/{id}', [StockController::class, 'update'])->name('stock.update');
+    Route::delete('/stock/{id}', [StockController::class, 'destroy'])->name('stock.destroy');
+    Route::patch('/stock/{id}/update-status', [StockController::class, 'updateStatus'])->name('stock.updateStatus');
+
+
+    Route::get('/stock-col', [StockColController::class, 'index'])->name('stockcol.index');
+
 
     Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
     Route::get('/products/create', [ProductsController::class, 'create'])->name('products.create');

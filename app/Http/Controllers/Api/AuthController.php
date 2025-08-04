@@ -447,7 +447,7 @@ class AuthController extends Controller
  public function stockCol()
 {
     // Sab records le lo, order by name aur time ascending
-    $categories = StockCol::orderBy('name')->orderBy('time', 'ASC')->orderBy('id', 'DESC')->get();
+    $categories = StockCol::orderBy('name')->orderBy('time', 'ASC')->orderBy('id', 'ASC')->get();
 
     if ($categories->isEmpty()) {
         return response()->json([

@@ -444,59 +444,64 @@ class AuthController extends Controller
 
 
 
-   public function stockCol()
-    {
-        $category = StockCol::select('*')
-            ->whereIn('id', function ($query) {
-                $query->selectRaw('MAX(id)')
-                    ->from('tbl_stock_col')
-                    ->groupBy('name');
-            })
-            ->orderBy('id', 'DESC')
-            ->get();
+ public function stockCol()
+{
+    // Sab records le lo, order by name aur time ascending
+    $categories = StockCol::orderBy('name')->orderBy('time', 'ASC')->get();
 
-        if ($category->isEmpty()) {
-            return response()->json([
-                'status' => 201,
-                'message' => 'No Stock Col found',
-                'data' => []
-            ], 201);
-        }
+    if ($categories->isEmpty()) {
+        return response()->json([
+            'status' => 201,
+            'message' => 'No Stock Col found',
+            'data' => []
+        ], 201);
+    }
 
-        $formatted = $category->map(function ($category) {
-            $open = floatval($category->open);
-            $close = floatval($category->close);
+    // Group by name
+    $grouped = $categories->groupBy('name');
 
+    $result = [];
+
+    foreach ($grouped as $name => $stocks) {
+        $previousClose = null;
+
+        foreach ($stocks as $stock) {
+            $currentClose = floatval($stock->close);
             $percentageChange = null;
-            if ($open > 0) {
-                $percentageChange = (($close - $open) / $open) * 100;
+
+            if ($previousClose !== null && $previousClose > 0) {
+                $percentageChange = (($currentClose - $previousClose) / $previousClose) * 100;
             }
 
-            return [
-                'id' => $category->id,
-                'stock_id' => $category->stock_id,
-                'ticker' => $category->ticker,
-                'name' => $category->name,
-                'exchange' => $category->exchange,
-                'interval' => $category->interval_at,
-                'time' => $category->time,
-                'open' => $open,
-                'close' => $close,
-                'high' => $category->high,
-                'low' => $category->low,
-                'volume' => $category->volume,
-                'quote' => $category->quote,
-                'base' => $category->base,
-                'percentage_change' => number_format($percentageChange, 2, '.', ''),
+            $result[] = [
+                'id' => $stock->id,
+                'stock_id' => $stock->stock_id,
+                'ticker' => $stock->ticker,
+                'name' => $stock->name,
+                'exchange' => $stock->exchange,
+                'interval' => $stock->interval_at,
+                'time' => $stock->time,
+                'open' => floatval($stock->open),
+                'close' => $currentClose,
+                'high' => $stock->high,
+                'low' => $stock->low,
+                'volume' => $stock->volume,
+                'quote' => $stock->quote,
+                'base' => $stock->base,
+                'previous_close' => $previousClose, // previous close price
+                'percentage_change_from_previous' => $percentageChange !== null ? number_format($percentageChange, 2, '.', '') : null,
             ];
-        });
 
-        return response()->json([
-            'status' => 200,
-            'message' => 'Stock Col fetched successfully',
-            'data' => $formatted
-        ]);
+            $previousClose = $currentClose; // update previousClose for next iteration
+        }
     }
+
+    return response()->json([
+        'status' => 200,
+        'message' => 'Stock Col fetched successfully with previous close and percentage change',
+        'data' => $result
+    ]);
+}
 
 
     public function sniprice()

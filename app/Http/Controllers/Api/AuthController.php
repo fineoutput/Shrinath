@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\UnverifyVendor;
 use App\Models\Vendor;
 use App\Models\Otp;
+use App\Models\SniPrice;
 use App\Models\State;
 use App\Models\StockCol;
 use App\Models\Stock;
@@ -38,6 +39,19 @@ class AuthController extends Controller
             'error' => 'Invalid JSON',
             'details' => json_last_error_msg()
         ], 400);
+    }
+
+    
+ $name = $name ?? null;
+    $exists = SniPrice::where('name', $name)->exists();
+
+    if (!$exists) {
+        $sniprice = new SniPrice();
+        $sniprice->name = $name;
+        $sniprice->save();
+        Log::info('New SniPrice saved', ['name' => $name]);
+    } else {
+        Log::info('Duplicate SniPrice entry skipped', ['name' => $name]);
     }
 
     $stock = new StockCol();

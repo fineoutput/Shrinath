@@ -83,12 +83,12 @@
                                         @error('change_type') <div style="color:red">{{ $message }}</div> @enderror
                                     </div>
                             
-                                    <div class="col-sm-6">
+                                    {{-- <div class="col-sm-6">
                                         <label>Change Value <span style="color:red;">*</span></label>
                                         <input type="number" step="0.01" name="change_value" class="form-control"
                                             value="{{ old('change_value', $price->change_value ?? '') }}" required>
                                         @error('change_value') <div style="color:red">{{ $message }}</div> @enderror
-                                    </div>
+                                    </div> --}}
                                 </div>
                             
                                 <div class="form-group row">

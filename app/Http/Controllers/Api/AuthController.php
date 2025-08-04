@@ -483,6 +483,47 @@ class AuthController extends Controller
     }
 
 
+    public function sniprice()
+    {
+        
+        $category = SniPrice::orderBy('id','DESC')->get();
+    
+
+        if ($category->isEmpty()) {
+            return response()->json([
+                'status' => 201,
+                'message' => 'No Stock Col found',
+                'data' => []
+            ], 201);
+        }
+
+        $formatted = $category->map(function ($category) {
+            return [
+                'id' => $category->id,
+                'stock_id' => $category->stock_id,
+                'ticker' => $category->ticker,
+                'name' => $category->name,
+                'exchange' => $category->exchange,
+                'interval' => $category->interval_at,
+                'time' => $category->time,
+                'open' => $category->open,
+                'close' => $category->close,
+                'high' => $category->high,
+                'low' => $category->low,
+                'volume' => $category->volume,
+                'quote' => $category->quote,
+                'base' => $category->base,
+            ];
+        });
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Stock Col fetched successfully',
+            'data' => $formatted
+        ]);
+    }
+
+
 
     public function getCitiesByState(Request $request)
     {

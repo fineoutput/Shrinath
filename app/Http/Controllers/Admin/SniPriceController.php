@@ -27,14 +27,14 @@ class SniPriceController extends Controller
             'name' => 'required',
             'price' => 'required|numeric',
             'change_type' => 'required|in:fixed,percentage',
-            'change_value' => 'required|numeric',
+            // 'change_value' => 'required|numeric',
         ]);
 
         $SniPrice = new SniPrice;
         $SniPrice->name = $request->name;
         $SniPrice->price = $request->price;
         $SniPrice->change_type = $request->change_type;
-        $SniPrice->change_value = $request->change_value;
+        // $SniPrice->change_value = $request->change_value;
         $SniPrice->save();
 
         return redirect()->route('sni_price.index')->with('success', 'Price entry added.');
@@ -52,14 +52,14 @@ class SniPriceController extends Controller
             'name' => 'required',
             'price' => 'required|numeric',
             'change_type' => 'required|in:fixed,percentage',
-            'change_value' => 'required|numeric',
+            // 'change_value' => 'required|numeric',
         ]);
 
         $price = SniPrice::findOrFail($id);
         $price->name = $request->name;
         $price->price = $request->price;
         $price->change_type = $request->change_type;
-        $price->change_value = $request->change_value;
+        // $price->change_value = $request->change_value;
         $price->save();
 
         return redirect()->route('sni_price.index')->with('success', 'Price entry updated.');

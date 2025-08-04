@@ -431,7 +431,7 @@ public function test(Request $req, $name)
                 'status' => 201,
                 'message' => 'No Stock Col found',
                 'data' => []
-            ], 404);
+            ], 201);
         }
 
         $formatted = $category->map(function ($category) {

@@ -449,7 +449,7 @@ class AuthController extends Controller
         $category = StockCol::select('*')
             ->whereIn('id', function ($query) {
                 $query->selectRaw('MAX(id)')
-                    ->from('stock_cols')
+                    ->from('tbl_stock_col')
                     ->groupBy('name');
             })
             ->orderBy('id', 'DESC')

@@ -444,9 +444,7 @@ class AuthController extends Controller
 
     public function stockCol()
     {
-        
-        $category = StockCol::orderBy('id','DESC')->get();
-    
+        $category = StockCol::orderBy('id', 'DESC')->get();
 
         if ($category->isEmpty()) {
             return response()->json([
@@ -457,6 +455,14 @@ class AuthController extends Controller
         }
 
         $formatted = $category->map(function ($category) {
+            $open = floatval($category->open);
+            $close = floatval($category->close);
+
+            $percentageChange = null;
+            if ($open > 0) {
+                $percentageChange = (($close - $open) / $open) * 100;
+            }
+
             return [
                 'id' => $category->id,
                 'stock_id' => $category->stock_id,
@@ -465,13 +471,14 @@ class AuthController extends Controller
                 'exchange' => $category->exchange,
                 'interval' => $category->interval_at,
                 'time' => $category->time,
-                'open' => $category->open,
-                'close' => $category->close,
+                'open' => $open,
+                'close' => $close,
                 'high' => $category->high,
                 'low' => $category->low,
                 'volume' => $category->volume,
                 'quote' => $category->quote,
                 'base' => $category->base,
+                'percentage_change' => round($percentageChange, 2) // e.g. +3.25 or -1.55
             ];
         });
 

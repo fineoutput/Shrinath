@@ -33,7 +33,9 @@ Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
 
 
 
+
 Route::get('/states', [AuthController::class, 'getAllStates']);
+Route::get('/stock-col', [AuthController::class, 'stockCol']);
 Route::post('/cities-by-state', [AuthController::class, 'getCitiesByState']);
 
 

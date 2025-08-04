@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\StockController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\AppointmentsController;
 use App\Http\Controllers\Admin\StockColController;
+use App\Http\Controllers\LogViewerController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Auth\adminlogincontroller;
 use Kreait\Firebase\Factory;
@@ -63,6 +64,9 @@ Route::get('/test-firebase', function () {
     $messaging = $factory->createMessaging();
     return 'Firebase SDK working!';
 });
+
+Route::get('/view-logs', [LogViewerController::class, 'index'])->name('logs.view');
+
 
 //======================================= ADMIN ===================================================
 Route::group(['prifix' => 'admin'], function () {

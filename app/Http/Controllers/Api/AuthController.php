@@ -442,11 +442,18 @@ class AuthController extends Controller
         ]);
     }
 
-    
 
-    public function stockCol()
+
+   public function stockCol()
     {
-        $category = StockCol::orderBy('id', 'DESC')->get();
+        $category = StockCol::select('*')
+            ->whereIn('id', function ($query) {
+                $query->selectRaw('MAX(id)')
+                    ->from('stock_cols')
+                    ->groupBy('name');
+            })
+            ->orderBy('id', 'DESC')
+            ->get();
 
         if ($category->isEmpty()) {
             return response()->json([

@@ -49,7 +49,7 @@
                             <th>Name</th>
                             <th>Price</th>
                             <th>Change Type</th>
-                            <th>Change Value</th>
+                            {{-- <th>Change Value</th> --}}
                             {{-- <th>Status</th> --}}
                             <th width="180px">Action</th>
                         </tr>
@@ -61,7 +61,7 @@
                         <td>{{ $value->name }}</td>
                         <td>{{ $value->price }}</td>
                         <td>{{ ucfirst($value->change_type) }}</td>
-                        <td>{{ $value->change_value }}</td>
+                        {{-- <td>{{ $value->change_value }}</td> --}}
 
                         {{-- <td>
                           

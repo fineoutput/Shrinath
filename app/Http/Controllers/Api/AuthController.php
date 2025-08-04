@@ -19,39 +19,47 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 class AuthController extends Controller
 {
-    
-public function test(Request $req, $name)
+  public function test(Request $req, $name)
 {
-   $stockInfo = Stock::where('stock_name', 'LIKE', '%' . $name . '%')->first();
+    Log::info('API Hit: /test', ['name_param' => $name]);
+
+    $stockInfo = Stock::where('stock_name', 'LIKE', '%' . $name . '%')->first();
+    Log::info('Stock Info Lookup', ['stockInfo' => $stockInfo]);
 
     $json_data = file_get_contents("php://input");
     Log::info('Raw JSON from php://input', ['data' => $json_data]);
 
     $data = json_decode($json_data, true);
+    Log::info('Decoded JSON Data', ['data_array' => $data]);
 
     if (json_last_error() !== JSON_ERROR_NONE) {
+        Log::error('JSON Decode Error', ['error' => json_last_error_msg()]);
         return response()->json([
             'error' => 'Invalid JSON',
             'details' => json_last_error_msg()
         ], 400);
     }
+
     $stock = new StockCol();
 
-    $stock->name = $name ?? null;
-    $stock->stock_id = $stockInfo->id ?? null;
-    $stock->ticker     = $data['ticker']   ?? null;
-    $stock->exchange   = $data['exchange'] ?? null;
-    $stock->interval_at= $data['interval'] ?? null;
-    $stock->time       = $data['time']     ?? null;
-    $stock->open       = $data['open']     ?? null;
-    $stock->close      = $data['close']    ?? null;
-    $stock->high       = $data['high']     ?? null;
-    $stock->low        = $data['low']      ?? null;
-    $stock->volume     = $data['volume']   ?? null;
-    $stock->quote      = $data['quote']    ?? null;
-    $stock->base       = $data['base']     ?? null;
+    $stock->name        = $name ?? null;
+    $stock->stock_id    = $stockInfo->id ?? null;
+    $stock->ticker      = $data['ticker']   ?? null;
+    $stock->exchange    = $data['exchange'] ?? null;
+    $stock->interval_at = $data['interval'] ?? null;
+    $stock->time        = $data['time']     ?? null;
+    $stock->open        = $data['open']     ?? null;
+    $stock->close       = $data['close']    ?? null;
+    $stock->high        = $data['high']     ?? null;
+    $stock->low         = $data['low']      ?? null;
+    $stock->volume      = $data['volume']   ?? null;
+    $stock->quote       = $data['quote']    ?? null;
+    $stock->base        = $data['base']     ?? null;
 
+ 
     $stock->save();
+
+    Log::info('Stock Data Saved Successfully', ['stock_id' => $stock->id]);
 
     return response()->json([
         'message' => 'Data saved successfully',

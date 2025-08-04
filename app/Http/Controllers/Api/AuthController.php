@@ -442,6 +442,8 @@ class AuthController extends Controller
         ]);
     }
 
+    
+
     public function stockCol()
     {
         $category = StockCol::orderBy('id', 'DESC')->get();
@@ -478,7 +480,7 @@ class AuthController extends Controller
                 'volume' => $category->volume,
                 'quote' => $category->quote,
                 'base' => $category->base,
-                'percentage_change' => round($percentageChange, 2) // e.g. +3.25 or -1.55
+                'percentage_change' => number_format($percentageChange, 2, '.', ''),
             ];
         });
 

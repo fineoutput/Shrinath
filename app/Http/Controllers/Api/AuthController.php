@@ -492,7 +492,7 @@ class AuthController extends Controller
         if ($category->isEmpty()) {
             return response()->json([
                 'status' => 201,
-                'message' => 'No Stock Col found',
+                'message' => 'SNI Price Not found',
                 'data' => []
             ], 201);
         }
@@ -500,25 +500,15 @@ class AuthController extends Controller
         $formatted = $category->map(function ($category) {
             return [
                 'id' => $category->id,
-                'stock_id' => $category->stock_id,
-                'ticker' => $category->ticker,
                 'name' => $category->name,
-                'exchange' => $category->exchange,
-                'interval' => $category->interval_at,
-                'time' => $category->time,
-                'open' => $category->open,
-                'close' => $category->close,
-                'high' => $category->high,
-                'low' => $category->low,
-                'volume' => $category->volume,
-                'quote' => $category->quote,
-                'base' => $category->base,
+                'price' => $category->price,
+                'change_type' => $category->change_type,
             ];
         });
 
         return response()->json([
             'status' => 200,
-            'message' => 'Stock Col fetched successfully',
+            'message' => 'SNI Price fetched successfully',
             'data' => $formatted
         ]);
     }

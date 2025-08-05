@@ -479,6 +479,7 @@ class AuthController extends Controller
             'exchange' => $category->exchange,
             'interval' => $category->interval_at,
             'time' => $category->time,
+            'date' => $category->time_2,
             'open' => $open,
             'close' => $close,
             'high' => $category->high,

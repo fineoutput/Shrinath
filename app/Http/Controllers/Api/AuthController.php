@@ -455,54 +455,61 @@ class AuthController extends Controller
         ->orderBy('id', 'ASC')
         ->get();
 
+    $groupedByName = $categories->groupBy('name');
     $result = [];
 
-    $previousCloseByName = [];
+    foreach ($groupedByName as $name => $records) {
+        $records = $records->sortBy('time')->values(); // Ensure sorted by time
+        $latestRecord = $records->last();
 
-    foreach ($categories as $category) {
-        $open = floatval($category->open);
-        $close = floatval($category->close);
+        // Find previous day's close (excluding latest record)
+        $previousClose = null;
 
-        $previousClose = $previousCloseByName[$category->name] ?? null;
-
-        $percentageChange = null;
-        if ($previousClose !== null && $previousClose > 0) {
-            $percentageChange = (($close - $previousClose) / $previousClose) * 100;
+        if ($records->count() >= 2) {
+            $previousRecord = $records->slice(0, -1)->last(); // Second last
+            $previousClose = floatval($previousRecord->close);
         }
 
+        foreach ($records as $record) {
+            $open = floatval($record->open);
+            $close = floatval($record->close);
+            $percentageChange = null;
 
-        $result[] = [
-            'id' => $category->id,
-            'stock_id' => $category->stock_id,
-            'ticker' => $category->ticker,
-            'name' => $category->name,
-            'exchange' => $category->exchange,
-            'interval' => $category->interval_at,
-            'time' => $category->time,
-            'date' => $category->time_2,
-            'open' => $open,
-            'close' => $close,
-            'high' => $category->high,
-            'low' => $category->low,
-            'volume' => $category->volume,
-            'quote' => $category->quote,
-            'base' => $category->base,
-            'previous_close' => $previousClose,
-            'percentage_change_from_previous' => $percentageChange !== null ? number_format($percentageChange, 2, '.', '') : null,
-        ];
+            if ($record->id == $latestRecord->id && $previousClose !== null && $previousClose > 0) {
+                $percentageChange = (($open - $previousClose) / $previousClose) * 100;
+            }
 
-        // Update previousClose for this stock name
-        $previousCloseByName[$category->name] = $close;
+            $result[] = [
+                'id' => $record->id,
+                'stock_id' => $record->stock_id,
+                'ticker' => $record->ticker,
+                'name' => $record->name,
+                'exchange' => $record->exchange,
+                'interval' => $record->interval_at,
+                'time' => $record->time,
+                'date' => $record->time_2,
+                'open' => $open,
+                'close' => $close,
+                'high' => $record->high,
+                'low' => $record->low,
+                'volume' => $record->volume,
+                'quote' => $record->quote,
+                'base' => $record->base,
+                'previous_close' => ($record->id == $latestRecord->id) ? $previousClose : null,
+                'percentage_change_from_previous' => $percentageChange !== null ? number_format($percentageChange, 2, '.', '') : null,
+            ];
+        }
     }
+
+    // Optional: sort by id descending
     $result = collect($result)->sortByDesc('id')->values();
 
     return response()->json([
         'status' => 200,
-        'message' => 'Stock Col fetched successfully with previous close and percentage change',
+        'message' => 'Stock Col fetched successfully with latest day gap-up/down percentage',
         'data' => $result,
     ]);
 }
-
 //  public function stockCol()
 // {
 //     // Sab records le lo, order by name aur time ascending

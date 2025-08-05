@@ -50,6 +50,7 @@
                         <th data-priority="1">Exchange</th>
                         <th data-priority="1">Interval</th>
                         <th data-priority="1">Time</th>
+                        <th data-priority="1">Date</th>
                         <th data-priority="1">Open</th>
                         <th data-priority="1">Close</th>
                         <th data-priority="1">High</th>
@@ -68,6 +69,7 @@
                         <td>{{$value->exchange ?? ''}}</td>
                         <td>{{$value->interval_at ?? ''}}</td>
                         <td>{{$value->time ?? ''}}</td>
+                        <td>{{$value->time_2 ?? ''}}</td>
                         <td>{{$value->open ?? ''}}</td>
                         <td>{{$value->close ?? ''}}</td>
                         <td>{{$value->high ?? ''}}</td>

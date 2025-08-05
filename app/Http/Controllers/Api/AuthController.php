@@ -552,7 +552,7 @@ public function stockCol()
             }
 
             if ($isLatest && $sniPrice !== null && $sniPrice > 0) {
-                $dPre = (($open - $sniPrice) / $sniPrice) * 100;
+                $dPre = (($close - $sniPrice) / $sniPrice) * 100;
             }
 
             $result[] = [

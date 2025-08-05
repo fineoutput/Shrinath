@@ -551,8 +551,14 @@ public function stockCol()
                 $percentageChange = (($open - $previousClose) / $previousClose) * 100;
             }
 
+            // if ($isLatest && $sniPrice !== null && $sniPrice > 0) {
+            //     $dPre = (($close - $sniPrice) / $sniPrice) * 100;
+            // }
+
+            
             if ($isLatest && $sniPrice !== null && $sniPrice > 0) {
-                $dPre = (($close - $sniPrice) / $sniPrice) * 100;
+                $dPreValue = (($close - $sniPrice) / $sniPrice) * 100;
+                $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
             }
 
             $result[] = [
@@ -575,9 +581,7 @@ public function stockCol()
                 'percentage_change_from_previous' => $isLatest && $percentageChange !== null
                     ? number_format($percentageChange, 2, '.', '')
                     : null,
-                'd_pre' => $isLatest && $dPre !== null
-                    ? number_format($dPre, 2, '.', '')
-                    : null,
+                'd_pre' => $isLatest ? $dPre : null,
             ];
         }
     }

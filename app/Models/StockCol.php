@@ -16,6 +16,7 @@ class StockCol extends Model
         'exchange',
         'interval_at',
         'time',
+        'time_2',
         'open',
         'close',
         'high',

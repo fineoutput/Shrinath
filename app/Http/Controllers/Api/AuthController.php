@@ -18,6 +18,7 @@ use App\Models\StockCol;
 use App\Models\Stock;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
+
 class AuthController extends Controller
 {
   public function test(Request $req, $name)
@@ -56,12 +57,16 @@ class AuthController extends Controller
 
     $stock = new StockCol();
 
+    
+    $time = Carbon::now()->setTimezone('Asia/Kolkata')->format('Y-m-d H:i:s');
+
     $stock->name        = $name ?? null;
     $stock->stock_id    = $stockInfo->id ?? null;
     $stock->ticker      = $data['ticker']   ?? null;
     $stock->exchange    = $data['exchange'] ?? null;
     $stock->interval_at = $data['interval'] ?? null;
     $stock->time        = $data['time']     ?? null;
+    $stock->time_2      = $time;
     $stock->open        = $data['open']     ?? null;
     $stock->close       = $data['close']    ?? null;
     $stock->high        = $data['high']     ?? null;
@@ -464,6 +469,7 @@ class AuthController extends Controller
         if ($previousClose !== null && $previousClose > 0) {
             $percentageChange = (($close - $previousClose) / $previousClose) * 100;
         }
+
 
         $result[] = [
             'id' => $category->id,

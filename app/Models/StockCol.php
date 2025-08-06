@@ -30,10 +30,10 @@ class StockCol extends Model
     {
         return $this->hasMany(City::class);
     }
-    
+
     public function Stock()
     {
-        return $this->hasMany(Stock::class);
+        return $this->hasOne(Stock::class, 'id', 'stock_id');
     }
 
 }

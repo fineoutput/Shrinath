@@ -394,7 +394,7 @@ class AuthController extends Controller
                 $result[] = [
                     'id' => $record->id,
                     'stock_id' => $record->stock_id,
-                    'stock_name' => $record->Stock->stock_name ?? '',
+                    'app_name' => $record->Stock->stock_name ?? '',
                     'ticker' => $record->ticker,
                     'name' => $record->name,
                     'exchange' => $record->exchange,

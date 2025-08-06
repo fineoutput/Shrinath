@@ -559,7 +559,7 @@ public function stockCol()
 
             // Calculate change from SniPrice
             if ($isLatestDay && $sniPrice !== null && $sniPrice > 0) {
-                $dPreValue = (($open - $sniPrice) / $sniPrice) * 100;
+                $dPreValue = (($sniPrice - $open) / $open) * 100;
                 $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
             }
 

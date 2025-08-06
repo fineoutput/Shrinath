@@ -62,6 +62,14 @@
 
                                 </div>
 
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>App Name</label>
+                                        <input type="text" name="app_name" class="form-control" value="{{ old('app_name', $category->app_name) }}" required>
+                                    </div>
+
+                                </div>
+
                             
                                 <div class="form-group row">
                                     <div class="w-100 text-center">

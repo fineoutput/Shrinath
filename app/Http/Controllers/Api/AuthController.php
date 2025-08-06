@@ -178,115 +178,6 @@ class AuthController extends Controller
     }
 
 
-
-//   public function verifyOtp(Request $request)
-//     {
-//         $request->validate([
-//             'number' => 'required|string',
-//             'otp' => 'required|numeric',
-//             'type' => 'required|in:1,2,3',
-//         ]);
-
-//         $otpRecord = Otp::where('contact_no', $request->number)
-//                         ->where('otp', $request->otp)
-//                         ->where('is_active', 1)
-//                         ->first();
-
-//         if (!$otpRecord) {
-//             return response()->json([
-//                 'status' => 201,
-//                 'message' => 'Invalid OTP or number',
-//             ], 400);
-//         }
-
-//         // Delete OTP after verification
-//         $otpRecord->delete();
-
-//         if ($request->type == 3) {
-//             if (Vendor::where('phone_no', $request->number)->exists()) {
-//                 return response()->json([
-//                     'status' => 201,
-//                     'message' => 'Vendor with this number already exists.',
-//                 ], 409);
-//             }
-
-//             $unverified = UnverifyVendor::where('phone_no', $request->number)->first();
-
-//             if (!$unverified) {
-//                 return response()->json([
-//                     'status' => 201,
-//                     'message' => 'Vendor not found',
-//                 ], 404);
-//             }
-
-//             $vendor = Vendor::create([
-//                 'name' => $unverified->name,
-//                 'business_name' => $unverified->business_name,
-//                 'phone_no' => $unverified->phone_no,
-//                 'email' => $unverified->email,
-//                 'depot_id' => $unverified->depot_id,
-//                 'state_id' => $unverified->state_id,
-//                 'city_id' => $unverified->city_id,
-//                 'gst_no' => $unverified->gst_no ?? '',
-//                 'status' => 1,
-//             ]);
-
-//             // Delete the unverified record
-//             $unverified->delete();
-
-//             $token = $vendor->createToken('auth')->plainTextToken;
-
-//             return response()->json([
-//                 'status' => 200,
-//                 'message' => 'Vendor verified and registered successfully',
-//                 'token' => $token,
-//                 'user' => $vendor,
-//             ]);
-
-//         } else {
-//             if (User::where('phone', $request->number)->exists()) {
-//                 return response()->json([
-//                     'status' => 201,
-//                     'message' => 'User with this number already exists.',
-//                 ], 409);
-//             }
-
-//             $unverified = UnverifyUser::where('phone', $request->number)->first();
-
-//             if (!$unverified) {
-//                 return response()->json([
-//                     'status' => 201,
-//                     'message' => 'User not found',
-//                 ], 404);
-//             }
-
-//             $user = User::create([
-//                 'name' => $unverified->name,
-//                 'email' => $unverified->email,
-//                 'phone' => $unverified->phone,
-//                 'type' => $unverified->type,
-//                 'business_name' => $unverified->business_name,
-//                 'city' => $unverified->city,
-//                 'address' => $unverified->address,
-//                 'gst_no' => $unverified->gst_no,
-//                 'status' => 1,
-//             ]);
-
-//             // Delete the unverified record
-//             $unverified->delete();
-
-//             $token = $user->createToken('auth')->plainTextToken;
-
-//             return response()->json([
-//                 'status' => 200,
-//                 'message' => 'User verified and registered successfully',
-//                 'token' => $token,
-//                 'data' => $user,
-//             ]);
-//         }
-//     }
-
-
  public function verifyOtp(Request $request)
     {
         $request->validate([
@@ -448,239 +339,92 @@ class AuthController extends Controller
     }
 
 
-//     public function stockCol()
-// {
-//     $categories = StockCol::orderBy('name')
-//         ->orderBy('time', 'ASC')
-//         ->orderBy('id', 'ASC')
-//         ->get();
 
-//     $groupedByName = $categories->groupBy('name');
-//     $result = [];
+  public function stockCol()
+    {
+        $categories = StockCol::orderBy('name')
+            ->orderBy('time', 'ASC')
+            ->orderBy('id', 'ASC')
+            ->get();
 
-//     foreach ($groupedByName as $name => $records) {
-//         $records = $records->sortBy('time')->values(); // Ensure sorted by time
-//         $latestRecord = $records->last();
+        $sniPrices = SniPrice::all()->keyBy('name');
 
-//         // Find previous day's close (excluding latest record)
-//         $previousClose = null;
+        $groupedByName = $categories->groupBy('name');
+        $result = [];
 
-//         if ($records->count() >= 2) {
-//             $previousRecord = $records->slice(0, -1)->last(); // Second last
-//             $previousClose = floatval($previousRecord->close);
-//         }
+        foreach ($groupedByName as $name => $records) {
+            // Sort by time
+            $records = $records->sortBy('time')->values();
 
-//         foreach ($records as $record) {
-//             $open = floatval($record->open);
-//             $close = floatval($record->close);
-//             $percentageChange = null;
-
-//             if ($record->id == $latestRecord->id && $previousClose !== null && $previousClose > 0) {
-//                 $percentageChange = (($open - $previousClose) / $previousClose) * 100;
-//             }
-
-//             $result[] = [
-//                 'id' => $record->id,
-//                 'stock_id' => $record->stock_id,
-//                 'ticker' => $record->ticker,
-//                 'name' => $record->name,
-//                 'exchange' => $record->exchange,
-//                 'interval' => $record->interval_at,
-//                 'time' => $record->time,
-//                 'date' => $record->time_2,
-//                 'open' => $open,
-//                 'close' => $close,
-//                 'high' => $record->high,
-//                 'low' => $record->low,
-//                 'volume' => $record->volume,
-//                 'quote' => $record->quote,
-//                 'base' => $record->base,
-//                 'previous_close' => ($record->id == $latestRecord->id) ? $previousClose : null,
-//                 'percentage_change_from_previous' => $percentageChange !== null ? number_format($percentageChange, 2, '.', '') : null,
-//             ];
-//         }
-//     }
-
-//     // Optional: sort by id descending
-//     $result = collect($result)->sortByDesc('id')->values();
-
-//     return response()->json([
-//         'status' => 200,
-//         'message' => 'Stock Col fetched successfully with latest day gap-up/down percentage',
-//         'data' => $result,
-//     ]);
-// }
-
-
-public function stockCol()
-{
-    $categories = StockCol::orderBy('name')
-        ->orderBy('time', 'ASC')
-        ->orderBy('id', 'ASC')
-        ->get();
-
-    $sniPrices = SniPrice::all()->keyBy('name');
-
-    $groupedByName = $categories->groupBy('name');
-    $result = [];
-
-    foreach ($groupedByName as $name => $records) {
-        // Sort by time
-        $records = $records->sortBy('time')->values();
-
-        // Convert time to Carbon if needed
-        foreach ($records as $r) {
-            $r->time = Carbon::parse($r->time);
-        }
-
-        // Get latest date (i.e. aaj ki date)
-        $latestDate = $records->last()->time->toDateString();
-
-        // Kal ke close nikalne ke liye filter karein
-        $previousCloseRecord = $records->filter(function ($r) use ($latestDate) {
-            return $r->time->toDateString() < $latestDate;
-        })->last();
-
-        $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
-        $sniPrice = $sniPrices[$name]->price ?? null;
-
-        foreach ($records as $record) {
-            $open = floatval($record->open);
-            $close = floatval($record->close);
-            $isLatestDay = $record->time->toDateString() === $latestDate;
-
-            $percentageChange = null;
-            $dPre = null;
-
-            // Calculate change from previous day's close — only for latest day's entries
-            if ($isLatestDay && $previousClose !== null && $previousClose > 0) {
-                $percentageChange = (($open - $previousClose) / $previousClose) * 100;
+            // Convert time to Carbon if needed
+            foreach ($records as $r) {
+                $r->time = Carbon::parse($r->time);
             }
 
-            // Calculate change from SniPrice
-            if ($isLatestDay && $sniPrice !== null && $sniPrice > 0) {
-                $dPreValue = (($sniPrice - $open) / $open) * 100;
-                $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
-            }
+            // Get latest date (i.e. aaj ki date)
+            $latestDate = $records->last()->time->toDateString();
 
-            $result[] = [
-                'id' => $record->id,
-                'stock_id' => $record->stock_id,
-                'ticker' => $record->ticker,
-                'name' => $record->name,
-                'exchange' => $record->exchange,
-                'interval' => $record->interval_at,
-                'time' => $record->time,
-                'date' => $record->time_2,
-                'open' => $open,
-                'close' => $close,
-                'high' => $record->high,
-                'low' => $record->low,
-                'volume' => $record->volume,
-                'quote' => $record->quote,
-                'base' => $record->base,
-                'previous_close' => $isLatestDay ? $previousClose : null,
-                'percentage_change_from_previous' => $isLatestDay && $percentageChange !== null
-                    ? number_format($percentageChange, 2, '.', '')
-                    : null,
-                'd_pre' => $isLatestDay ? $dPre : null,
-            ];
+            // Kal ke close nikalne ke liye filter karein
+            $previousCloseRecord = $records->filter(function ($r) use ($latestDate) {
+                return $r->time->toDateString() < $latestDate;
+            })->last();
+
+            $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
+            $sniPrice = $sniPrices[$name]->price ?? null;
+
+            foreach ($records as $record) {
+                $open = floatval($record->open);
+                $close = floatval($record->close);
+                $isLatestDay = $record->time->toDateString() === $latestDate;
+
+                $percentageChange = null;
+                $dPre = null;
+
+                // Calculate change from previous day's close — only for latest day's entries
+                if ($isLatestDay && $previousClose !== null && $previousClose > 0) {
+                    $percentageChange = (($open - $previousClose) / $previousClose) * 100;
+                }
+
+                // Calculate change from SniPrice
+                if ($isLatestDay && $sniPrice !== null && $sniPrice > 0) {
+                    $dPreValue = (($sniPrice - $open) / $open) * 100;
+                    $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
+                }
+
+                $result[] = [
+                    'id' => $record->id,
+                    'stock_id' => $record->stock_id,
+                    'stock_name' => $record->Stock->stock_name ?? '',
+                    'ticker' => $record->ticker,
+                    'name' => $record->name,
+                    'exchange' => $record->exchange,
+                    'interval' => $record->interval_at,
+                    'time' => $record->time,
+                    'date' => $record->time_2,
+                    'open' => $open,
+                    'close' => $close,
+                    'high' => $record->high,
+                    'low' => $record->low,
+                    'volume' => $record->volume,
+                    'quote' => $record->quote,
+                    'base' => $record->base,
+                    'previous_close' => $isLatestDay ? $previousClose : null,
+                    'percentage_change_from_previous' => $isLatestDay && $percentageChange !== null
+                        ? number_format($percentageChange, 2, '.', '')
+                        : null,
+                    'd_pre' => $isLatestDay ? $dPre : null,
+                ];
+            }
         }
+
+        $result = collect($result)->sortByDesc('id')->values();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Stock Col fetched successfully with latest day open vs previous close and SniPrice comparison',
+            'data' => $result,
+        ]);
     }
-
-    $result = collect($result)->sortByDesc('id')->values();
-
-    return response()->json([
-        'status' => 200,
-        'message' => 'Stock Col fetched successfully with latest day open vs previous close and SniPrice comparison',
-        'data' => $result,
-    ]);
-}
-
-
-
-// public function stockCol()
-// {
-//     $categories = StockCol::orderBy('name')
-//         ->orderBy('time', 'ASC')
-//         ->orderBy('id', 'ASC')
-//         ->get();
-
-//     // Fetch all SniPrice data and index by name for fast access
-//     $sniPrices = SniPrice::all()->keyBy('name');
-
-//     $groupedByName = $categories->groupBy('name');
-//     $result = [];
-
-//     foreach ($groupedByName as $name => $records) {
-//        $records = $records->sortBy('time')->values();
-
-// // Get latest date (aaj ki date) from records
-// $latestDate = $records->last()->time->toDateString();
-
-// // Filter all records from latest date
-// $latestDayRecords = $records->filter(function ($r) use ($latestDate) {
-//     return $r->time->toDateString() === $latestDate;
-// });
-
-// // Find previous close (i.e., last close before latest date)
-// $previousCloseRecord = $records->filter(function ($r) use ($latestDate) {
-//     return $r->time->toDateString() < $latestDate;
-// })->last();
-
-// $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
-// $sniPrice = $sniPrices[$name]->price ?? null;
-
-//  foreach ($records as $record) {
-//     $open = floatval($record->open);
-//     $close = floatval($record->close);
-//     $isLatestDay = $record->time->toDateString() === $latestDate;
-
-//     $percentageChange = null;
-//     $dPre = null;
-
-//     if ($isLatestDay && $previousClose !== null && $previousClose > 0) {
-//         $percentageChange = (($open - $previousClose) / $previousClose) * 100;
-//     }
-
-//     if ($isLatestDay && $sniPrice !== null && $sniPrice > 0) {
-//         $dPreValue = (($close - $sniPrice) / $sniPrice) * 100;
-//         $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
-//     }
-
-//     $result[] = [
-//         'id' => $record->id,
-//         'stock_id' => $record->stock_id,
-//         'ticker' => $record->ticker,
-//         'name' => $record->name,
-//         'exchange' => $record->exchange,
-//         'interval' => $record->interval_at,
-//         'time' => $record->time,
-//         'date' => $record->time_2,
-//         'open' => $open,
-//         'close' => $close,
-//         'high' => $record->high,
-//         'low' => $record->low,
-//         'volume' => $record->volume,
-//         'quote' => $record->quote,
-//         'base' => $record->base,
-//         'previous_close' => $isLatestDay ? $previousClose : null,
-//         'percentage_change_from_previous' => $isLatestDay && $percentageChange !== null
-//             ? number_format($percentageChange, 2, '.', '')
-//             : null,
-//         'd_pre' => $isLatestDay ? $dPre : null,
-//     ];
-// }
-//     }
-
-//     $result = collect($result)->sortByDesc('id')->values();
-
-//     return response()->json([
-//         'status' => 200,
-//         'message' => 'Stock Col fetched successfully with latest day gap-up/down percentage and SniPrice comparison',
-//         'data' => $result,
-//     ]);
-// }
 
 
 

@@ -58,6 +58,12 @@
                                         <input type="text" name="stock_name" class="form-control"  required>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>App Name</label>
+                                        <input type="text" name="app_name" class="form-control"  required>
+                                    </div>
+                                </div>
                             
 
                             

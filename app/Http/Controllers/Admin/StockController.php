@@ -31,6 +31,7 @@ class StockController extends Controller
 
         $category = new Stock;
         $category->stock_name = $request->stock_name;
+        $category->app_name = $request->app_name;
         $category->status = 1;
         $category->save();
 
@@ -52,6 +53,7 @@ class StockController extends Controller
 
         $category = Stock::findOrFail($id);
          $category->stock_name = $request->stock_name;
+         $category->app_name = $request->app_name;
         $category->status = 1;
 
 

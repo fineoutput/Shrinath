@@ -526,19 +526,25 @@ public function stockCol()
     $result = [];
 
     foreach ($groupedByName as $name => $records) {
-        $records = $records->sortBy('time')->values(); // Ensure time sorted
-        $latestRecord = $records->last();
+       $records = $records->sortBy('time')->values();
 
-        // Find previous day's close (excluding latest record)
-        $previousClose = null;
-        if ($records->count() >= 2) {
-            $previousRecord = $records->slice(0, -1)->last(); // second last
-            $previousClose = floatval($previousRecord->close);
-        }
+// Get latest date (aaj ki date) from records
+$latestDate = $records->last()->time->toDateString();
 
-        // Get matching SniPrice if exists
-        $sniPrice = $sniPrices[$name]->price ?? null;
-foreach ($records as $record) {
+// Filter all records from latest date
+$latestDayRecords = $records->filter(function ($r) use ($latestDate) {
+    return $r->time->toDateString() === $latestDate;
+});
+
+// Find previous close (i.e., last close before latest date)
+$previousCloseRecord = $records->filter(function ($r) use ($latestDate) {
+    return $r->time->toDateString() < $latestDate;
+})->last();
+
+$previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
+$sniPrice = $sniPrices[$name]->price ?? null;
+
+ foreach ($records as $record) {
     $open = floatval($record->open);
     $close = floatval($record->close);
     $isLatestDay = $record->time->toDateString() === $latestDate;

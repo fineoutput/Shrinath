@@ -538,52 +538,46 @@ public function stockCol()
 
         // Get matching SniPrice if exists
         $sniPrice = $sniPrices[$name]->price ?? null;
+foreach ($records as $record) {
+    $open = floatval($record->open);
+    $close = floatval($record->close);
+    $isLatestDay = $record->time->toDateString() === $latestDate;
 
-        foreach ($records as $record) {
-            $open = floatval($record->open);
-            $close = floatval($record->close);
-            $isLatest = $record->id === $latestRecord->id;
+    $percentageChange = null;
+    $dPre = null;
 
-            $percentageChange = null;
-            $dPre = null;
+    if ($isLatestDay && $previousClose !== null && $previousClose > 0) {
+        $percentageChange = (($open - $previousClose) / $previousClose) * 100;
+    }
 
-            if ($isLatest && $previousClose !== null && $previousClose > 0) {
-                $percentageChange = (($open - $previousClose) / $previousClose) * 100;
-            }
+    if ($isLatestDay && $sniPrice !== null && $sniPrice > 0) {
+        $dPreValue = (($close - $sniPrice) / $sniPrice) * 100;
+        $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
+    }
 
-            // if ($isLatest && $sniPrice !== null && $sniPrice > 0) {
-            //     $dPre = (($close - $sniPrice) / $sniPrice) * 100;
-            // }
-
-            
-            if ($isLatest && $sniPrice !== null && $sniPrice > 0) {
-                $dPreValue = (($close - $sniPrice) / $sniPrice) * 100;
-                $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
-            }
-
-            $result[] = [
-                'id' => $record->id,
-                'stock_id' => $record->stock_id,
-                'ticker' => $record->ticker,
-                'name' => $record->name,
-                'exchange' => $record->exchange,
-                'interval' => $record->interval_at,
-                'time' => $record->time,
-                'date' => $record->time_2,
-                'open' => $open,
-                'close' => $close,
-                'high' => $record->high,
-                'low' => $record->low,
-                'volume' => $record->volume,
-                'quote' => $record->quote,
-                'base' => $record->base,
-                'previous_close' => $isLatest ? $previousClose : null,
-                'percentage_change_from_previous' => $isLatest && $percentageChange !== null
-                    ? number_format($percentageChange, 2, '.', '')
-                    : null,
-                'd_pre' => $isLatest ? $dPre : null,
-            ];
-        }
+    $result[] = [
+        'id' => $record->id,
+        'stock_id' => $record->stock_id,
+        'ticker' => $record->ticker,
+        'name' => $record->name,
+        'exchange' => $record->exchange,
+        'interval' => $record->interval_at,
+        'time' => $record->time,
+        'date' => $record->time_2,
+        'open' => $open,
+        'close' => $close,
+        'high' => $record->high,
+        'low' => $record->low,
+        'volume' => $record->volume,
+        'quote' => $record->quote,
+        'base' => $record->base,
+        'previous_close' => $isLatestDay ? $previousClose : null,
+        'percentage_change_from_previous' => $isLatestDay && $percentageChange !== null
+            ? number_format($percentageChange, 2, '.', '')
+            : null,
+        'd_pre' => $isLatestDay ? $dPre : null,
+    ];
+}
     }
 
     $result = collect($result)->sortByDesc('id')->values();

@@ -341,89 +341,96 @@ class AuthController extends Controller
 
 
   public function stockCol()
-    {
-        $categories = StockCol::orderBy('name')
-            ->orderBy('time', 'DESC')
-            ->take(2)->get();
+{
+    $categories = StockCol::orderBy('name')
+        ->orderBy('time', 'ASC')
+        ->orderBy('id', 'ASC')
+        ->get();
 
-        $sniPrices = SniPrice::all()->keyBy('name');
+    $sniPrices = SniPrice::all()->keyBy('name');
+    $groupedByName = $categories->groupBy('name');
+    $result = [];
 
-        $groupedByName = $categories->groupBy('name');
-        $result = [];
-
-        foreach ($groupedByName as $name => $records) {
-            // Sort by time
-            $records = $records->sortBy('time')->values();
-
-            // Convert time to Carbon if needed
-            foreach ($records as $r) {
-                $r->time = Carbon::parse($r->time);
-            }
-
-            // Get latest date (i.e. aaj ki date)
-            $latestDate = $records->last()->time->toDateString();
-
-            // Kal ke close nikalne ke liye filter karein
-            $previousCloseRecord = $records->filter(function ($r) use ($latestDate) {
-                return $r->time->toDateString() < $latestDate;
-            })->last();
-
-            $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
-            $sniPrice = $sniPrices[$name]->price ?? null;
-
-            foreach ($records as $record) {
-                $open = floatval($record->open);
-                $close = floatval($record->close);
-                $isLatestDay = $record->time->toDateString() === $latestDate;
-
-                $percentageChange = null;
-                $dPre = null;
-
-                // Calculate change from previous day's close — only for latest day's entries
-                if ($isLatestDay && $previousClose !== null && $previousClose > 0) {
-                    $percentageChange = (($open - $previousClose) / $previousClose) * 100;
-                }
-
-                // Calculate change from SniPrice
-                if ($isLatestDay && $sniPrice !== null && $sniPrice > 0) {
-                    $dPreValue = (($sniPrice - $open) / $open) * 100;
-                    $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
-                }
-
-                $result[] = [
-                    'id' => $record->id,
-                    'stock_id' => $record->stock_id,
-                    'app_name' => $record->Stock->app_name ?? '',
-                    'ticker' => $record->ticker,
-                    'name' => $record->name,
-                    'exchange' => $record->exchange,
-                    'interval' => $record->interval_at,
-                    'time' => $record->time,
-                    'date' => $record->time_2,
-                    'open' => $open,
-                    'close' => $close,
-                    'high' => $record->high,
-                    'low' => $record->low,
-                    'volume' => $record->volume,
-                    'quote' => $record->quote,
-                    'base' => $record->base,
-                    'previous_close' => $isLatestDay ? $previousClose : null,
-                    'percentage_change_from_previous' => $isLatestDay && $percentageChange !== null
-                        ? number_format($percentageChange, 2, '.', '')
-                        : null,
-                    'd_pre' => $isLatestDay ? $dPre : null,
-                ];
-            }
+    foreach ($groupedByName as $name => $records) {
+        // Convert and sort records by time
+        $records = $records->sortBy('time')->values();
+        foreach ($records as $r) {
+            $r->time = Carbon::parse($r->time);
         }
 
-        $result = collect($result)->sortByDesc('id')->values();
+        // Get all distinct dates for this stock
+        $dates = $records->pluck('time')->map(fn($t) => $t->toDateString())->unique()->values();
 
-        return response()->json([
-            'status' => 200,
-            'message' => 'Stock Col fetched successfully with latest day open vs previous close and SniPrice comparison',
-            'data' => $result,
-        ]);
+        // Only pick latest 2 dates
+        $latestDates = $dates->sortDesc()->take(2);
+
+        foreach ($latestDates as $date) {
+            $dayRecords = $records->filter(fn($r) => $r->time->toDateString() === $date)->values();
+            if ($dayRecords->isEmpty()) continue;
+
+            $open = floatval($dayRecords->first()->open); // First entry's open
+            $close = floatval($dayRecords->last()->close); // Last entry's close
+            $high = $dayRecords->max('high'); // Highest high
+            $low = $dayRecords->min('low'); // Lowest low
+            $volume = $dayRecords->sum('volume'); // Total volume
+            $sniPrice = $sniPrices[$name]->price ?? null;
+
+            // Get previous day's close for comparison
+            $previousCloseRecord = $records->filter(fn($r) => $r->time->toDateString() < $date)->last();
+            $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
+
+            $percentageChange = null;
+            $dPre = null;
+
+            if ($previousClose !== null && $previousClose > 0) {
+                $percentageChange = (($open - $previousClose) / $previousClose) * 100;
+            }
+
+            if ($sniPrice !== null && $sniPrice > 0) {
+                $dPreValue = (($sniPrice - $open) / $open) * 100;
+                $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
+            }
+
+            $firstRecord = $dayRecords->first();
+
+            $result[] = [
+                'id' => $firstRecord->id,
+                'stock_id' => $firstRecord->stock_id,
+                'app_name' => $firstRecord->Stock->app_name ?? '',
+                'ticker' => $firstRecord->ticker,
+                'name' => $firstRecord->name,
+                'exchange' => $firstRecord->exchange,
+                'interval' => $firstRecord->interval_at,
+                'time' => $firstRecord->time,
+                'date' => $firstRecord->time_2,
+                'open' => $open,
+                'close' => $close,
+                'high' => $high,
+                'low' => $low,
+                'volume' => $volume,
+                'quote' => $firstRecord->quote,
+                'base' => $firstRecord->base,
+                'previous_close' => $previousClose,
+                'percentage_change_from_previous' => $percentageChange !== null
+                    ? number_format($percentageChange, 2, '.', '')
+                    : null,
+                'd_pre' => $dPre,
+            ];
+        }
     }
+
+    // Sort by date desc, then by id desc, and return top 2 entries across all stocks
+    $result = collect($result)
+        ->sortByDesc(fn($item) => $item['time']->timestamp)
+        ->take(2)
+        ->values();
+
+    return response()->json([
+        'status' => 200,
+        'message' => 'Latest 2 stock entries fetched successfully',
+        'data' => $result,
+    ]);
+}
 
 
 

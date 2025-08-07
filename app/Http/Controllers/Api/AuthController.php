@@ -344,7 +344,6 @@ class AuthController extends Controller
     {
         $categories = StockCol::orderBy('name')
             ->orderBy('time', 'ASC')
-            ->orderBy('id', 'ASC')
             ->take(2)->latest();
 
         $sniPrices = SniPrice::all()->keyBy('name');

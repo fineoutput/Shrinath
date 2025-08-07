@@ -343,8 +343,8 @@ class AuthController extends Controller
   public function stockCol()
     {
         $categories = StockCol::orderBy('name')
-            ->orderBy('time', 'ASC')
-            ->take(2)->latest();
+            ->orderBy('time', 'DESC')
+            ->take(2)->get();
 
         $sniPrices = SniPrice::all()->keyBy('name');
 

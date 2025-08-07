@@ -579,6 +579,15 @@ public function stockCol()
             $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
         }
 
+        $marketCloseTime = Carbon::parse($today . ' 17:00:00');
+
+        // Find record closest to (or before) market close time
+        $closeRecord = $records->filter(function ($r) use ($marketCloseTime) {
+            return $r->time->lte($marketCloseTime);
+        })->last();
+
+        $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
+
         $result[] = [
             'id' => $lastRecord->id,
             'stock_id' => $lastRecord->stock_id,
@@ -590,7 +599,7 @@ public function stockCol()
             'time' => $lastRecord->time,
             'date' => $lastRecord->time_2,
             'open' => $firstOpen,
-            'close' => floatval($lastRecord->close),
+            'close' => $closeValue,
             'current_price' => floatval($lastRecord->open),
             'high' => $maxHigh,
             'low' => $minLow,

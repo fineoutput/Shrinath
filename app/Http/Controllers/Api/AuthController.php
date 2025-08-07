@@ -569,7 +569,7 @@ public function stockCol()
         // Calculate percentage change from previous close
         $percentageChange = null;
         if ($previousClose !== null && $previousClose > 0) {
-            $percentageChange = (($firstOpen - $previousClose) / $previousClose) * 100;
+            $percentageChange = (($lastRecord->open - $previousClose) / $previousClose) * 100;
         }
 
         // d_pre from SniPrice
@@ -591,6 +591,7 @@ public function stockCol()
             'date' => $lastRecord->time_2,
             'open' => $firstOpen,
             'close' => floatval($lastRecord->close),
+            'current_price' => floatval($lastRecord->open),
             'high' => $maxHigh,
             'low' => $minLow,
             'volume' => $lastRecord->volume,

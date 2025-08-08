@@ -573,7 +573,7 @@ public function stockCol()
         }
 
         // d_pre from SniPrice
-        $dPre = null;
+       $dPre = null;
         if ($sniPrice !== null && $sniPrice > 0) {
             $dPreValue = (($sniPrice - $firstOpen) / $firstOpen) * 100;
             $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');

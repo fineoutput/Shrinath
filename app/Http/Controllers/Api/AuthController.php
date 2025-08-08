@@ -573,11 +573,11 @@ public function stockCol()
         }
 
         // d_pre from SniPrice
-       $dPre = null;
-        if ($sniPrice !== null && $sniPrice > 0) {
-            $dPreValue = (($sniPrice - $firstOpen) / $firstOpen) * 100;
-            $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
-        }
+       $dPre = $sniPrice - $firstOpen;
+        // if ($sniPrice !== null && $sniPrice > 0) {
+        //     $dPreValue = (($sniPrice - $firstOpen) / $firstOpen) * 100;
+        //     $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
+        // }
 
  $marketCloseTime = Carbon::parse($today . ' 17:00:00');
 

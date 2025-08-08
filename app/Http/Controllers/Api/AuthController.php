@@ -573,12 +573,11 @@ public function stockCol()
         }
 
         // d_pre from SniPrice
-       $dPre = $sniPrice - $firstOpen;
-        // if ($sniPrice !== null && $sniPrice > 0) {
-        //     $dPreValue = (($sniPrice - $firstOpen) / $firstOpen) * 100;
-        //     $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
-        // }
-
+       $dPre = null;
+        if ($sniPrice !== null && $sniPrice > 0) {
+            $dPre = $sniPrice - $firstOpen;  // simple numeric difference in price
+        }
+        
  $marketCloseTime = Carbon::parse($today . ' 17:00:00');
 
 $closeRecord = $records->first(function ($r) use ($marketCloseTime) {

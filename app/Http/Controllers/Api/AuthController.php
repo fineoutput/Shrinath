@@ -608,6 +608,12 @@ class AuthController extends Controller
 
         // $final = collect($result)->sortByDesc('time')->values()->take(2);
         $specialOrder = [
+            'JEERA','JEERA2',
+            'DHANIYA','DHANIYA2',
+            'TMC','TMC2',
+            'GUARSEED','GUARSEED2',
+            'GUARGUM','GUARGUM2',
+            'CASTOR','CASTOR2',
             'GOLD', 'GOLD2',
             'SILVER', 'SILVER2',
             'NATURALGAS',

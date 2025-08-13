@@ -527,14 +527,12 @@ class AuthController extends Controller
         $sniPrices = SniPrice::all()->keyBy('name');
         $result = [];
 
-        // Convert times
         foreach ($categories as $r) {
             $r->time = Carbon::parse($r->time);
         }
 
         $today = Carbon::now()->toDateString();
 
-        // Filter only today's records
         $todayRecords = $categories->filter(function ($r) use ($today) {
             return $r->time->toDateString() === $today;
         });
@@ -608,9 +606,36 @@ class AuthController extends Controller
             ];
         }
 
-        // Sort by latest time and take top 2
         // $final = collect($result)->sortByDesc('time')->values()->take(2);
-        $final = collect($result)->sortByDesc('time')->values();
+        $specialOrder = [
+            'GOLD', 'GOLD2',
+            'SILVER', 'SILVER2',
+            'NATURALGAS',
+            'CRUDEOIL',
+            'USDINR',
+            'NIFTY',
+            'SENSEX',
+        ];
+
+// Convert result to a collection
+        $collection = collect($result);
+
+        // Separate normal and special products
+        $normalItems = $collection->filter(function ($item) use ($specialOrder) {
+            return !in_array($item['name'], $specialOrder);
+        });
+
+        $specialItems = $collection->filter(function ($item) use ($specialOrder) {
+            return in_array($item['name'], $specialOrder);
+        });
+
+        // Sort special items by predefined order
+        $specialItems = $specialItems->sortBy(function ($item) use ($specialOrder) {
+            return array_search($item['name'], $specialOrder);
+        });
+
+        // Combine both
+        $final = $normalItems->merge($specialItems)->values();
 
 
         return response()->json([

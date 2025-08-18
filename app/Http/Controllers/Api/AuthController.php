@@ -672,11 +672,14 @@ class AuthController extends Controller
         }
 
         $formatted = $category->map(function ($category) {
+            $diff = $category->price - $category->current_price ?? 0;
             return [
                 'id' => $category->id,
                 'name' => $category->name,
                 'price' => $category->price,
+                'current_price' => $category->current_price,
                 'change_type' => $category->change_type,
+                'diff' => $diff,
             ];
         });
 

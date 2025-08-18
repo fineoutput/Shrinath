@@ -47,7 +47,7 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Price</th>
+                            <th>Previous Price</th>
                             <th>Current Price</th>
                             <th>Change Type</th>
                             {{-- <th>Change Value</th> --}}

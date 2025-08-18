@@ -60,10 +60,17 @@
                                     </div>
                             
                                     <div class="col-sm-6">
-                                        <label>Price <span style="color:red;">*</span></label>
+                                        <label>Current Price <span style="color:red;">*</span></label>
+                                        <input type="number" step="0.01" name="current_price" class="form-control" value="{{ old('current_price', $price->current_price ?? '') }}" required>
+                                        @error('current_price') <div style="color:red">{{ $message }}</div> @enderror
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label>Previous Price <span style="color:red;">*</span></label>
                                         <input type="number" step="0.01" name="price" class="form-control" value="{{ old('price', $price->price ?? '') }}" required>
                                         @error('price') <div style="color:red">{{ $message }}</div> @enderror
                                     </div>
+                                    
                                 </div>
                             
                                 <div class="form-group row">

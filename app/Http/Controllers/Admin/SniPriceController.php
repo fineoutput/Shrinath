@@ -26,6 +26,7 @@ class SniPriceController extends Controller
         $request->validate([
             'name' => 'required',
             'price' => 'required|numeric',
+            'current_price' => 'required|numeric',
             'change_type' => 'required|in:fixed,percentage',
             // 'change_value' => 'required|numeric',
         ]);
@@ -33,6 +34,7 @@ class SniPriceController extends Controller
         $SniPrice = new SniPrice;
         $SniPrice->name = $request->name;
         $SniPrice->price = $request->price;
+        $SniPrice->current_price = $request->current_price;
         $SniPrice->change_type = $request->change_type;
         // $SniPrice->change_value = $request->change_value;
         $SniPrice->save();
@@ -51,6 +53,7 @@ class SniPriceController extends Controller
         $request->validate([
             'name' => 'required',
             'price' => 'required|numeric',
+            'current_price' => 'required|numeric',
             'change_type' => 'required|in:fixed,percentage',
             // 'change_value' => 'required|numeric',
         ]);
@@ -58,6 +61,7 @@ class SniPriceController extends Controller
         $price = SniPrice::findOrFail($id);
         $price->name = $request->name;
         $price->price = $request->price;
+        $price->current_price = $request->current_price;
         $price->change_type = $request->change_type;
         // $price->change_value = $request->change_value;
         $price->save();

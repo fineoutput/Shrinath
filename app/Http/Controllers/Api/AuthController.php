@@ -561,24 +561,27 @@ class AuthController extends Controller
             $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
 
             $sniPrice = $sniPrices[$name]->price ?? null;
+            $sniCurrentPrice = $sniPrices[$name]->current_price ?? null;
 
             $percentageChange = null;
             if ($previousClose !== null && $previousClose > 0) {
                 $percentageChange = (($lastRecord->open - $previousClose) / $previousClose) * 100;
             }
 
-        $dPre = null;
-            if ($sniPrice !== null && $sniPrice > 0) {
-                $dPre = $sniPrice - $firstOpen;  
-            }
+            $SniPriceDiff = $sniPrice - $sniCurrentPrice ?? null;
+
+            $dPre = null;
+                if ($sniCurrentPrice !== null && $sniCurrentPrice > 0) {
+                    $dPre = $sniCurrentPrice - $firstOpen;  
+                }
             
-    $marketCloseTime = Carbon::parse($today . ' 17:00:00');
+            $marketCloseTime = Carbon::parse($today . ' 17:00:00');
 
-    $closeRecord = $records->first(function ($r) use ($marketCloseTime) {
-        return $r->time->format('H:i') === '17:00';
-    });
+            $closeRecord = $records->first(function ($r) use ($marketCloseTime) {
+                return $r->time->format('H:i') === '17:00';
+            });
 
-    $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
+            $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
 
             $result[] = [
                 'id' => $lastRecord->id,
@@ -604,6 +607,7 @@ class AuthController extends Controller
                     ? number_format($percentageChange, 2, '.', '')
                     : null,
                 'd_pre' => $dPre,
+                'SniPriceDiff' => $SniPriceDiff,
             ];
         }
 

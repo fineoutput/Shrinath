@@ -48,6 +48,7 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Price</th>
+                            <th>Current Price</th>
                             <th>Change Type</th>
                             {{-- <th>Change Value</th> --}}
                             {{-- <th>Status</th> --}}
@@ -60,6 +61,7 @@
                         <td>{{$key+1}}</td>
                         <td>{{ $value->name }}</td>
                         <td>{{ $value->price }}</td>
+                        <td>{{ $value->current_price }}</td>
                         <td>{{ ucfirst($value->change_type) }}</td>
                         {{-- <td>{{ $value->change_value }}</td> --}}
 

@@ -339,8 +339,159 @@ class AuthController extends Controller
     }
 
 
+public function stockCol()
+{
+    $categories = StockCol::orderBy('name')
+        ->orderBy('time', 'ASC')
+        ->orderBy('id', 'ASC')
+        ->get();
 
-//   public function stockCol()
+    $sniPrices = SniPrice::all()->keyBy('name');
+    $result = [];
+
+    foreach ($categories as $r) {
+        $r->time = Carbon::parse($r->time);
+    }
+
+    $today = Carbon::now()->toDateString();
+
+    $todayRecords = $categories->filter(function ($r) use ($today) {
+        return $r->time->toDateString() === $today;
+    });
+
+    if ($todayRecords->isEmpty()) {
+        return response()->json([
+            'status' => 200,
+            'message' => 'No records found for today',
+            'data' => [],
+        ]);
+    }
+
+    $groupedByName = $todayRecords->groupBy('name');
+
+    foreach ($groupedByName as $name => $records) {
+        $records = $records->sortBy('time')->values();
+        $firstOpen = floatval($records->first()->open);
+        $maxHigh = $records->max('high');
+        $minLow = $records->min('low');
+        $lastRecord = $records->last();
+
+        $allRecordsForName = $categories->where('name', $name)->sortBy('time')->values();
+        $previousCloseRecord = $allRecordsForName->filter(function ($r) use ($today) {
+            return $r->time->toDateString() < $today;
+        })->last();
+        $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
+
+        $sniPrice = $sniPrices[$name]->price ?? null;
+        $sniCurrentPrice = $sniPrices[$name]->current_price ?? null;
+
+        $percentageChange = null;
+        if ($previousClose !== null && $previousClose > 0) {
+            $percentageChange = (($lastRecord->open - $previousClose) / $previousClose) * 100;
+        }
+
+        $SniPriceDiff = $sniPrice - $sniCurrentPrice ?? null;
+
+        $dPre = null;
+        if ($sniCurrentPrice !== null && $sniCurrentPrice > 0) {
+            $dPre = $sniCurrentPrice - $firstOpen;
+        }
+
+        $marketCloseTime = Carbon::parse($today . ' 17:00:00');
+
+        $closeRecord = $records->first(function ($r) use ($marketCloseTime) {
+            return $r->time->format('H:i') === '17:00';
+        });
+
+        $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
+
+        $result[] = [
+            'id' => $lastRecord->id,
+            'stock_id' => $lastRecord->stock_id,
+            'app_name' => $lastRecord->Stock->app_name ?? '',
+            'ticker' => $lastRecord->ticker,
+            'name' => $lastRecord->name,
+            'exchange' => $lastRecord->exchange,
+            'interval' => $lastRecord->interval_at,
+            'time' => $lastRecord->time,
+            'date' => $lastRecord->time_2,
+            'open' => number_format($firstOpen, 2, '.', ''),
+            'close' => $lastRecord->close,  // will override for JEERA below
+            'current_price' => number_format(floatval($lastRecord->open), 2, '.', ''),
+            'high' => $maxHigh,
+            'low' => $minLow,
+            'volume' => $lastRecord->volume,
+            'quote' => $lastRecord->quote,
+            'base' => $lastRecord->base,
+            'previous_close' => $previousClose,
+            'percentage_change_from_previous' => $percentageChange !== null
+                ? number_format($percentageChange, 2, '.', '')
+                : null,
+            'd_pre' => $dPre,
+            'SniPriceDiff' => $SniPriceDiff,
+        ];
+    }
+
+    // --- Override close for JEERA with JEERAA2_1D close ---
+    $jeeraa2_1d_close = null;
+    foreach ($result as $item) {
+        if ($item['name'] === 'JEERAA2_1D') {
+            $jeeraa2_1d_close = $item['close'];
+            break;
+        }
+    }
+
+    if ($jeeraa2_1d_close !== null) {
+        foreach ($result as &$item) {
+            if ($item['name'] === 'JEERA') {
+                $item['close'] = $jeeraa2_1d_close;
+            }
+        }
+        unset($item);
+    }
+    // -----------------------------------------------------
+
+    $specialOrder = [
+        'JEERA', 'JEERA2',
+        'DHANIYA', 'DHANIYA2',
+        'TMC', 'TMC2',
+        'GUARSEED', 'GUARSEED2',
+        'GUARGUM', 'GUARGUM2',
+        'CASTOR', 'CASTOR2',
+        'GOLD', 'GOLD2',
+        'SILVER', 'SILVER2',
+        'NATURALGAS',
+        'CRUDEOIL',
+        'USDINR',
+        'NIFTY',
+        'SENSEX',
+    ];
+
+    $collection = collect($result);
+
+    $normalItems = $collection->filter(function ($item) use ($specialOrder) {
+        return !in_array($item['name'], $specialOrder);
+    });
+
+    $specialItems = $collection->filter(function ($item) use ($specialOrder) {
+        return in_array($item['name'], $specialOrder);
+    });
+
+    $specialItems = $specialItems->sortBy(function ($item) use ($specialOrder) {
+        return array_search($item['name'], $specialOrder);
+    });
+
+    $final = $normalItems->merge($specialItems)->values();
+
+    return response()->json([
+        'status' => 200,
+        'message' => 'Top 2 latest stock entries for today',
+        'data' => $final,
+    ]);
+}
+
+
+//  public function stockCol()
 //     {
 //         $categories = StockCol::orderBy('name')
 //             ->orderBy('time', 'ASC')
@@ -348,313 +499,136 @@ class AuthController extends Controller
 //             ->get();
 
 //         $sniPrices = SniPrice::all()->keyBy('name');
-
-//         $groupedByName = $categories->groupBy('name');
 //         $result = [];
 
-//         foreach ($groupedByName as $name => $records) {
-//             // Sort by time
-//             $records = $records->sortBy('time')->values();
-
-//             // Convert time to Carbon if needed
-//             foreach ($records as $r) {
-//                 $r->time = Carbon::parse($r->time);
-//             }
-
-//             // Get latest date (i.e. aaj ki date)
-//             $latestDate = $records->last()->time->toDateString();
-
-//             // Kal ke close nikalne ke liye filter karein
-//             $previousCloseRecord = $records->filter(function ($r) use ($latestDate) {
-//                 return $r->time->toDateString() < $latestDate;
-//             })->last();
-
-//             $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
-//             $sniPrice = $sniPrices[$name]->price ?? null;
-
-//             foreach ($records as $record) {
-//                 $open = floatval($record->open);
-//                 $close = floatval($record->close);
-//                 $isLatestDay = $record->time->toDateString() === $latestDate;
-
-//                 $percentageChange = null;
-//                 $dPre = null;
-
-//                 // Calculate change from previous day's close — only for latest day's entries
-//                 if ($isLatestDay && $previousClose !== null && $previousClose > 0) {
-//                     $percentageChange = (($open - $previousClose) / $previousClose) * 100;
-//                 }
-
-//                 // Calculate change from SniPrice
-//                 if ($isLatestDay && $sniPrice !== null && $sniPrice > 0) {
-//                     $dPreValue = (($sniPrice - $open) / $open) * 100;
-//                     $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
-//                 }
-
-//                 $result[] = [
-//                     'id' => $record->id,
-//                     'stock_id' => $record->stock_id,
-//                     'app_name' => $record->Stock->app_name ?? '',
-//                     'ticker' => $record->ticker,
-//                     'name' => $record->name,
-//                     'exchange' => $record->exchange,
-//                     'interval' => $record->interval_at,
-//                     'time' => $record->time,
-//                     'date' => $record->time_2,
-//                     'open' => $open,
-//                     'close' => $close,
-//                     'high' => $record->high,
-//                     'low' => $record->low,
-//                     'volume' => $record->volume,
-//                     'quote' => $record->quote,
-//                     'base' => $record->base,
-//                     'previous_close' => $isLatestDay ? $previousClose : null,
-//                     'percentage_change_from_previous' => $isLatestDay && $percentageChange !== null
-//                         ? number_format($percentageChange, 2, '.', '')
-//                         : null,
-//                     'd_pre' => $isLatestDay ? $dPre : null,
-//                 ];
-//             }
-//         }
-
-//         $result = collect($result)->sortByDesc('id')->values();
-
-//         return response()->json([
-//             'status' => 200,
-//             'message' => 'Stock Col fetched successfully with latest day open vs previous close and SniPrice comparison',
-//             'data' => $result,
-//         ]);
-//     }
-
-
-// public function stockCol()
-// {
-//     $categories = StockCol::orderBy('name')
-//         ->orderBy('time', 'ASC')
-//         ->orderBy('id', 'ASC')
-//         ->get();
-
-//     $sniPrices = SniPrice::all()->keyBy('name');
-//     $groupedByName = $categories->groupBy('name');
-//     $result = [];
-
-//     foreach ($groupedByName as $name => $records) {
-//         $records = $records->sortBy('time')->values();
-
-//         // Convert all time values to Carbon
-//         foreach ($records as $r) {
+//         foreach ($categories as $r) {
 //             $r->time = Carbon::parse($r->time);
 //         }
 
-//         $latestDate = $records->last()->time->toDateString();
+//         $today = Carbon::now()->toDateString();
 
-//         // Filter only today's entries
-//         $todayRecords = $records->filter(function ($r) use ($latestDate) {
-//             return $r->time->toDateString() === $latestDate;
-//         })->values();
+//         $todayRecords = $categories->filter(function ($r) use ($today) {
+//             return $r->time->toDateString() === $today;
+//         });
 
 //         if ($todayRecords->isEmpty()) {
-//             continue;
+//             return response()->json([
+//                 'status' => 200,
+//                 'message' => 'No records found for today',
+//                 'data' => [],
+//             ]);
 //         }
 
-//         // Get today's first open, highest high, and lowest low
-//         $firstOpen = floatval($todayRecords->first()->open);
-//         $maxHigh = $todayRecords->max('high');
-//         $minLow = $todayRecords->min('low');
-//         $lastRecord = $todayRecords->last();
+//         $groupedByName = $todayRecords->groupBy('name');
 
-//         // Get previous close
-//         $previousCloseRecord = $records->filter(function ($r) use ($latestDate) {
-//             return $r->time->toDateString() < $latestDate;
-//         })->last();
+//         foreach ($groupedByName as $name => $records) {
+//             $records = $records->sortBy('time')->values(); 
+//             $firstOpen = floatval($records->first()->open);
+//             $maxHigh = $records->max('high');
+//             $minLow = $records->min('low');
+//             $lastRecord = $records->last(); 
 
-//         $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
-//         $sniPrice = $sniPrices[$name]->price ?? null;
+//             $allRecordsForName = $categories->where('name', $name)->sortBy('time')->values();
+//             $previousCloseRecord = $allRecordsForName->filter(function ($r) use ($today) {
+//                 return $r->time->toDateString() < $today;
+//             })->last();
+//             $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
 
-//         // % Change from previous close
-//         $percentageChange = null;
-//         if ($previousClose !== null && $previousClose > 0) {
-//             $percentageChange = (($firstOpen - $previousClose) / $previousClose) * 100;
-//         }
+//             $sniPrice = $sniPrices[$name]->price ?? null;
+//             $sniCurrentPrice = $sniPrices[$name]->current_price ?? null;
 
-//         // d_pre from SniPrice
-//         $dPre = null;
-//         if ($sniPrice !== null && $sniPrice > 0) {
-//             $dPreValue = (($sniPrice - $firstOpen) / $firstOpen) * 100;
-//             $dPre = ($dPreValue >= 0 ? '+' : '') . number_format($dPreValue, 2, '.', '');
-//         }
+//             $percentageChange = null;
+//             if ($previousClose !== null && $previousClose > 0) {
+//                 $percentageChange = (($lastRecord->open - $previousClose) / $previousClose) * 100;
+//             }
 
-//         $result[] = [
-//             'id' => $lastRecord->id,
-//             'stock_id' => $lastRecord->stock_id,
-//             'app_name' => $lastRecord->Stock->app_name ?? '',
-//             'ticker' => $lastRecord->ticker,
-//             'name' => $lastRecord->name,
-//             'exchange' => $lastRecord->exchange,
-//             'interval' => $lastRecord->interval_at,
-//             'time' => $lastRecord->time,
-//             'date' => $lastRecord->time_2,
-//             'open' => $firstOpen,
-//             'close' => floatval($lastRecord->close),
-//             'high' => $maxHigh,
-//             'low' => $minLow,
-//             'volume' => $lastRecord->volume,
-//             'quote' => $lastRecord->quote,
-//             'base' => $lastRecord->base,
-//             'previous_close' => $previousClose,
-//             'percentage_change_from_previous' => $percentageChange !== null
-//                 ? number_format($percentageChange, 2, '.', '')
-//                 : null,
-//             'd_pre' => $dPre,
-//         ];
-//     }
+//             $SniPriceDiff = $sniPrice - $sniCurrentPrice ?? null;
 
-//     return response()->json([
-//         'status' => 200,
-//         'message' => 'Today\'s latest stock entries with custom open/high/low values',
-//         'data' => collect($result)->sortByDesc('time')->values(),
-//     ]);
-// }
-
-
- public function stockCol()
-    {
-        $categories = StockCol::orderBy('name')
-            ->orderBy('time', 'ASC')
-            ->orderBy('id', 'ASC')
-            ->get();
-
-        $sniPrices = SniPrice::all()->keyBy('name');
-        $result = [];
-
-        foreach ($categories as $r) {
-            $r->time = Carbon::parse($r->time);
-        }
-
-        $today = Carbon::now()->toDateString();
-
-        $todayRecords = $categories->filter(function ($r) use ($today) {
-            return $r->time->toDateString() === $today;
-        });
-
-        if ($todayRecords->isEmpty()) {
-            return response()->json([
-                'status' => 200,
-                'message' => 'No records found for today',
-                'data' => [],
-            ]);
-        }
-
-        $groupedByName = $todayRecords->groupBy('name');
-
-        foreach ($groupedByName as $name => $records) {
-            $records = $records->sortBy('time')->values(); 
-            $firstOpen = floatval($records->first()->open);
-            $maxHigh = $records->max('high');
-            $minLow = $records->min('low');
-            $lastRecord = $records->last(); 
-
-            $allRecordsForName = $categories->where('name', $name)->sortBy('time')->values();
-            $previousCloseRecord = $allRecordsForName->filter(function ($r) use ($today) {
-                return $r->time->toDateString() < $today;
-            })->last();
-            $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
-
-            $sniPrice = $sniPrices[$name]->price ?? null;
-            $sniCurrentPrice = $sniPrices[$name]->current_price ?? null;
-
-            $percentageChange = null;
-            if ($previousClose !== null && $previousClose > 0) {
-                $percentageChange = (($lastRecord->open - $previousClose) / $previousClose) * 100;
-            }
-
-            $SniPriceDiff = $sniPrice - $sniCurrentPrice ?? null;
-
-            $dPre = null;
-                if ($sniCurrentPrice !== null && $sniCurrentPrice > 0) {
-                    $dPre = $sniCurrentPrice - $firstOpen;  
-                }
+//             $dPre = null;
+//                 if ($sniCurrentPrice !== null && $sniCurrentPrice > 0) {
+//                     $dPre = $sniCurrentPrice - $firstOpen;  
+//                 }
             
-            $marketCloseTime = Carbon::parse($today . ' 17:00:00');
+//             $marketCloseTime = Carbon::parse($today . ' 17:00:00');
 
-            $closeRecord = $records->first(function ($r) use ($marketCloseTime) {
-                return $r->time->format('H:i') === '17:00';
-            });
+//             $closeRecord = $records->first(function ($r) use ($marketCloseTime) {
+//                 return $r->time->format('H:i') === '17:00';
+//             });
 
-            $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
+//             $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
 
-            $result[] = [
-                'id' => $lastRecord->id,
-                'stock_id' => $lastRecord->stock_id,
-                'app_name' => $lastRecord->Stock->app_name ?? '',
-                'ticker' => $lastRecord->ticker,
-                'name' => $lastRecord->name,
-                'exchange' => $lastRecord->exchange,
-                'interval' => $lastRecord->interval_at,
-                'time' => $lastRecord->time,
-                'date' => $lastRecord->time_2,
-                'open' => number_format($firstOpen, 2, '.', ''),
-                // 'close' => $closeValue,
-                'close' => $lastRecord->close,
-                'current_price' => number_format(floatval($lastRecord->open), 2, '.', ''),
-                'high' => $maxHigh,
-                'low' => $minLow,
-                'volume' => $lastRecord->volume,
-                'quote' => $lastRecord->quote,
-                'base' => $lastRecord->base,
-                'previous_close' => $previousClose,
-                'percentage_change_from_previous' => $percentageChange !== null
-                    ? number_format($percentageChange, 2, '.', '')
-                    : null,
-                'd_pre' => $dPre,
-                'SniPriceDiff' => $SniPriceDiff,
-            ];
-        }
+//             $result[] = [
+//                 'id' => $lastRecord->id,
+//                 'stock_id' => $lastRecord->stock_id,
+//                 'app_name' => $lastRecord->Stock->app_name ?? '',
+//                 'ticker' => $lastRecord->ticker,
+//                 'name' => $lastRecord->name,
+//                 'exchange' => $lastRecord->exchange,
+//                 'interval' => $lastRecord->interval_at,
+//                 'time' => $lastRecord->time,
+//                 'date' => $lastRecord->time_2,
+//                 'open' => number_format($firstOpen, 2, '.', ''),
+//                 // 'close' => $closeValue,
+//                 'close' => $lastRecord->close,
+//                 'current_price' => number_format(floatval($lastRecord->open), 2, '.', ''),
+//                 'high' => $maxHigh,
+//                 'low' => $minLow,
+//                 'volume' => $lastRecord->volume,
+//                 'quote' => $lastRecord->quote,
+//                 'base' => $lastRecord->base,
+//                 'previous_close' => $previousClose,
+//                 'percentage_change_from_previous' => $percentageChange !== null
+//                     ? number_format($percentageChange, 2, '.', '')
+//                     : null,
+//                 'd_pre' => $dPre,
+//                 'SniPriceDiff' => $SniPriceDiff,
+//             ];
+//         }
 
-        // $final = collect($result)->sortByDesc('time')->values()->take(2);
-        $specialOrder = [
-            'JEERA','JEERA2',
-            'DHANIYA','DHANIYA2',
-            'TMC','TMC2',
-            'GUARSEED','GUARSEED2',
-            'GUARGUM','GUARGUM2',
-            'CASTOR','CASTOR2',
-            'GOLD', 'GOLD2',
-            'SILVER', 'SILVER2',
-            'NATURALGAS',
-            'CRUDEOIL',
-            'USDINR',
-            'NIFTY',
-            'SENSEX',
-        ];
+//         // $final = collect($result)->sortByDesc('time')->values()->take(2);
+//         $specialOrder = [
+//             'JEERA','JEERA2',
+//             'DHANIYA','DHANIYA2',
+//             'TMC','TMC2',
+//             'GUARSEED','GUARSEED2',
+//             'GUARGUM','GUARGUM2',
+//             'CASTOR','CASTOR2',
+//             'GOLD', 'GOLD2',
+//             'SILVER', 'SILVER2',
+//             'NATURALGAS',
+//             'CRUDEOIL',
+//             'USDINR',
+//             'NIFTY',
+//             'SENSEX',
+//         ];
 
-// Convert result to a collection
-        $collection = collect($result);
+// // Convert result to a collection
+//         $collection = collect($result);
 
-        // Separate normal and special products
-        $normalItems = $collection->filter(function ($item) use ($specialOrder) {
-            return !in_array($item['name'], $specialOrder);
-        });
+//         // Separate normal and special products
+//         $normalItems = $collection->filter(function ($item) use ($specialOrder) {
+//             return !in_array($item['name'], $specialOrder);
+//         });
 
-        $specialItems = $collection->filter(function ($item) use ($specialOrder) {
-            return in_array($item['name'], $specialOrder);
-        });
+//         $specialItems = $collection->filter(function ($item) use ($specialOrder) {
+//             return in_array($item['name'], $specialOrder);
+//         });
 
-        // Sort special items by predefined order
-        $specialItems = $specialItems->sortBy(function ($item) use ($specialOrder) {
-            return array_search($item['name'], $specialOrder);
-        });
+//         // Sort special items by predefined order
+//         $specialItems = $specialItems->sortBy(function ($item) use ($specialOrder) {
+//             return array_search($item['name'], $specialOrder);
+//         });
 
-        // Combine both
-        $final = $normalItems->merge($specialItems)->values();
+//         // Combine both
+//         $final = $normalItems->merge($specialItems)->values();
 
 
-        return response()->json([
-            'status' => 200,
-            'message' => 'Top 2 latest stock entries for today',
-            'data' => $final,
-        ]);
-    }
+//         return response()->json([
+//             'status' => 200,
+//             'message' => 'Top 2 latest stock entries for today',
+//             'data' => $final,
+//         ]);
+//     }
 
 
     public function sniprice()

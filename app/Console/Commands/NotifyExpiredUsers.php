@@ -48,33 +48,33 @@ class NotifyExpiredUsers extends Command
     public function handle()
     {
        $users = User::where('status', 4)
-    ->where('entry_date', '<=', Carbon::now()->subDays(7)->toDateString())
-    ->whereNotNull('fcm_token')
-    ->whereNotNull('device_id')
-    ->get();
+        ->where('entry_date', '<=', Carbon::now()->subDays(7)->toDateString())
+        ->whereNotNull('fcm_token')
+        ->whereNotNull('device_id')
+        ->get();
 
-        if ($users->isEmpty()) {
-            $this->info('No expired users found today.');
-            return;
-        }
+            if ($users->isEmpty()) {
+                $this->info('No expired users found today.');
+                return;
+            }
 
-        $factory = (new Factory)->withServiceAccount(storage_path('app/firebase/shreenath-fcdd8-firebase-adminsdk-fbsvc-9dec5c0930.json'));
-        $messaging = $factory->createMessaging();
+            $factory = (new Factory)->withServiceAccount(storage_path('app/firebase/shreenath-fcdd8-firebase-adminsdk-fbsvc-9dec5c0930.json'));
+            $messaging = $factory->createMessaging();
 
-        foreach ($users as $user) {
-            $message = CloudMessage::withTarget('token', $user->fcm_token)
-                ->withNotification(Notification::create(
-                    'Time Limit Over',
-                    'Your time limit is up. Please register to use this app.'
-                ));
+            foreach ($users as $user) {
+                $message = CloudMessage::withTarget('token', $user->fcm_token)
+                    ->withNotification(Notification::create(
+                        'Time Limit Over',
+                        'Your time limit is up. Please register to use this app.'
+                    ));
 
-            try {
-                $messaging->send($message);
-                $this->info("Notification sent to user ID: {$user->id}");
-            } catch (\Throwable $e) {
-                $this->error("Failed to send notification to user ID: {$user->id} → " . $e->getMessage());
+                try {
+                    $messaging->send($message);
+                    $this->info("Notification sent to user ID: {$user->id}");
+                } catch (\Throwable $e) {
+                    $this->error("Failed to send notification to user ID: {$user->id} → " . $e->getMessage());
+                }
             }
         }
-    }
 
 }

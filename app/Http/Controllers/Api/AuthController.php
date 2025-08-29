@@ -444,7 +444,7 @@ class AuthController extends Controller
         // Check if JEERA exists in the $result
         $jeeraIndex = null;
         foreach ($result as $index => $item) {
-            if ($item['name'] === 'JEERA') {
+            if ($item['name'] === 'JEERA2') {
                 $jeeraIndex = $index;
                 break;
             }
@@ -453,7 +453,7 @@ class AuthController extends Controller
         // If JEERA is missing but JEERAA2_1D close exists, create JEERA record with overridden close
         if ($jeeraIndex === null && $jeeraa2_1d_close !== null) {
             // Find latest JEERA record from all $categories, even if not today's
-            $latestJeeraRecord = $categories->where('name', 'JEERA')->sortByDesc('time')->first();
+            $latestJeeraRecord = $categories->where('name', 'JEERA2')->sortByDesc('time')->first();
 
             if ($latestJeeraRecord) {
                 $result[] = [
@@ -461,7 +461,7 @@ class AuthController extends Controller
                     'stock_id' => $latestJeeraRecord->stock_id,
                     'app_name' => $latestJeeraRecord->Stock->app_name ?? '',
                     'ticker' => $latestJeeraRecord->ticker,
-                    'name' => 'JEERA',
+                    'name' => 'JEERA2',
                     'exchange' => $latestJeeraRecord->exchange,
                     'interval' => $latestJeeraRecord->interval_at,
                     'time' => $latestJeeraRecord->time,

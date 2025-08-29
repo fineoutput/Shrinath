@@ -339,157 +339,190 @@ class AuthController extends Controller
     }
 
 
-public function stockCol()
-{
-    $categories = StockCol::orderBy('name')
-        ->orderBy('time', 'ASC')
-        ->orderBy('id', 'ASC')
-        ->get();
+  public function stockCol()
+    {
+        $categories = StockCol::orderBy('name')
+            ->orderBy('time', 'ASC')
+            ->orderBy('id', 'ASC')
+            ->get();
 
-    $sniPrices = SniPrice::all()->keyBy('name');
-    $result = [];
+        $sniPrices = SniPrice::all()->keyBy('name');
+        $result = [];
 
-    foreach ($categories as $r) {
-        $r->time = Carbon::parse($r->time);
-    }
-
-    $today = Carbon::now()->toDateString();
-
-    $todayRecords = $categories->filter(function ($r) use ($today) {
-        return $r->time->toDateString() === $today;
-    });
-
-    if ($todayRecords->isEmpty()) {
-        return response()->json([
-            'status' => 200,
-            'message' => 'No records found for today',
-            'data' => [],
-        ]);
-    }
-
-    $groupedByName = $todayRecords->groupBy('name');
-
-    foreach ($groupedByName as $name => $records) {
-        $records = $records->sortBy('time')->values();
-        $firstOpen = floatval($records->first()->open);
-        $maxHigh = $records->max('high');
-        $minLow = $records->min('low');
-        $lastRecord = $records->last();
-
-        $allRecordsForName = $categories->where('name', $name)->sortBy('time')->values();
-        $previousCloseRecord = $allRecordsForName->filter(function ($r) use ($today) {
-            return $r->time->toDateString() < $today;
-        })->last();
-        $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
-
-        $sniPrice = $sniPrices[$name]->price ?? null;
-        $sniCurrentPrice = $sniPrices[$name]->current_price ?? null;
-
-        $percentageChange = null;
-        if ($previousClose !== null && $previousClose > 0) {
-            $percentageChange = (($lastRecord->open - $previousClose) / $previousClose) * 100;
+        foreach ($categories as $r) {
+            $r->time = Carbon::parse($r->time);
         }
 
-        $SniPriceDiff = $sniPrice - $sniCurrentPrice ?? null;
+        $today = Carbon::now()->toDateString();
 
-        $dPre = null;
-        if ($sniCurrentPrice !== null && $sniCurrentPrice > 0) {
-            $dPre = $sniCurrentPrice - $firstOpen;
-        }
-
-        $marketCloseTime = Carbon::parse($today . ' 17:00:00');
-
-        $closeRecord = $records->first(function ($r) use ($marketCloseTime) {
-            return $r->time->format('H:i') === '17:00';
+        $todayRecords = $categories->filter(function ($r) use ($today) {
+            return $r->time->toDateString() === $today;
         });
 
-        $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
-
-        $result[] = [
-            'id' => $lastRecord->id,
-            'stock_id' => $lastRecord->stock_id,
-            'app_name' => $lastRecord->Stock->app_name ?? '',
-            'ticker' => $lastRecord->ticker,
-            'name' => $lastRecord->name,
-            'exchange' => $lastRecord->exchange,
-            'interval' => $lastRecord->interval_at,
-            'time' => $lastRecord->time,
-            'date' => $lastRecord->time_2,
-            'open' => number_format($firstOpen, 2, '.', ''),
-            'close' => $lastRecord->close,  // will override for JEERA below
-            'current_price' => number_format(floatval($lastRecord->open), 2, '.', ''),
-            'high' => $maxHigh,
-            'low' => $minLow,
-            'volume' => $lastRecord->volume,
-            'quote' => $lastRecord->quote,
-            'base' => $lastRecord->base,
-            'previous_close' => $previousClose,
-            'percentage_change_from_previous' => $percentageChange !== null
-                ? number_format($percentageChange, 2, '.', '')
-                : null,
-            'd_pre' => $dPre,
-            'SniPriceDiff' => $SniPriceDiff,
-        ];
-    }
-
-    // --- Override close for JEERA with JEERAA2_1D close ---
-    $jeeraa2_1d_close = null;
-    foreach ($result as $item) {
-        if ($item['name'] === 'JEERAA2_1D') {
-            $jeeraa2_1d_close = $item['close'];
-            break;
+        if ($todayRecords->isEmpty()) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'No records found for today',
+                'data' => [],
+            ]);
         }
-    }
 
-    if ($jeeraa2_1d_close !== null) {
-        foreach ($result as &$item) {
-            if ($item['name'] === 'JEERA') {
-                $item['close'] = $jeeraa2_1d_close;
+        $groupedByName = $todayRecords->groupBy('name');
+
+        foreach ($groupedByName as $name => $records) {
+            $records = $records->sortBy('time')->values(); 
+            $firstOpen = floatval($records->first()->open);
+            $maxHigh = $records->max('high');
+            $minLow = $records->min('low');
+            $lastRecord = $records->last(); 
+
+            $allRecordsForName = $categories->where('name', $name)->sortBy('time')->values();
+            $previousCloseRecord = $allRecordsForName->filter(function ($r) use ($today) {
+                return $r->time->toDateString() < $today;
+            })->last();
+            $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
+
+            $sniPrice = $sniPrices[$name]->price ?? null;
+            $sniCurrentPrice = $sniPrices[$name]->current_price ?? null;
+
+            $percentageChange = null;
+            if ($previousClose !== null && $previousClose > 0) {
+                $percentageChange = (($lastRecord->open - $previousClose) / $previousClose) * 100;
+            }
+
+            $SniPriceDiff = $sniPrice - $sniCurrentPrice ?? null;
+
+            $dPre = null;
+            if ($sniCurrentPrice !== null && $sniCurrentPrice > 0) {
+                $dPre = $sniCurrentPrice - $firstOpen;  
+            }
+
+            $marketCloseTime = Carbon::parse($today . ' 17:00:00');
+
+            $closeRecord = $records->first(function ($r) use ($marketCloseTime) {
+                return $r->time->format('H:i') === '17:00';
+            });
+
+            $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
+
+            $result[] = [
+                'id' => $lastRecord->id,
+                'stock_id' => $lastRecord->stock_id,
+                'app_name' => $lastRecord->Stock->app_name ?? '',
+                'ticker' => $lastRecord->ticker,
+                'name' => $lastRecord->name,
+                'exchange' => $lastRecord->exchange,
+                'interval' => $lastRecord->interval_at,
+                'time' => $lastRecord->time,
+                'date' => $lastRecord->time_2,
+                'open' => number_format($firstOpen, 2, '.', ''),
+                'close' => $lastRecord->close,
+                'current_price' => number_format(floatval($lastRecord->open), 2, '.', ''),
+                'high' => $maxHigh,
+                'low' => $minLow,
+                'volume' => $lastRecord->volume,
+                'quote' => $lastRecord->quote,
+                'base' => $lastRecord->base,
+                'previous_close' => $previousClose,
+                'percentage_change_from_previous' => $percentageChange !== null
+                    ? number_format($percentageChange, 2, '.', '')
+                    : null,
+                'd_pre' => $dPre,
+                'SniPriceDiff' => $SniPriceDiff,
+            ];
+        }
+
+        // Find JEERAA2_1D close value from $result
+        $jeeraa2_1d_close = null;
+        foreach ($result as $item) {
+            if ($item['name'] === 'JEERAA2_1D') {
+                $jeeraa2_1d_close = $item['close'];
+                break;
             }
         }
-        unset($item);
+
+        // Check if JEERA exists in the $result
+        $jeeraIndex = null;
+        foreach ($result as $index => $item) {
+            if ($item['name'] === 'JEERA') {
+                $jeeraIndex = $index;
+                break;
+            }
+        }
+
+        // If JEERA is missing but JEERAA2_1D close exists, create JEERA record with overridden close
+        if ($jeeraIndex === null && $jeeraa2_1d_close !== null) {
+            // Find latest JEERA record from all $categories, even if not today's
+            $latestJeeraRecord = $categories->where('name', 'JEERA')->sortByDesc('time')->first();
+
+            if ($latestJeeraRecord) {
+                $result[] = [
+                    'id' => $latestJeeraRecord->id,
+                    'stock_id' => $latestJeeraRecord->stock_id,
+                    'app_name' => $latestJeeraRecord->Stock->app_name ?? '',
+                    'ticker' => $latestJeeraRecord->ticker,
+                    'name' => 'JEERA',
+                    'exchange' => $latestJeeraRecord->exchange,
+                    'interval' => $latestJeeraRecord->interval_at,
+                    'time' => $latestJeeraRecord->time,
+                    'date' => $latestJeeraRecord->time_2,
+                    'open' => number_format(floatval($latestJeeraRecord->open), 2, '.', ''),
+                    'close' => $jeeraa2_1d_close,  // override close here
+                    'current_price' => number_format(floatval($latestJeeraRecord->open), 2, '.', ''),
+                    'high' => $latestJeeraRecord->high,
+                    'low' => $latestJeeraRecord->low,
+                    'volume' => $latestJeeraRecord->volume,
+                    'quote' => $latestJeeraRecord->quote,
+                    'base' => $latestJeeraRecord->base,
+                    'previous_close' => null,
+                    'percentage_change_from_previous' => null,
+                    'd_pre' => null,
+                    'SniPriceDiff' => null,
+                ];
+            }
+        } elseif ($jeeraIndex !== null && $jeeraa2_1d_close !== null) {
+            // JEERA exists, just override close
+            $result[$jeeraIndex]['close'] = $jeeraa2_1d_close;
+        }
+
+        $specialOrder = [
+            'JEERA','JEERA2',
+            'DHANIYA','DHANIYA2',
+            'TMC','TMC2',
+            'GUARSEED','GUARSEED2',
+            'GUARGUM','GUARGUM2',
+            'CASTOR','CASTOR2',
+            'GOLD', 'GOLD2',
+            'SILVER', 'SILVER2',
+            'NATURALGAS',
+            'CRUDEOIL',
+            'USDINR',
+            'NIFTY',
+            'SENSEX',
+        ];
+
+        $collection = collect($result);
+
+        $normalItems = $collection->filter(function ($item) use ($specialOrder) {
+            return !in_array($item['name'], $specialOrder);
+        });
+
+        $specialItems = $collection->filter(function ($item) use ($specialOrder) {
+            return in_array($item['name'], $specialOrder);
+        });
+
+        $specialItems = $specialItems->sortBy(function ($item) use ($specialOrder) {
+            return array_search($item['name'], $specialOrder);
+        });
+
+        $final = $normalItems->merge($specialItems)->values();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Top 2 latest stock entries for today',
+            'data' => $final,
+        ]);
     }
-    // -----------------------------------------------------
-
-    $specialOrder = [
-        'JEERA', 'JEERA2',
-        'DHANIYA', 'DHANIYA2',
-        'TMC', 'TMC2',
-        'GUARSEED', 'GUARSEED2',
-        'GUARGUM', 'GUARGUM2',
-        'CASTOR', 'CASTOR2',
-        'GOLD', 'GOLD2',
-        'SILVER', 'SILVER2',
-        'NATURALGAS',
-        'CRUDEOIL',
-        'USDINR',
-        'NIFTY',
-        'SENSEX',
-    ];
-
-    $collection = collect($result);
-
-    $normalItems = $collection->filter(function ($item) use ($specialOrder) {
-        return !in_array($item['name'], $specialOrder);
-    });
-
-    $specialItems = $collection->filter(function ($item) use ($specialOrder) {
-        return in_array($item['name'], $specialOrder);
-    });
-
-    $specialItems = $specialItems->sortBy(function ($item) use ($specialOrder) {
-        return array_search($item['name'], $specialOrder);
-    });
-
-    $final = $normalItems->merge($specialItems)->values();
-
-    return response()->json([
-        'status' => 200,
-        'message' => 'Top 2 latest stock entries for today',
-        'data' => $final,
-    ]);
-}
-
 
 //  public function stockCol()
 //     {

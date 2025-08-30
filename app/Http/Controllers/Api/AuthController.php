@@ -1237,7 +1237,7 @@ public function stockCol()
         $token = $tokenResult->plainTextToken;     
 
         $user->auth = $token;
-        $user->status = 4;
+        $user->status = 5;
         $user->save();
 
         return response()->json([
@@ -1267,15 +1267,21 @@ public function stockCol()
     }
 
 
-    public function logout(Request $request)
+   public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
+        $user = $request->user();
+
+        $user->currentAccessToken()->delete();
+
+        $user->status = 4;
+        $user->save();
 
         return response()->json([
             'status' => 200,
             'message' => 'Logged out successfully',
         ]);
     }
+
 
 
 

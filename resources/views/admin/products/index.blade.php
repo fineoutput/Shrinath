@@ -69,7 +69,7 @@
                         <td>{{$value->price ?? ''}}</td>
                         <td>{{$value->mrp ?? ''}}</td>
                         <td>{{$value->weight ?? ''}}</td>
-                        <td>{!!$value->description !!}</td>
+                        <td>{{ \Illuminate\Support\Str::limit(strip_tags($value->description), 100) }}</td>
                         <td>
                             <img width="100" src="{{asset($value->image_1)}}" alt="">
                         </td>

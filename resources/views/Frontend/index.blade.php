@@ -1,7 +1,6 @@
 @extends('Frontend.common.app')
 @section('title','home')
 @section('content')
-
 <style>
     .raat{
         display: none
@@ -18,22 +17,21 @@
                                     alt="" class="lazyload tf-animate-zoom-in-out">
                             </div>
                             <div class="content">
-                                <h1 class="title  font-farmhouse tf-fade-top fade-item-2">
-                                   {{ $value->title ?? ''}}
+                                <h1 class="title font-farmhouse tf-fade-top fade-item-2">
+                                   Every Spice Counts, Every Flavor Matters.
                                 </h1>
                                 <div class="img-item">
                                     <img class="tf-trainsition-draw-left access-trainsition"
                                         src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
                                 </div>
                                 <p class="text font-nunito tf-fade-left fade-item-4">
-                                    The paramount doctrine of the economic and technological euphoria of recent <br>
-                                    decades has been that everything depends on innovation.
+                                    From cumin to kasuri methi, from whole spices to authentic taste — Shreenath Spices delivers 
+                                    purity, aroma, and flavor straight from the mandi to your kitchen.
                                 </p>
                                 <a href="#" class="tf-btn btn-view bg-white tf-fade-bottom fade-item-5">
                                     <span class="text-style cl-primary">
-                                        See Our Services
+                                        Explore Products
                                     </span>
-
                                     <div class="icon">
                                         <i class="icon-arrow_right"></i>
                                     </div>
@@ -42,8 +40,6 @@
                         </div>
                     </div>
                     @endforeach
-
-
                     {{-- <div class="swiper-slide">
                         <div class="slide-home-2">
                             <div class="image overflow-hidden">
@@ -51,7 +47,7 @@
                                     alt="" class="lazyload tf-animate-zoom-in-out">
                             </div>
                             <div class="content">
-                                <h1 class="title  font-farmhouse tf-fade-top fade-item-2">
+                                <h1 class="title font-farmhouse tf-fade-top fade-item-2">
                                     Every Crop Counts, <br>
                                     Every Farmer Matters
                                 </h1>
@@ -67,7 +63,6 @@
                                     <span class="text-style cl-primary">
                                         See Our Services
                                     </span>
-
                                     <div class="icon">
                                         <i class="icon-arrow_right"></i>
                                     </div>
@@ -96,7 +91,6 @@
                 </div>
             </div>
         </div><!-- /.Page-title-home-2 -->
-
         <!-- Section benefit -->
         <section class="s-benefit">
             <div class="benefit-list ">
@@ -104,53 +98,48 @@
                     <div class="icon mb-30 hover-icon style-circle">
                         <img src="{{ asset('Front/icons/tomato.png') }}" alt="">
                     </div>
-                    <a href="#" class="caption mb-17 fw-6  font-worksans hover-text-secondary">
-                        100% Organic Products
+                    <a href="#" class="caption mb-17 fw-6 font-worksans hover-text-secondary">
+                         Modern Processing
                     </a>
                     <p class="text font-nunito">
-                        Ultrices sagittis orci a scelerisque <br> purus semper eget duis at. <br>
-                        Sollictudin nibh sit amet.
+                         Cleaned & packed with advanced technology.
                     </p>
                 </div>
-                <div class="box-icon  ic-hover">
+                <div class="box-icon ic-hover">
                     <div class="icon mb-30 style-circle hover-icon img-hover-2">
                         <i class="icon-tractor22"></i>
                     </div>
-                    <a href="#" class="caption mb-17 fw-6  font-worksans hover-text-secondary">
+                    <a href="#" class="caption mb-17 fw-6 font-worksans hover-text-secondary">
                         Absolute Quality
                     </a>
                     <p class="text font-nunito">
-                        Ultrices sagittis orci a scelerisque <br> purus semper eget duis at. <br>
-                        Sollictudin nibh sit amet.
+                        Perfection in every grain, excellence in every pack.
                     </p>
                 </div>
                 <div class="box-icon ic-hover">
                     <div class="icon mb-30 hover-icon style-circle">
                         <i class="fa-solid fa-leaf"></i>
                     </div>
-                    <a href="#" class="caption mb-17 fw-6  font-worksans hover-text-secondary">
+                    <a href="#" class="caption mb-17 fw-6 font-worksans hover-text-secondary">
                         Environmentally Friendly
                     </a>
                     <p class="text font-nunito">
-                        Ultrices sagittis orci a scelerisque <br> purus semper eget duis at. <br>
-                        Sollictudin nibh sit amet.
+                        Sustainability today, a greener tomorrow.
                     </p>
                 </div>
                 <div class="box-icon ic-hover">
                     <div class="icon mb-30 hover-icon style-circle">
                         <img src="{{ asset('Front/icons/dollar-circle.png') }}" alt="">
                     </div>
-                    <a href="#" class="caption mb-17 fw-6  font-worksans hover-text-secondary">
-                        Reasonable Price
+                    <a href="#" class="caption mb-17 fw-6 font-worksans hover-text-secondary">
+                       Reasonable Price
                     </a>
                     <p class="text font-nunito">
-                        Ultrices sagittis orci a scelerisque <br> purus semper eget duis at. <br>
-                        Sollictudin nibh sit amet.
+                        Trusted by businesses across India.
                     </p>
                 </div>
             </div>
         </section><!-- /.Section benefit -->
-
         <!-- Section about us 2 -->
         <section class="s-about-us-2">
             <div class="tf-container w-1620">
@@ -170,29 +159,21 @@
                                             <img src="{{ asset('Front/images/item/rice-plant-2.png') }}" class="tf-animate-1" alt="" />
                                         </div>
                                         <p class="sub-title">
-                                            Welcome to Shrinath Agriculture & Organic Farms
+                                           Welcome to Shreenath Spices
                                         </p>
                                         <p class="title text-anime-style-2">
-                                            What You Plant Now, <br>
-                                            You Will Harvest Later
+                                            What You Choose Today, Brings Flavor Tomorrow.
                                         </p>
                                     </div>
-
                                     <p class="text-1 font-snowfall mb-20">
-                                        Elders is headquartered in Adelaide, South Australia, where our story began in
-                                        <br>
-                                        1839,
-                                        but our expansive network now reaches every corner of Australia.
+                                        Rooted in tradition, growing with vision—Shreenath began its journey humbly, but today our 
+                                        reach stretches across India and beyond.
                                     </p>
                                     <p class="text-2 mb-42">
-                                        At Mycorrhizal Applications (MA), we are dedicated to sustainability by <br>
-                                        providing
-                                        the agriculture, horticulture, landscaping, and forestry industries <br> with
-                                        efficient
-                                        and effective microbial-based biorational solutions. As the <br> world’s leading
-                                        manufacturer and supplier of mycorrhizal soil inoculants, <br> MA researches,
-                                        produces,
-                                        and markets mycorrhizal fungi which accelerate <br> plant performance.
+                                       At Shreenath Spices, we believe every meal deserves purity. With deep mandi roots and 
+                                       state-of-the-art facilities, we bring you cumin, kasuri methi, and whole spices that define 
+                                       authenticity. 
+                                       From households to distributors, Shreenath stands for quality, consistency, and trust.
                                     </p>
                                 </div>
                                 <div class="bot flex justify-center">
@@ -207,7 +188,6 @@
                                 </div>
                             </div>
                             <div class="tf-animate__rotate-left ">
-
                                 <div class="image image-right ">
                                     <img src="{{ asset('Front/images/section/s-about-3.jpg') }}" data-src="{{ asset('Front/images/section/s-about-3.jpg') }}"
                                         alt="" class="lazyload">
@@ -219,10 +199,10 @@
                         <div class="wg-counter style-4">
                             <div class="counter-item">
                                 <div class="counter">
-                                    <div id="odometer" class="odometer fs-65 style-4">1000</div>
+                                    <div id="odometer" class="odometer fs-65 style-4">6</div>
                                 </div>
                                 <p class="title font-worksans fw-5">
-                                    Completed Projects
+                                    Years of Legacy
                                 </p>
                                 <div class="icon-img">
                                     <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
@@ -230,10 +210,10 @@
                             </div>
                             <div class="counter-item">
                                 <div class="counter">
-                                    <div class="odometer fs-65 style-4-2">1000</div>
+                                    <div class="odometer fs-65 style-4-2">8</div>
                                 </div>
                                 <p class="title font-worksans fw-5">
-                                    Animals And Plants
+                                    Depots Across India
                                 </p>
                                 <div class="icon-img">
                                     <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
@@ -241,10 +221,10 @@
                             </div>
                             <div class="counter-item">
                                 <div class="counter">
-                                    <div class="odometer fs-65 style-4-3">1000</div>
+                                    <div class="odometer fs-65 style-4-3">350</div>
                                 </div>
                                 <p class="title font-worksans fw-5">
-                                    Tons of Harvest
+                                    Happy Customers
                                 </p>
                                 <div class="icon-img">
                                     <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
@@ -255,10 +235,9 @@
                 </div>
             </div>
             <div class="s-img-item item-1 scroll-element-3">
-                <img class="scale-1-1" src="{{ asset('Front/images/section/yellow-f.png') }}" alt="">
+                <img class="scale-1-1" src="{{ asset('Front/images/item/yellow-f.png') }}" alt="">
             </div>
         </section><!-- /.Section about us 2 -->
-
         <!-- Section service 2-->
         <section class="s-service-2 relative overflow-hidden">
             <div class="content-section">
@@ -268,24 +247,19 @@
                             <img src="{{ asset('Front/images/item/rice-plant-2.png') }}" class="tf-animate-1" alt="" />
                         </div>
                         <p class="sub-title">
-                            Agricultural Services
+                            What We Do
                         </p>
                     </div>
-
                     <p class="title tf-animate-1">
-                        Providing The Finest
-                        Products To The Best
-                        Feed Suppliers.
+                        At Shreenath, we bridge tradition with innovation to create food that is pure, sustainable, and trusted.
                     </p>
                 </div>
                 <p class="text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ex
-                    igula, pulvinar ultrices justo sed, bibendum lobortis nibh. Pellentesque
-                    mattis eros sit amet lorem tristique faucibus.
+                    We Use Modern Processing: By adopting clean, efficient, and safe methods, we ensure every product retains its natural aroma and quality. Making Healthy Foods: Every product is processed with care and hygiene to deliver authentic taste, nutrition, and long-lasting freshness.
                 </p>
                 <a href="#" class="tf-btn ">
                     <span class="text-style ">
-                        See Our Services
+                        Processing Video
                     </span>
                     <div class="icon">
                         <i class="icon-arrow_right"></i>
@@ -301,7 +275,7 @@
                             </g>
                         </svg>
                     </div>
-                    <div class="btn-s-service-2 btn-next">
+                    <div class=" btn-s-service-2 btn-next">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="58px" height="15px"
                             viewBox="0 0 80 20" preserveAspectRatio="xMidYMid meet">
                             <g fill="#0d401c">
@@ -310,7 +284,6 @@
                             </g>
                         </svg>
                     </div>
-
                 </div>
             </div>
             <div class="slider-wrap">
@@ -342,13 +315,11 @@
                             </div>
                         </div>
                         @endforeach
-
                       
                     </div>
                 </div>
             </div>
         </section><!-- /.Section service -->
-
         <!-- Section quality of life -->
         <section class="s-quality-of-life">
             <div class="tf-container w-1290">
@@ -365,7 +336,7 @@
                                 </p>
                             </div>
                             <p class="sub font-snowfall fs-30 text-anime-style-1">
-                                We believe that to have good health, clean and healthy food sources are the key
+                                We believe that good health begins with clean and pure food sources.
                             </p>
                             <div class="swiper-container slider-box-icon">
                                 <div class="swiper-wrapper">
@@ -378,7 +349,7 @@
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
-                                                        Minimal <br> Chemicals Used
+                                                        100% Natural
                                                     </a>
                                                 </div>
                                             </li>
@@ -390,7 +361,7 @@
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
-                                                        Minimal <br> Chemicals Used
+                                                        Rich in Aroma
                                                     </a>
                                                 </div>
                                             </li>
@@ -402,7 +373,7 @@
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
-                                                        All Organic <br> Waste Reused
+                                                        Premium Quality
                                                     </a>
                                                 </div>
                                             </li>
@@ -414,8 +385,7 @@
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
-                                                        Do Not Use <br> Artificial
-                                                        Light
+                                                        Hygienically Packed
                                                     </a>
                                                 </div>
                                             </li>
@@ -427,7 +397,7 @@
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
-                                                        Borehole <br> Sourced Water
+                                                        Hygienically Packed
                                                     </a>
                                                 </div>
                                             </li>
@@ -435,12 +405,10 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="bot flex justify-center">
-
                                 <a href="#" class="tf-btn scale-50 gap-37">
                                     <span class="text-style ">
-                                        See More Our Commitment
+                                        See More About Our Commitment
                                     </span>
                                     <div class="icon">
                                         <i class="icon-arrow_right"></i>
@@ -458,23 +426,17 @@
                 <img src="{{ asset('Front/images/item/corn-color.png') }}" alt="">
             </div>
         </section><!-- /.Section quality of life -->
-
         <!-- Section what we do -->
         <section class="s-what-we-do ">
             <div class="content-wrap">
                 <div class="content-section">
                     <div class="heading-section style-3 has-text">
-                        <p class="sub-title">What We Do</p>
+                        <p class="sub-title">Our Skills</p>
                         <p class="title text-anime-style-1">
-                            At Shrinath,
-                            We Aim To Unite Men
-                            And Nature!
+                            Our Expertise
                         </p>
                         <p class="text">
-                            After more than five years of research, we have successfully come up with internationally
-                            patented 100% organic agriculture inputs that can significantly enhance the quality of crops
-                            aswell as the soil in a
-                            completely natural way.
+                            We believe in bringing customers the best spices. For decades, Shreenath has been dedicated to delivering spices that are pure, hygienic, and full of authentic flavor. From sourcing to packaging, every step reflects our commitment to quality and trust.
                         </p>
                     </div>
                     <a href="#" class="tf-btn bg-white">
@@ -501,34 +463,28 @@
                         <li class="wow fadeInUp" data-wow-delay="0s">
                             <p class="title">
                                 <i class="fa-solid fa-circle-check"></i>
-                                We Use New Technology
+                                Pure and Natural - 99%
                             </p>
                             <p class="text">
-                                Ultrices sagittis orci a scelerisque purus semper eget duis at. Sollicitudin nibh sit
-                                amet
-                                commodo nulla.
+                                Ultrices sagittis orci a scelerisque purus semper eget duis at. Sollicitudin nibh sit amet commodo nulla.
                             </p>
                         </li>
                         <li class="wow fadeInUp" data-wow-delay="0.1s">
                             <p class="title">
                                 <i class="fa-solid fa-circle-check"></i>
-                                Making Healthy Foods
+                                Quality You Can Trust -99%
                             </p>
                             <p class="text">
-                                Ultrices sagittis orci a scelerisque purus semper eget duis at. Sollicitudin nibh sit
-                                amet
-                                commodo nulla.
+                                Ultrices sagittis orci a scelerisque purus semper eget duis at. Sollicitudin nibh sit amet commodo nulla.
                             </p>
                         </li>
                     </ul>
                 </div>
             </div>
         </section><!-- /.Section what we do -->
-
         <!-- Section our agriculture -->
         <section class="s-our-agriculture">
             <div class="content-section">
-
                 <div class="tf-container w-1290">
                     <div class="row">
                         <div class="col-lg-5">
@@ -536,9 +492,8 @@
                                 <div class="image hover-item">
                                     <img src="{{ asset('Front/images/section/s-farm.jpg') }}" alt="" class="lazyload">
                                 </div>
-
-                                <div class="wg-exprerience  text-center tf-rotate-back-and-forth">
-                                    <p class="year">65</p>
+                                <div class="wg-exprerience text-center tf-rotate-back-and-forth">
+                                    <p class="year">45</p>
                                     <p class="text">
                                         Years Of <br> Experience
                                     </p>
@@ -554,95 +509,78 @@
                                         </div>
                                         <p class="sub-title">
                                             Our Agriculture Skill
-
                                         </p>
                                     </div>
-
                                     <p class="title tf-animate-2">
-                                        We Believe In Bringing
-                                        Customers The Best Product
+                                        We Believe In Bringing Customers The Best Spices
                                     </p>
                                 </div>
                                 <p class="text">
-                                    Mauris quam tellus, pellentesque ut faucibus pretium, aliquet vitae est. Nullam non
-                                    lorem
-                                    metus. Nulla pretium dui a diam faucibus. vehicula efficitur enim maximus. Proin
-                                    sollicitudin erat eu auctor egestas.
+                                    For decades, Shreenath has been dedicated to delivering spices that are pure, hygienic, and full of authentic flavor. From sourcing to packaging, every step reflects our commitment to quality and trust.
                                 </p>
                                 <div class="wg-progress mb-29">
                                     <div class="top">
-                                        <span>Organic Solutions</span>
-                                        <span>76%</span>
+                                        <span>Pure and Natural</span>
+                                        <span>99%</span>
                                     </div>
                                     <div class="progress tf-animate-1" role="progressbar" aria-label="Basic example"
                                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar" style="width: 76%"></div>
+                                        <div class="progress-bar" style="width: 99%"></div>
                                     </div>
                                 </div>
                                 <div class="wg-progress">
                                     <div class="top">
-                                        <span>Quality Agriculture</span>
-                                        <span>95%</span>
+                                        <span>Quality You Can Trust</span>
+                                        <span>99%</span>
                                     </div>
                                     <div class="progress tf-animate-1" role="progressbar" aria-label="Basic example"
                                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar" style="width: 95%"></div>
+                                        <div class="progress-bar" style="width: 99%"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="tf-container w-1290">
-
                 <div class="row">
                     <div class="col-md-4">
                         <div class="wrap">
-
                             <div class="box-event style-2 ic-hover wow fadeInUp" data-wow-delay="0s">
                                 <div class="content hover-icon-2">
                                     <div class="icon">
-
                                         <i class="icon-farmer-2"></i>
                                     </div>
                                     <a href="#" class="title fw-6 font-worksans hover-text-4">
-                                        Farmers
+                                        Team & Farmers
                                     </a>
                                     <p class="sub font-snowfall">
-                                        The focal point of everything we do
+                                        Our Roots, Our Strength
                                     </p>
                                     <p class="text">
-                                        At Union Organics, we aim to empower farmers
-                                        by equipping them with affordable and 100%
-                                        organic agriculture.
+                                        Every spice has a story. Shreenath Spices honors the generations of farmers whose hard work makes authentic flavors possible—bringing their legacy from the fields to your kitchen.
                                     </p>
                                     <a href="#" class="tf-btn-read hover-text-4">Read More</a>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="col-md-4">
                         <div class="wrap">
-
                             <div class="box-event style-2 ic-hover wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="content hover-icon-2">
                                     <div class="icon">
-
                                         <i class="icon-customer"></i>
                                     </div>
                                     <a href="#" class="title fw-6 font-worksans hover-text-4">
                                         Consumers
                                     </a>
                                     <p class="sub font-snowfall">
-                                        Everyone deserves chemical-free food
+                                        Pure Taste, Pure Trust
                                     </p>
                                     <p class="text">
-                                        At Union Organics, we aim to empower farmers
-                                        by equipping them with affordable and 100%
-                                        organic agriculture.
+                                        We believe every home deserves spices that are 100% pure, safe, and full of flavor. Shreenath Spices brings you the real taste of India—free from adulteration, full of authenticity.
                                     </p>
                                     <a href="#" class="tf-btn-read hover-text-4">Read More</a>
                                 </div>
@@ -654,19 +592,16 @@
                             <div class="box-event style-2 ic-hover wow fadeInUp" data-wow-delay="0.2s">
                                 <div class="content hover-icon-2">
                                     <div class="icon">
-
                                         <i class="icon-farm"></i>
                                     </div>
                                     <a href="#" class="title fw-6 font-worksans hover-text-4">
                                         Environment
                                     </a>
                                     <p class="sub font-snowfall">
-                                        Protecting the planet is a top priority
+                                        Growing Today, Preserving Tomorrow
                                     </p>
                                     <p class="text">
-                                        At Union Organics, we aim to empower farmers
-                                        by equipping them with affordable and 100%
-                                        organic agriculture.
+                                        From sustainable farming to eco-friendly processing, Shreenath Spices is committed to protecting the planet while delivering purity to your plate.
                                     </p>
                                     <a href="#" class="tf-btn-read hover-text-4">Read More</a>
                                 </div>
@@ -675,9 +610,7 @@
                     </div>
                 </div>
             </div>
-
         </section><!-- /.Section our agriculture -->
-
         <!-- Section project -->
         <section class="s-project">
             <div class="heading-side has-img-item">
@@ -685,14 +618,12 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="heading-section style-3 has-text text-center">
-                                <p class="sub-title">Closes Projects</p>
+                                <p class="sub-title">Providing the Finest Spices to Every Kitchen & Business</p>
                                 <p class="title tf-animate-3">
-                                    Latest Projects List
+                                    The heart of Indian cuisine, available in premium grades—Udaan, Kashi Bhagat, Gold, Silver, and Morpankh. Naturally sun-dried Kasuri Methi, sourced from Nagaur, adds a rich aroma to your recipes.
                                 </p>
                                 <p class="text">
-                                    Duis eleifend euismod arcu, nec
-                                    faucibus mauris finibus id. Integer
-                                    mattis, tellus non finibus rutrum.
+                                    Duis eleifend euismod arcu, nec faucibus mauris finibus id. Integer mattis, tellus non finibus rutrum.
                                 </p>
                                 <div class="img-item">
                                     <img src="{{ asset('Front/images/item/rice-plant-2.png') }}" class="tf-animate-1" alt="" />
@@ -706,7 +637,6 @@
                 </div>
                 <div class="s-img-item item-2 wow zoomIn" data-wow-delay="0.2s">
                     <div class="scroll-element-4">
-
                         <img src="{{ asset('Front/images/item/windmill.png') }}" alt="" />
                     </div>
                 </div>
@@ -714,7 +644,6 @@
                     <img src="{{ asset('Front/images/item/green.png') }}" alt="" />
                 </div>
             </div>
-
             <div class="slider-side">
                 <div class="tf-container w-1290">
                     <div class="row">
@@ -752,27 +681,22 @@
                                     </div>
                                     @endforeach
                                  
-
                                 </div>
-
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="bot">
                                 <div class="swiper-pagination style-1 pagination-s-project"></div>
-                                <a href="#" class="tf-btn-read hover-text-4">View All Latest
-                                    Projects</a>
+                                <a href="#" class="tf-btn-read hover-text-4">View All Products</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="s-img-item item-4">
                 <img src="{{ asset('Front/images/item/page-title-top.png') }}" alt="" />
             </div>
         </section><!-- /.Section project -->
-
          <section class="s-shopping">
             <div class="tf-container w-1620">
                 <div class="row">
@@ -785,14 +709,11 @@
                                             <img class="tf-animate-1" src="images/item/rice-plant-2.png" alt="" />
                                         </div>
                                         <p class="sub-title">
-                                            Shopping Today
+                                            Providing the Finest Spices to Every Kitchen & Business
                                         </p>
                                     </div>
-
-                                    <p class="title  wow fadeInLeft" data-wow-delay="0s">
-                                        We Provide High <br>
-                                        Quality Agricultural <br>
-                                        Products.
+                                    <p class="title wow fadeInLeft" data-wow-delay="0s">
+                                        The heart of Indian cuisine, available in premium grades—Udaan, Kashi Bhagat, Gold, Silver, and Morpankh. Naturally sun-dried Kasuri Methi, sourced from Nagaur, adds a rich aroma to your recipes.
                                     </p>
                                     <p class="text">
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ex
@@ -802,9 +723,8 @@
                                 </div>
                                 <a href="{{route('out_products')}}" class="tf-btn scale-40">
                                     <span class="text-style ">
-                                        View All The Shop
+                                        View All Products
                                     </span>
-
                                     <div class="icon">
                                         <i class="icon-arrow_right"></i>
                                     </div>
@@ -847,7 +767,6 @@
                                         </div>
                                         @endforeach
                                       
-
                                     </div>
                                 </div>
                             </div>
@@ -855,7 +774,6 @@
                                 <div class="btn-prev btn-slider-shopping">
                                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="68px" height="18px"
                                         viewBox="0 0 68 18" preserveAspectRatio="xMidYMid meet">
-
                                         <g fill="#0d401c">
                                             <path
                                                 d="M6.3 14.3 c-3.5 -2.1 -6.3 -4.2 -6.3 -4.9 0 -0.6 2.7 -3 6 -5.3 6.4 -4.5 8.3 -4.1 2.6 0.6 l-3.5 2.8 24.7 0 c23.6 0 38.2 0.9 38.2 2.3 0 0.4 -7.3 0.3 -16.3 -0.1 -9 -0.5 -23.3 -0.5 -31.8 0 l-15.4 0.8 5.3 2.9 c5 2.8 6.6 4.6 4 4.6 -0.7 0 -4.1 -1.7 -7.5 -3.7z" />
@@ -873,7 +791,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -882,20 +799,17 @@
             </div>
             <div class="s-img-item item-2 wow zoomIn">
                 <div class="nhapNhap">
-
                     <img src="images/item/house-mountain-3.png" alt="">
                 </div>
             </div>
-        </section><!-- /.Section shopping today  -->
-
+        </section><!-- /.Section shopping today -->
         <!-- Section testimonial -->
         <section class="s-testimonial-2">
             <div class="tf-container w-1290">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="heading-section">
-                            <p class="sub-title">Testimonials From People Who Have Experienced It
-                            </p>
+                            <p class="sub-title">What Our Customers Say</p>
                             <p class="title text-anime-style-1">What Customers Says?</p>
                             <div class="img-item">
                                 <img src="{{ asset('Front/images/item/rice-plant-2.png') }}" class="tf-animate-1" alt="" />
@@ -913,10 +827,10 @@
                                 </div>
                                 <div class="counter-item">
                                     <p class="title font-worksans fw-5 fs-18">
-                                        Trust By Clients
+                                        Happy Customers Served
                                     </p>
                                     <div class="counter">
-                                        <div class="odometer style-6">10000</div>
+                                        <div class="odometer style-6">350</div>
                                         <span class="sub-odo color-secondary">+</span>
                                     </div>
                                 </div>
@@ -928,7 +842,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="s-slider">
                 <div class="tf-container w-1290">
                     <div class="row">
@@ -939,16 +852,10 @@
                                         <div class="testimonial style-2">
                                             <div class="comment">
                                                 <p class="caption fs-23 font-snowfall">
-                                                    The Best Farm I Trust Uses Products
+                                                    “Shreenath Jeera brings unmatched taste to my dishes.”
                                                 </p>
                                                 <p class="text font-worksans">
-                                                    Having been a host farmer for three seasons, we’ve seen firsthand
-                                                    the difference this
-                                                    internship makes in beginning
-                                                    farmers and host farms alike. As a farmer it is difficult to weigh
-                                                    the benefits of
-                                                    hosting young farmers. Fresh energy
-                                                    and enthusiasm.
+                                                    – Mayank Agarwal, Delhi
                                                 </p>
                                             </div>
                                             <div class="author-wrap">
@@ -959,7 +866,7 @@
                                                     <div class="infor">
                                                         <div class="name-wrap">
                                                             <a href="#" class="name text-upper hover-text-4">
-                                                                CHRISTINE ROSE
+                                                                Mayank Agarwal
                                                             </a>
                                                             <div class="wg-rating">
                                                                 <i class="fa-solid fa-star"></i>
@@ -970,7 +877,7 @@
                                                             </div>
                                                         </div>
                                                         <p class="duty">
-                                                            Director, Radical Orange Pty Ltd.
+                                                            Delhi
                                                         </p>
                                                     </div>
                                                 </div>
@@ -981,14 +888,10 @@
                                         <div class="testimonial style-2">
                                             <div class="comment">
                                                 <p class="caption fs-23 font-snowfall">
-                                                    Rogue Farm Corps Has Helped Us Recruit And Retain Great!
-
+                                                    “As a retailer, I trust Shreenath for consistent supply & quality.”
                                                 </p>
                                                 <p class="text font-worksans">
-                                                    As you know I am an organic wheat farmer here in Wyoming and we had
-                                                    one of driest and coldest winters on record. I used your MycoApply
-                                                    granular on my winter wheat and I am very pleased at what I am
-                                                    seeing. The root systems are noticeably.
+                                                    – Ravikanta, Ludhiana
                                                 </p>
                                             </div>
                                             <div class="author-wrap">
@@ -999,7 +902,7 @@
                                                     <div class="infor">
                                                         <div class="name-wrap">
                                                             <a href="#" class="name text-upper hover-text-4">
-                                                                Sincerely
+                                                                Ravikanta
                                                             </a>
                                                             <div class="wg-rating">
                                                                 <i class="fa-solid fa-star"></i>
@@ -1010,7 +913,7 @@
                                                             </div>
                                                         </div>
                                                         <p class="duty">
-                                                            General Agriculture Crop Consultant.
+                                                            Ludhiana
                                                         </p>
                                                     </div>
                                                 </div>
@@ -1042,12 +945,11 @@
                 </div>
             </div>
         </section><!-- /.Section testimonial -->
-
         <!-- Section happy farm -->
         <section class="s-happy-farm">
             <div class="bg-section">
                 <div class="scroll-element-3">
-                    <img class="lazyload  scale-1-1" src="{{ asset('Front/images/item/gree-field.jpg') }}"
+                    <img class="lazyload scale-1-1" src="{{ asset('Front/images/item/gree-field.jpg') }}"
                         data-src="{{ asset('Front/images/item/gree-field.jpg') }}" alt="">
                 </div>
                 <div class="s-img-item item-1">
@@ -1061,21 +963,17 @@
                             <div class="content">
                                 <div class="heading-section style-3 has-text">
                                     <div class="top">
-                                        <p class="sub-title fs-35 tf-animate-1">Happy Farming!</p>
+                                        <p class="sub-title fs-35 tf-animate-1">Happy Family</p>
                                         <div class="img-item item-2 tf-heartBeat">
                                             <img class="wow zoomIn " src="{{ asset('Front/images/item/happy.png') }}" alt="" />
                                         </div>
                                     </div>
                                     <p class="title wow fadeInUp" data-wow-delay="0s">
-                                        We Passionately Care About
-                                        Farmers, Consumers.
-
+                                        We Care For Farmers, Employees & Families Alike.
                                     </p>
                                     <p class="text wow fadeInUp" data-wow-delay="0s">
-                                        If you need to buy clean agricultural products and learn about us, contact us
-                                        now!
+                                        Shreenath is more than just spices—it’s a commitment to creating value for farmers, partners, and households.
                                     </p>
-
                                     <a href="#" class="tf-btn bg-white scale-40 wow fadeInUp"
                                         data-wow-delay="0s">
                                         <span class="text-style cl-primary">
@@ -1089,7 +987,6 @@
                                 <div class="image-wrap">
                                     <img src="{{ asset('Front/images/section/s-hp-farm.png') }}" data-src="{{ asset('Front/images/section/s-hp-farm.png') }}"
                                         alt="" class="lazyload">
-
                                 </div>
                                 <div class="img-item item-1 nhapNhap">
                                     <img src="{{ asset('Front/images/item/house-mountain-2.png') }}" alt="">
@@ -1098,22 +995,18 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section><!-- /.Section happy farm -->
-
         <!-- Section blog post -->
         <section class="s-blog-post pt-121 pb-44">
             <div class="tf-container w-1290">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="heading-section has-text text-center mb-81">
-                            <p class="sub-title">From The Blog Post</p>
-                            <p class="title text-anime-style-2">Latest News & Articles</p>
+                            <p class="sub-title">Latest News & Articles</p>
+                            <p class="title text-anime-style-2">Shreenath Speaks: Flavour, Family & Future</p>
                             <p class="text">
-                                Duis eleifend euismod arcu, nec faucibus
-                                mauris finibus id. Integer mattis,
-                                tellus non finibus rutrum.
+                                Duis eleifend euismod arcu, nec faucibus mauris finibus id. Integer mattis, tellus non finibus rutrum.
                             </p>
                             <div class="img-item">
                                 <img src="{{ asset('Front/images/item/rice-plant-2.png') }}" class="tf-animate-1" alt="" />
@@ -1122,14 +1015,12 @@
                     </div>
                 </div>
             </div>
-
             <div class="s-slide">
                 <div class="tf-container w-1290">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="swiper-container slider-blog-post">
                                 <div class="swiper-wrapper">
-
                                     @foreach ($blogs as $value)
                                               <div class="swiper-slide">
                                         <article class="article-blog-item type-3 style-2 img-hover wow fadeInUp"
@@ -1140,11 +1031,9 @@
                                                             $images = json_decode($value->image, true); // decode as array
                                                             $firstImage = !empty($images) ? $images[0] : null;
                                                         @endphp
-
                                                     @if ($firstImage)
                                         <img class="lazyload" data-src="{{ asset($firstImage) }}" src="{{ asset($firstImage) }}" alt="">
                                     @endif
-
                                                     <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
                                                         class="style-icon-play popup-youtube">
                                                         <i class="fa-solid fa-play"></i>
@@ -1153,7 +1042,6 @@
                                                 @php
                                     $date = \Carbon\Carbon::parse($value->created_at);
                                 @endphp
-
                                 <div class="entry-date">
                                     <p class="day">{{ $date->format('d') }}</p>
                                     <p class="month-year">
@@ -1230,35 +1118,35 @@
                 </div>
             </div>
         </section><!-- /.Section blog post -->
-
         <!-- Section meet farmer -->
         <section class="s-meet-farmer has-img-item tf-pt-0">
             <div class="content-section">
-                <div Lubby class="row">
-                    <div class="col-md-8">
-                        <div class="heading-section style-4 has-text style-3">
-                            <h6 class="img-item">
-                                <div class="item mr-23">
-                                    <img src="{{ asset('images/item/rice-plant-2.png') }}" class="tf-animate-1" alt="">
-                                </div>
-                                <p class="sub-title">
-                                    Meet The Farmers
+                <div class="tf-container w-1290">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="heading-section style-4 has-text style-3">
+                                <h6 class="img-item">
+                                    <div class="item mr-23">
+                                        <img src="{{ asset('images/item/rice-plant-2.png') }}" class="tf-animate-1" alt="">
+                                    </div>
+                                    <p class="sub-title">
+                                        Meet The Team
+                                    </p>
+                                </h6>
+                                <p class="title text-anime-we-2">
+                                    The faces behind the flavors, working with passion to bring Shreenath to every home.
                                 </p>
+                                <p class="text">
+                                    The people dedicated to their work and to nature. Their efforts make purity possible.
+                                </p>
+                                <a href="#" class="tf-btn-read text-white hover-text-secondary">
+                                    View All The Team Members
+                                </a>
                             </div>
-                            <p class="title text-anime-we-2">
-                                We Are Dedicated Farmers!
-                            </p>
-                            <p class="text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales faucibus
-                                commodo.
-                                Proin vehicula massa id congue quam, ex libero sodales ex, cursus euismod purus.
-                            </p>
-                            <a href="#" class="tf-btn-read text-white hover-text-secondary">
-                                View All The Farmers
-                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
             <div class="s-img-item item-1">
                 <img src="{{ asset('Front/images/item/page-title-top.png') }}" alt="" />
             </div>
@@ -1266,7 +1154,6 @@
                 <img src="{{ asset('Front/images/item/item-bottom.png') }}" alt="" />
             </div>
         </section><!-- /.Section meet farmer -->
-
         <!-- Section contact us -->
         <section class="s-contact-us style-2 pt-147 pb-80">
             <div class="section-wrap">
@@ -1274,7 +1161,6 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <div class="content-left">
-
                                 <div class="box-map style-2">
                                     <div id="map" class="map"></div>
                                 </div>
@@ -1285,11 +1171,11 @@
                                         </div>
                                         <div class="infor">
                                             <p class="title">
-                                                Farm Address
+                                                Head Office
                                             </p>
                                             <div class="text">
                                             <p class="text">
-                                                H-16, Krishi Upaj Mandi, Nagaur-341001(Raj.)
+                                                c/o H-16, Kala Industries, Krishi Upaj Mandi, Nagaur-341001 (Raj.)
                                             </p>
                                         </div>
                                     </li>
@@ -1302,41 +1188,40 @@
                                                 Contact Us
                                             </p>
                                             <p class="text">
-                                                Shrinaths@gmail.com <br>
-                                                Call Us 24/7: +1 987 654 3210
+                                                info@shreenathspices.com <br>
+                                                +91 8905015736 (24/7 Support)
                                             </p>
                                         </div>
                                     </li>
                                     <li class="wow fadeInUp" data-wow-duration="1.4s">
                                         <div class="icon style-circle">
                                             <i class="fa-solid fa-clock"></i>
-                                            <div class="infor">
-                                                <p class="title">
-                                                    Working Hours
-                                                </p>
-                                                <p class="text">
-                                                    Mon - Fri: 8.00am - 18.00pm <br>
-                                                    Sat: 9.00am - 00.17pm
-                                                    Holidays: Closes
+                                        </div>
+                                        <div class="infor">
+                                            <p class="title">
+                                                Working Hours
+                                            </p>
+                                            <p class="text">
+                                                Mon – Sat : 9.00am – 8.00pm 
                                             </p>
                                         </div>
-                                    </ul>
-                                </div>
+                                    </li>
+                                </ul>
                             </div>
+                        </div>
                         <div class="col-lg-7">
                             <div class="content-section">
                                 <div class="heading-section has-text mb-50">
-                                    <p class="sub-title">Let's Cooperate Together</p>
-                                    <p class="title tf-animate-1">Contact Us Today!</p>
+                                    <p class="sub-title">Contact Us Today</p>
+                                    <p class="title tf-animate-1">Contact Us Today</p>
                                     <p class="text">
                                         We will reply to you within 24 hours via email, thank you for contacting
-
                                     </p>
                                     <div class="img-item">
                                         <img src="{{ asset('images/item/rice-plant-2.png') }}" class="tf-animate-1" alt="" />
                                     </div>
                                 </div>
-                                <form id="contactform" method="post" action="https://themesflat.co/html/Shrinath/contact/contact-process.php"
+                                <form id="contactform" method="post" action="https://themesflat.co/html/donalfarm/contact/contact-process.php"
                                     novalidate="novalidate" class="form-send-message style-2">
                                     <div class="cols style-2 mb-15">
                                         <fieldset>
@@ -1357,12 +1242,14 @@
                                             <select name="text" class="lt-sp-07" id="Support">
                                                 <option value="You need support?" selected>="">You need support?
                                                 </option>
-                                                <option value="You need support? 1">You need support? 1
-                                                </option>
-                                                <option value="You need support? 2">You need support? 2
-                                                </option>
-                                                <option value="You need support? 3">You need support? 3
-                                                </option>
+                                                <option value="General Inquiry">General Inquiry</option>
+                                                <option value="Product Information">Product Information</option>
+                                                <option value="Bulk/Wholesale Orders">Bulk/Wholesale Orders</option>
+                                                <option value="Dealership / Distributor Inquiry">Dealership / Distributor Inquiry</option>
+                                                <option value="Carrying & Forwarding Inquiry">Carrying & Forwarding Inquiry</option>
+                                                <option value="Feedback / Suggestions">Feedback / Suggestions</option>
+                                                <option value="Support / Complaint">Support / Complaint</option>
+                                                <option value="Careers / Job Opportunities">Careers / Job Opportunities</option>
                                             </select>
                                         </fieldset>
                                     </div>
@@ -1394,7 +1281,6 @@
                 </div>
             </div>
         </section><!-- /.Section contact us -->
-
         <!-- Section partner -->
         <section class="s-partner style-2 has-img-item pb-53-0-75">
             <div class="tf-container w-1780">
@@ -1407,7 +1293,6 @@
                                         <div class="slide-partner">
                                             <div class="image">
                                                 <a href="#">
-
                                                     <img src="{{ asset('images/partner/wide-open.png') }}" alt="" class="lazyload">
                                                 </a>
                                             </div>
@@ -1415,7 +1300,6 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="slide-partner">
-
                                             <div class="image">
                                                 <a href="#">
                                                     <img src="{{ asset('images/partner/sollio.png') }}" alt="" class="lazyload">
@@ -1427,7 +1311,6 @@
                                         <div class="slide-partner">
                                             <div class="image">
                                                 <a href="#">
-
                                                     <img src="{{ asset('images/partner/syngenta.png') }}" alt="" class="lazyload">
                                                 </a>
                                             </div>
@@ -1436,7 +1319,6 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="slide-partner">
-
                                             <div class="image">
                                                 <a href="#">
                                                     <img src="{{ asset('images/partner/strachan-valley.png') }}" alt="" class="lazyload">
@@ -1447,8 +1329,6 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="slide-partner">
-
-
                                             <div class="image">
                                                 <a href="#">
                                                     <img src="{{ asset('images/partner/new-holland.png') }}" alt="" class="lazyload">
@@ -1459,7 +1339,6 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="slide-partner">
-
                                             <div class="image">
                                                 <a href="#">
                                                     <img src="{{ asset('images/partner/stony-field.png') }}" alt="" class="lazyload">
@@ -1477,5 +1356,4 @@
                 <img src="{{ asset('images/item/page-title-top.png') }}" alt="" />
             </div>
         </section><!-- /.Section partner -->
-
 @endsection

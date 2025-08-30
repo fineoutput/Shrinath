@@ -177,6 +177,7 @@ class BlockController extends Controller
             ]);
 
             return [
+                'id' => $product->id,
                 'name' => $product->name,
                 'price' => $product->price,
                 'mrp' => $product->mrp,

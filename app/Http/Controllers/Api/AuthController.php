@@ -1297,8 +1297,6 @@ public function stockCol()
             ->where('entry_date', '<=', Carbon::now()->subDays(7)->toDateString())
             ->first();
 
-            // return $oldUser;
-
         if ($oldUser) {
             return response()->json([
                 'message' => 'Please login first',
@@ -1309,20 +1307,34 @@ public function stockCol()
         // If device_id already exists, return existing data
         $existingUser = User::where('device_id', $request->device_id)->first();
 
-        // $existingUser = new User;
-        $existingUser->device_id = $request->device_id;
-        $existingUser->fcm_token = $request->fcm_token ?? null;
-        $existingUser->entry_date = Carbon::now();
-        $existingUser->status = Carbon::now();
-        $existingUser->save();
+        if ($existingUser) {
+            return response()->json([
+                'message' => 'Device ID already exists, not saved again.',
+                'status' => 200,
+                'data' => [
+                    'device_id' => $existingUser->device_id,
+                    'fcm_token' => $existingUser->fcm_token,
+                    'status' => 4,
+                    'entry_date' => $existingUser->entry_date,
+                ]
+            ], 200);
+        }
+
+        // Save new user
+        $user = new User;
+        $user->device_id = $request->device_id;
+        $user->fcm_token = $request->fcm_token ?? null;
+        $user->entry_date = Carbon::now();
+        $user->status = Carbon::now();
+        $user->save();
 
         return response()->json([
             'message' => 'Device info saved successfully.',
             'status' => 200,
             'data' => [
-                'device_id' => $existingUser->device_id,
-                'fcm_token' => $existingUser->fcm_token,
-                'entry_date' => $existingUser->entry_date,
+                'device_id' => $user->device_id,
+                'fcm_token' => $user->fcm_token,
+                'entry_date' => $user->entry_date,
             ]
         ], 200);
     }

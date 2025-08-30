@@ -1068,7 +1068,20 @@ class AuthController extends Controller
             'fcm_token' => 'nullable|string',
         ]);
 
-        // 🔍 Check if device_id already exists
+        $oldUser = User::where('device_id', $request->device_id)
+            ->where('status', 4)
+            ->where('entry_date', '<=', Carbon::now()->subDays(7)->toDateString())
+            ->whereNotNull('device_id')
+            ->first();
+
+        if ($oldUser) {
+            return response()->json([
+                'message' => 'Please login first',
+                'status' => 208
+            ], 200);
+        }
+
+        // If device_id already exists, return existing data
         $existingUser = User::where('device_id', $request->device_id)->first();
 
         if ($existingUser) {
@@ -1084,7 +1097,7 @@ class AuthController extends Controller
             ], 200);
         }
 
-        // ➕ Create new user with this device_id
+        // Save new user
         $user = new User;
         $user->device_id = $request->device_id;
         $user->fcm_token = $request->fcm_token ?? null;
@@ -1101,6 +1114,7 @@ class AuthController extends Controller
             ]
         ], 200);
     }
+
 
     
 }

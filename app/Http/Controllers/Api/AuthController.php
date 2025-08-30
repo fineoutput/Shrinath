@@ -1237,6 +1237,7 @@ public function stockCol()
         $token = $tokenResult->plainTextToken;     
 
         $user->auth = $token;
+        $user->status = 4;
         $user->save();
 
         return response()->json([
@@ -1319,6 +1320,7 @@ public function stockCol()
         $user->device_id = $request->device_id;
         $user->fcm_token = $request->fcm_token ?? null;
         $user->entry_date = Carbon::now();
+        $user->status = Carbon::now();
         $user->save();
 
         return response()->json([

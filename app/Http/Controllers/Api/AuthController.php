@@ -339,7 +339,202 @@ class AuthController extends Controller
     }
 
 
-    public function stockCol()
+//     public function stockCol()
+// {
+//     $categories = StockCol::orderBy('name')
+//         ->orderBy('time', 'ASC')
+//         ->orderBy('id', 'ASC')
+//         ->get();
+
+//     $sniPrices = SniPrice::all()->keyBy('name');
+//     $result = [];
+
+//     foreach ($categories as $r) {
+//         $r->time = Carbon::parse($r->time);
+//     }
+
+//     $today = Carbon::now()->toDateString();
+
+//     $todayRecords = $categories->filter(function ($r) use ($today) {
+//         return $r->time->toDateString() === $today;
+//     });
+
+//     if ($todayRecords->isEmpty()) {
+//         return response()->json([
+//             'status' => 200,
+//             'message' => 'No records found for today',
+//             'data' => [],
+//         ]);
+//     }
+
+//     // Get JEERAA2_1D previous day's close
+//     $jeeraa2_1d_yesterday_close = null;
+//     $jeeraa2All = $categories->where('name', 'JEERAA2_1D')->sortBy('time')->values();
+
+//     $jeeraa2_1d_yesterday_record = $jeeraa2All->filter(function ($r) use ($today) {
+//         return $r->time->toDateString() < $today;
+//     })->last();
+
+//     if ($jeeraa2_1d_yesterday_record) {
+//         $jeeraa2_1d_yesterday_close = floatval($jeeraa2_1d_yesterday_record->close);
+//     }
+
+//     $groupedByName = $todayRecords->groupBy('name');
+
+//     foreach ($groupedByName as $name => $records) {
+//         $records = $records->sortBy('time')->values(); 
+//         $firstOpen = floatval($records->first()->open);
+//         $maxHigh = $records->max('high');
+//         $minLow = $records->min('low');
+//         $lastRecord = $records->last(); 
+
+//         $allRecordsForName = $categories->where('name', $name)->sortBy('time')->values();
+//         $previousCloseRecord = $allRecordsForName->filter(function ($r) use ($today) {
+//             return $r->time->toDateString() < $today;
+//         })->last();
+//         $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
+
+//         $sniPrice = $sniPrices[$name]->price ?? null;
+//         $sniCurrentPrice = $sniPrices[$name]->current_price ?? null;
+
+//         $percentageChange = null;
+//         if ($name === 'JEERA2' && $jeeraa2_1d_yesterday_close !== null && $jeeraa2_1d_yesterday_close > 0) {
+//             $percentageChange = (($lastRecord->open - $jeeraa2_1d_yesterday_close) / $jeeraa2_1d_yesterday_close) * 100;
+//         } elseif ($previousClose !== null && $previousClose > 0) {
+//             $percentageChange = (($lastRecord->open - $previousClose) / $previousClose) * 100;
+//         }
+
+//         $SniPriceDiff = $sniPrice - $sniCurrentPrice ?? null;
+
+//         $dPre = null;
+//         if ($sniCurrentPrice !== null && $sniCurrentPrice > 0) {
+//             $dPre = $sniCurrentPrice - $firstOpen;  
+//         }
+
+//         $marketCloseTime = Carbon::parse($today . ' 17:00:00');
+//         $closeRecord = $records->first(function ($r) use ($marketCloseTime) {
+//             return $r->time->format('H:i') === '17:00';
+//         });
+
+//         $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
+
+//         $result[] = [
+//             'id' => $lastRecord->id,
+//             'stock_id' => $lastRecord->stock_id,
+//             'app_name' => $lastRecord->Stock->app_name ?? '',
+//             'ticker' => $lastRecord->ticker,
+//             'name' => $lastRecord->name,
+//             'exchange' => $lastRecord->exchange,
+//             'interval' => $lastRecord->interval_at,
+//             'time' => $lastRecord->time,
+//             'date' => $lastRecord->time_2,
+//             'open' => number_format($firstOpen, 2, '.', ''),
+//             'close' => $lastRecord->close,
+//             'current_price' => number_format(floatval($lastRecord->open), 2, '.', ''),
+//             'high' => $maxHigh,
+//             'low' => $minLow,
+//             'volume' => $lastRecord->volume,
+//             'quote' => $lastRecord->quote,
+//             'base' => $lastRecord->base,
+//             'previous_close' => $name === 'JEERA2' ? $jeeraa2_1d_yesterday_close : $previousClose,
+//             'percentage_change_from_previous' => $percentageChange !== null
+//                 ? number_format($percentageChange, 2, '.', '')
+//                 : null,
+//             'd_pre' => $dPre,
+//             'SniPriceDiff' => $SniPriceDiff,
+//         ];
+//     }
+
+//     // Special case override for JEERA2's close from JEERAA2_1D
+//     $jeeraa2_1d_close = null;
+//     foreach ($result as $item) {
+//         if ($item['name'] === 'JEERAA2_1D') {
+//             $jeeraa2_1d_close = $item['close'];
+//             break;
+//         }
+//     }
+
+//     $jeeraIndex = null;
+//     foreach ($result as $index => $item) {
+//         if ($item['name'] === 'JEERA2') {
+//             $jeeraIndex = $index;
+//             break;
+//         }
+//     }
+
+//     if ($jeeraIndex === null && $jeeraa2_1d_close !== null) {
+//         $latestJeeraRecord = $categories->where('name', 'JEERA2')->sortByDesc('time')->first();
+
+//         if ($latestJeeraRecord) {
+//             $result[] = [
+//                 'id' => $latestJeeraRecord->id,
+//                 'stock_id' => $latestJeeraRecord->stock_id,
+//                 'app_name' => $latestJeeraRecord->Stock->app_name ?? '',
+//                 'ticker' => $latestJeeraRecord->ticker,
+//                 'name' => 'JEERA2',
+//                 'exchange' => $latestJeeraRecord->exchange,
+//                 'interval' => $latestJeeraRecord->interval_at,
+//                 'time' => $latestJeeraRecord->time,
+//                 'date' => $latestJeeraRecord->time_2,
+//                 'open' => number_format(floatval($latestJeeraRecord->open), 2, '.', ''),
+//                 'close' => $jeeraa2_1d_close,
+//                 'current_price' => number_format(floatval($latestJeeraRecord->open), 2, '.', ''),
+//                 'high' => $latestJeeraRecord->high,
+//                 'low' => $latestJeeraRecord->low,
+//                 'volume' => $latestJeeraRecord->volume,
+//                 'quote' => $latestJeeraRecord->quote,
+//                 'base' => $latestJeeraRecord->base,
+//                 'previous_close' => $jeeraa2_1d_yesterday_close,
+//                 'percentage_change_from_previous' => ($jeeraa2_1d_yesterday_close > 0)
+//                     ? number_format((($latestJeeraRecord->open - $jeeraa2_1d_yesterday_close) / $jeeraa2_1d_yesterday_close) * 100, 2, '.', '')
+//                     : null,
+//                 'd_pre' => null,
+//                 'SniPriceDiff' => null,
+//             ];
+//         }
+//     } elseif ($jeeraIndex !== null && $jeeraa2_1d_close !== null) {
+//         $result[$jeeraIndex]['close'] = $jeeraa2_1d_close;
+//     }
+
+//     $specialOrder = [
+//         'JEERA', 'JEERA2',
+//         'DHANIYA', 'DHANIYA2',
+//         'TMC', 'TMC2',
+//         'GUARSEED', 'GUARSEED2',
+//         'GUARGUM', 'GUARGUM2',
+//         'CASTOR', 'CASTOR2',
+//         'GOLD', 'GOLD2',
+//         'SILVER', 'SILVER2',
+//         'NATURALGAS',
+//         'CRUDEOIL',
+//         'USDINR',
+//         'NIFTY',
+//         'SENSEX',
+//     ];
+
+//     $collection = collect($result);
+
+//     $normalItems = $collection->filter(function ($item) use ($specialOrder) {
+//         return !in_array($item['name'], $specialOrder);
+//     });
+
+//     $specialItems = $collection->filter(function ($item) use ($specialOrder) {
+//         return in_array($item['name'], $specialOrder);
+//     })->sortBy(function ($item) use ($specialOrder) {
+//         return array_search($item['name'], $specialOrder);
+//     });
+
+//     $final = $normalItems->merge($specialItems)->values();
+
+//     return response()->json([
+//         'status' => 200,
+//         'message' => 'Top 2 latest stock entries for today',
+//         'data' => $final,
+//     ]);
+// }
+
+
+public function stockCol()
 {
     $categories = StockCol::orderBy('name')
         ->orderBy('time', 'ASC')
@@ -355,16 +550,35 @@ class AuthController extends Controller
 
     $today = Carbon::now()->toDateString();
 
+    // Filter today's records
     $todayRecords = $categories->filter(function ($r) use ($today) {
         return $r->time->toDateString() === $today;
     });
 
+    // 🛠️ If no records today, fallback to most recent past date
     if ($todayRecords->isEmpty()) {
-        return response()->json([
-            'status' => 200,
-            'message' => 'No records found for today',
-            'data' => [],
-        ]);
+        $previousAvailableDates = $categories->pluck('time')->map(function ($item) {
+            return Carbon::parse($item)->toDateString();
+        })->unique()->sortDesc()->values();
+
+        $latestAvailableDate = $previousAvailableDates->first(function ($date) use ($today) {
+            return $date < $today;
+        });
+
+        if (!$latestAvailableDate) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'No past records available',
+                'data' => [],
+            ]);
+        }
+
+        $todayRecords = $categories->filter(function ($r) use ($latestAvailableDate) {
+            return $r->time->toDateString() === $latestAvailableDate;
+        });
+
+        // Use this date as the new reference point
+        $today = $latestAvailableDate;
     }
 
     // Get JEERAA2_1D previous day's close
@@ -528,10 +742,13 @@ class AuthController extends Controller
 
     return response()->json([
         'status' => 200,
-        'message' => 'Top 2 latest stock entries for today',
+        'message' => 'Top 2 latest stock entries (fallback to latest available if today is off)',
         'data' => $final,
+        'date_used' => $today
     ]);
 }
+
+
 
 //   public function stockCol()
 //     {

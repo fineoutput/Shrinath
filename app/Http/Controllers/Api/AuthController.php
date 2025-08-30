@@ -1309,8 +1309,7 @@ public function stockCol()
         // If device_id already exists, return existing data
         $existingUser = User::where('device_id', $request->device_id)->first();
 
-
-        $existingUser = new User;
+        // $existingUser = new User;
         $existingUser->device_id = $request->device_id;
         $existingUser->fcm_token = $request->fcm_token ?? null;
         $existingUser->entry_date = Carbon::now();

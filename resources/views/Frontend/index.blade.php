@@ -29,7 +29,7 @@
                                     The paramount doctrine of the economic and technological euphoria of recent <br>
                                     decades has been that everything depends on innovation.
                                 </p>
-                                <a href="our-services.html" class="tf-btn btn-view bg-white tf-fade-bottom fade-item-5">
+                                <a href="#" class="tf-btn btn-view bg-white tf-fade-bottom fade-item-5">
                                     <span class="text-style cl-primary">
                                         See Our Services
                                     </span>
@@ -63,7 +63,7 @@
                                     The paramount doctrine of the economic and technological euphoria of recent <br>
                                     decades has been that everything depends on innovation.
                                 </p>
-                                <a href="our-services.html" class="tf-btn btn-view bg-white tf-fade-bottom fade-item-5">
+                                <a href="#" class="tf-btn btn-view bg-white tf-fade-bottom fade-item-5">
                                     <span class="text-style cl-primary">
                                         See Our Services
                                     </span>
@@ -104,7 +104,7 @@
                     <div class="icon mb-30 hover-icon style-circle">
                         <img src="{{ asset('Front/icons/tomato.png') }}" alt="">
                     </div>
-                    <a href="our-commitments.html" class="caption mb-17 fw-6  font-worksans hover-text-secondary">
+                    <a href="#" class="caption mb-17 fw-6  font-worksans hover-text-secondary">
                         100% Organic Products
                     </a>
                     <p class="text font-nunito">
@@ -116,7 +116,7 @@
                     <div class="icon mb-30 style-circle hover-icon img-hover-2">
                         <i class="icon-tractor22"></i>
                     </div>
-                    <a href="our-commitments.html" class="caption mb-17 fw-6  font-worksans hover-text-secondary">
+                    <a href="#" class="caption mb-17 fw-6  font-worksans hover-text-secondary">
                         Absolute Quality
                     </a>
                     <p class="text font-nunito">
@@ -128,7 +128,7 @@
                     <div class="icon mb-30 hover-icon style-circle">
                         <i class="fa-solid fa-leaf"></i>
                     </div>
-                    <a href="our-commitments.html" class="caption mb-17 fw-6  font-worksans hover-text-secondary">
+                    <a href="#" class="caption mb-17 fw-6  font-worksans hover-text-secondary">
                         Environmentally Friendly
                     </a>
                     <p class="text font-nunito">
@@ -140,7 +140,7 @@
                     <div class="icon mb-30 hover-icon style-circle">
                         <img src="{{ asset('Front/icons/dollar-circle.png') }}" alt="">
                     </div>
-                    <a href="our-commitments.html" class="caption mb-17 fw-6  font-worksans hover-text-secondary">
+                    <a href="#" class="caption mb-17 fw-6  font-worksans hover-text-secondary">
                         Reasonable Price
                     </a>
                     <p class="text font-nunito">
@@ -196,7 +196,7 @@
                                     </p>
                                 </div>
                                 <div class="bot flex justify-center">
-                                    <a href="about-us.html" class="tf-btn ">
+                                    <a href="#" class="tf-btn ">
                                         <span class="text-style ">
                                             More About Us
                                         </span>
@@ -283,7 +283,7 @@
                     igula, pulvinar ultrices justo sed, bibendum lobortis nibh. Pellentesque
                     mattis eros sit amet lorem tristique faucibus.
                 </p>
-                <a href="our-services.html" class="tf-btn ">
+                <a href="#" class="tf-btn ">
                     <span class="text-style ">
                         See Our Services
                     </span>
@@ -327,7 +327,7 @@
                                     </div>
                                 </div>
                                 <div class="content">
-                                    <a href="service-detail.html"
+                                    <a href="#"
                                         class="title fs-23 fw-6 font-worksans hover-text-secondary">
                                         {{$value->title ?? ''}}
                                     </a>
@@ -336,7 +336,7 @@
                                         nibh sit amet
                                         commodo nulla.
                                     </p>
-                                    <a href="our-services.html" class="tf-btn-read text-white hover-text-secondary">Read
+                                    <a href="#" class="tf-btn-read text-white hover-text-secondary">Read
                                         More</a>
                                 </div>
                             </div>
@@ -376,7 +376,7 @@
                                                     <div class="icon style-circle hover-icon">
                                                         <i class="icon-chemical"></i>
                                                     </div>
-                                                    <a href="our-commitments.html"
+                                                    <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
                                                         Minimal <br> Chemicals Used
                                                     </a>
@@ -388,7 +388,7 @@
                                                     <div class="icon style-circle hover-icon">
                                                         <i class="icon-worm"></i>
                                                     </div>
-                                                    <a href="our-commitments.html"
+                                                    <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
                                                         Minimal <br> Chemicals Used
                                                     </a>
@@ -400,7 +400,7 @@
                                                     <div class="icon style-circle hover-icon">
                                                         <i class="icon-disposal"></i>
                                                     </div>
-                                                    <a href="our-commitments.html"
+                                                    <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
                                                         All Organic <br> Waste Reused
                                                     </a>
@@ -412,7 +412,7 @@
                                                     <div class="icon style-circle hover-icon">
                                                         <i class="icon-light-bulb"></i>
                                                     </div>
-                                                    <a href="our-commitments.html"
+                                                    <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
                                                         Do Not Use <br> Artificial
                                                         Light
@@ -425,7 +425,7 @@
                                                     <div class="icon style-circle hover-icon">
                                                         <i class="icon-water-drops"></i>
                                                     </div>
-                                                    <a href="our-commitments.html"
+                                                    <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
                                                         Borehole <br> Sourced Water
                                                     </a>
@@ -438,7 +438,7 @@
 
                             <div class="bot flex justify-center">
 
-                                <a href="our-commitments.html" class="tf-btn scale-50 gap-37">
+                                <a href="#" class="tf-btn scale-50 gap-37">
                                     <span class="text-style ">
                                         See More Our Commitment
                                     </span>
@@ -477,7 +477,7 @@
                             completely natural way.
                         </p>
                     </div>
-                    <a href="about-us.html" class="tf-btn bg-white">
+                    <a href="#" class="tf-btn bg-white">
                         <span class="text-style cl-primary">
                             Read More
                         </span>
@@ -607,7 +607,7 @@
 
                                         <i class="icon-farmer-2"></i>
                                     </div>
-                                    <a href="service-detail.html" class="title fw-6 font-worksans hover-text-4">
+                                    <a href="#" class="title fw-6 font-worksans hover-text-4">
                                         Farmers
                                     </a>
                                     <p class="sub font-snowfall">
@@ -618,7 +618,7 @@
                                         by equipping them with affordable and 100%
                                         organic agriculture.
                                     </p>
-                                    <a href="our-services.html" class="tf-btn-read hover-text-4">Read More</a>
+                                    <a href="#" class="tf-btn-read hover-text-4">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -633,7 +633,7 @@
 
                                         <i class="icon-customer"></i>
                                     </div>
-                                    <a href="service-detail.html" class="title fw-6 font-worksans hover-text-4">
+                                    <a href="#" class="title fw-6 font-worksans hover-text-4">
                                         Consumers
                                     </a>
                                     <p class="sub font-snowfall">
@@ -644,7 +644,7 @@
                                         by equipping them with affordable and 100%
                                         organic agriculture.
                                     </p>
-                                    <a href="our-services.html" class="tf-btn-read hover-text-4">Read More</a>
+                                    <a href="#" class="tf-btn-read hover-text-4">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -657,7 +657,7 @@
 
                                         <i class="icon-farm"></i>
                                     </div>
-                                    <a href="service-detail.html" class="title fw-6 font-worksans hover-text-4">
+                                    <a href="#" class="title fw-6 font-worksans hover-text-4">
                                         Environment
                                     </a>
                                     <p class="sub font-snowfall">
@@ -668,7 +668,7 @@
                                         by equipping them with affordable and 100%
                                         organic agriculture.
                                     </p>
-                                    <a href="our-services.html" class="tf-btn-read hover-text-4">Read More</a>
+                                    <a href="#" class="tf-btn-read hover-text-4">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -733,7 +733,7 @@
                                                 <p class="sub font-farmhouse text-upper">
                                                     Agriculture - farm
                                                 </p>
-                                                <a href="portfolio-details.html"
+                                                <a href="#"
                                                     class="title fs-23 font-worksans fw-6 hover-text-secondary">{{ $value->title ?? ''}}</a>
                                                 <div class="bot">
                                                     <p class="text font-nunito">
@@ -743,7 +743,7 @@
                                                         nibh <br> vehicula fermentum. natoque
                                                         penatibus.
                                                     </p>
-                                                    <a href="portfolio-style-1.html" class="btn-read icon style-circle">
+                                                    <a href="#" class="btn-read icon style-circle">
                                                         <i class="icon-arrow_right"></i>
                                                     </a>
                                                 </div>
@@ -760,7 +760,7 @@
                         <div class="col-lg-12">
                             <div class="bot">
                                 <div class="swiper-pagination style-1 pagination-s-project"></div>
-                                <a href="portfolio-style-1.html" class="tf-btn-read hover-text-4">View All Latest
+                                <a href="#" class="tf-btn-read hover-text-4">View All Latest
                                     Projects</a>
                             </div>
                         </div>
@@ -1076,7 +1076,7 @@
                                         now!
                                     </p>
 
-                                    <a href="contact-us.html" class="tf-btn bg-white scale-40 wow fadeInUp"
+                                    <a href="#" class="tf-btn bg-white scale-40 wow fadeInUp"
                                         data-wow-delay="0s">
                                         <span class="text-style cl-primary">
                                             Contact Us Today
@@ -1188,7 +1188,7 @@
                                                     </li>
                                                 </ul>
                                                 <h3 class="title fw-6">
-                                                    <a href="blog-single.html">
+                                                    <a href="#">
                                                         {{ $value->title ?? ''}}
                                                     </a>
                                                 </h3>
@@ -1196,7 +1196,7 @@
                                                       {!! $value->description !!}
                                                 </p>
                                                 <div class="bot">
-                                                    <a href="blog-single.html" class="tf-btn-read hover-text-4">Continue
+                                                    <a href="#" class="tf-btn-read hover-text-4">Continue
                                                         Reading</a>
                                                 </div>
                                             </div>
@@ -1253,7 +1253,7 @@
                                 commodo.
                                 Proin vehicula massa id congue quam, ex libero sodales ex, cursus euismod purus.
                             </p>
-                            <a href="our-farmers.html" class="tf-btn-read text-white hover-text-secondary">
+                            <a href="#" class="tf-btn-read text-white hover-text-secondary">
                                 View All The Farmers
                             </a>
                         </div>

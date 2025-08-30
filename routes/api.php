@@ -25,6 +25,7 @@ Route::get('/sliders', [BlockController::class, 'getAllSliders']);
 Route::get('/sliders1', [BlockController::class, 'getAllSliders1']);
 Route::get('/categories', [BlockController::class, 'getAllCategories']);
 Route::post('/products-by-category', [BlockController::class, 'getProductsByCategory']);
+Route::post('/products-by-id', [BlockController::class, 'getProductById']);
 Route::get('/depots', [BlockController::class, 'getAllDepots']);
 
 Route::post('get-stock-col/{name}', [AuthController::class, 'test']);

@@ -196,6 +196,55 @@ class BlockController extends Controller
     }
 
 
+ public function getProductById(Request $request)
+    {
+        $productId = $request->input('product_id');
+
+        if (!$productId) {
+            return response()->json([
+                'status' => 201,
+                'message' => 'product_id is required',
+                'data' => []
+            ], 422);
+        }
+
+        $product = Products::find($productId);
+
+        if (!$product) {
+            return response()->json([
+                'status' => 201,
+                'message' => 'Product not found',
+                'data' => []
+            ], 404);
+        }
+
+        $images = array_filter([
+            $product->image_1 ? asset($product->image_1) : null,
+            $product->image_2 ? asset($product->image_2) : null,
+            $product->image_3 ? asset($product->image_3) : null,
+            $product->image_4 ? asset($product->image_4) : null,
+        ]);
+
+        $formattedProduct = [
+            'id' => $product->id,
+            'name' => $product->name,
+            'price' => $product->price,
+            'mrp' => $product->mrp,
+            'weight' => $product->weight,
+            'category_id' => $product->category_id,
+            'description' => strip_tags($product->description),
+            'status' => $product->status,
+            'images' => array_values($images),
+        ];
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Product retrieved successfully',
+            'data' => $formattedProduct
+        ]);
+    }
+
+
     public function getAllDepots()
     {
         $depots = Depots::latest()->get();

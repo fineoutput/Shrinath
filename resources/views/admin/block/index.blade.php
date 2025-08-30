@@ -49,6 +49,8 @@
                             <th>Title</th>
                             <th>Description</th>
                             <th>Image</th>
+                            <th>Profile Image</th>
+                            <th>Video</th>
                             <th width="180px">Action</th>
                         </tr>
                     </thead>
@@ -63,6 +65,26 @@
                                     <img src="{{ asset($img) }}" alt="Block Image" style="height: 80px; width: auto; margin: 5px; border:1px solid #ddd;">
                             @endforeach
                         </td>
+
+                          <td>
+            @if($value->profile_image)
+                <img src="{{ asset($value->profile_image) }}" alt="Profile Image" style="height: 80px; width: auto; border:1px solid #ddd;">
+            @else
+                N/A
+            @endif
+        </td>
+
+        <!-- Video -->
+        <td>
+            @if($value->video)
+                <video width="150" controls>
+                    <source src="{{ asset($value->video) }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            @else
+                N/A
+            @endif
+        </td>
 
                         <td width="100px">
                             <a href="{{ route('block.edit', ['id' => $value->id]) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit block">

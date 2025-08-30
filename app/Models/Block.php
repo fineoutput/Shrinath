@@ -12,6 +12,8 @@ class Block extends Model
         'title', 
         'description',
         'image',
+        'video',
+        'profile_image',
     ];
 }
 

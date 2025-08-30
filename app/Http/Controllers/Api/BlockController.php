@@ -14,7 +14,7 @@ use App\Models\Depots;
 class BlockController extends Controller
 {
     
-  public function getBlock()
+ public function getBlock()
     {
         $blocks = Block::latest()->get();
 
@@ -27,22 +27,28 @@ class BlockController extends Controller
         }
 
         $formattedBlocks = $blocks->map(function ($block) {
+            // Handle multiple images
             $images = [];
-
             $imageArray = json_decode($block->image, true);
 
             if (is_array($imageArray)) {
                 $images = array_map(function ($img) {
                     return asset($img);
                 }, $imageArray);
-            } else {
-                $images[] = asset($block->image);
             }
+
+            // Handle profile image
+            $profileImage = $block->profile_image ? asset($block->profile_image) : null;
+
+            // Handle video
+            $video = $block->video ? asset($block->video) : null;
 
             return [
                 'title' => $block->title,
                 'description' => strip_tags($block->description),
                 'images' => $images,
+                'profile_image' => $profileImage,
+                'video' => $video,
                 'created_at' => $block->created_at->toDateTimeString(),
             ];
         });
@@ -53,7 +59,6 @@ class BlockController extends Controller
             'data' => $formattedBlocks
         ]);
     }
-
 
     public function getAllSliders()
     {

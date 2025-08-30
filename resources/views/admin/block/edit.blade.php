@@ -90,6 +90,45 @@
                                 </div>
                             @endif
 
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label>Upload New Profile Image</label>
+                                    <input type="file" name="profile_image" class="form-control" accept="image/*">
+                                    @error('profile_image') <div style="color:red">{{ $message }}</div> @enderror
+
+                                    @if($block->profile_image)
+                                        <div style="margin-top: 10px;">
+                                            <label>Existing Profile Image:</label><br>
+                                            <img src="{{ asset($block->profile_image) }}" alt="Profile Image" style="height: 100px; width: auto; border:1px solid #ddd;">
+                                            <br>
+                                            <label style="font-size: 12px;">
+                                                <input type="checkbox" name="remove_profile_image" value="1"> Remove Profile Image
+                                            </label>
+                                        </div>
+                                    @endif
+                                </div>
+
+                              <div class="col-sm-6">
+                                    <label>Upload New Video</label>
+                                    <input type="file" name="video" class="form-control" accept="video/*">
+                                    @error('video') <div style="color:red">{{ $message }}</div> @enderror
+
+                                    @if($block->video)
+                                        <div style="margin-top: 10px;">
+                                            <label>Existing Video:</label><br>
+                                            <video width="200" controls>
+                                                <source src="{{ asset($block->video) }}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                            <br>
+                                            <label style="font-size: 12px;">
+                                                <input type="checkbox" name="remove_video" value="1"> Remove Video
+                                            </label>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label>Description</label>
                                 <textarea name="description" class="form-control ckeditor">{{ old('description', $block->description) }}</textarea>

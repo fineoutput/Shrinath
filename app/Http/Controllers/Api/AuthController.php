@@ -1288,7 +1288,7 @@ public function stockCol()
         $oldUser = User::where('device_id', $request->device_id)
             ->where('status', 4)
             ->where('entry_date', '<=', Carbon::now()->subDays(7)->toDateString())
-            ->whereNotNull('device_id')
+            ->where('device_id', $request->device_id)
             ->first();
 
         if ($oldUser) {

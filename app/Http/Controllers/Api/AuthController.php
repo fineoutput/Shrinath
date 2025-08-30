@@ -1306,6 +1306,8 @@ public function stockCol()
 
         // If device_id already exists, return existing data
         $existingUser = User::where('device_id', $request->device_id)->first();
+        $existingUser->fcm_token = $request->fcm_token ?? null;
+        $existingUser->save();
 
         if ($existingUser) {
             return response()->json([

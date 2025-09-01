@@ -5,6 +5,16 @@
     .raat{
         display: none
     }
+    .box-icon-list.style-2 .box-icon .icon::after {
+    content: none !important;
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    background-color: var(--Primary);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(-45deg);
+}
 </style>
        <div class="page-title-home-2">
             <div class="swiper-container slider-home-2">
@@ -25,10 +35,10 @@
                                         src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
                                 </div>
                                 <p class="text font-nunito tf-fade-left fade-item-4">
-                                    From cumin to kasuri methi, from whole spices to authentic taste — Shreenath Spices delivers 
+                                    From cumin to kasuri methi, from whole spices to authentic taste — Shreenath Spices delivers <br> 
                                     purity, aroma, and flavor straight from the mandi to your kitchen.
                                 </p>
-                                <a href="#" class="tf-btn btn-view bg-white tf-fade-bottom fade-item-5">
+                                <a href="{{route('our_products')}}" class="tf-btn btn-view bg-white tf-fade-bottom fade-item-5">
                                     <span class="text-style cl-primary">
                                         Explore Products
                                     </span>
@@ -96,7 +106,7 @@
             <div class="benefit-list ">
                 <div class="box-icon ic-hover">
                     <div class="icon mb-30 hover-icon style-circle">
-                        <img src="{{ asset('Front/icons/tomato.png') }}" alt="">
+                        <img src="{{ asset('Front/icons/precision-agriculture.png') }}" alt="">
                     </div>
                     <a href="#" class="caption mb-17 fw-6 font-worksans hover-text-secondary">
                          Modern Processing
@@ -107,7 +117,7 @@
                 </div>
                 <div class="box-icon ic-hover">
                     <div class="icon mb-30 style-circle hover-icon img-hover-2">
-                        <i class="icon-tractor22"></i>
+                        <img src="{{ asset('Front/icons/achievement.png') }}" alt="">
                     </div>
                     <a href="#" class="caption mb-17 fw-6 font-worksans hover-text-secondary">
                         Absolute Quality
@@ -118,7 +128,7 @@
                 </div>
                 <div class="box-icon ic-hover">
                     <div class="icon mb-30 hover-icon style-circle">
-                        <i class="fa-solid fa-leaf"></i>
+                        <img src="{{ asset('Front/icons/save-the-world.png') }}" alt="">
                     </div>
                     <a href="#" class="caption mb-17 fw-6 font-worksans hover-text-secondary">
                         Environmentally Friendly
@@ -129,7 +139,7 @@
                 </div>
                 <div class="box-icon ic-hover">
                     <div class="icon mb-30 hover-icon style-circle">
-                        <img src="{{ asset('Front/icons/dollar-circle.png') }}" alt="">
+                        <img src="{{ asset('Front/icons/hand (1).png') }}" alt="">
                     </div>
                     <a href="#" class="caption mb-17 fw-6 font-worksans hover-text-secondary">
                        Reasonable Price
@@ -199,7 +209,7 @@
                         <div class="wg-counter style-4">
                             <div class="counter-item">
                                 <div class="counter">
-                                    <div id="odometer" class="odometer fs-65 style-4">6</div>
+                                    <div class="odometer fs-65 style-4">6+</div>
                                 </div>
                                 <p class="title font-worksans fw-5">
                                     Years of Legacy
@@ -210,7 +220,7 @@
                             </div>
                             <div class="counter-item">
                                 <div class="counter">
-                                    <div class="odometer fs-65 style-4-2">8</div>
+                                    <div class="odometer fs-65 style-4-2">8+</div>
                                 </div>
                                 <p class="title font-worksans fw-5">
                                     Depots Across India
@@ -221,10 +231,32 @@
                             </div>
                             <div class="counter-item">
                                 <div class="counter">
-                                    <div class="odometer fs-65 style-4-3">350</div>
+                                    <div class="odometer fs-65 style-4-3">350+</div>
                                 </div>
                                 <p class="title font-worksans fw-5">
                                     Happy Customers
+                                </p>
+                                <div class="icon-img">
+                                    <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="counter-item">
+                                <div class="counter">
+                                    <div class="odometer fs-65 style-4-3">2+</div>
+                                </div>
+                                <p class="title font-worksans fw-5">
+                                    Processing Units
+                                </p>
+                                <div class="icon-img">
+                                    <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="counter-item">
+                                <div class="counter">
+                                    <div class="odometer fs-65 style-4-3">1500+</div>
+                                </div>
+                                <p class="title font-worksans fw-5">
+                                   Farmers Connected
                                 </p>
                                 <div class="icon-img">
                                     <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
@@ -255,7 +287,9 @@
                     </p>
                 </div>
                 <p class="text">
-                    We Use Modern Processing: By adopting clean, efficient, and safe methods, we ensure every product retains its natural aroma and quality. Making Healthy Foods: Every product is processed with care and hygiene to deliver authentic taste, nutrition, and long-lasting freshness.
+                  ✅  <b>We Use Modern Processing:</b> By adopting clean, efficient, and safe methods, we ensure every product retains its natural aroma and quality. <br> <br>
+
+                    ✅ <b>Making Healthy Foods:</b> Every product is processed with care and hygiene to deliver authentic taste, nutrition, and long-lasting freshness.
                 </p>
                 <a href="#" class="tf-btn ">
                     <span class="text-style ">
@@ -345,7 +379,7 @@
                                             <li>
                                                 <div class="box-icon style-3 ic-hover wow fadeInUp" data-wow-delay="0s">
                                                     <div class="icon style-circle hover-icon">
-                                                        <i class="icon-chemical"></i>
+                                                         <img src="{{ asset('Front/icons/no-preservatives.png') }}" alt="">
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
@@ -357,7 +391,7 @@
                                                 <div class="box-icon style-3 ic-hover wow fadeInUp"
                                                     data-wow-delay="0.1s">
                                                     <div class="icon style-circle hover-icon">
-                                                        <i class="icon-worm"></i>
+                                                       <img src="{{ asset('Front/icons/aroma.png') }}" alt="">
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
@@ -369,7 +403,7 @@
                                                 <div class="box-icon style-3 ic-hover wow fadeInUp"
                                                     data-wow-delay="0.2s">
                                                     <div class="icon style-circle hover-icon">
-                                                        <i class="icon-disposal"></i>
+                                                         <img src="{{ asset('Front/icons/premium-quality.png') }}" alt="">
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
@@ -381,7 +415,7 @@
                                                 <div class="box-icon style-3 ic-hover wow fadeInUp"
                                                     data-wow-delay="0.3s">
                                                     <div class="icon style-circle hover-icon">
-                                                        <i class="icon-light-bulb"></i>
+                                                         <img src="{{ asset('Front/icons/safe.png') }}" alt="">
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
@@ -389,24 +423,13 @@
                                                     </a>
                                                 </div>
                                             </li>
-                                            <li>
-                                                <div class="box-icon style-3 ic-hover wow fadeInUp"
-                                                    data-wow-delay="0.4s">
-                                                    <div class="icon style-circle hover-icon">
-                                                        <i class="icon-water-drops"></i>
-                                                    </div>
-                                                    <a href="#"
-                                                        class="caption fw-5 font-worksans hover-text-4">
-                                                        Hygienically Packed
-                                                    </a>
-                                                </div>
-                                            </li>
+                                          
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="bot flex justify-center">
-                                <a href="#" class="tf-btn scale-50 gap-37">
+                                <a href="{{route('our_commitments')}}" class="tf-btn scale-50 gap-37">
                                     <span class="text-style ">
                                         See More About Our Commitment
                                     </span>
@@ -721,7 +744,7 @@
                                         mattis eros sit amet lorem tristique faucibus.
                                     </p>
                                 </div>
-                                <a href="{{route('out_products')}}" class="tf-btn scale-40">
+                                <a href="{{route('our_products')}}" class="tf-btn scale-40">
                                     <span class="text-style ">
                                         View All Products
                                     </span>
@@ -745,7 +768,7 @@
                                                 <div class="image">
                                                    <img src="{{ asset($value->image_1 ?? '') }}" data-src="{{ asset($value->image_1 ?? '') }}" alt="" class="lazyload">
                                                 </div>
-                                                <a href="{{route('out_products')}}"
+                                                <a href="{{route('our_products')}}"
                                                     class="name-product font-worksans hover-text-4">
                                                     {{ $value->name ?? ''}}
                                                 </a>

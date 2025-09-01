@@ -47,7 +47,7 @@ class HomeController extends Controller
         return view('Frontend/our_commitments')->withTitle('');
     }
 
-    public function out_products($category_id = null)
+    public function our_products($category_id = null)
     {
          $data['category'] = Category::orderBy('id', 'DESC')->where('status', 1)->get();
 
@@ -62,7 +62,7 @@ class HomeController extends Controller
 
         $data['selected_category_id'] = $category_id;
 
-        return view('Frontend.out_products', $data)->withTitle('');
+        return view('Frontend.our_products', $data)->withTitle('');
     }
 
 

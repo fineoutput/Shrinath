@@ -319,7 +319,7 @@
                                                 </ul> --}}
                                             </li>
                                             <li class="item has-child">
-                                                <a href="{{route('out_products')}}">Products</a>
+                                                <a href="{{route('our_products')}}">Products</a>
                                                 {{-- <ul class="sub-nav">
                                                     <li><a href="shop-products.html"><span>Shop Products</span></a></li>
                                                     <li><a href="shop-details.html"><span>Shop Details</span></a></li>
@@ -381,7 +381,7 @@
                                                 Get
                                             </p>
                                             <p class="number font-worksans">
-                                                <a target="_blank" href="{{ asset('Front/images/asdas.pdf') }}">Our Portfoli</a>
+                                                <a target="_blank" href="{{ asset('Front/images/asdas.pdf') }}">Our Portfolio</a>
                                             </p>
                                         </div>
                                     </div>
@@ -462,7 +462,7 @@
                                                     </ul> --}}
                                                 </li>
                                                 <li class="menu-item menu-item-has-children-mobile">
-                                                    <a class="item-menu-mobile" href="{{route('out_products')}}">
+                                                    <a class="item-menu-mobile" href="{{route('our_products')}}">
                                                         Products
                                                     </a>
                                                     {{-- <ul class="sub-menu-mobile">
@@ -589,7 +589,7 @@
                                                     
                                                 </li>
                                                 <li class="item has-child">
-                                                    <a href="{{route('out_products')}}">Products</a>
+                                                    <a href="{{route('our_products')}}">Products</a>
                                                     {{-- <ul class="sub-nav">
                                                         <li><a href="shop-products.html"><span>Shop Products</span></a></li>
                                                         <li><a href="shop-details.html"><span>Shop Details</span></a></li>
@@ -651,7 +651,7 @@
                                                 Get
                                             </p>
                                             <p class="number font-worksans">
-                                                <a target="_blank" href="{{ asset('Front/images/asdas.pdf') }}">Our Portfoli</a>
+                                                <a target="_blank" href="{{ asset('Front/images/asdas.pdf') }}">Our Portfolio</a>
                                             </p>
                                         </div>
                                         </div>

@@ -78,7 +78,7 @@
                                         <img src="{{ asset($value->image) }}" alt="">
                                     </div>
                                     <div class="content">
-                                        <a href="{{ route('out_products', $value->id) }}" class="name font-worksans fw-5 hover-text-4 {{ $selected_category_id == $value->id ? 'text-primary' : '' }}">
+                                        <a href="{{ route('our_products', $value->id) }}" class="name font-worksans fw-5 hover-text-4 {{ $selected_category_id == $value->id ? 'text-primary' : '' }}">
                                             {{ $value->category_name ?? '' }}
                                         </a>
                                     </div>

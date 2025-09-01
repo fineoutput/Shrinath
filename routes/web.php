@@ -53,7 +53,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('/');
     Route::get('about', [HomeController::class, 'about'])->name('about');
     Route::get('our_team', [HomeController::class, 'our_team'])->name('our_team');
-    Route::get('out_products/{category_id?}', [HomeController::class, 'out_products'])->name('out_products');
+    Route::get('our_products/{category_id?}', [HomeController::class, 'our_products'])->name('our_products');
     Route::get('prod_detail/{product_id}', [HomeController::class, 'prod_detail'])->name('prod_detail');
     Route::get('our_gallery', [HomeController::class, 'our_gallery'])->name('our_gallery');
     Route::get('blog', [HomeController::class, 'blog'])->name('blog');

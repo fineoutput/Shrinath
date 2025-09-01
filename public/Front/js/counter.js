@@ -11,7 +11,7 @@ if ($(".counter-scroll").length > 0) {
             if (isElementInViewport($(".odometer"))) {
                 setTimeout(function () {
                     $(".odometer.style-2").html(12980);
-                    $(".odometer.style-4").html(6);
+                    $(".odometer.style-4").html(6'+');
                     $(".odometer.style-4-2").html(8);
                     $(".odometer.style-4-3").html(350);
                 }, 0);

@@ -959,6 +959,8 @@ your recipes.
                 </div>
             </div>
         </section><!-- /.Section testimonial -->
+
+       
         <!-- Section happy farm -->
         <section class="s-happy-farm">
             <div class="bg-section">
@@ -1011,6 +1013,88 @@ your recipes.
                 </div>
             </div>
         </section><!-- /.Section happy farm -->
+
+         <section class="s-mission">
+                <div class="tf-container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="heading-section text-center">
+                                <p class="title text-anime-style-1">
+                                   Our Family, Our Spices, Our Pride
+                                </p>
+                                <p class="text font-snowfall fs-30 ">
+                                    Our Gallery
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tf-container w-1620">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <div class="swiper-container slider-gallery" style="margin-bottom: 0;">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="gallery-item img-hover wow fadeInUp" data-wow-delay="0s">
+                                            <div class="image hover-item">
+                                                <img class=" lazyload" src={{ asset('Front/images/widget/history-1.jpg') }}
+                                                    data-src={{ asset('Front/images/widget/history-1.jpg') }} alt="">
+                                            </div>
+                                            
+                                            <a href={{route('our_gallery')}} class="add-gallery">
+                                                From Farm to Factory – The Journey of Purity
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="gallery-item img-hover wow fadeInUp" data-wow-delay="0.1s">
+                                            <div class="image hover-item">
+                                                <img class=" lazyload" src={{ asset('Front/images/widget/history-2.jpg') }}
+                                                    data-src={{ asset('Front/images/widget/history-2.jpg') }} alt="">
+                                            </div>
+                                            <a href={{route('our_gallery')}} class="add-gallery">
+                                                Handpicked Cumin Seeds for the Finest Flavo
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="gallery-item img-hover wow fadeInUp" data-wow-delay="0.2s">
+                                            <div class="image hover-item">
+                                                <img class=" lazyload" src={{ asset('Front/images/widget/history-3.jpg') }}
+                                                    data-src={{ asset('Front/images/widget/history-3.jpg') }} alt="">
+                                            </div>
+                                            <a href={{route('our_gallery')}} class="add-gallery">
+                                                Naturally Sun-Dried Kasuri Methi
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="gallery-item img-hover wow fadeInUp" data-wow-delay="0.3s">
+                                            <div class="image hover-item">
+                                                <img class=" lazyload" src={{ asset('Front/images/widget/history-4.jpg') }}
+                                                    data-src={{ asset('Front/images/widget/history-4.jpg') }} alt="">
+                                            </div>
+                                            <a href={{route('our_gallery')}} class="add-gallery">
+                                                Sealed Freshness, Trusted Quality
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="s-img-item item-1">
+                    <div class="wg-exprerience text-center z-5 tf-rotate-back-and-forth">
+                        <p class="year">65</p>
+                        <p class="text">
+                            Years Of <br> Experience
+                        </p>
+                    </div>
+                </div>
+            </section><!-- /.Section mission -->
+
         <!-- Section blog post -->
         <section class="s-blog-post pt-121 pb-44">
             <div class="tf-container w-1290">
@@ -1019,9 +1103,7 @@ your recipes.
                         <div class="heading-section has-text text-center mb-81">
                             <p class="sub-title">Latest News & Articles</p>
                             <p class="title text-anime-style-2">Shreenath Speaks: Flavour, Family & Future</p>
-                            <p class="text">
-                                Duis eleifend euismod arcu, nec faucibus mauris finibus id. Integer mattis, tellus non finibus rutrum.
-                            </p>
+                            
                             <div class="img-item">
                                 <img src="{{ asset('Front/images/item/rice-plant-2.png') }}" class="tf-animate-1" alt="" />
                             </div>

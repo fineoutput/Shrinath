@@ -351,9 +351,9 @@
                                                 </ul> --}}
                                             </li>
                                             
-                                            <li class="item has-child">
+                                            {{-- <li class="item has-child">
                                                 <a href="contact-us.html">Contact</a>
-                                            </li>
+                                            </li> --}}
                                             <li class="item has-child">
                                                 <a href="{{route('blog')}}">Blog</a>
                                             </li>

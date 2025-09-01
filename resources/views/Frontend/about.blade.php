@@ -9,6 +9,19 @@
     .raat{
         display: none
     }   
+    .raat{
+        display: none
+    }
+    .box-icon-list.style-2 .box-icon .icon::after {
+    content: none !important;
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    background-color: var(--Primary);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(-45deg);
+}
 </style>
 <div class="page-title page-about-us">
     <div class="rellax" data-rellax-speed="5">
@@ -300,55 +313,54 @@
     </section><!-- /.Section our agriculture -->
 
     <!-- Section benefit -->
-    <section class="s-benefit mt--217">
-        <div class="benefit-list">
-            <div class="box-icon ic-hover wow fadeInUp" data-wow-delay="0s">
-                <div class="icon mb-29 hover-icon style-circle">
-                    <img src="{{ asset('Front/icons/tomato.png') }}" alt="">
+   <section class="s-benefit">
+            <div class="benefit-list ">
+                <div class="box-icon ic-hover">
+                    <div class="icon mb-30 hover-icon style-circle">
+                        <img src="{{ asset('Front/icons/precision-agriculture.png') }}" alt="">
+                    </div>
+                    <a href="#" class="caption mb-17 fw-6 font-worksans hover-text-secondary">
+                         Modern Processing
+                    </a>
+                    <p class="text font-nunito">
+                         Cleaned & packed with advanced technology.
+                    </p>
                 </div>
-                <a href="our-commitments.html" class="caption fw-6 mb-17 font-worksans hover-text-secondary">
-                    Modern Processing
-                </a>
-                <p class="text font-nunito">
-                    Cleaned & packed with advanced technology.
-                </p>
-            </div>
-            <div class="box-icon ic-hover wow fadeInUp" data-wow-delay="0.1s">
-                <div class="icon mb-29 style-circle hover-icon img-hover-2">
-                    <i class="fa-solid fa-tractor"></i>
+                <div class="box-icon ic-hover">
+                    <div class="icon mb-30 style-circle hover-icon img-hover-2">
+                        <img src="{{ asset('Front/icons/achievement.png') }}" alt="">
+                    </div>
+                    <a href="#" class="caption mb-17 fw-6 font-worksans hover-text-secondary">
+                        Absolute Quality
+                    </a>
+                    <p class="text font-nunito">
+                        Perfection in every grain, excellence in every pack.
+                    </p>
                 </div>
-                <a href="our-commitments.html" class="caption fw-6 mb-17 font-worksans hover-text-secondary">
-                    Absolute Quality
-                </a>
-                <p class="text font-nunito">
-                    Perfection in every grain, excellence in every pack.
-                </p>
-            </div>
-            <div class="box-icon ic-hover wow fadeInUp" data-wow-delay="0.2s">
-                <div class="icon mb-29 hover-icon style-circle">
-                    <i class="fa-solid fa-leaf"></i>
+                <div class="box-icon ic-hover">
+                    <div class="icon mb-30 hover-icon style-circle">
+                        <img src="{{ asset('Front/icons/save-the-world.png') }}" alt="">
+                    </div>
+                    <a href="#" class="caption mb-17 fw-6 font-worksans hover-text-secondary">
+                        Environmentally Friendly
+                    </a>
+                    <p class="text font-nunito">
+                        Sustainability today, a greener tomorrow.
+                    </p>
                 </div>
-                <a href="our-commitments.html" class="caption fw-6 mb-17 font-worksans hover-text-secondary">
-                    Environmentally Friendly
-                </a>
-                <p class="text font-nunito">
-                    Sustainability today, a greener tomorrow.
-                </p>
-            </div>
-            <div class="box-icon ic-hover wow fadeInUp" data-wow-delay="0.3s">
-                <div class="icon mb-29 hover-icon style-circle">
-                    <img src="{{ asset('Front/icons/dollar-circle.png') }}" alt="">
+                <div class="box-icon ic-hover">
+                    <div class="icon mb-30 hover-icon style-circle">
+                        <img src="{{ asset('Front/icons/hand (1).png') }}" alt="">
+                    </div>
+                    <a href="#" class="caption mb-17 fw-6 font-worksans hover-text-secondary">
+                       Reasonable Price
+                    </a>
+                    <p class="text font-nunito">
+                        Trusted by businesses across India.
+                    </p>
                 </div>
-                <a href="our-commitments.html" class="caption fw-6 mb-17 font-worksans hover-text-secondary">
-                    Reasonable Price
-                </a>
-                <p class="text font-nunito">
-                    Trusted by businesses across India.
-                </p>
             </div>
-        </div>
-    </section><!-- /.Section benefit -->
-
+        </section>
     <!-- Section quality of life -->
     <section class="s-quality-of-life style-2">
         <div class="tf-container w-1290">
@@ -366,61 +378,62 @@
                         <p class="sub font-snowfall fs-30 text-anime-style-1">
                             We believe that good health begins with clean and pure food sources.
                         </p>
-                        <div class="swiper-container slider-box-icon">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <ul class="box-icon-list style-2">
-                                        <li>
-                                            <div class="box-icon style-3 ic-hover wow fadeInUp" data-wow-delay="0s">
-                                                <div class="icon style-circle hover-icon">
-                                                    <i class="icon-chemical"></i>
+                       <div class="swiper-container slider-box-icon">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <ul class="box-icon-list style-2">
+                                            <li>
+                                                <div class="box-icon style-3 ic-hover wow fadeInUp" data-wow-delay="0s">
+                                                    <div class="icon style-circle hover-icon">
+                                                         <img src="{{ asset('Front/icons/no-preservatives.png') }}" alt="">
+                                                    </div>
+                                                    <a href="#"
+                                                        class="caption fw-5 font-worksans hover-text-4">
+                                                        100% Natural
+                                                    </a>
                                                 </div>
-                                                <a href="our-commitments.html" class="caption fw-6 font-worksans hover-text-4">
-                                                    Quality Checked
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="box-icon style-3 ic-hover wow fadeInUp" data-wow-delay="0.1s">
-                                                <div class="icon style-circle hover-icon">
-                                                    <i class="icon-worm"></i>
+                                            </li>
+                                            <li>
+                                                <div class="box-icon style-3 ic-hover wow fadeInUp"
+                                                    data-wow-delay="0.1s">
+                                                    <div class="icon style-circle hover-icon">
+                                                       <img src="{{ asset('Front/icons/aroma.png') }}" alt="">
+                                                    </div>
+                                                    <a href="#"
+                                                        class="caption fw-5 font-worksans hover-text-4">
+                                                        Rich in Aroma
+                                                    </a>
                                                 </div>
-                                                <a href="our-commitments.html" class="caption fw-6 font-worksans hover-text-4">
-                                                    Safe Packaging
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="box-icon style-3 ic-hover wow fadeInUp" data-wow-delay="0.2s">
-                                                <div class="icon style-circle hover-icon">
-                                                    <i class="icon-disposal"></i>
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="box-icon style-3 ic-hover wow fadeInUp" data-wow-delay="0.3s">
-                                                <div class="icon style-circle hover-icon">
-                                                    <i class="icon-light-bulb"></i>
+                                            </li>
+                                            <li>
+                                                <div class="box-icon style-3 ic-hover wow fadeInUp"
+                                                    data-wow-delay="0.2s">
+                                                    <div class="icon style-circle hover-icon">
+                                                         <img src="{{ asset('Front/icons/premium-quality.png') }}" alt="">
+                                                    </div>
+                                                    <a href="#"
+                                                        class="caption fw-5 font-worksans hover-text-4">
+                                                        Premium Quality
+                                                    </a>
                                                 </div>
-                                                <a href="our-commitments.html" class="caption fw-6 font-worksans hover-text-4">
-                                                    Customer Trust
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="box-icon style-3 ic-hover wow fadeInUp" data-wow-delay="0.4s">
-                                                <div class="icon style-circle hover-icon">
-                                                    <i class="icon-water-drops"></i>
+                                            </li>
+                                            <li>
+                                                <div class="box-icon style-3 ic-hover wow fadeInUp"
+                                                    data-wow-delay="0.3s">
+                                                    <div class="icon style-circle hover-icon">
+                                                         <img src="{{ asset('Front/icons/safe.png') }}" alt="">
+                                                    </div>
+                                                    <a href="#"
+                                                        class="caption fw-5 font-worksans hover-text-4">
+                                                        Hygienically Packed
+                                                    </a>
                                                 </div>
-                                                <a href="our-commitments.html" class="caption fw-6 font-worksans hover-text-4">
-                                                    Reliable Delivery
-                                                </a>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                          
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         <div class="bot flex justify-center">
                             <a href="our-commitments.html" class="tf-btn scale-50">
                                 <span class="text-style">

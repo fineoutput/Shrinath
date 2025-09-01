@@ -376,6 +376,14 @@
                                                 +91 7014928528
                                             </p>
                                         </div>
+                                        <div class="contact">
+                                            <p class="sub font-snowfall">
+                                                Get
+                                            </p>
+                                            <p class="number font-worksans">
+                                                <a target="_blank" href="{{ asset('Front/images/asdas.pdf') }}">Our Portfoli</a>
+                                            </p>
+                                        </div>
                                     </div>
                                     
 
@@ -638,6 +646,14 @@
                                                     +91 7014928528
                                                 </p>
                                             </div>
+                                            <div class="contact">
+                                            <p class="sub font-snowfall">
+                                                Get
+                                            </p>
+                                            <p class="number font-worksans">
+                                                <a target="_blank" href="{{ asset('Front/images/asdas.pdf') }}">Our Portfoli</a>
+                                            </p>
+                                        </div>
                                         </div>
                                         
 

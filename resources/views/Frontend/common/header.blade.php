@@ -37,8 +37,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('Front/icons/fontawesome/css/all.min.css') }}" />
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="{{ asset('Front/images/logo/logo_red.png') }}" />
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('Front/images/logo/logo_red.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('Front/images/logo/sdas.png') }}" />
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('Front/images/logo/sdas.png') }}" />
 
     <!--[if lt IE 9]>
         <script src="javascript/html5shiv.js"></script>
@@ -66,7 +66,7 @@
                         <div class="loader">
                         </div>
                         <div class="icon">
-                            <img src="{{ asset('Front/images/logo/logo_red.png') }}" alt="">
+                            <img src="{{ asset('Front/images/logo/sdas.png') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
                                 <div class="header-left">
                                     <div class="logo-site"> 
                                         <a href="{{route('/')}}">
-                                            <img src="{{ asset('Front/images/logo/logo_red.png') }}" alt="">
+                                            <img src="{{ asset('Front/images/logo/sdas.png') }}" alt="">
                                         </a>
                                     </div>
                                     <div class="main-nav">
@@ -357,6 +357,9 @@
                                             <li class="item has-child">
                                                 <a href="{{route('blog')}}">Blog</a>
                                             </li>
+                                            <li class="item has-child">
+                                                <a href="{{route('our_commitments')}}">Commitments</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -485,6 +488,9 @@
                                                 <li class="item has-child">
                                                 <a href="{{route('blog')}}">Blog</a>
                                             </li>
+                                            <li class="item has-child">
+                                                <a href="{{route('our_commitments')}}">Commitments</a>
+                                            </li>
                                             </ul>
                                         </nav>
                                         {{-- <div class="group-icon">
@@ -557,7 +563,7 @@
                                     <div class="header-left">
                                         <div class="logo-site">
                                             <a href="{{route('/')}}">
-                                                <img src="{{ asset('Front/images/logo/logo_red.png') }}" alt="">
+                                                <img src="{{ asset('Front/images/logo/sdas.png') }}" alt="">
                                             </a>
                                         </div>
                                         <div class="main-nav">
@@ -612,6 +618,9 @@
                                                 </li>
                                                 <li class="item has-child">
                                                 <a href="{{route('blog')}}">Blog</a>
+                                            </li>
+                                            <li class="item has-child">
+                                                <a href="{{route('our_commitments')}}">Commitments</a>
                                             </li>
                                             </ul>
                                         </div>

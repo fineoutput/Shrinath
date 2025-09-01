@@ -320,7 +320,7 @@ if (".slider-project-2".length > 0) {
 
 if (".slider-shopping-card".length > 0) {
     var swiper = new Swiper(".slider-shopping-card", {
-        slidesPerView: 2,
+        slidesPerView: 3,
         loop: true,
         spaceBetween: 30,
         navigation: {
@@ -335,7 +335,7 @@ if (".slider-shopping-card".length > 0) {
                 slidesPerView: 1.5,
             },
             767: {
-                slidesPerView: 2,
+                slidesPerView: 3,
             },
             991: {
                 slidesPerView: 1.5,
@@ -343,7 +343,7 @@ if (".slider-shopping-card".length > 0) {
             1200: {
                 slidesPerView: 1.5,
             },
-            1440: { slidesPerView: 2 },
+            1440: { slidesPerView: 3 },
         },
     });
 }

@@ -488,18 +488,14 @@
                                 <i class="fa-solid fa-circle-check"></i>
                                 Pure and Natural - 99%
                             </p>
-                            <p class="text">
-                                Ultrices sagittis orci a scelerisque purus semper eget duis at. Sollicitudin nibh sit amet commodo nulla.
-                            </p>
+                         
                         </li>
                         <li class="wow fadeInUp" data-wow-delay="0.1s">
                             <p class="title">
                                 <i class="fa-solid fa-circle-check"></i>
                                 Quality You Can Trust -99%
                             </p>
-                            <p class="text">
-                                Ultrices sagittis orci a scelerisque purus semper eget duis at. Sollicitudin nibh sit amet commodo nulla.
-                            </p>
+                          
                         </li>
                     </ul>
                 </div>
@@ -732,16 +728,17 @@
                                             <img class="tf-animate-1" src="images/item/rice-plant-2.png" alt="" />
                                         </div>
                                         <p class="sub-title">
-                                            Providing the Finest Spices to Every Kitchen & Business
+                                           Our Products
                                         </p>
                                     </div>
                                     <p class="title wow fadeInLeft" data-wow-delay="0s">
-                                        The heart of Indian cuisine, available in premium grades—Udaan, Kashi Bhagat, Gold, Silver, and Morpankh. Naturally sun-dried Kasuri Methi, sourced from Nagaur, adds a rich aroma to your recipes.
+                                        Providing the Finest Spices to Every Kitchen & Business
                                     </p>
                                     <p class="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ex
-                                        igula, pulvinar ultrices justo sed, bibendum lobortis nibh. Pellentesque
-                                        mattis eros sit amet lorem tristique faucibus.
+                                        The heart of Indian cuisine, available in premium grades—Udaan, Kashi Bhagat, Gold, Silver,
+and Morpankh. Naturally sun-dried Kasuri Methi, sourced from Nagaur, adds a rich aroma to
+your recipes.
+
                                     </p>
                                 </div>
                                 <a href="{{route('our_products')}}" class="tf-btn scale-40">
@@ -777,13 +774,7 @@
                                                         <span class=" price-1">₹ {{ $value->price ?? ''}}</span>
                                                         <span class=" price-2">₹ {{ $value->mrp ?? ''}}</span>
                                                     </div>
-                                                    <div class="wg-rating">
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                        <i class="fa-solid fa-star"></i>
-                                                    </div>
+                                                    
                                                 </div>
                                                 
                                             </div>

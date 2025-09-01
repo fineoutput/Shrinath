@@ -20,10 +20,10 @@
                 <div class="col-lg-12">
                     <div class="content">
                         <p class="sub-title">
-                            Nurturing the Earth, Feeding the World
+                            We are confident that Shreenath is a leading spice brand committed to ensuring food hygiene and safety for every customer.
                         </p>
                         <h1 class="title">
-                            About the Farm
+                            About Us
                         </h1>
                         <div class="icon-img">
                             <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
@@ -34,10 +34,6 @@
                                 <i class="icon-arrow-right1"></i>
                             </div>
                             <a href="javascript:void(0)">About Us </a>
-                            <div class="icon">
-                                <i class="icon-arrow-right1"></i>
-                            </div>
-                            <a href="javascript:void(0)">About The Farm</a>
                         </div>
                     </div>
                 </div>
@@ -60,12 +56,13 @@
                     <div class="col-lg-6">
                         <div class="wrap">
                             <p class="text font-snowfall fs-30">
-                                We are confident that we are the leading farm in providing
-                                agricultural products that ensure <span>
+                                We are confident that Shreenath is a leading spice brand committed to ensuring
+                                <span>
                                     <a href="#" class="hover-text-4">
                                         food hygiene and safety
                                     </a>
                                 </span>
+                                for every customer.
                             </p>
                         </div>
                     </div>
@@ -76,7 +73,7 @@
                             </div>
                             <div class="counter-item">
                                 <p class="title font-worksans fw-5 fs-18">
-                                    Completed Projects
+                                    Completed Deliveries
                                 </p>
                                 <div class="counter">
                                     <div id="odometer" class="odometer style-5">1000</div>
@@ -92,10 +89,10 @@
                             </div>
                             <div class="counter-item">
                                 <p class="title font-worksans fw-5 fs-18">
-                                    Trust By Clients
+                                    Trusted Clients
                                 </p>
                                 <div class="counter">
-                                    <div class="odometer style-5-2">10000</div>
+                                    <div class="odometer style-5-2">350</div>
                                     <span class="sub-odo color-secondary">+</span>
                                 </div>
                             </div>
@@ -118,12 +115,10 @@
                                     <img class="tf-animate-1" src="{{ asset('Front/images/item/rice-plant-2.png') }}" alt="">
                                 </div>
                                 <p class="sub-title">
-                                    Welcome to Shrinath Agriculture & Organic Farms
+                                    Welcome to Shreenath Spices
                                 </p>
                                 <p class="title wow fadeInUp" data-wow-delay="0s">
-                                    Providing The Finest
-                                    Products To The Best
-                                    Feed Suppliers.
+                                    A trusted source for quality products.
                                 </p>
                             </div>
                         </div>
@@ -131,18 +126,7 @@
                     <div class="col-lg-7">
                         <div class="text-wrap">
                             <p class="text-1 wow fadeInUp" data-wow-delay="0s">
-                               At Shreenath, we are committed to delivering the finest quality spices straight from the heart of India's spice-growing regions. With deep roots in the industry, we specialize in premium cumin seeds, Kasuri methi, and a variety of whole and blended spices. Our meticulously sourced ingredients ensure authentic flavors that enhance every dish.
-
-
-
-
-
-
-                            </p>
-                            <p class="text-2 wow fadeInUp" data-wow-delay="0s">
-                               
-With a state-of-the-art manufacturing unit and depots across India, we uphold the highest standards of quality, hygiene, and purity. Our commitment to excellence has made Shreenath a trusted name among households, wholesalers, and retailers alike.
-
+                                We are dedicated to sourcing, processing, and delivering spices that ensure authenticity, hygiene, and satisfaction. Our focus is not farming but bridging the gap between reliable producers and trusted buyers.
                             </p>
                         </div>
                     </div>
@@ -216,9 +200,7 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                 Our Mission
                             </p>
                             <p class="text font-snowfall">
-                                Our mission is to contribute to the promotion of agricultural products in
-                                Vietnam with a commitment to produce sustainable values that meet international
-                                standards and thereby create a fair and competitive market
+                                To provide customers with genuine, quality-tested products, backed by transparency and trust.
                             </p>
                         </div>
                     </div>
@@ -228,9 +210,7 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                 Our Vision
                             </p>
                             <p class="text font-snowfall">
-                                Our mission is to contribute to the promotion of agricultural products in
-                                Vietnam with a commitment to produce sustainable values that meet international
-                                standards and thereby create a fair and competitive market
+                                To become a leading name in quality spice trade—recognized for sustainable practices and long-term partnerships.
                             </p>
                         </div>
                     </div>
@@ -266,35 +246,44 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                         <img class="tf-animate-1" src="{{ asset('Front/images/item/rice-plant-2.png') }}" alt="" />
                                     </div>
                                     <p class="sub-title">
-                                        Our Agriculture Skill
+                                        Our Expertise
                                     </p>
                                 </div>
                                 <p class="title text-anime-style-1">
-                                    We Believe In Bringing
-                                    Customers The Best Products
+                                    We Believe In Delivering The Best To Our Customers
                                 </p>
                             </div>
                             <p class="text mb-20">
-                               We cater to both B2B and D2C markets, offering bulk and retail packaging solutions. Whether you're a distributor, a restaurant owner, or a home chef, Shreenath brings you spices that guarantee purity, aroma, and taste in every pinch.
+                                For decades, Shreenath has been dedicated to delivering spices that are pure, hygienic, and full of authentic flavor. From sourcing to packaging, every step reflects our commitment to quality and trust.
                             </p>
                             <div class="wg-progress mb-29">
                                 <div class="top">
-                                    <span>Organic Solutions</span>
-                                    <span>76%</span>
+                                    <span>Product Quality Assurance</span>
+                                    <span>95%</span>
                                 </div>
                                 <div class="progress tf-animate-1" role="progressbar" aria-label="Basic example"
-                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar" style="width: 76%"></div>
+                                    aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="wg-progress mb-29">
+                                <div class="top">
+                                    <span>Customer Satisfaction</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="progress tf-animate-1" role="progressbar" aria-label="Basic example"
+                                    aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" style="width: 90%"></div>
                                 </div>
                             </div>
                             <div class="wg-progress">
                                 <div class="top">
-                                    <span>Quality Agriculture</span>
-                                    <span>95%</span>
+                                    <span>Efficient Supply Chain</span>
+                                    <span>85%</span>
                                 </div>
                                 <div class="progress tf-animate-1" role="progressbar" aria-label="Basic example"
-                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar" style="width: 95%"></div>
+                                    aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" style="width: 85%"></div>
                                 </div>
                             </div>
                         </div>
@@ -318,11 +307,10 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                     <img src="{{ asset('Front/icons/tomato.png') }}" alt="">
                 </div>
                 <a href="our-commitments.html" class="caption fw-6 mb-17 font-worksans hover-text-secondary">
-                    100% Organic Products
+                    Modern Processing
                 </a>
                 <p class="text font-nunito">
-                    Ultrices sagittis orci a scelerisque <br> purus semper eget duis at. <br>
-                    Sollictudin nibh sit amet.
+                    Cleaned & packed with advanced technology.
                 </p>
             </div>
             <div class="box-icon ic-hover wow fadeInUp" data-wow-delay="0.1s">
@@ -333,8 +321,7 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                     Absolute Quality
                 </a>
                 <p class="text font-nunito">
-                    Ultrices sagittis orci a scelerisque <br> purus semper eget duis at. <br>
-                    Sollictudin nibh sit amet.
+                    Perfection in every grain, excellence in every pack.
                 </p>
             </div>
             <div class="box-icon ic-hover wow fadeInUp" data-wow-delay="0.2s">
@@ -345,8 +332,7 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                     Environmentally Friendly
                 </a>
                 <p class="text font-nunito">
-                    Ultrices sagittis orci a scelerisque <br> purus semper eget duis at. <br>
-                    Sollictudin nibh sit amet.
+                    Sustainability today, a greener tomorrow.
                 </p>
             </div>
             <div class="box-icon ic-hover wow fadeInUp" data-wow-delay="0.3s">
@@ -357,8 +343,7 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                     Reasonable Price
                 </a>
                 <p class="text font-nunito">
-                    Ultrices sagittis orci a scelerisque <br> purus semper eget duis at. <br>
-                    Sollictudin nibh sit amet.
+                    Trusted by businesses across India.
                 </p>
             </div>
         </div>
@@ -375,11 +360,11 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                         </div>
                         <div class="clip-color-text font-snowfall text-center">
                             <p class="clip-text-bg-vertical">
-                                Committed to Freshness!
+                                Committed to Authenticity & Freshness!
                             </p>
                         </div>
                         <p class="sub font-snowfall fs-30 text-anime-style-1">
-                            We believe that to have good health, clean and healthy food sources are the key
+                            We believe that good health begins with clean and pure food sources.
                         </p>
                         <div class="swiper-container slider-box-icon">
                             <div class="swiper-wrapper">
@@ -391,7 +376,7 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                                     <i class="icon-chemical"></i>
                                                 </div>
                                                 <a href="our-commitments.html" class="caption fw-6 font-worksans hover-text-4">
-                                                    Minimal Chemicals Used
+                                                    Quality Checked
                                                 </a>
                                             </div>
                                         </li>
@@ -401,7 +386,7 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                                     <i class="icon-worm"></i>
                                                 </div>
                                                 <a href="our-commitments.html" class="caption fw-6 font-worksans hover-text-4">
-                                                    Minimal Chemicals Used
+                                                    Safe Packaging
                                                 </a>
                                             </div>
                                         </li>
@@ -409,9 +394,6 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                             <div class="box-icon style-3 ic-hover wow fadeInUp" data-wow-delay="0.2s">
                                                 <div class="icon style-circle hover-icon">
                                                     <i class="icon-disposal"></i>
-                                                </div>
-                                                <a href="our-commitments.html" class="caption fw-6 font-worksans hover-text-4">
-                                                    All Organic Waste Reused
                                                 </a>
                                             </div>
                                         </li>
@@ -421,7 +403,7 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                                     <i class="icon-light-bulb"></i>
                                                 </div>
                                                 <a href="our-commitments.html" class="caption fw-6 font-worksans hover-text-4">
-                                                    Do Not Use Artificial Light
+                                                    Customer Trust
                                                 </a>
                                             </div>
                                         </li>
@@ -431,7 +413,7 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                                     <i class="icon-water-drops"></i>
                                                 </div>
                                                 <a href="our-commitments.html" class="caption fw-6 font-worksans hover-text-4">
-                                                    Borehole Sourced Water
+                                                    Reliable Delivery
                                                 </a>
                                             </div>
                                         </li>
@@ -442,7 +424,7 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                         <div class="bot flex justify-center">
                             <a href="our-commitments.html" class="tf-btn scale-50">
                                 <span class="text-style">
-                                    See More Our Commitment
+                                    See More About Our Commitment
                                 </span>
                                 <div class="icon">
                                     <i class="icon-arrow_right"></i>
@@ -456,6 +438,77 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
     </section><!-- /.Section quality of life -->
 
     <!-- Section our history -->
+    <section class="s-our-history">
+        <div class="tf-container w-1290">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="content-section">
+                        <div class="heading-section text-center has-text mb-81">
+                            <p class="sub-title">Our Journey</p>
+                            <p class="title text-anime-style-2">
+                                Timeline of Shreenath Spices
+                            </p>
+                            <div class="img-item">
+                                <img class="tf-animate-1" src="{{ asset('Front/images/item/rice-plant-2.png') }}" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="timeline-wrap">
+                        <div class="timeline-item wow fadeInUp" data-wow-delay="0s">
+                            <div class="year font-worksans fw-7 fs-30">
+                                2020-21
+                            </div>
+                            <p class="text font-nunito">
+                                Foundation laid with the vision of providing pure and affordable spices.
+                            </p>
+                        </div>
+                        <div class="timeline-item wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="year font-worksans fw-7 fs-30">
+                                2022
+                            </div>
+                            <p class="text font-nunito">
+                                Expanded into wholesale distribution, reaching retailers across Tamil Nadu & Uttar Pradesh.
+                            </p>
+                        </div>
+                        <div class="timeline-item wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="year font-worksans fw-7 fs-30">
+                                2023
+                            </div>
+                            <p class="text font-nunito">
+                                Built our first modern factory with hygienic processing facilities.
+                            </p>
+                        </div>
+                        <div class="timeline-item wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="year font-worksans fw-7 fs-30">
+                                2024
+                            </div>
+                            <p class="text font-nunito">
+                                Expanded with new depots across 3 states.
+                            </p>
+                        </div>
+                        <div class="timeline-item wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="year font-worksans fw-7 fs-30">
+                                2025
+                            </div>
+                            <p class="text font-nunito">
+                                Launched flagship products like Kasuri Methi and entered national markets through B2B platforms.
+                            </p>
+                        </div>
+                        <div class="timeline-item wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="year font-worksans fw-7 fs-30">
+                                Today
+                            </div>
+                            <p class="text font-nunito">
+                                Serving hundreds of businesses while staying true to our values of quality, purity, and trust.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- /.Section our history -->
 
     <!-- Section farmer tour -->
     <section class="s-farm-tour">
@@ -468,17 +521,15 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                 alt="" class="lazyload">
                         </div>
                         <div class="content">
-                            <a href="event-detail.html" class="title fw-7 fs-30 font-worksans hover-text-secondary">
-                                We Are Dedicated Farmers!
+                            <a href="our-team.html" class="title fw-7 fs-30 font-worksans hover-text-secondary">
+                                Meet The Team
                             </a>
                             <p class="text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec <br> sodales
-                                faucibus commodo. Proin vehicula massa id congue <br>
-                                rutrum, ex libero sodales ex, cursus euismod.
+                                The faces behind the flavors, working with passion to bring Shreenath to every home.
                             </p>
                             <div class="flex justify-center">
-                                <a href="our-farmers.html" class="tf-btn-read text-white hover-text-secondary">
-                                    View All The Farmers
+                                <a href="our-team.html" class="tf-btn-read text-white hover-text-secondary">
+                                    View All The Team Members
                                 </a>
                             </div>
                         </div>
@@ -491,17 +542,15 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                 alt="" class="lazyload">
                         </div>
                         <div class="content">
-                            <a href="event-detail.html" class="title fw-7 fs-30 font-worksans hover-text-secondary">
-                                Explore Our Farm Tours
+                            <a href="gallery.html" class="title fw-7 fs-30 font-worksans hover-text-secondary">
+                                Explore Our Gallery
                             </a>
                             <p class="text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec <br> sodales
-                                faucibus commodo. Proin vehicula massa id congue <br>
-                                rutrum, ex libero sodales ex, cursus euismod.
+                                From Farm to Factory – The Journey of Purity, Handpicked Cumin Seeds for the Finest Flavor, Naturally Sun-Dried Kasuri Methi, Sealed Freshness, Trusted Quality.
                             </p>
                             <div class="flex justify-center">
-                                <a href="our-farmers.html" class="tf-btn-read text-white hover-text-secondary">
-                                    Discover Farm Tours
+                                <a href="gallery.html" class="tf-btn-read text-white hover-text-secondary">
+                                    View Gallery
                                 </a>
                             </div>
                         </div>
@@ -528,10 +577,10 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                     </div>
                                     <div class="infor">
                                         <p class="title">
-                                            Farm Address
+                                            Head Office
                                         </p>
                                         <p class="text">
-                                          H-16, Krishi Upaj Mandi, Nagaur-341001(Raj.)
+                                            c/o H-16, Kala Industries, Krishi Upaj Mandi, Nagaur-341001 (Raj.)
                                         </p>
                                     </div>
                                 </li>
@@ -544,8 +593,8 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                             Contact Us
                                         </p>
                                         <p class="text">
-                                            Shrinaths@gmail.com <br>
-                                            Call Us 24/7: +1 987 654 3210
+                                            info@shreenathspices.com <br>
+                                            +91 8905015736 (24/7 Support)
                                         </p>
                                     </div>
                                 </li>
@@ -558,8 +607,7 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                             Working Hours
                                         </p>
                                         <p class="text">
-                                            Mon - Fri: 8.00am - 18.00pm <br>
-                                            Sat: 9.00am - 17.00pm Holidays: Closes
+                                            Mon – Sat : 9.00am – 8.00pm
                                         </p>
                                     </div>
                                 </li>
@@ -569,8 +617,8 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                     <div class="col-lg-7">
                         <div class="content-section">
                             <div class="heading-section has-text mb-50">
-                                <p class="sub-title">Let's Cooperate Together</p>
-                                <p class="title text-anime-style-2">Contact Us Today!</p>
+                                <p class="sub-title">Contact Us Today</p>
+                                <p class="title text-anime-style-2">Dropdown Options:</p>
                                 <p class="text">
                                     We will reply you within 24 hours via email, thank you for contacting
                                 </p>
@@ -597,94 +645,116 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                                     </fieldset>
                                     <fieldset class="dropdown">
                                         <select name="text" id="Support">
-                                            <option value="You need to suport?" selected="">You need to suport?</option>
-                                            <option value="You need to suport? 1">You need to suport? 1</option>
-                                            <option value="You need to suport? 2">You need to suport? 2</option>
-                                            <option value="You need to suport? 3">You need to suport? 3</option>
+                                            <option value="General Inquiry" selected="">General Inquiry</option>
+                                            <option value="Product Information">Product Information</option>
+                                            <option value="Bulk/Wholesale Orders">Bulk/Wholesale Orders</option>
+                                            <option value="Dealership / Distributor Inquiry">Dealership / Distributor Inquiry</option>
+                                            <option value="Carrying & Forwarding Inquiry">Carrying & Forwarding Inquiry</option>
+                                            <option value="Feedback / Suggestions">Feedback / Suggestions</option>
+                                            <option value="Support / Complaint">Support / Complaint</option>
+                                            <option value="Careers / Job Opportunities">Careers / Job Opportunities</option>
                                         </select>
                                     </fieldset>
                                 </div>
                                 <div class="cols mb-30">
                                     <fieldset>
-                                        <textarea name="message" id="message"></textarea>
-                                    </div>
-                                    <div class="checkbox-item send-wrap">
-                                        <label class="mb-0">
-                                            <span class="text font-nunito"> Agree to our terms</span>
-                                            <input type="checkbox" class="checkbox-item" checked>
-                                            <span class="btn-checkbox"></span>
-                                        </label>
-                                        <button type="submit" class="tf-btn">
-                                            <span class="text-style">
-                                                Send Message
-                                            </span>
-                                            <span class="icon">
-                                                <i class="icon-arrow_right"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
+                                        <textarea name="message" id="message" placeholder="Message*"></textarea>
+                                    </fieldset>
+                                </div>
+                                <div class="checkbox-item send-wrap">
+                                    <label class="mb-0">
+                                        <span class="text font-nunito"> Agree to our terms</span>
+                                        <input type="checkbox" class="checkbox-item" checked>
+                                        <span class="btn-checkbox"></span>
+                                    </label>
+                                    <button type="submit" class="tf-btn">
+                                        <span class="text-style">
+                                            Send Message
+                                        </span>
+                                        <span class="icon">
+                                            <i class="icon-arrow_right"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </section><!-- /.Section contact us -->
+        </div>
+    </section><!-- /.Section contact us -->
 
-        <!-- Section partner -->
-        <section class="s-partner style-2 has-img-item pb-71">
-            <div class="tf-container w-1780">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="slider-wrap">
-                            <div class="swiper-container slider-partner">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="slide-partner">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{ asset('Front/images/partner/wide-open.png') }}" alt="" class="lazyload">
-                                                </div>
+    <!-- Section partner -->
+    <section class="s-partner style-2 has-img-item pb-71">
+        <div class="tf-container w-1780">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="heading-section text-center has-text mb-81">
+                        <p class="sub-title">Trusted Quality, Globally Recognized</p>
+                        <p class="title text-anime-style-2">
+                            Our Certifications
+                        </p>
+                        <p class="text">
+                            ISO | APEDA | FSSAI | HALAL | GMP | HACCP | IEC
+                        </p>
+                        <div class="img-item">
+                            <img class="tf-animate-1" src="{{ asset('Front/images/item/rice-plant-2.png') }}" alt="" />
+                        </div>
+                    </div>
+                    <div class="slider-wrap">
+                        <div class="swiper-container slider-partner">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{{ asset('Front/images/partner/wide-open.png') }}" alt="" class="lazyload">
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="slide-partner">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{ asset('Front/images/partner/sollio.png') }}" alt="" class="lazyload">
-                                                </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{{ asset('Front/images/partner/sollio.png') }}" alt="" class="lazyload">
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="slide-partner">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{ asset('Front/images/partner/syngenta.png') }}" alt="" class="lazyload">
-                                                </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{{ asset('Front/images/partner/syngenta.png') }}" alt="" class="lazyload">
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="slide-partner">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{ asset('Front/images/partner/strachan-valley.png') }}" alt="" class="lazyload">
-                                                </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{{ asset('Front/images/partner/strachan-valley.png') }}" alt="" class="lazyload">
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="slide-partner">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{ asset('Front/images/partner/new-holland.png') }}" alt="" class="lazyload">
-                                                </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{{ asset('Front/images/partner/new-holland.png') }}" alt="" class="lazyload">
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="slide-partner">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{ asset('Front/images/partner/ony-field.png') }}" alt="" class="lazyload">
-                                                </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{{ asset('Front/images/partner/ony-field.png') }}" alt="" class="lazyload">
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -693,11 +763,12 @@ With a state-of-the-art manufacturing unit and depots across India, we uphold th
                     </div>
                 </div>
             </div>
-            <div class="s-img-item item-1">
-                <img src="{{ asset('Front/images/item/page-title-top.png') }}" alt="" />
-            </div>
-        </section><!-- /.Section partner -->
+        </div>
+        <div class="s-img-item item-1">
+            <img src="{{ asset('Front/images/item/page-title-top.png') }}" alt="" />
+        </div>
+    </section><!-- /.Section partner -->
 
-    </div><!-- /.Main-content -->
+</div><!-- /.Main-content -->
 
 @endsection

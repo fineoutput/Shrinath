@@ -217,8 +217,8 @@
                             </p>
                         </div>
                         <div class="price-wrap price-left">
-                            <span class=" price-1">₹{{$product->price ?? ''}}</span>
-                            <span class=" price-2">₹{{$product->mrp ?? ''}}</span>
+                            <span class=" price-1">₹{{$product->mrp ?? ''}}</span>
+                            <span class=" price-2">₹{{$product->price ?? ''}}</span>
                         </div>
                         <p>{!! $product->description !!}</p>
                         {{-- <p class="sub font-nunito">

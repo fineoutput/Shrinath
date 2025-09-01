@@ -373,34 +373,61 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-2">
                     <div class="wrap">
                         <div class="image-award wow fadeInUp" data-wow-delay="0s">
-                            <div class="tf-overlay">
+                            <div class="">
                             </div>
-                            <img src="{{ asset('Front/images/widget/award-1.jpg') }}" 
-                                data-src="{{ asset('Front/images/widget/award-1.jpg') }}" alt="" class="lazyload">
+                            <img src="{{ asset('Front/images/partner/images.png') }}" 
+                                data-src="{{ asset('Front/images/partner/images.png') }}" alt="" class="lazyload">
                             <a href="gallery.html">
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-2">
                     <div class="wrap">
                         <div class="image-award wow fadeInUp" data-wow-delay="0.1s">
                             <div class="tf-overlay"></div>
-                            <img src="{{ asset('Front/images/widget/award-2.jpg') }}" 
-                                data-src="{{ asset('Front/images/widget/award-2.jpg') }}" alt="" class="lazyload">
+                            <img src="{{ asset('Front/images/partner/download (2).png') }}" 
+                                data-src="{{ asset('Front/images/partner/download (2).png') }}" alt="" class="lazyload">
                             <a href="gallery.html">
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-2">
                     <div class="image-award wow fadeInUp" data-wow-delay="0.2s">
                         <div class="tf-overlay"></div>
-                        <img src="{{ asset('Front/images/widget/award-3.jpg') }}" 
-                            data-src="{{ asset('Front/images/widget/award-3.jpg') }}" alt="" class="lazyload">
+                        <img src="{{ asset('Front/images/partner/download (1).jpg') }}" 
+                            data-src="{{ asset('Front/images/partner/download (1).jpg') }}" alt="" class="lazyload">
+                        <a href="gallery.html">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="image-award wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="tf-overlay"></div>
+                        <img src="{{ asset('Front/images/partner/images (1).png') }}" 
+                            data-src="{{ asset('Front/images/partner/images (1).png') }}" alt="" class="lazyload">
+                        <a href="gallery.html">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="image-award wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="tf-overlay"></div>
+                        <img src="{{ asset('Front/images/partner/download (1).png') }}" 
+                            data-src="{{ asset('Front/images/partner/download (1).png') }}" alt="" class="lazyload">
+                        <a href="gallery.html">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="image-award wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="tf-overlay"></div>
+                        <img src="{{ asset('Front/images/partner/download.png') }}" 
+                            data-src="{{ asset('Front/images/partner/download.png') }}" alt="" class="lazyload">
                         <a href="gallery.html">
                         </a>
                     </div>

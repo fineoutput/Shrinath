@@ -960,7 +960,31 @@ your recipes.
             </div>
         </section><!-- /.Section testimonial -->
 
-       
+       <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <img src="" alt="">
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="{{ asset('images/partner/images.png') }}" alt="">
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="{{ asset('images/partner/partner-2.png') }}" alt="">
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="{{ asset('images/partner/partner-3.png') }}" alt="">
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="{{ asset('images/partner/partner-4.png') }}" alt="">
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="{{ asset('images/partner/partner-5.png') }}" alt="">
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
         <!-- Section happy farm -->
         <section class="s-happy-farm">
             <div class="bg-section">
@@ -1378,6 +1402,7 @@ your recipes.
             </div>
         </section><!-- /.Section contact us -->
         <!-- Section partner -->
+        
         <section class="s-partner style-2 has-img-item pb-53-0-75">
             <div class="tf-container w-1780">
                 <div class="row">

@@ -150,7 +150,7 @@
                 </a>
                 <div class="pricing-star">
                     <div class="price-wrap">
-                        <span class=" price-2">₹ {{ $value->mrp ?? ''}}</span>
+                        <span class=" price-2">₹ {{ $value->price ?? ''}}</span>
                     </div>
                     <div class="wg-rating">
                         <i class="fa-solid fa-star"></i>

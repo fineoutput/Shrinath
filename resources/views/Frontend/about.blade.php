@@ -312,6 +312,103 @@
         </div>
     </section><!-- /.Section our agriculture -->
 
+     <section class="s-history has-img-item tf-pt-0">
+        
+                <div class="tf-container w-1290">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="main-history">
+                               
+                                <span class="line"></span>
+                                <div class="wg-history mb-50 type-left">
+                                    <div class="image type-1">
+                                        <img src="{{asset('Front/images/widget/our-history-1.jpg')}}"
+                                            data-src="{{asset('Front/images/widget/our-history-1.jpg')}}" alt="" class="lazyload">
+                                    </div>
+                                    <div class="year">
+                                        <p class="number font-snowfall fs-30">
+                                            2020-21
+                                        </p>
+                                    </div>
+                                    <div class="content">
+                                        <h3 class="title fw-6 font-worksans">
+                                            The Beginning
+                                        </h3>
+                                        <p class="text font-nunito">
+                                            Foundation laid with the vision of providing pure and affordable spices
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="wg-history mb-50 type-right img-hover  tf-img-hover">
+                                    <div class="content text-right">
+                                        <h3 class="title fw-6 font-worksans">
+                                            Expansion
+                                        </h3>
+                                        <p class="text font-nunito ">
+                                            Expanded into wholesale distribution, reaching retailers across Tamil Nadu & Uttar
+Pradesh.
+                                        </p>
+                                    </div>
+                                    <div class="year">
+                                        <p class="number font-snowfall fs-30">
+                                            2022
+                                        </p>
+                                    </div>
+                                    <div class="image hover-item hover14">
+                                        <img src="{{asset('Front/images/widget/our-history-2.jpg')}}"
+                                            data-src="{{asset('Front/images/widget/our-history-2.jpg')}}" alt="" class="lazyload">
+                                    </div>
+                                </div>
+                                <div class="wg-history mb-50 type-left img-hover tf-img-hover">
+                                    <div class="image hover-item hover14">
+                                        <img src="{{asset('Front/images/widget/our-history-3.jpg')}}"
+                                            data-src="{{asset('Front/images/widget/our-history-3.jpg')}}" alt="" class="lazyload">
+                                    </div>
+                                    <div class="year ">
+                                        <p class="number font-snowfall fs-30">
+                                            2023
+                                        </p>
+                                    </div>
+                                    <div class="content">
+                                        <h3 class="title fw-6 font-worksans">
+                                            First Factory
+                                        </h3>
+                                        <p class="text font-nunito ">
+                                            Built our first modern factory with hygienic processing facilities.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="wg-history mb-50 type-right img-hover tf-img-hover">
+                                    <div class="content text-right">
+                                        <h3 class="title fw-6 font-worksans">
+                                            Further Growth
+                                        </h3>
+                                        <p class="text font-nunito ">
+                                           Expanded with new depots across 3 states <br>
+                                           Launched flagship products like Kasuri Methi and entered national markets through B2B
+platforms.
+                                        </p>
+                                    </div>
+                                    <div class="year">
+                                        <p class="number font-snowfall fs-30" style="font-size: 22px;">
+                                            2024-2025
+                                        </p>
+                                    </div>
+                                    <div class="image hover-item hover14">
+                                        <img src="{{asset('Front/images/widget/our-history-4.jpg')}}"
+                                            data-src="{{asset('Front/images/widget/our-history-4.jpg')}}" alt="" class="lazyload">
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="s-img-item item-1">
+                    <img src="{{asset('Front/images/item/page-title-top.png')}}" alt="">
+                </div>
+            </section><!-- /.Section history -->
+
     <!-- Section benefit -->
    <section class="s-benefit">
             <div class="benefit-list ">

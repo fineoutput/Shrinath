@@ -14639,7 +14639,7 @@ i.fs-12 {
 
 .s-history {
   background-color: var(--Bg-16);
-  padding-top: 299px;
+  /* padding-top: 299px; */
   padding-bottom: 124px;
   margin-top: 20px;
 }

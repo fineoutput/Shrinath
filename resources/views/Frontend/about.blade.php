@@ -12,6 +12,16 @@
     .raat{
         display: none
     }
+    .dasd{
+        z-index: 9999;
+        position: relative;
+        text-align: center;
+        color: var(--Text-4);
+    font-family: "GlitterySnowfall", sans-serif;
+    font-size: 23px;
+    line-height: 26px;
+    margin-bottom: 16px;
+    }
     .box-icon-list.style-2 .box-icon .icon::after {
     content: none !important;
     position: absolute;
@@ -317,6 +327,7 @@
                 <div class="tf-container w-1290">
                     <div class="row">
                         <div class="col-lg-12">
+                            <p class="sub-title dasd">Our Journey</p>
                             <div class="main-history">
                                
                                 <span class="line"></span>
@@ -548,78 +559,7 @@ platforms.
     </section><!-- /.Section quality of life -->
 
     <!-- Section our history -->
-    <section class="s-our-history">
-        <div class="tf-container w-1290">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="content-section">
-                        <div class="heading-section text-center has-text mb-81">
-                            <p class="sub-title">Our Journey</p>
-                            <p class="title text-anime-style-2">
-                                Timeline of Shreenath Spices
-                            </p>
-                            <div class="img-item">
-                                <img class="tf-animate-1" src="{{ asset('Front/images/item/rice-plant-2.png') }}" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="timeline-wrap">
-                        <div class="timeline-item wow fadeInUp" data-wow-delay="0s">
-                            <div class="year font-worksans fw-7 fs-30">
-                                2020-21
-                            </div>
-                            <p class="text font-nunito">
-                                Foundation laid with the vision of providing pure and affordable spices.
-                            </p>
-                        </div>
-                        <div class="timeline-item wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="year font-worksans fw-7 fs-30">
-                                2022
-                            </div>
-                            <p class="text font-nunito">
-                                Expanded into wholesale distribution, reaching retailers across Tamil Nadu & Uttar Pradesh.
-                            </p>
-                        </div>
-                        <div class="timeline-item wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="year font-worksans fw-7 fs-30">
-                                2023
-                            </div>
-                            <p class="text font-nunito">
-                                Built our first modern factory with hygienic processing facilities.
-                            </p>
-                        </div>
-                        <div class="timeline-item wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="year font-worksans fw-7 fs-30">
-                                2024
-                            </div>
-                            <p class="text font-nunito">
-                                Expanded with new depots across 3 states.
-                            </p>
-                        </div>
-                        <div class="timeline-item wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="year font-worksans fw-7 fs-30">
-                                2025
-                            </div>
-                            <p class="text font-nunito">
-                                Launched flagship products like Kasuri Methi and entered national markets through B2B platforms.
-                            </p>
-                        </div>
-                        <div class="timeline-item wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="year font-worksans fw-7 fs-30">
-                                Today
-                            </div>
-                            <p class="text font-nunito">
-                                Serving hundreds of businesses while staying true to our values of quality, purity, and trust.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!-- /.Section our history -->
-
+   
     <!-- Section farmer tour -->
     <section class="s-farm-tour">
         <div class="tf-container">

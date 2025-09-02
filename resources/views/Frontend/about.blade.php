@@ -490,30 +490,7 @@ platforms.
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <ul class="box-icon-list style-2">
-                                            <li>
-                                                <div class="box-icon style-3 ic-hover wow fadeInUp" data-wow-delay="0s">
-                                                    <div class="icon style-circle hover-icon">
-                                                         <img src="{{ asset('Front/icons/no-preservatives.png') }}" alt="">
-                                                    </div>
-                                                    <a href="#"
-                                                        class="caption fw-5 font-worksans hover-text-4">
-                                                        100% Natural
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="box-icon style-3 ic-hover wow fadeInUp"
-                                                    data-wow-delay="0.1s">
-                                                    <div class="icon style-circle hover-icon">
-                                                       <img src="{{ asset('Front/icons/aroma.png') }}" alt="">
-                                                    </div>
-                                                    <a href="#"
-                                                        class="caption fw-5 font-worksans hover-text-4">
-                                                        Rich in Aroma
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
+                                              <li>
                                                 <div class="box-icon style-3 ic-hover wow fadeInUp"
                                                     data-wow-delay="0.2s">
                                                     <div class="icon style-circle hover-icon">
@@ -521,11 +498,11 @@ platforms.
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
-                                                        Premium Quality
+                                                       Quality Checked
                                                     </a>
                                                 </div>
                                             </li>
-                                            <li>
+                                              <li>
                                                 <div class="box-icon style-3 ic-hover wow fadeInUp"
                                                     data-wow-delay="0.3s">
                                                     <div class="icon style-circle hover-icon">
@@ -533,10 +510,35 @@ platforms.
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
-                                                        Hygienically Packed
+                                                        Safe Packaging
+                                                    </a>
+                                                </div>
+                                            </li>   
+                                            <li>
+                                                <div class="box-icon style-3 ic-hover wow fadeInUp" data-wow-delay="0s">
+                                                    <div class="icon style-circle hover-icon">
+                                                         <img src="{{ asset('Front/icons/customer-service.png') }}" alt="">
+                                                    </div>
+                                                    <a href="#"
+                                                        class="caption fw-5 font-worksans hover-text-4">
+                                                       Customer Trust
                                                     </a>
                                                 </div>
                                             </li>
+                                            <li>
+                                                <div class="box-icon style-3 ic-hover wow fadeInUp"
+                                                    data-wow-delay="0.1s">
+                                                    <div class="icon style-circle hover-icon">
+                                                       <img src="{{ asset('Front/icons/reliability.png') }}" alt="">
+                                                    </div>
+                                                    <a href="#"
+                                                        class="caption fw-5 font-worksans hover-text-4">
+                                                       Reliable Delivery
+                                                    </a>
+                                                </div>
+                                            </li>
+                                          
+                                          
                                           
                                         </ul>
                                     </div>
@@ -757,54 +759,54 @@ platforms.
                                 <div class="swiper-slide">
                                     <div class="slide-partner">
                                         <div class="image">
-                                            <a href="#">
+                                            <p>
                                                 <img src="{{ asset('Front/images/partner/fss.png') }}" alt="" class="lazyload">
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="slide-partner">
                                         <div class="image">
-                                            <a href="#">
+                                            <p>
                                                 <img src="{{ asset('Front/images/partner/asd.png') }}" alt="" class="lazyload">
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="slide-partner">
                                         <div class="image">
-                                            <a href="#">
+                                            <p>
                                                 <img src="{{ asset('Front/images/partner/asdasd.png') }}" alt="" class="lazyload">
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="slide-partner">
                                         <div class="image">
-                                            <a href="#">
+                                            <p>
                                                 <img src="{{ asset('Front/images/partner/ww.png') }}" alt="" class="lazyload">
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="slide-partner">
                                         <div class="image">
-                                            <a href="#">
+                                            <p>
                                                 <img src="{{ asset('Front/images/partner/haa.png') }}" alt="" class="lazyload">
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="slide-partner">
                                         <div class="image">
-                                            <a href="#">
+                                            <p>
                                                 <img src="{{ asset('Front/images/partner/iso.png') }}" alt="" class="lazyload">
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

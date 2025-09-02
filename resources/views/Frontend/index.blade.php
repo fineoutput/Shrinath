@@ -287,7 +287,7 @@
                     </p>
                 </div>
                 <p class="text">
-                  ✅  <b>We Use Modern Processing:</b> By adopting clean, efficient, and safe methods, we ensure every product retains its natural aroma and quality. <br> <br>
+                  ✅  <b>We Use Modern Processing:</b> By adopting clean, efficient, and safe methods, we ensure every product retains its natural aroma and quality. 
                 </p>
                 <p>
                     ✅ <b>Making Healthy Foods:</b> Every product is processed with care and hygiene to deliver authentic taste, nutrition, and long-lasting freshness.

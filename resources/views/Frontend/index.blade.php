@@ -288,7 +288,8 @@
                 </div>
                 <p class="text">
                   ✅  <b>We Use Modern Processing:</b> By adopting clean, efficient, and safe methods, we ensure every product retains its natural aroma and quality. <br> <br>
-
+                </p>
+                <p>
                     ✅ <b>Making Healthy Foods:</b> Every product is processed with care and hygiene to deliver authentic taste, nutrition, and long-lasting freshness.
                 </p>
                 <a href="#" class="tf-btn ">
@@ -631,91 +632,7 @@
             </div>
         </section><!-- /.Section our agriculture -->
         <!-- Section project -->
-        <section class="s-project">
-            <div class="heading-side has-img-item">
-                <div class="tf-container w-1290">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="heading-section style-3 has-text text-center">
-                                <p class="sub-title">Providing the Finest Spices to Every Kitchen & Business</p>
-                                <p class="title tf-animate-3">
-                                    The heart of Indian cuisine, available in premium grades—Udaan, Kashi Bhagat, Gold, Silver, and Morpankh. Naturally sun-dried Kasuri Methi, sourced from Nagaur, adds a rich aroma to your recipes.
-                                </p>
-                                <p class="text">
-                                    Duis eleifend euismod arcu, nec faucibus mauris finibus id. Integer mattis, tellus non finibus rutrum.
-                                </p>
-                                <div class="img-item">
-                                    <img src="{{ asset('Front/images/item/rice-plant-2.png') }}" class="tf-animate-1" alt="" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="s-img-item item-1">
-                    <img src="{{ asset('Front/images/item/page-title-top.png') }}" alt="" />
-                </div>
-                <div class="s-img-item item-2 wow zoomIn" data-wow-delay="0.2s">
-                    <div class="scroll-element-4">
-                        <img src="{{ asset('Front/images/item/windmill.png') }}" alt="" />
-                    </div>
-                </div>
-                <div class="s-img-item item-3">
-                    <img src="{{ asset('Front/images/item/green.png') }}" alt="" />
-                </div>
-            </div>
-            <div class="slider-side">
-                <div class="tf-container w-1290">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="swiper-container slider-s-project">
-                                <div class="swiper-wrapper">
-                                    @foreach ($slider3 as $value)
-                                           <div class="swiper-slide">
-                                        <div class="box-portfolio style-5">
-                                            <div class="image">
-                                                <img src="{{ asset($value->image ?? '') }}"
-                                                    data-src="{{ asset($value->image ?? '') }}" alt=""
-                                                    class="lazyload" />
-                                            </div>
-                                            <div class="content">
-                                                <p class="sub font-farmhouse text-upper">
-                                                    Agriculture - farm
-                                                </p>
-                                                <a href="#"
-                                                    class="title fs-23 font-worksans fw-6 hover-text-secondary">{{ $value->title ?? ''}}</a>
-                                                <div class="bot">
-                                                    <p class="text font-nunito">
-                                                        Lorem ipsum dolor sit amet,
-                                                        consectetur adipiscing <br> elit. Sed
-                                                        a cursus massa. Cras ut dui nec
-                                                        nibh <br> vehicula fermentum. natoque
-                                                        penatibus.
-                                                    </p>
-                                                    <a href="#" class="btn-read icon style-circle">
-                                                        <i class="icon-arrow_right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="bot">
-                                <div class="swiper-pagination style-1 pagination-s-project"></div>
-                                <a href="#" class="tf-btn-read hover-text-4">View All Products</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="s-img-item item-4">
-                <img src="{{ asset('Front/images/item/page-title-top.png') }}" alt="" />
-            </div>
-        </section><!-- /.Section project -->
+     <!-- /.Section project -->
          <section class="s-shopping">
             <div class="tf-container w-1620">
                 <div class="row">

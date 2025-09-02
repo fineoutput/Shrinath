@@ -758,7 +758,7 @@ platforms.
                                     <div class="slide-partner">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="{{ asset('Front/images/partner/wide-open.png') }}" alt="" class="lazyload">
+                                                <img src="{{ asset('Front/images/partner/fss.png') }}" alt="" class="lazyload">
                                             </a>
                                         </div>
                                     </div>
@@ -767,7 +767,7 @@ platforms.
                                     <div class="slide-partner">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="{{ asset('Front/images/partner/sollio.png') }}" alt="" class="lazyload">
+                                                <img src="{{ asset('Front/images/partner/asd.png') }}" alt="" class="lazyload">
                                             </a>
                                         </div>
                                     </div>
@@ -776,7 +776,7 @@ platforms.
                                     <div class="slide-partner">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="{{ asset('Front/images/partner/syngenta.png') }}" alt="" class="lazyload">
+                                                <img src="{{ asset('Front/images/partner/asdasd.png') }}" alt="" class="lazyload">
                                             </a>
                                         </div>
                                     </div>
@@ -785,7 +785,7 @@ platforms.
                                     <div class="slide-partner">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="{{ asset('Front/images/partner/strachan-valley.png') }}" alt="" class="lazyload">
+                                                <img src="{{ asset('Front/images/partner/ww.png') }}" alt="" class="lazyload">
                                             </a>
                                         </div>
                                     </div>
@@ -794,7 +794,7 @@ platforms.
                                     <div class="slide-partner">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="{{ asset('Front/images/partner/new-holland.png') }}" alt="" class="lazyload">
+                                                <img src="{{ asset('Front/images/partner/haa.png') }}" alt="" class="lazyload">
                                             </a>
                                         </div>
                                     </div>
@@ -803,7 +803,7 @@ platforms.
                                     <div class="slide-partner">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="{{ asset('Front/images/partner/ony-field.png') }}" alt="" class="lazyload">
+                                                <img src="{{ asset('Front/images/partner/iso.png') }}" alt="" class="lazyload">
                                             </a>
                                         </div>
                                     </div>

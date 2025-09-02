@@ -289,7 +289,7 @@
             </div>
         </section>
     <!-- Section award -->
-    <section class="s-award">
+     <section class="s-partner style-2 has-img-item pb-71">
         <div class="tf-container">
             <div class="row">
                 <div class="col-lg-5">
@@ -307,7 +307,11 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-7" style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+">
                     <div class="headding-text">
                         <p>
                             Our dedication to purity and hygiene has made us a trusted name in the spice industry. With
@@ -330,87 +334,89 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
-                    <div class=" wg-award-winner">
-                        <p class="title font-worksans fw-7">
-                            Certificates
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="heading-section text-center has-text mb-81">
+                        <p class="sub-title">Trusted Quality, Globally Recognized</p>
+                        <p class="title text-anime-style-2">
+                            Our Certifications
                         </p>
-                        <p class="text-wrap">
-                            FSSAI | GMP | ISO | APEDA | HALAL
+                        <p class="text">
+                            ISO | APEDA | FSSAI | HALAL | GMP | HACCP | IEC
                         </p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="wrap">
-                        <div class="img-item-award">
-                            <img src="{{ asset('Front/images/item/award.png') }}" 
-                                data-src="{{ asset('Front/images/item/award.png') }}" alt="" class="lazyload tf-animation-pulse">
+                        <div class="img-item">
+                            <img class="tf-animate-1" src="{{ asset('Front/images/item/rice-plant-2.png') }}" alt="" />
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="wrap">
-                        <div class="image-award wow fadeInUp" data-wow-delay="0s">
-                            <div class="">
+                    <div class="slider-wrap">
+                        <div class="swiper-container slider-partner">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{{ asset('Front/images/partner/fss.png') }}" alt="" class="lazyload">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{{ asset('Front/images/partner/asd.png') }}" alt="" class="lazyload">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{{ asset('Front/images/partner/asdasd.png') }}" alt="" class="lazyload">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{{ asset('Front/images/partner/ww.png') }}" alt="" class="lazyload">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{{ asset('Front/images/partner/haa.png') }}" alt="" class="lazyload">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{{ asset('Front/images/partner/iso.png') }}" alt="" class="lazyload">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <img class="sdsa" src="{{ asset('Front/images/partner/images.png') }}" 
-                                data-src="{{ asset('Front/images/partner/images.png') }}" alt="" class="lazyload">
-                            <a href="{{route('our_gallery')}}">
-                            </a>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="wrap">
-                        <div class="image-award wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="tf-overlay"></div>
-                            <img src="{{ asset('Front/images/partner/download (2).png') }}" 
-                                data-src="{{ asset('Front/images/partner/download (2).png') }}" alt="" class="lazyload">
-                            <a href="{{route('our_gallery')}}">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="image-award wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="tf-overlay"></div>
-                        <img class="sdsa" src="{{ asset('Front/images/partner/download (1).jpg') }}" 
-                            data-src="{{ asset('Front/images/partner/download (1).jpg') }}" alt="" class="lazyload">
-                        <a href="{{route('our_gallery')}}">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="image-award wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="tf-overlay"></div>
-                        <img class="sdsa" src="{{ asset('Front/images/partner/images (1).png') }}" 
-                            data-src="{{ asset('Front/images/partner/images (1).png') }}" alt="" class="lazyload">
-                        <a href="{{route('our_gallery')}}">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="image-award wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="tf-overlay"></div>
-                        <img class="sdsa" src="{{ asset('Front/images/partner/download (1).png') }}" 
-                            data-src="{{ asset('Front/images/partner/download (1).png') }}" alt="" class="lazyload">
-                        <a href="{{route('our_gallery')}}">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="image-award wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="tf-overlay"></div>
-                        <img class="sdsa" src="{{ asset('Front/images/partner/download.png') }}" 
-                            data-src="{{ asset('Front/images/partner/download.png') }}" alt="" class="lazyload">
-                        <a href="{{route('our_gallery')}}">
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </section><!-- /.Section award -->
+        <div class="s-img-item item-1">
+            <img src="{{ asset('Front/images/item/page-title-top.png') }}" alt="" />
+        </div>
+    </section><!-- /.Section partner -->
 
+   
     <!-- Section contact us -->
     <section class="s-contact-us style-2 has-img-item pt-138 pb-78 tf-pt-0">
         <div class="section-wrap">

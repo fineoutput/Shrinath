@@ -52,7 +52,7 @@
                             <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
                         </div>
                         <div class="breadcrumb">
-                            <a href="index.html">Home</a>
+                            <a href="{{route('/')}}">Home</a>
                             <div class="icon">
                                 <i class="icon-arrow-right1"></i>
                             </div>
@@ -172,7 +172,7 @@
                                             <img class="lazyload" src="{{ asset('Front/images/widget/gallery-item-4.jpg') }}"
                                                 data-src="{{ asset('Front/images/widget/gallery-item-4.jpg') }}" alt="">
                                         </div>
-                                        <a href="gallery.html" class="add-gallery">
+                                        <a href="{{ route('our_gallery') }}" class="add-gallery">
                                             +
                                         </a>
                                     </div>
@@ -183,7 +183,7 @@
                                             <img class="lazyload" src="{{ asset('Front/images/widget/gallery-item-7.jpg') }}"
                                                 data-src="{{ asset('Front/images/widget/gallery-item-7.jpg') }}" alt="">
                                         </div>
-                                        <a href="gallery.html" class="add-gallery">
+                                        <a href="{{ route('our_gallery') }}" class="add-gallery">
                                             +
                                         </a>
                                     </div>
@@ -194,7 +194,7 @@
                                             <img class="lazyload" src="{{ asset('Front/images/blog/blog-1.jpg') }}"
                                                 data-src="{{ asset('Front/images/blog/blog-1.jpg') }}" alt="">
                                         </div>
-                                        <a href="gallery.html" class="add-gallery">
+                                        <a href="{{ route('our_gallery') }}" class="add-gallery">
                                             +
                                         </a>
                                     </div>
@@ -205,7 +205,7 @@
                                             <img class="lazyload" src="{{ asset('Front/images/widget/gallery-item-9.jpg') }}"
                                                 data-src="{{ asset('Front/images/widget/gallery-item-9.jpg') }}" alt="">
                                         </div>
-                                        <a href="gallery.html" class="add-gallery">
+                                        <a href="{{ route('our_gallery') }}" class="add-gallery">
                                             +
                                         </a>
                                     </div>
@@ -543,7 +543,7 @@ platforms.
                                 </div>
                             </div>
                         <div class="bot flex justify-center">
-                            <a href="our-commitments.html" class="tf-btn scale-50">
+                            <a href="{{ route('our_commitments') }}" class="tf-btn scale-50">
                                 <span class="text-style">
                                     See More About Our Commitment
                                 </span>
@@ -571,14 +571,14 @@ platforms.
                                 alt="" class="lazyload">
                         </div>
                         <div class="content">
-                            <a href="our-team.html" class="title fw-7 fs-30 font-worksans hover-text-secondary">
+                            <a href="{{ route('our_team') }}" class="title fw-7 fs-30 font-worksans hover-text-secondary">
                                 Meet The Team
                             </a>
                             <p class="text">
                                 The faces behind the flavors, working with passion to bring Shreenath to every home.
                             </p>
                             <div class="flex justify-center">
-                                <a href="our-team.html" class="tf-btn-read text-white hover-text-secondary">
+                                <a href="{{ route('our_team') }}" class="tf-btn-read text-white hover-text-secondary">
                                     View All The Team Members
                                 </a>
                             </div>
@@ -592,14 +592,14 @@ platforms.
                                 alt="" class="lazyload">
                         </div>
                         <div class="content">
-                            <a href="gallery.html" class="title fw-7 fs-30 font-worksans hover-text-secondary">
+                            <a href="{{ route('our_gallery') }}" class="title fw-7 fs-30 font-worksans hover-text-secondary">
                                 Explore Our Gallery
                             </a>
                             <p class="text">
                                 From Farm to Factory – The Journey of Purity, Handpicked Cumin Seeds for the Finest Flavor, Naturally Sun-Dried Kasuri Methi, Sealed Freshness, Trusted Quality.
                             </p>
                             <div class="flex justify-center">
-                                <a href="gallery.html" class="tf-btn-read text-white hover-text-secondary">
+                                <a href="{{ route('our_gallery') }}" class="tf-btn-read text-white hover-text-secondary">
                                     View Gallery
                                 </a>
                             </div>

@@ -31,7 +31,7 @@ class ProductsController extends Controller
         $data['category'] = Category::where('status',1)->get();
         return view('admin.products.create',$data);
     }
-
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -46,7 +46,7 @@ class ProductsController extends Controller
             'image_3' => 'nullable',
             'image_4' => 'nullable',
         ]);
-    
+
         $product = new Products;
         $product->name = $request->name;
         $product->price = $request->price;
@@ -63,9 +63,25 @@ class ProductsController extends Controller
                 $product->$imageField = 'uploads/products/' . $imageName;
             }
         }
-    
+
         $product->save();
-    
+
+        // ✅ Send Firebase notification on product creation
+        $notificationPayload = [
+            'title' => 'New Product: ' . $product->name,
+            'body' => 'Check out our new product: ' . $product->name,
+            'image' => asset($product->image_1),
+        ];
+
+        $dataPayload = [
+            'product_id' => $product->id,
+            'category_id' => $product->category_id,
+            'screen' => 'ProductDetail',
+        ];
+
+        $firebaseService = new FirebaseNotificationService();
+        $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
+
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 

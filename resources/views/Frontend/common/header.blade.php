@@ -490,9 +490,9 @@
                                                     </ul> --}}
                                                 </li>
                                                 
-                                                <li class="menu-item menu-item-has-children-mobile">
+                                                {{-- <li class="menu-item menu-item-has-children-mobile">
                                                     <a class="item-menu-mobile" href="contact-us.html">Contact</a>
-                                                </li>
+                                                </li> --}}
                                                 <li class="menu-item menu-item-has-children-mobile">
                                                 <a class="item-menu-mobile" href="{{route('blog')}}">Blog</a>
                                             </li>
@@ -621,9 +621,9 @@
                                                     </ul> --}}
                                                 </li>
                                                
-                                                <li class="item has-child">
+                                                {{-- <li class="item has-child">
                                                     <a href="contact-us.html">Contact</a>
-                                                </li>
+                                                </li> --}}
                                                 <li class="item has-child">
                                                 <a href="{{route('blog')}}">Blog</a>
                                             </li>

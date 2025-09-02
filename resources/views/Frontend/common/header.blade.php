@@ -398,7 +398,7 @@
                                     <div class="top">
                                         <div class="logo">
                                             <a href="{{route('/')}}" rel="home" class="main-logo">
-                                                <img id="mobile-logo_header" alt="" src="{{ asset('Front/images/logo/logo-2.png') }}">
+                                                <img id="mobile-logo_header" alt="" src="{{ asset('Front/images/logo/sdas.png') }}">
                                             </a>
                                             <div class="mobile-nav-close">
                                                 <i class="icon-close"></i>
@@ -493,11 +493,11 @@
                                                 <li class="menu-item menu-item-has-children-mobile">
                                                     <a class="item-menu-mobile" href="contact-us.html">Contact</a>
                                                 </li>
-                                                <li class="item has-child">
-                                                <a href="{{route('blog')}}">Blog</a>
+                                                <li class="menu-item menu-item-has-children-mobile">
+                                                <a class="item-menu-mobile" href="{{route('blog')}}">Blog</a>
                                             </li>
-                                            <li class="item has-child">
-                                                <a href="{{route('our_commitments')}}">Commitments</a>
+                                            <li class="menu-item menu-item-has-children-mobile">
+                                                <a class="item-menu-mobile" href="{{route('our_commitments')}}">Commitments</a>
                                             </li>
                                             </ul>
                                         </nav>

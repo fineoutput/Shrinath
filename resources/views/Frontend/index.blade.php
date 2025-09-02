@@ -876,6 +876,89 @@ your recipes.
                 </div>
             </div>
         </section><!-- /.Section testimonial -->
+   <section class="s-partner style-2 has-img-item pb-71">
+        <div class="tf-container w-1780">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="heading-section text-center has-text mb-81">
+                        <p class="sub-title">Trusted Quality, Globally Recognized</p>
+                        <p class="title text-anime-style-2">
+                            Our Certifications
+                        </p>
+                        <p class="text">
+                            ISO | APEDA | FSSAI | HALAL | GMP | HACCP | IEC
+                        </p>
+                        <div class="img-item">
+                            <img class="tf-animate-1" src="{{ asset('Front/images/item/rice-plant-2.png') }}" alt="" />
+                        </div>
+                    </div>
+                    <div class="slider-wrap">
+                        <div class="swiper-container slider-partner">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <p>
+                                                <img src="{{ asset('Front/images/partner/fss.png') }}" alt="" class="lazyload">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <p>
+                                                <img src="{{ asset('Front/images/partner/asd.png') }}" alt="" class="lazyload">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <p>
+                                                <img src="{{ asset('Front/images/partner/asdasd.png') }}" alt="" class="lazyload">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <p>
+                                                <img src="{{ asset('Front/images/partner/ww.png') }}" alt="" class="lazyload">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <p>
+                                                <img src="{{ asset('Front/images/partner/haa.png') }}" alt="" class="lazyload">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="slide-partner">
+                                        <div class="image">
+                                            <p>
+                                                <img src="{{ asset('Front/images/partner/iso.png') }}" alt="" class="lazyload">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="s-img-item item-1">
+            <img src="{{ asset('Front/images/item/page-title-top.png') }}" alt="" />
+        </div>
+    </section><!-- /.Section partner -->
 
        <section>
             <div class="container">
@@ -1320,78 +1403,5 @@ your recipes.
         </section><!-- /.Section contact us -->
         <!-- Section partner -->
         
-        <section class="s-partner style-2 has-img-item pb-53-0-75">
-            <div class="tf-container w-1780">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="slider-wrap">
-                            <div class="swiper-container slider-partner">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="slide-partner">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{ asset('images/partner/wide-open.png') }}" alt="" class="lazyload">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slide-partner">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{ asset('images/partner/sollio.png') }}" alt="" class="lazyload">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slide-partner">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{ asset('images/partner/syngenta.png') }}" alt="" class="lazyload">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slide-partner">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{ asset('images/partner/strachan-valley.png') }}" alt="" class="lazyload">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slide-partner">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{ asset('images/partner/new-holland.png') }}" alt="" class="lazyload">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slide-partner">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{ asset('images/partner/stony-field.png') }}" alt="" class="lazyload">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="s-img-item item-1">
-                <img src="{{ asset('images/item/page-title-top.png') }}" alt="" />
-            </div>
-        </section><!-- /.Section partner -->
+       
 @endsection

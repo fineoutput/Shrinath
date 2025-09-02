@@ -98,6 +98,22 @@
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <ul class="box-icon-list style-2">
+                                             <li>
+                                                <div class="box-icon style-3 ic-hover wow fadeInUp"
+                                                    data-wow-delay="0.3s">
+                                                    <div class="icon style-circle hover-icon">
+                                                         <img src="{{ asset('Front/icons/safe.png') }}" alt="">
+                                                    </div>
+                                                    <a href="#"
+                                                        class="caption fw-5 font-worksans hover-text-4">
+                                                        Hygienically Processing
+                                                    </a>
+                                                    <span>
+                                                        Advanced cleaning & dust-free facilities
+
+                                                    </span>
+                                                </div>
+                                            </li>
                                             <li>
                                                 <div class="box-icon style-3 ic-hover wow fadeInUp" data-wow-delay="0s">
                                                     <div class="icon style-circle hover-icon">
@@ -105,20 +121,12 @@
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
-                                                        100% Natural
+                                                        Natural Goodness
                                                     </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="box-icon style-3 ic-hover wow fadeInUp"
-                                                    data-wow-delay="0.1s">
-                                                    <div class="icon style-circle hover-icon">
-                                                       <img src="{{ asset('Front/icons/aroma.png') }}" alt="">
-                                                    </div>
-                                                    <a href="#"
-                                                        class="caption fw-5 font-worksans hover-text-4">
-                                                        Rich in Aroma
-                                                    </a>
+                                                    <span>
+                                                        Minimal chemicals, maximum natural purity
+
+                                                    </span>
                                                 </div>
                                             </li>
                                             <li>
@@ -129,22 +137,45 @@
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
-                                                        Premium Quality
+                                                        Quality Checked
                                                     </a>
+                                                    <span>
+                                                         Multiple lab tests at every stage
+                                                    </span>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="box-icon style-3 ic-hover wow fadeInUp"
-                                                    data-wow-delay="0.3s">
+                                                    data-wow-delay="0.1s">
                                                     <div class="icon style-circle hover-icon">
-                                                         <img src="{{ asset('Front/icons/safe.png') }}" alt="">
+                                                       <img src="{{ asset('Front/icons/aroma.png') }}" alt="">
                                                     </div>
                                                     <a href="#"
                                                         class="caption fw-5 font-worksans hover-text-4">
-                                                        Hygienically Packed
+                                                        Freshness Locked
                                                     </a>
+                                                    <span>
+                                                        Modern packaging that seals aroma & taste
+                                                    </span>
                                                 </div>
                                             </li>
+                                            <li>
+                                                <div class="box-icon style-3 ic-hover wow fadeInUp"
+                                                    data-wow-delay="0.1s">
+                                                    <div class="icon style-circle hover-icon">
+                                                       <img src="{{ asset('Front/icons/food-safety.png') }}" alt="">
+                                                    </div>
+                                                    <a href="#"
+                                                        class="caption fw-5 font-worksans hover-text-4">
+                                                        Food-Safe Standards
+                                                    </a>
+                                                    <span>
+                                                       Certified processes ensuring consumer safety
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            
+                                           
                                           
                                         </ul>
                                     </div>
@@ -354,54 +385,54 @@
                                 <div class="swiper-slide">
                                     <div class="slide-partner">
                                         <div class="image">
-                                            <a href="#">
+                                            <p>
                                                 <img src="{{ asset('Front/images/partner/fss.png') }}" alt="" class="lazyload">
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="slide-partner">
                                         <div class="image">
-                                            <a href="#">
+                                            <p>
                                                 <img src="{{ asset('Front/images/partner/asd.png') }}" alt="" class="lazyload">
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="slide-partner">
                                         <div class="image">
-                                            <a href="#">
+                                            <p>
                                                 <img src="{{ asset('Front/images/partner/asdasd.png') }}" alt="" class="lazyload">
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="slide-partner">
                                         <div class="image">
-                                            <a href="#">
+                                            <p>
                                                 <img src="{{ asset('Front/images/partner/ww.png') }}" alt="" class="lazyload">
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="slide-partner">
                                         <div class="image">
-                                            <a href="#">
+                                            <p>
                                                 <img src="{{ asset('Front/images/partner/haa.png') }}" alt="" class="lazyload">
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="slide-partner">
                                         <div class="image">
-                                            <a href="#">
+                                            <p>
                                                 <img src="{{ asset('Front/images/partner/iso.png') }}" alt="" class="lazyload">
-                                            </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

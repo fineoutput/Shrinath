@@ -520,7 +520,8 @@
                                                         Address:
                                                     </h5>
                                                     <p>
-                                                        Prinsengracht 250, Amsterdam Netherlands
+                                                        H-16, Krishi Upaj Mandi,
+Nagaur-341001(Raj.)
                                                     </p>
                                                 </li>
                                                 <li>
@@ -528,7 +529,7 @@
                                                         Phone:
                                                     </h5>
                                                     <p>
-                                                        +1 987 654 3210
+                                                        +91 7014928528
                                                     </p>
                                                 </li>
                                                 <li>

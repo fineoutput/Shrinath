@@ -322,8 +322,8 @@
                 <div class="col-lg-4">
                     <div class="box-farmer img-hover pb-30 wow fadeInUp" data-wow-delay="0.4s">
                         <div class="image hover-item">
-                            <img src="{{ asset('Front/images/widget/farmer-3.jpg') }}" 
-                                data-src="{{ asset('Front/images/widget/farmer-3.jpg') }}" alt="Gautam Sharma" class="lazyload">
+                            <img src="{{ asset('Front/images/widget/farmer-2.jpg') }}" 
+                                data-src="{{ asset('Front/images/widget/farmer-2.jpg') }}" alt="Gautam Sharma" class="lazyload">
                         </div>
                         <div class="content">
                             <div class="author-wrap">

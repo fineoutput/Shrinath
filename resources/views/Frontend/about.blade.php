@@ -18,7 +18,7 @@
         text-align: center;
         color: var(--Text-4);
     font-family: "GlitterySnowfall", sans-serif;
-    font-size: 23px;
+    font-size: 53px;
     line-height: 26px;
     margin-bottom: 16px;
     }

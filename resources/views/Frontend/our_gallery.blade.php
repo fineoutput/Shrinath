@@ -32,7 +32,7 @@
                             <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
                         </div>
                         <div class="breadcrumb">
-                            <a href="index.html">Home</a>
+                            <a href="{{route('/')}}">Home</a>
                             <div class="icon">
                                 <i class="icon-arrow-right1"></i>
                             </div>
@@ -73,7 +73,7 @@
                                         <img class="lazyload" src="{{ asset($value->image ?? '') }}"
                                             data-src="{{ asset($value->image ?? '') }}" alt="">
                                     </div>
-                                    <a href="gallery.html" class="add-gallery">+</a>
+                                    <a href="{{route('our_gallery')}}" class="add-gallery">+</a>
                                 </div>
                                 @endforeach
                            
@@ -83,7 +83,7 @@
                                         <img class="lazyload" src="{{ asset('Front/images/widget/gallery-item-2.jpg') }}"
                                             data-src="{{ asset('Front/images/widget/gallery-item-2.jpg') }}" alt="">
                                     </div>
-                                    <a href="gallery.html" class="add-gallery">+</a>
+                                    <a href="{{route('our_gallery')}}" class="add-gallery">+</a>
                                 </div>
                                 
                                 <div class="gallery-item item-3 wow fadeInUp" data-wow-delay="0.2s">
@@ -91,7 +91,7 @@
                                         <img class="lazyload" src="{{ asset('Front/images/widget/gallery-item-3.jpg') }}"
                                             data-src="{{ asset('Front/images/widget/gallery-item-3.jpg') }}" alt="">
                                     </div>
-                                    <a href="gallery.html" class="add-gallery">+</a>
+                                    <a href="{{route('our_gallery')}}" class="add-gallery">+</a>
                                 </div> --}}
                               
                                 

@@ -40,7 +40,7 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="footer-inner-wrap">
                                 <div class="logo">
-                                    <a href="index.html">
+                                    <a href="{{route('/')}}">
 
                                         <img src="images/logo/logo-2.png" alt="">
                                     </a>
@@ -170,7 +170,7 @@ Nagaur-341001(Raj.)
                                             <img src="images/section/f-new-post-1.jpg" alt="">
                                         </div>
                                         <div class="content">
-                                            <a href="blog-single.html" class="title-post hover-text-secondary">
+                                            <a href="{{route('blog')}}" class="title-post hover-text-secondary">
                                                 Learn 10 Best Tips for
                                                 New Formers
                                             </a>
@@ -184,7 +184,7 @@ Nagaur-341001(Raj.)
                                             <img src="images/section/f-new-post--2.jpg" alt="">
                                         </div>
                                         <div class="content">
-                                            <a href="blog-single.html" class="title-post hover-text-secondary">
+                                            <a href="{{route('blog')}}" class="title-post hover-text-secondary">
                                                 Farmer Sentiment
                                                 Darkens Hopes Fade
                                             </a>

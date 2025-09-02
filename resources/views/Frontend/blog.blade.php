@@ -39,7 +39,7 @@
                             <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
                         </div>
                         <div class="breadcrumb">
-                            <a href="index.html">Home</a>
+                            <a href="{{route('/')}}">Home</a>
                             <div class="icon">
                                 <i class="icon-arrow-right1"></i>
                             </div>
@@ -203,7 +203,7 @@
                                     </li>
                                 </ul>
                                 <h3 class="title fw-7">
-                                    <a href="blog-single.html">
+                                    <a href="{{route('blog')}}">
                                          {{ $value->title ?? ''}}
                                     </a>
                                 </h3>
@@ -211,7 +211,7 @@
                                     {!! $value->description !!}
                                 </p>
                                 <div class="bot">
-                                    <a class="tf-btn gap-35" href="blog-single.html">
+                                    <a class="tf-btn gap-35" href="{{route('blog')}}">
                                         <span class="text-style">
                                             Continue Reading
                                         </span>
@@ -353,7 +353,7 @@
                                     </li>
                                 </ul>
                                 <h3 class="title fw-7">
-                                    <a href="blog-single.html">
+                                    <a href="{{route('blog')}}">
                                          {{ $value->title ?? ''}}
                                     </a>
                                 </h3>
@@ -361,7 +361,7 @@
                                     {!! $value->description !!}
                                 </p>
                                 <div class="bot">
-                                    <a class="tf-btn gap-35" href="blog-single.html">
+                                    <a class="tf-btn gap-35" href="{{route('blog')}}">
                                         <span class="text-style">
                                             Continue Reading
                                         </span>
@@ -502,7 +502,7 @@
                                     </li>
                                 </ul>
                                 <h3 class="title fw-7">
-                                    <a href="blog-single.html">
+                                    <a href="{{route('blog')}}">
                                          {{ $value->title ?? ''}}
                                     </a>
                                 </h3>
@@ -510,7 +510,7 @@
                                     {!! $value->description !!}
                                 </p>
                                 <div class="bot">
-                                    <a class="tf-btn gap-35" href="blog-single.html">
+                                    <a class="tf-btn gap-35" href="{{route('blog')}}">
                                         <span class="text-style">
                                             Continue Reading
                                         </span>

@@ -53,7 +53,7 @@
                             <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
                         </div>
                         <div class="breadcrumb">
-                            <a href="index.html">Home</a>
+                            <a href="{{route('/')}}">Home</a>
                             <div class="icon">
                                 <i class="icon-arrow-right1"></i>
                             </div>
@@ -355,7 +355,7 @@
                             </div>
                             <img class="sdsa" src="{{ asset('Front/images/partner/images.png') }}" 
                                 data-src="{{ asset('Front/images/partner/images.png') }}" alt="" class="lazyload">
-                            <a href="gallery.html">
+                            <a href="{{route('our_gallery')}}">
                             </a>
                         </div>
                     </div>
@@ -366,7 +366,7 @@
                             <div class="tf-overlay"></div>
                             <img src="{{ asset('Front/images/partner/download (2).png') }}" 
                                 data-src="{{ asset('Front/images/partner/download (2).png') }}" alt="" class="lazyload">
-                            <a href="gallery.html">
+                            <a href="{{route('our_gallery')}}">
                             </a>
                         </div>
                     </div>
@@ -376,7 +376,7 @@
                         <div class="tf-overlay"></div>
                         <img class="sdsa" src="{{ asset('Front/images/partner/download (1).jpg') }}" 
                             data-src="{{ asset('Front/images/partner/download (1).jpg') }}" alt="" class="lazyload">
-                        <a href="gallery.html">
+                        <a href="{{route('our_gallery')}}">
                         </a>
                     </div>
                 </div>
@@ -385,7 +385,7 @@
                         <div class="tf-overlay"></div>
                         <img class="sdsa" src="{{ asset('Front/images/partner/images (1).png') }}" 
                             data-src="{{ asset('Front/images/partner/images (1).png') }}" alt="" class="lazyload">
-                        <a href="gallery.html">
+                        <a href="{{route('our_gallery')}}">
                         </a>
                     </div>
                 </div>
@@ -394,7 +394,7 @@
                         <div class="tf-overlay"></div>
                         <img class="sdsa" src="{{ asset('Front/images/partner/download (1).png') }}" 
                             data-src="{{ asset('Front/images/partner/download (1).png') }}" alt="" class="lazyload">
-                        <a href="gallery.html">
+                        <a href="{{route('our_gallery')}}">
                         </a>
                     </div>
                 </div>
@@ -403,7 +403,7 @@
                         <div class="tf-overlay"></div>
                         <img class="sdsa" src="{{ asset('Front/images/partner/download.png') }}" 
                             data-src="{{ asset('Front/images/partner/download.png') }}" alt="" class="lazyload">
-                        <a href="gallery.html">
+                        <a href="{{route('our_gallery')}}">
                         </a>
                     </div>
                 </div>

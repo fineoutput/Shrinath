@@ -35,11 +35,11 @@
                             <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
                         </div>
                         <div class="breadcrumb">
-                            <a href="index.html">Home</a>
+                            <a href="{{route('/')}}">Home</a>
                             <div class="icon">
                                 <i class="icon-arrow-right1"></i>
                             </div>
-                            <a href="about-us.html">About Us</a>
+                            <a href="{{route('about')}}">About Us</a>
                             <div class="icon">
                                 <i class="icon-arrow-right1"></i>
                             </div>
@@ -68,7 +68,7 @@
                                 data-src="{{ asset('Front/images/widget/card-provide-3.jpg') }}" alt="" class="lazyload">
                         </div>
                         <div class="content">
-                            <a href="about-us.html" class="hover-text-primary title font-worksans">
+                            <a href="{{route('about')}}" class="hover-text-primary title font-worksans">
                                 We Are Family
                             </a>
                             <p class="text">
@@ -86,7 +86,7 @@
                                 class="lazyload">
                         </div>
                         <div class="content">
-                            <a href="about-us.html" class="hover-text-primary title font-worksans">
+                            <a href="{{route('about')}}" class="hover-text-primary title font-worksans">
                                 We Value Nature
                             </a>
                             <p class="text">
@@ -130,7 +130,7 @@
                             Crafting Purity and Excellence
                         </p>
                     </div>
-                    <a href="about-us.html" class="tf-btn-read hover-text-4">
+                    <a href="{{route('about')}}" class="tf-btn-read hover-text-4">
                         Learn More About Us
                     </a>
                 </div>
@@ -385,7 +385,7 @@
                                 If you want to buy clean, pure, and quality products—or to learn more about us—contact us
                                 today!
                             </p>
-                            <a href="contact-us.html" class="tf-btn bg-white scale-40">
+                            {{-- <a href="contact-us.html" class="tf-btn bg-white scale-40"> --}}
                                 <span class="text-style cl-primary text-anime-style-1">
                                     Contact Us Today
                                 </span>

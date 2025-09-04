@@ -17,6 +17,7 @@ use Redirect;
 use Laravel\Sanctum\PersonalAccessToken;
 use DateTime;
 use Razorpay\Api\Product;
+use Illuminate\Support\Facades\Crypt;
 
 class HomeController extends Controller
 {
@@ -46,10 +47,13 @@ class HomeController extends Controller
      
         return view('Frontend/our_commitments')->withTitle('');
     }
-    public function blog_single(Request $req)
-    {
+    public function blog_single(Request $req, $encryptedId)
+    {   
+
+         $id = Crypt::decrypt($encryptedId);
+        $data['blog'] = Block::findOrFail($id);
      
-        return view('Frontend/blog_single')->withTitle('');
+        return view('Frontend/blog_single',$data)->withTitle('');
     }
 
     public function our_products($category_id = null)
@@ -96,10 +100,8 @@ class HomeController extends Controller
 
    public function blog(Request $req)
     {
-        // Paginate all blogs (6 per page)
         $allBlogs = Block::orderBy('id', 'DESC')->paginate(6);
 
-        // Split into 3 separate groups
         $blogChunks = $allBlogs->getCollection()->chunk(2);
 
         // Prepare individual blog groups

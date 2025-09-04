@@ -43,7 +43,7 @@
                             <div class="icon">
                                 <i class="icon-arrow-right1"></i>
                             </div>
-                            <a href="{{route('blog_single')}}">Blog Full Width</a>
+                            {{-- <a href="{{route('blog_single')}}">Blog Full Width</a> --}}
                         </div>
                     </div>
                 </div>
@@ -173,7 +173,7 @@
                                     {!! $value->description !!}
                                 </p>
                                 <div class="bot">
-                                    <a class="tf-btn gap-35" href="{{route('blog_single')}}">
+                                    <a class="tf-btn gap-35" href="{{ route('blog_single', encrypt($value->id)) }}">
                                         <span class="text-style">
                                             Continue Reading
                                         </span>

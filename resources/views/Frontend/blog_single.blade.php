@@ -67,37 +67,27 @@
                         <div class="col-lg-12">
                             <div class="content">
                                 <h3 class="title-name fw-bold">
-                                    How to Care for Cows to have the Best Quality Meat
+                                    {{$blog->title ?? ''}}
                                 </h3>
                                 <div class="entry-meta">
                                   
                                 </div>
                                 <div class="entry-image">
-                                    <img class="lazyload" src="{{ asset('Front/images/blog/blog-1.jpg') }}"
-                                        data-src="{{ asset('Front/images/blog/blog-1.jpg') }}" alt="">
+                                    <img class="lazyload" src="{{ asset($blog->profile_image) }}"
+                                        data-src="{{ asset($blog->profile_image) }}" alt="">
                                 </div>
                                 <p class="text text-1">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut aliquam mauris.
-                                    Maecenas porta odio lorem, in aliquet
-                                    diam pellentesque vel. Donec pulvinar mi ipsum, a eleifend est porta id. Ut rutrum,
-                                    quam vestibulum placerat sodales, ex
-                                    eros tincidunt ipsum, varius venenatis risus magna.Pellentesque imperdiet id velit
-                                    eu lobortis. Praesent metus tellus,
-                                    venenatis ac volutpat ut, blandit ut arcu.
+                                   {!! $blog->description !!}
                                 </p>
                                 <p class="text text-2">
-                                    Nulla accumsan sapien purus, at ultrices eros sagittis at. Duis leo purus, gravida
-                                    ut consequat in, hendrerit a neque.
-                                    Sed nec placerat odio, ut ultrices magna. Etiam in ligula pulvinar, semper dolor eu,
-                                    commodo lorem. In interdum neque
-                                    libero, eget volutpat nibh commodo et.
+                                   
                                 </p>
                                
                                 <div class="entry-video">
                                     <div class="video-wrap wow fadeInUp" data-wow-delay="0s">
-                                        <img class="lazyload" data-src="{{ asset('Front/images/widget/video-wrap.jpg') }}"
-                                            src="{{ asset('Front/images/widget/video-wrap.jpg') }}" alt="">
-                                        <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
+                                        <img class="lazyload" data-src="{{ asset($blog->profile_image) }}"
+                                            src="{{ asset($blog->profile_image) }}" alt="">
+                                        <a href="{{ asset($blog->video) }}"
                                             class="style-icon-play popup-youtube">
                                             <i class="fa-solid fa-play"></i>
                                             <div class="wave"></div>
@@ -199,35 +189,30 @@
                                     </li>
                                 </ul>
                                 <div class="splide entry-image-2" id="image-slider">
-  <div class="splide__track">
-    <ul class="splide__list">
-      <li class="splide__slide">
-        <div class="image img-1 wow fadeInUp" data-wow-delay="0s">
-          <img class="lazyload"
-               data-src="{{ asset('Front/images/widget/blog-single-1.jpg') }}"
-               src="{{ asset('Front/images/widget/blog-single-1.jpg') }}"
-               alt="">
-        </div>
-      </li>
-      <li class="splide__slide">
-        <div class="image img-2 wow fadeInUp" data-wow-delay="0.1s">
-          <img class="lazyload"
-               data-src="{{ asset('Front/images/widget/blog-single-2.jpg') }}"
-               src="{{ asset('Front/images/widget/blog-single-2.jpg') }}"
-               alt="">
-        </div>
-      </li>
-      <li class="splide__slide">
-        <div class="image img-2 wow fadeInUp" data-wow-delay="0.1s">
-          <img class="lazyload"
-               data-src="{{ asset('Front/images/widget/blog-single-2.jpg') }}"
-               src="{{ asset('Front/images/widget/blog-single-2.jpg') }}"
-               alt="">
-        </div>
-      </li>
-    </ul>
-  </div>
-</div>
+                                    
+                                @php
+                                    // Decode the image JSON
+                                    $images = json_decode($blog->images, true);
+                                @endphp
+
+                                <div class="splide__track">
+                                    <ul class="splide__list">
+                                             @foreach(json_decode($blog->image, true) as $key => $img)
+                                                <li class="splide__slide">
+                                                    <div class="image img-{{ $key + 1 }} wow fadeInUp" data-wow-delay="0.{{ $key }}s">
+                                                        <img class="lazyload"
+                                                            data-src="{{ asset($img) }}"
+                                                            src="{{ asset($img) }}"
+                                                            alt="Blog Image {{ $key + 1 }}">
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                           
+                                    </ul>
+                                </div>
+
+
+                                </div>
                                 <p class="text text-6">
                                     Aenean ut pharetra metus, convallis tincidunt erat. Aliquam vel justo neque. Etiam
                                     at lectus et neque viverra interdum

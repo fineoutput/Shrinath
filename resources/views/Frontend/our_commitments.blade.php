@@ -33,6 +33,46 @@
     width: 100%;
     height: 120px;
 }
+
+
+    .subtitle {
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: #444;
+    }
+
+    
+
+    .cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  justify-items: center;
+  justify-content: center; /* centers last row */
+}
+.cert-item {
+  text-align: center;
+}
+.cert-item img {
+  max-width: 140px;
+  height: auto;
+  margin-bottom: 15px;
+}
+.cert-item button {
+  background: #28a745;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.cert-item button a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
 </style>
 <div class="page-title page-blog-full-w">
     <div class="rellax" data-rellax-speed="5">
@@ -366,7 +406,7 @@
                     </div>
                 </div>
             <div class="row">
-                <div class="col-lg-12">
+                {{-- <div class="col-lg-12">
                     <div class="heading-section text-center has-text mb-81">
                         <p class="sub-title">Trusted Quality, Globally Recognized</p>
                         <p class="title text-anime-style-2">
@@ -439,7 +479,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="s-img-item item-1">
@@ -447,7 +487,56 @@
         </div>
     </section><!-- /.Section partner -->
 
-   
+   <section class="container">
+ <div class="heading-section text-center has-text mb-81">
+                        <p class="sub-title">Trusted Quality, Globally Recognized</p>
+                        <p class="title text-anime-style-2">
+                            Our Certifications
+                        </p>
+                        <p class="text">
+                            ISO | APEDA | FSSAI | HALAL | GMP | HACCP | IEC
+                        </p>
+                        <div class="img-item">
+                            <img class="tf-animate-1" src="{{ asset('Front/images/item/rice-plant-2.png') }}" alt="" />
+                        </div>
+                          <p class="subtitle">
+      Our food quality is validated by certifications from authorities in India and worldwide.
+      These accolades stem from thorough tests, inspections, and audits. Our products undergo
+      stringent quality and safety tests, ensuring they are recognized as safe, farm-to-plate foods.
+    </p>
+                    </div>
+
+    <div class="cert-grid">
+      <div class="cert-item">
+        <img src="{{ asset('Front/images/partner/fss.png') }}" alt="FSSAI">
+        <button><a class="text-white" href="{{asset('Front/images/partner/FSSAI State.pdf')}}" target="_blank">View Certificate</a></button>
+      </div>
+      <div class="cert-item">
+        <img src="{{ asset('Front/images/partner/asd.png') }}" alt="APEDA">
+        <button><a class="text-white" href="{{asset('Front/images/partner/GMP.pdf')}}" target="_blank">View Certificate</a></button>
+      </div>
+      <div class="cert-item">
+        <img src="{{ asset('Front/images/partner/asdasd.png') }}" alt="BRCGS">
+        <button><a class="text-white" href="{{asset('Front/images/partner/HACCP.pdf')}}" target="_blank">View Certificate</a></button>
+      </div>
+      <div class="cert-item">
+        <img src="{{ asset('Front/images/partner/haa.png') }}" alt="Star Export">
+        <button><a class="text-white" href="{{asset('Front/images/partner/HALAL.pdf')}}" target="_blank">View Certificate</a></button>
+      </div>
+      <div class="cert-item">
+        <img src="{{ asset('Front/images/partner/iso.png') }}" alt="IOPEC">
+        <button><a class="text-white" href="{{asset('Front/images/partner/iso.pdf')}}" target="_blank">View Certificate</a></button>
+      </div>
+      <div class="cert-item">
+        <img src="{{ asset('Front/images/partner/ww.png') }}" alt="Spices Board">
+        <button><a class="text-white" href="{{asset('Front/images/partner/iso2.pdf')}}" target="_blank">View Certificate</a></button>
+      </div>
+      <div class="cert-item">
+        <img src="{{ asset('Front/images/partner/iec.png') }}" alt="ISO">
+        <button><a class="text-white" href="{{asset('Front/images/partner/IEC.pdf')}}" target="_blank">View Certificate</a></button>
+      </div>
+    </div>
+  </section>
     <!-- Section contact us -->
     <section class="s-contact-us style-2 has-img-item pt-138 pb-78 tf-pt-0">
         <div class="section-wrap">
@@ -570,6 +659,7 @@
                 </div>
             </div>
         </div>
+
         <div class="s-img-item item-1">
             <img src="{{ asset('Front/images/item/page-title-top.png') }}" alt="">
         </div>

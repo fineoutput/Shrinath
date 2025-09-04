@@ -212,22 +212,16 @@
                                 <div class="header-right">
                                     <div class="contact-wrap">
                                         <div class="icon">
-                                            <img src="{{ asset('Front/images/item/call.png') }}" alt="">
+                                            
                                         </div>
                                         <div class="contact">
-                                            <p class="sub font-snowfall">
-                                                Call Us Support Today
-                                            </p>
-                                            <p class="number font-worksans">
-                                                +91 7014928528
-                                            </p>
+                                            <p class="sub font-snowfall">Connect with us</p>
+                                            
                                         </div>
                                         <div class="contact">
-                                            <p class="sub font-snowfall">
-                                                Get
-                                            </p>
+                                            
                                             <p class="number font-worksans">
-                                                <a target="_blank" href="{{ asset('Front/images/asdas.pdf') }}">Our Portfolio</a>
+                                                <a target="_blank" href="http://127.0.0.1:8000/Front/images/asdas.pdf">Get Our Portfolio</a>
                                             </p>
                                         </div>
                                     </div>
@@ -449,27 +443,21 @@ Nagaur-341001(Raj.)
                                         </div>
                                     </div>
                                     <div class="header-right">
-                                        <div class="contact-wrap">
-                                            <div class="icon">
-                                                <img src="{{ asset('Front/images/item/call.png') }}" alt="">
-                                            </div>
-                                            <div class="contact">
-                                                <p class="sub font-snowfall">
-                                                    Call Us Support Today
-                                                </p>
-                                                <p class="number font-worksans">
-                                                    +91 7014928528
-                                                </p>
-                                            </div>
-                                            <div class="contact">
-                                            <p class="sub font-snowfall">
-                                                Get
-                                            </p>
+                                       <div class="contact-wrap">
+                                        <div class="icon">
+                                            
+                                        </div>
+                                        <div class="contact">
+                                            <p class="sub font-snowfall">Connect with us</p>
+                                            
+                                        </div>
+                                        <div class="contact">
+                                            
                                             <p class="number font-worksans">
-                                                <a target="_blank" href="{{ asset('Front/images/asdas.pdf') }}">Our Portfolio</a>
+                                                <a target="_blank" href="http://127.0.0.1:8000/Front/images/asdas.pdf">Get Our Portfolio</a>
                                             </p>
                                         </div>
-                                        </div>
+                                    </div>
                                         
 
                                         <div class="mobile-button">

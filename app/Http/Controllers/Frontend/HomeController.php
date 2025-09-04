@@ -73,7 +73,7 @@ class HomeController extends Controller
                                 ->first();
 
           $data['related_product'] = Products::where('status', 1)
-                                ->where('category_id',  $data['product']->category_id)
+                                ->where('category_id',  $data['product']->category_id)->where('id', '!=', $product_id)
                                 ->get();
 
         return view('Frontend/prod_detail',$data)->withTitle('');

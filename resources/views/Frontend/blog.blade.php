@@ -154,54 +154,16 @@
                                     @if ($firstImage)
                                         <img class="lazyload" data-src="{{ asset($firstImage) }}" src="{{ asset($firstImage) }}" alt="">
                                     @endif
-                                    <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
-                                        class="style-icon-play popup-youtube">
-                                        <i class="fa-solid fa-play"></i>
-                                        <div class="wave"></div>
-                                        <div class="wave-1"></div>
-                                    </a>
+                                   
                                 </div>
                                @php
                                     $date = \Carbon\Carbon::parse($value->created_at);
                                 @endphp
 
-                                <div class="entry-date">
-                                    <p class="day">{{ $date->format('d') }}</p>
-                                    <p class="month-year">
-                                        {{ $date->format('M y') }}
-                                    </p>
-                                </div>
+                                
                             </div>
                             <div class="content">
-                                <ul class="entry-meta">
-                                    <li class="entry author">
-                                        <i class="fa-solid fa-circle-user"></i>
-                                        <p>
-                                            <a class="" href="#">
-                                                By Hardson
-                                            </a>
-                                        </p>
-                                    </li>
-                                    <li class="entry tags">
-                                        <i class="fa-solid fa-tag"></i>
-                                        <p>
-                                            <a href="#">Agriculture</a>,
-                                            <a href="#">Farm</a>
-                                        </p>
-                                    </li>
-                                    <li class="entry comment">
-                                        <i class="fa-solid fa-comment"></i>
-                                        <p>
-                                            <a href="#">0 Comments</a>
-                                        </p>
-                                    </li>
-                                    <li class="entry view">
-                                        <i class="fa-solid fa-eye"></i>
-                                        <p>
-                                            <a href="#">350 View</a>
-                                        </p>
-                                    </li>
-                                </ul>
+                               
                                 <h3 class="title fw-7">
                                     <a href="{{route('blog')}}">
                                          {{ $value->title ?? ''}}
@@ -254,43 +216,7 @@
                         </article>
                         @endforeach
                         
-                        <div class="block-quote mb-35 wow fadeInUp" data-wow-delay="0s">
-                            <div class="has-border">
-                                <div class="quote">
-                                    <div class="icon style-circle">
-                                        <i class="icon-quote"></i>
-                                    </div>
-                                    <p class="font-snowfall cite">
-                                        A sustainable smart city embodies the fusion of technological advancements with a commitment to minimizing environmental impact. These cities harness the power of digital innovation.
-                                    </p>
-                                </div>
-                                <div class="bot">
-                                    <div class="meta-left">
-                                        <div class="entry date">
-                                            <i class="fa-solid fs-14 fa-calendar"></i>
-                                            <p class="">
-                                                08 June 2024
-                                            </p>
-                                        </div>
-                                        <div class="entry tags">
-                                            <i class="fa-solid fa-tag"></i>
-                                            <p class="">
-                                                <a href="#" class="hover-text-secondary">Agriculture</a>,
-                                                <a href="#" class="hover-text-secondary">Farm</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="entry-author">
-                                        <p>
-                                            <a href="#" class="hover-text-secondary">
-                                                Christine Rose
-                                            </a>
-                                            - Quote
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                          @foreach ($blog2 as $value)
                             <article class="article-blog-item mb-35 wow fadeInUp" data-wow-delay="0s">
@@ -315,12 +241,7 @@
                                     $date = \Carbon\Carbon::parse($value->created_at);
                                 @endphp
 
-                                <div class="entry-date">
-                                    <p class="day">{{ $date->format('d') }}</p>
-                                    <p class="month-year">
-                                        {{ $date->format('M y') }}
-                                    </p>
-                                </div>
+                                
                             </div>
                             <div class="content">
                                 <ul class="entry-meta">
@@ -404,43 +325,7 @@
                         </article>
                         @endforeach
 
-                        <div class="block-quote style-2 wow fadeInUp" data-wow-delay="0s">
-                            <div class="has-border">
-                                <div class="quote">
-                                    <div class="icon style-circle">
-                                        <i class="fa-solid fa-link"></i>
-                                    </div>
-                                    <p class="font-snowfall cite font-worksans fw-7">
-                                        <a href="https://illuminationconsulting.com/blog/"
-                                            class="hover-text-secondary text-white">
-                                            Investing in Controlled Environment Agriculture with Confidence
-                                        </a>
-                                    </p>
-                                </div>
-                                <div class="bot">
-                                    <div class="meta-left">
-                                        <div class="entry date">
-                                            <i class="fa-solid fa-calendar"></i>
-                                            <p>
-                                                08 June 2024
-                                            </p>
-                                        </div>
-                                        <div class="entry tags">
-                                            <i class="fa-solid fa-tag"></i>
-                                            <p>
-                                                <a href="#" class="hover-text-secondary">Agriculture</a>,
-                                                <a href="#" class="hover-text-secondary">Farm</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="entry-author">
-                                        <a href="#" class="hover-text-secondary">
-                                            https://illuminationconsulting.com/blog/
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
                         @foreach ($blog3 as $value)
                             <article class="article-blog-item mb-35 wow fadeInUp" data-wow-delay="0s">
                             <div class="image">
@@ -464,43 +349,10 @@
                                     $date = \Carbon\Carbon::parse($value->created_at);
                                 @endphp
 
-                                <div class="entry-date">
-                                    <p class="day">{{ $date->format('d') }}</p>
-                                    <p class="month-year">
-                                        {{ $date->format('M y') }}
-                                    </p>
-                                </div>
+                                
                             </div>
                             <div class="content">
-                                <ul class="entry-meta">
-                                    <li class="entry author">
-                                        <i class="fa-solid fa-circle-user"></i>
-                                        <p>
-                                            <a class="" href="#">
-                                                By Hardson
-                                            </a>
-                                        </p>
-                                    </li>
-                                    <li class="entry tags">
-                                        <i class="fa-solid fa-tag"></i>
-                                        <p>
-                                            <a href="#">Agriculture</a>,
-                                            <a href="#">Farm</a>
-                                        </p>
-                                    </li>
-                                    <li class="entry comment">
-                                        <i class="fa-solid fa-comment"></i>
-                                        <p>
-                                            <a href="#">0 Comments</a>
-                                        </p>
-                                    </li>
-                                    <li class="entry view">
-                                        <i class="fa-solid fa-eye"></i>
-                                        <p>
-                                            <a href="#">350 View</a>
-                                        </p>
-                                    </li>
-                                </ul>
+                                
                                 <h3 class="title fw-7">
                                     <a href="{{route('blog')}}">
                                          {{ $value->title ?? ''}}

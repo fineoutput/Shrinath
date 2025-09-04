@@ -29,7 +29,7 @@ class BlockController extends Controller
             'image' => 'nullable|array',
             'image.*' => 'image',
             'video' => 'nullable|mimes:mp4,mov,avi,wmv|max:10240', 
-            'profile_image' => 'nullable|image',
+            'profile_image' => 'required|image',
         ]);
 
         $block = new Block;

@@ -46,6 +46,11 @@ class HomeController extends Controller
      
         return view('Frontend/our_commitments')->withTitle('');
     }
+    public function blog_single(Request $req)
+    {
+     
+        return view('Frontend/blog_single')->withTitle('');
+    }
 
     public function our_products($category_id = null)
     {

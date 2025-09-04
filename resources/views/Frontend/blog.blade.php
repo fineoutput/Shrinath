@@ -43,7 +43,7 @@
                             <div class="icon">
                                 <i class="icon-arrow-right1"></i>
                             </div>
-                            <a href="javascript:void(0)">Blog Full Width</a>
+                            <a href="{{route('blog_single')}}">Blog Full Width</a>
                         </div>
                     </div>
                 </div>

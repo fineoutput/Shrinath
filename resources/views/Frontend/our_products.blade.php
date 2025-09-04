@@ -94,48 +94,12 @@
             <div class="col-lg-8">
                 <div class="tf-shop-control" id="tf-shop-control">
                     <div class="control-left">
-                        <div class="btn-view view-grid">
-                            <i class="fa-solid fa-grip"></i>
-                        </div>
-                        <div class="btn-view view-list">
-                            <i class="fa-solid fa-list"></i>
-                        </div>
-                        <p class="font-worksans fw-5">
-                            Showing 1–15 of 30 results
-                        </p>
+                        
+                        <h4 class="font-worksans fw-5">
+                            All Products
+                        </h4>
                     </div>
-                    <div class="control-right">
-                        <div class="tf-control-sorting">
-                            <div class="tf-dropdown-sort">
-                                <div class="tf-btn style-2" data-bs-toggle="dropdown">
-                                    <span class="text-sort-value">Default sorting</span>
-                                    <i class="icon-arrow_down"></i>
-                                </div>
-                                <div class="dropdown-menu ">
-                                    <div class="select-item ">
-                                        <span class="text-value-item">
-                                            New Post
-                                        </span>
-                                    </div>
-                                    <div class="select-item">
-                                        <span class="text-value-item">
-                                            Regular Post
-                                        </span>
-                                    </div>
-                                    <div class="select-item active">
-                                        <span class="text-value-item">
-                                            Lastest Posts
-                                        </span>
-                                    </div>
-                                    <div class="select-item ">
-                                        <span class="text-value-item">
-                                            All Post
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
                <div class="wg-shop-content">
     <div class="grid-layout-3 gap-30-20">

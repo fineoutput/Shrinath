@@ -1066,6 +1066,7 @@ your recipes.
                                                 {{ $value->title ?? ''}}
                                             </a>
                                         </div>
+                                        </div>
                                         
                                     @endforeach
                                     {{-- <div class="swiper-slide">

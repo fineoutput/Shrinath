@@ -202,31 +202,58 @@ Nagaur-341001(Raj.)
 
             <div class="tf-container w-1290">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer-bottom">
-                            <p class="no-copy font-nunito">
-                                Copyright © 2025 Shrinath 
-                                All Rights Reserved.
-                            </p>
-                            <ul class="policy-list">
-                                <li class="item">
-                                    <a href="#">
-                                        Confidentiality & Privacy
-                                    </a>
-                                </li>
-                                <li class="item">
-                                    <a href="#">
-                                        Legal Information
-                                    </a>
-                                </li>
-                                <li class="item">
-                                    <a href="#">
-                                        Return and Refund Policy
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                   <div class="col-lg-12">
+    <div class="footer-bottom">
+        <p class="no-copy font-nunito">
+            Copyright © 2025 Shrinath 
+            All Rights Reserved.
+        </p>
+        <ul class="policy-list">
+            <li class="item">
+                <a data-bs-toggle="collapse" href="#confidentiality" role="button" aria-expanded="false" aria-controls="confidentiality">
+                    Confidentiality & Privacy
+                </a>
+            </li>
+            <li class="item">
+                <a data-bs-toggle="collapse" href="#legalinfo" role="button" aria-expanded="false" aria-controls="legalinfo">
+                    Legal Information
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Confidentiality Section -->
+    <div class="collapse mt-3" id="confidentiality">
+        <div class="card card-body font-nunito">
+            <h5>Confidentiality & Privacy</h5>
+            <p>At ShreenathSpices, your trust is our greatest asset. We are committed to safeguarding all information you share with us, whether you are a customer, dealer, distributor, or business partner.</p>
+            <ul>
+                <li><b>Data Collection:</b> We may collect details such as name, contact info, business details, and order history to ensure smooth operations.</li>
+                <li><b>Use of Information:</b> Used solely for services, processing orders, and compliance with regulations.</li>
+                <li><b>Confidential Handling:</b> We never disclose, sell, or rent data except by law or explicit consent.</li>
+                <li><b>Security Measures:</b> Digital and offline processes follow strict confidentiality protocols.</li>
+            </ul>
+            <p>Your privacy is at the core of how we do business—because strong relationships are built on trust.</p>
+        </div>
+    </div>
+
+    <!-- Legal Section -->
+    <div class="collapse mt-3" id="legalinfo">
+        <div class="card card-body font-nunito">
+            <h5>Legal Information</h5>
+            <p>This website, its content, and operations are owned by ShreenathSpices.</p>
+            <ul>
+                <li><b>Intellectual Property:</b> All trademarks, brand names, packaging designs, and product images belong exclusively to ShreenathSpices.</li>
+                <li><b>Business Compliance:</b> We comply with Indian trade, food safety, and FMCG regulations with all necessary licenses.</li>
+                <li><b>Price & Deal Approvals:</b> Only authorized representatives can approve quotations and deals.</li>
+                <li><b>Website Usage:</b> Users agree not to misuse any content or services.</li>
+                <li><b>Disclaimer:</b> While we strive for accuracy, ShreenathSpices is not liable for typographical errors, outdated details, or external links.</li>
+            </ul>
+            <p>We stand committed to conducting business with transparency, compliance, and respect for the law.</p>
+        </div>
+    </div>
+</div>
+
                 </div>
             </div>
             <div class="img-item item-1">

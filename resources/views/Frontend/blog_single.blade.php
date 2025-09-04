@@ -19,6 +19,11 @@
     #loading{
         display: none;
     }
+    .revoior{
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
+    }
 </style>
   <div class="page-title page-blog-full-w mt-5">
             <div class="rellax" data-rellax-speed="5">
@@ -38,17 +43,7 @@
                                 <div class="icon-img">
                                     <img src="images/item/line-throw-title.png" alt="">
                                 </div>
-                                <div class="breadcrumb">
-                                    <a href="index.html">Home</a>
-                                    <div class="icon">
-                                        <i class="icon-arrow-right1"></i>
-                                    </div>
-                                    <a href="blog-right-sidebar.html"> Blog Right Sidebar</a>
-                                    <div class="icon">
-                                        <i class="icon-arrow-right1"></i>
-                                    </div>
-                                    <a href="javascript:void(0)">How to Care for Cows to have the Best Quality Meat</a>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -94,100 +89,12 @@
                                             <div class="wave-1"></div>
                                         </a>
                                     </div>
-                                    <ul class="benefit-list wow fadeInUp" data-wow-delay="0.1s">
-                                        <li>
-                                            <p>Aenean ut pharetra metus convallis</p>
-                                        </li>
-                                        <li>
-                                            <p>Etiam at lectus et neque viverra</p>
-                                        </li>
-                                        <li>
-                                            <p>Mauris feugiat metus eget velit
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <p>Vestibulum euismod rutrum
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <p>Nunc tempus sem consequat lacus</p>
-                                        </li>
-                                        <li>
-                                            <p>Nulla eget rhoncus erat</p>
-                                        </li>
-                                        <li>
-                                            <p>Pellentesque vehicula volutpat leo vitae</p>
-                                        </li>
-                                    </ul>
+                                   
                                 </div>
-                                <p class="text text-4">
-                                    Aenean ut pharetra metus, convallis tincidunt erat. Aliquam vel justo neque. Etiam
-                                    at lectus et neque viverra interdum
-                                    eget nec enim. Nullam eu suscipit ligula. Aliquam at massa lobortis, vulputate
-                                    tellus sit amet, mollis mauris. Mauris
-                                    feugiat metus eget velit tempus, vitae finibus ligula egestas.
-                                </p>
-                                <div class="block-quote style-3 wow fadeInUp" data-wow-delay="0s">
-                                    <div class="has-border">
-                                        <div class="quote">
-                                            <div class="icon style-circle">
-                                                <i class="icon-quote"></i>
-                                            </div>
-                                            <p class="font-snowfall cite">
-                                                A sustainable smart city embodies the fusion of technological
-                                                advancements
-                                                with
-                                                a
-                                                commitment to minimizing environmental
-                                                impact. These cities harness the power of digital innovation.
-                                            </p>
-                                        </div>
-                                        <div class="bot">
-                                            <div class="entry-author">
-                                                <p>
-                                                    <a href="#" class="hover-text-secondary">
-                                                        Christine Rose
-                                                    </a>
-                                                    - Quote
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <p class="title title-2 fw-bold font-worksans">
-                                    A range of question types which test a number.
-                                </p>
-                                <p class="text text-5">
-                                    Nulla accumsan sapien purus, at ultrices eros sagittis at. Duis leo purus, gravida
-                                    ut consequat in, hendrerit a neque.
-                                    Sed nec placerat odio, ut ultrices magna. Etiam in ligula pulvinar, semper dolor eu,
-                                    commodo lorem. In interdum neque
-                                    libero, eget volutpat nibh commodo et.
-                                </p>
-                                <ul class="opinion-list">
-                                    <li>
-                                        <p>
-                                            Nunc tempus sem consequat lacus cursus, in laoreet urna molestie. Quisque
-                                            interdum egestas
-
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            Mauris sollicitudin consectetur nulla eu fringilla. Praesent id hendrerit
-                                            urna
-
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            Pellentesque quam dolor, posuere id mollis et, rutrum sed est. In vulputate
-                                            neque
-
-                                        </p>
-                                    </li>
-                                </ul>
+                              
+                                
+                               
+                               
                                 <div class="splide entry-image-2" id="image-slider">
                                     
                                 @php
@@ -200,7 +107,7 @@
                                              @foreach(json_decode($blog->image, true) as $key => $img)
                                                 <li class="splide__slide">
                                                     <div class="image img-{{ $key + 1 }} wow fadeInUp" data-wow-delay="0.{{ $key }}s">
-                                                        <img class="lazyload"
+                                                        <img class="lazyload revoior"
                                                             data-src="{{ asset($img) }}"
                                                             src="{{ asset($img) }}"
                                                             alt="Blog Image {{ $key + 1 }}">
@@ -213,13 +120,7 @@
 
 
                                 </div>
-                                <p class="text text-6">
-                                    Aenean ut pharetra metus, convallis tincidunt erat. Aliquam vel justo neque. Etiam
-                                    at lectus et neque viverra interdum
-                                    eget nec enim. Nullam eu suscipit ligula. Aliquam at massa lobortis, vulputate
-                                    tellus sit amet, mollis mauris. Mauris
-                                    feugiat metus eget velit tempus, vitae finibus ligula egestas.
-                                </p>
+                               
                                
                                
                                 <div class="post-comment-wrap" id="post-comment-wrap">

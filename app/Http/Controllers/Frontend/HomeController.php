@@ -28,6 +28,7 @@ class HomeController extends Controller
         $data['slider2'] = Slider2::where('status','1')->orderBy('id','DESC')->get();
         $data['slider3'] = Slider3::where('status','1')->orderBy('id','DESC')->get();
         $data['product'] = Products::where('status', 1)->orderBy('id', 'DESC')->get();
+        $data['gallery'] = Gallery::where('status', 1)->orderBy('id', 'DESC')->get();
         $data['blogs'] = Block::orderBy('id', 'DESC')->get();
         return view('Frontend/index',$data)->withTitle('');
     }

@@ -1053,7 +1053,22 @@ your recipes.
                         <div class="col-lg-12">
                             <div class="swiper-container slider-gallery" style="margin-bottom: 0;">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
+
+                                    @foreach ($gallery as $value)
+                                              <div class="swiper-slide">
+                                        <div class="gallery-item img-hover wow fadeInUp" data-wow-delay="0s">
+                                            <div class="image hover-item">
+                                                <img class=" lazyload" src={{ asset($value->image ?? '') }}
+                                                    data-src={{ asset($value->image ?? '') }} alt="">
+                                            </div>
+                                            
+                                            <a href={{route('our_gallery')}} class="add-gallery">
+                                                {{ $value->title ?? ''}}
+                                            </a>
+                                        </div>
+                                        
+                                    @endforeach
+                                    {{-- <div class="swiper-slide">
                                         <div class="gallery-item img-hover wow fadeInUp" data-wow-delay="0s">
                                             <div class="image hover-item">
                                                 <img class=" lazyload" src={{ asset('Front/images/widget/history-1.jpg') }}
@@ -1065,6 +1080,7 @@ your recipes.
                                             </a>
                                         </div>
                                     </div>
+
                                     <div class="swiper-slide">
                                         <div class="gallery-item img-hover wow fadeInUp" data-wow-delay="0.1s">
                                             <div class="image hover-item">
@@ -1097,7 +1113,7 @@ your recipes.
                                                 Sealed Freshness, Trusted Quality
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

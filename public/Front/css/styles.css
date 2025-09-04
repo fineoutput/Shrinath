@@ -8638,8 +8638,9 @@ i.fs-12 {
   font-weight: 600;
 }
 .price-wrap span.price-1 {
-  color: var(--Color-5);
-  text-decoration: line-through;
+    color: #8d000070;
+    text-decoration: line-through;
+    font-size: 17px !important;
 }
 .price-wrap span.price-2 {
   color: var(--Text-4);
@@ -8825,7 +8826,7 @@ i.fs-12 {
 }
 .card-product.style-2 .image img {
   max-width: 110px;
-  width: 110px;
+  /* width: 110px; */
 }
 .card-product.style-2 .name-product {
   font-size: 16px;
@@ -13237,7 +13238,7 @@ i.fs-12 {
   height: 74px;
 }
 .s-what-we-do .we-do-list {
-  background-image: url("../images/item/s-we-do.png");
+  /* background-image: url("../images/item/s-we-do.png"); */
   background-repeat: no-repeat;
   background-size: cover;
   padding: 66px 55px 62px 77px;

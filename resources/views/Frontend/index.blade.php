@@ -15,6 +15,19 @@
     left: 50%;
     transform: translateX(-50%) rotate(-45deg);
 }
+.mtop{
+    display: flex;
+    flex-direction: column;
+}
+.card-product .image {
+    margin-top: 0px !important;
+}
+.card-product.style-2.type-2 .image {
+    margin-bottom: 30px !important;
+}
+.card-product.style-2.type-2 .image img {
+    max-width: 215px !important;
+}
 </style>
        <div class="page-title-home-2">
             <div class="swiper-container slider-home-2">
@@ -38,9 +51,9 @@
                                     From cumin to kasuri methi, from whole spices to authentic taste — Shreenath Spices delivers <br> 
                                     purity, aroma, and flavor straight from the mandi to your kitchen.
                                 </p>
-                                <a href="{{route('our_products')}}" class="tf-btn btn-view bg-white tf-fade-bottom fade-item-5">
+                                <a href="{{route('about')}}" class="tf-btn btn-view bg-white tf-fade-bottom fade-item-5">
                                     <span class="text-style cl-primary">
-                                        Explore Products
+                                        About Us
                                     </span>
                                     <div class="icon">
                                         <i class="icon-arrow_right"></i>
@@ -286,20 +299,20 @@
                         At Shreenath, we bridge tradition with innovation to create food that is pure, sustainable, and trusted.
                     </p>
                 </div>
-                <p class="text">
+                {{-- <p class="text">
                   ✅  <b>We Use Modern Processing:</b> By adopting clean, efficient, and safe methods, we ensure every product retains its natural aroma and quality. 
                 </p>
                 <p>
                     ✅ <b>Making Healthy Foods:</b> Every product is processed with care and hygiene to deliver authentic taste, nutrition, and long-lasting freshness.
-                </p>
-                <a href="#" class="tf-btn ">
+                </p> --}}
+                {{-- <a href="#" class="tf-btn ">
                     <span class="text-style ">
                         Processing Video
                     </span>
                     <div class="icon">
                         <i class="icon-arrow_right"></i>
                     </div>
-                </a>
+                </a> --}}
                 <div class="button-slide-wrap">
                     <div class="btn-s-service-2 btn-prev">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="58px" height="15px"
@@ -344,8 +357,8 @@
                                         nibh sit amet
                                         commodo nulla.
                                     </p>
-                                    <a href="#" class="tf-btn-read text-white hover-text-secondary">Read
-                                        More</a>
+                                    {{-- <a href="#" class="tf-btn-read text-white hover-text-secondary">Read
+                                        More</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -463,14 +476,14 @@
                             We believe in bringing customers the best spices. For decades, Shreenath has been dedicated to delivering spices that are pure, hygienic, and full of authentic flavor. From sourcing to packaging, every step reflects our commitment to quality and trust.
                         </p>
                     </div>
-                    <a href="#" class="tf-btn bg-white">
+                    {{-- <a href="#" class="tf-btn bg-white">
                         <span class="text-style cl-primary">
                             Read More
                         </span>
                         <div class="icon">
                             <i class="icon-arrow_right"></i>
                         </div>
-                    </a>
+                    </a> --}}
                     <div class="img-item item-1 nhapNhap">
                         <img src="{{ asset('Front/images/item/barn-2.png') }}" alt="">
                     </div>
@@ -483,22 +496,7 @@
                     </div>
                 </div>
                 <div class="we-do-list">
-                    <ul>
-                        <li class="wow fadeInUp" data-wow-delay="0s">
-                            <p class="title">
-                                <i class="fa-solid fa-circle-check"></i>
-                                Pure and Natural - 99%
-                            </p>
-                         
-                        </li>
-                        <li class="wow fadeInUp" data-wow-delay="0.1s">
-                            <p class="title">
-                                <i class="fa-solid fa-circle-check"></i>
-                                Quality You Can Trust -99%
-                            </p>
-                          
-                        </li>
-                    </ul>
+                 
                 </div>
             </div>
         </section><!-- /.Section what we do -->
@@ -674,11 +672,7 @@ your recipes.
                                               <div class="swiper-slide">
                                             <div class="card-product mw-unset style-2 type-2 wow fadeInUp"
                                                 data-wow-delay="0s">
-                                                <ul class="trendy-list">
-                                                    <li class="trendy-item ">
-                                                        <p class="color-1">Sale!</p>
-                                                    </li>
-                                                </ul>
+                                              
                                                 <div class="image">
                                                    <img src="{{ asset($value->image_1 ?? '') }}" data-src="{{ asset($value->image_1 ?? '') }}" alt="" class="lazyload">
                                                 </div>
@@ -687,7 +681,7 @@ your recipes.
                                                     {{ $value->name ?? ''}}
                                                 </a>
                                                 <div class="pricing-star">
-                                                    <div class="price-wrap">
+                                                    <div class="price-wrap mtop">
                                                         <span class=" price-1">₹ {{ $value->price ?? ''}}</span>
                                                         <span class=" price-2">₹ {{ $value->mrp ?? ''}}</span>
                                                     </div>

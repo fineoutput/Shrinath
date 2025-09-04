@@ -18,6 +18,13 @@
     #loading{
         display: none;
     }
+    .price-wrap {
+    display: flex !important;
+    align-items: start !important;
+    flex-direction: column !important;
+    /* justify-content: center; */
+    gap: 15px;
+}
 </style>
 <div class="page-title page-portfolio-details  ">
     <div class="rellax" data-rellax-speed="5">
@@ -205,13 +212,7 @@
                             {{$product->name ?? ''}}
                         </h3>
                         <div class="rating-wrap">
-                            <div class="wg-rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
+                          
                             <p class="font-nunito">
                                 5.00(1 customer review)
                             </p>
@@ -318,7 +319,7 @@
                                 </p>
                             </li>
                         </ul> --}}
-                        <div class="bot">
+                        <div class="bot mt-2">
                             <p class="font-worksans fw-5 text">Share:</p>
                             <div class="wg-social style-3">
                                 <ul class="list">
@@ -356,9 +357,7 @@
                                 <li class="item"><a href="javascript:void(0)" class="btn-tab">Additional
                                         information</a>
                                 </li>
-                                <li class="item"><a href="javascript:void(0)" class="btn-tab">Review ( 1
-                                        )</a>
-                                </li>
+                               
                             </ul>
                         </div>
                         <div class="widget-content-tab">
@@ -485,13 +484,7 @@
                                         <div class="price-wrap">
                                             <span class=" price-2">₹{{ $rp->price ?? ''}}</span>
                                         </div>
-                                        <div class="wg-rating">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
+                                        
                                     </div>
                                     
                                 </div>

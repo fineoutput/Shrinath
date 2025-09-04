@@ -8825,8 +8825,8 @@ i.fs-12 {
   height: unset;
 }
 .card-product.style-2 .image img {
-  max-width: 110px;
-  /* width: 110px; */
+  max-width: 250px;
+  width: 250px !important;
 }
 .card-product.style-2 .name-product {
   font-size: 16px;

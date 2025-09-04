@@ -152,13 +152,7 @@
                     <div class="price-wrap">
                         <span class=" price-2">₹ {{ $value->price ?? ''}}</span>
                     </div>
-                    <div class="wg-rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
+                    
                 </div>
             </div>
         @endforeach

@@ -38,11 +38,11 @@
                             <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
                         </div>
                         <div class="breadcrumb">
-                            <a href="{{route('/')}}">Home</a>
+                            <a href="index.html">Home</a>
                             <div class="icon">
                                 <i class="icon-arrow-right1"></i>
                             </div>
-                            <a href="{{route('our_products')}}"> Shop Products </a>
+                            <a href="shop-products.html"> Shop Products </a>
                             <div class="icon">
                                 <i class="icon-arrow-right1"></i>
                             </div>
@@ -463,26 +463,27 @@
                     </h2>
                     <div class="swiper-container slider-relate-product">
                         <div class="swiper-wrapper">
+                            @foreach($related_product as $rp)
                             <div class="swiper-slide">
                                 <div class="card-product style-2 mw-unset">
                                     <ul class="trendy-list">
-                                        <li class="trendy-item ">
+                                        {{-- <li class="trendy-item ">
                                             <p class="color-2">New</p>
                                         </li>
                                         <li class="trendy-item ">
                                             <p class="color-3">Hot</p>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                     <div class="image">
-                                        <img src="{{ asset('Front/images/item/macaroni.png') }}"
-                                            data-src="{{ asset('Front/images/item/macaroni.png') }}" alt="" class="lazyload">
+                                        <img src="{{ asset($product->image_1 ?? '') }}"
+                                            data-src="{{ asset($product->image_1 ?? '') }}" alt="" class="lazyload">
                                     </div>
                                     <a href="#" class="name-product font-worksans hover-text-4">
-                                        Iceland Macaroni Cheese
+                                        {{ $rp->name ?? ''}}
                                     </a>
                                     <div class="pricing-star">
                                         <div class="price-wrap">
-                                            <span class=" price-2">₹3.00</span>
+                                            <span class=" price-2">₹{{ $rp->price ?? ''}}</span>
                                         </div>
                                         <div class="wg-rating">
                                             <i class="fa-solid fa-star"></i>
@@ -495,87 +496,8 @@
                                     
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="card-product style-2 mw-unset">
-                                    <div class="image">
-                                        <img src="{{ asset('Front/images/item/extre-budweiser.png') }}"
-                                            data-src="{{ asset('Front/images/item/extre-budweiser.png') }}" alt=""
-                                            class="lazyload">
-                                    </div>
-                                    <a href="#" class="name-product font-worksans hover-text-4">
-                                        Extreme Budweiser
-                                    </a>
-                                    <div class="pricing-star">
-                                        <div class="price-wrap">
-                                            <span class=" price-2">₹2.87</span>
-                                        </div>
-                                        <div class="wg-rating">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i horizontal-alignment="left" class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <div class="swiper-slide ">
-                                <div class="card-product style-2 mw-unset">
-                                    <ul class="trendy-list">
-                                        <li class="trendy-item ">
-                                            <p class="color-4">Sesonal</p>
-                                        </li>
-                                        <li class="trendy-item ">
-                                            <p class="color-2">New</p>
-                                        </li>
-                                    </ul>
-                                    <div class="image">
-                                        <img src="{{ asset('Front/images/item/sitema.png') }}"
-                                            data-src="{{ asset('Front/images/item/sitema.png') }}" alt="" class="lazyload">
-                                    </div>
-                                    <a href="#" class="name-product font-worksans hover-text-4">
-                                        Sitema BakeIT Plastic Box
-                                    </a>
-                                    <div class="pricing-star">
-                                        <div class="price-wrap">
-                                            <span class=" price-2">₹3.00</span>
-                                        </div>
-                                        <div class="wg-rating">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card-product style-2 mw-unset">
-                                    <div class="image">
-                                        <img src="{{ asset('Front/images/item/avocado.png') }}"
-                                            data-src="{{ asset('Front/images/item/avocado.png') }}" alt="" class="lazyload">
-                                    </div>
-                                    <a href="#" class="name-product font-worksans hover-text-4">
-                                        Avocado, Hass Large
-                                    </a>
-                                    <div class="pricing-star">
-                                        <div class="price-wrap">
-                                            <span class=" price-2">₹2.87</span>
-                                        </div>
-                                        <div class="wg-rating">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
+                            @endforeach
+                           
                         </div>
                     </div>
                     <div class="btn-slide-product btn-next">

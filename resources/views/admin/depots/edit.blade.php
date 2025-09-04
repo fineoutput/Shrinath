@@ -129,10 +129,11 @@
                                         <select name="state" id="state" class="form-control" required>
                                             <option value="">Select State</option>
                                             @foreach($states as $state)
-                                                <option value="{{ $state->id }}" {{ $state->id == $depots->state ? 'selected' : '' }}>
+                                                <option value="{{ $state->id }}" {{ $state->id == $depots->state->id ? 'selected' : '' }}>
                                                     {{ $state->state_name }}
                                                 </option>
                                             @endforeach
+
                                         </select>
                                     </div>
 

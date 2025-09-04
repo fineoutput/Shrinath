@@ -184,184 +184,29 @@
                                     </div>
                                     <div class="main-nav">
                                         <ul class="nav-list">
-                                            <li class="item has-child current-menu">
-                                                <a href="{{route('/')}}">Home</a>
-                                                {{-- <ul class="sub-nav">
-                                                    <li>
-                                                        <a href="{{route('/')}}">
-                                                            <span>
-                                                                Home 1
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li><a href="home-2.html"><span>
-                                                                Home 2
-                                                            </span>
-                                                        </a></li>
-                                                    <li class="current-item"><a href="home-3.html"><span>
-                                                                Home 3
-                                                            </span>
-                                                        </a></li>
-                                                </ul> --}}
-                                            </li>
-                                            <li class="item has-child">
-                                                <a href="{{route('about')}}">About Us</a>
-                                                {{-- <ul class="sub-nav">
-                                                    <li>
-                                                        <a href="{{route('about')}}">
-                                                            <span>
-                                                                About Us
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="our-commitments.html">
-                                                            <span>
-                                                                Our Commitments
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="our-events.html">
-                                                            <span>
-                                                                Our Events
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="our-farmers.html">
-                                                            <span>
-                                                                Our Farmers
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="our-history.html">
-                                                            <span>
-                                                                Our History
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="coming-soon.html">
-                                                            <span>
-                                                                Coming Soon
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="404.html">
-                                                            <span>
-                                                                404
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="event-detail.html">
-                                                            <span>
-                                                                Event Detail
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="faq.html">
-                                                            <span>
-                                                                FAQs
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="gallery.html">
-                                                            <span>
-                                                                Gallery
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="testimonial.html">
-                                                            <span>
-                                                                Testimonial
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                </ul> --}}
-                                            </li>
-                                            <li class="item has-child">
-                                                <a href="{{route('our_team')}}">Our Team</a>
-                                                {{-- <ul class="sub-nav">
-                                                    <li>
-                                                        <a href="portfolio-style-1.html">
-                                                            <span>
-                                                                Portfolio Style 1
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="portfolio-style-2.html">
-                                                            <span>
-                                                                Portfolio Style 2
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="portfolio-style-3.html">
-                                                            <span>
-                                                                Portfolio Style 3
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="portfolio-details.html">
-                                                            <span>
-                                                                Portfolio Details
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                </ul> --}}
-                                            </li>
-                                            <li class="item has-child">
-                                                <a href="{{route('our_products')}}">Products</a>
-                                                {{-- <ul class="sub-nav">
-                                                    <li><a href="shop-products.html"><span>Shop Products</span></a></li>
-                                                    <li><a href="shop-details.html"><span>Shop Details</span></a></li>
-                                                    <li><a href="shop-cart.html"><span>Shop Cart</span></a></li>
-                                                    <li><a href="wishlist.html"><span>Wishlist</span></a></li>
-                                                    <li><a href="checkout.html"><span>Checkout</span></a></li>
-                                                    <li><a href="order-tracking.html"><span>Order Tracking</span></a></li>
-                                                    <li><a href="my-account.html"><span>My Account</span></a></li>
-                                                    <li><a href="order-details.html"><span>Order Detail</span></a></li>
-                                                </ul> --}}
-                                            </li>
-                                            <li class="item has-child">
-                                                <a href="{{route('our_gallery')}}">Gallery</a>
-                                                {{-- <ul class="sub-nav">
-                                                    <li>
-                                                        <a href="our-services.html">
-                                                            <span>
-                                                                Our Services
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="service-detail.html">
-                                                            <span>
-                                                                Service Detail
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                </ul> --}}
-                                            </li>
-                                            
-                                            {{-- <li class="item has-child">
-                                                <a href="contact-us.html">Contact</a>
-                                            </li> --}}
-                                            <li class="item has-child">
-                                                <a href="{{route('blog')}}">Blog</a>
-                                            </li>
-                                            <li class="item has-child">
-                                                <a href="{{route('our_commitments')}}">Commitments</a>
-                                            </li>
-                                        </ul>
+    <li class="item has-child {{ request()->routeIs('/') ? 'current-menu' : '' }}">
+        <a href="{{ route('/') }}">Home</a>
+    </li>
+    <li class="item has-child {{ request()->routeIs('about') ? 'current-menu' : '' }}">
+        <a href="{{ route('about') }}">About Us</a>
+    </li>
+    <li class="item has-child {{ request()->routeIs('our_team') ? 'current-menu' : '' }}">
+        <a href="{{ route('our_team') }}">Our Team</a>
+    </li>
+    <li class="item has-child {{ request()->routeIs('our_products') ? 'current-menu' : '' }}">
+        <a href="{{ route('our_products') }}">Products</a>
+    </li>
+    <li class="item has-child {{ request()->routeIs('our_gallery') ? 'current-menu' : '' }}">
+        <a href="{{ route('our_gallery') }}">Gallery</a>
+    </li>
+    <li class="item has-child {{ request()->routeIs('blog') ? 'current-menu' : '' }}">
+        <a href="{{ route('blog') }}">Blog</a>
+    </li>
+    <li class="item has-child {{ request()->routeIs('our_commitments') ? 'current-menu' : '' }}">
+        <a href="{{ route('our_commitments') }}">Commitments</a>
+    </li>
+</ul>
+
                                     </div>
                                 </div>
                                 <div class="header-right">
@@ -578,61 +423,29 @@ Nagaur-341001(Raj.)
                                         </div>
                                         <div class="main-nav">
                                             <ul class="nav-list">
-                                                <li class="item has-child current-menu">
-                                                    <a href="{{route('/')}}">Home</a>
-                                                    
-                                                </li>
-                                                <li class="item has-child">
-                                                    <a href="{{route('about')}}">About Us</a>
-                                                    
-                                                </li>
-                                                <li class="item has-child">
-                                                    <a href="{{route('our_team')}}">Our Team</a>
-                                                    
-                                                </li>
-                                                <li class="item has-child">
-                                                    <a href="{{route('our_products')}}">Products</a>
-                                                    {{-- <ul class="sub-nav">
-                                                        <li><a href="shop-products.html"><span>Shop Products</span></a></li>
-                                                        <li><a href="shop-details.html"><span>Shop Details</span></a></li>
-                                                        <li><a href="shop-cart.html"><span>Shop Cart</span></a></li>
-                                                        <li><a href="wishlist.html"><span>Wishlist</span></a></li>
-                                                        <li><a href="checkout.html"><span>Checkout</span></a></li>
-                                                        <li><a href="order-tracking.html"><span>Order Tracking</span></a></li>
-                                                        <li><a href="my-account.html"><span>My Account</span></a></li>
-                                                        <li><a href="order-details.html"><span>Order Detail</span></a></li>
-                                                    </ul> --}}
-                                                </li>
-                                                <li class="item has-child">
-                                                    <a href="{{route('our_gallery')}}">Gallery</a>
-                                                    {{-- <ul class="sub-nav">
-                                                        <li>
-                                                            <a href="our-services.html">
-                                                                <span>
-                                                                    Our Services
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="service-detail.html">
-                                                                <span>
-                                                                    Service Detail
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                    </ul> --}}
-                                                </li>
-                                               
-                                                {{-- <li class="item has-child">
-                                                    <a href="contact-us.html">Contact</a>
-                                                </li> --}}
-                                                <li class="item has-child">
-                                                <a href="{{route('blog')}}">Blog</a>
-                                            </li>
-                                            <li class="item has-child">
-                                                <a href="{{route('our_commitments')}}">Commitments</a>
-                                            </li>
-                                            </ul>
+    <li class="item has-child {{ request()->routeIs('/') ? 'current-menu' : '' }}">
+        <a href="{{ route('/') }}">Home</a>
+    </li>
+    <li class="item has-child {{ request()->routeIs('about') ? 'current-menu' : '' }}">
+        <a href="{{ route('about') }}">About Us</a>
+    </li>
+    <li class="item has-child {{ request()->routeIs('our_team') ? 'current-menu' : '' }}">
+        <a href="{{ route('our_team') }}">Our Team</a>
+    </li>
+    <li class="item has-child {{ request()->routeIs('our_products') ? 'current-menu' : '' }}">
+        <a href="{{ route('our_products') }}">Products</a>
+    </li>
+    <li class="item has-child {{ request()->routeIs('our_gallery') ? 'current-menu' : '' }}">
+        <a href="{{ route('our_gallery') }}">Gallery</a>
+    </li>
+    <li class="item has-child {{ request()->routeIs('blog') ? 'current-menu' : '' }}">
+        <a href="{{ route('blog') }}">Blog</a>
+    </li>
+    <li class="item has-child {{ request()->routeIs('our_commitments') ? 'current-menu' : '' }}">
+        <a href="{{ route('our_commitments') }}">Commitments</a>
+    </li>
+</ul>
+
                                         </div>
                                     </div>
                                     <div class="header-right">

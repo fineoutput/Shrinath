@@ -279,6 +279,7 @@ Nagaur-341001(Raj.)
     </div><!-- /.Prograss -->
 
     <!-- Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
  <script type="text/javascript" src="{{ asset('Front/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('Front/js/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('Front/js/lazysize.min.js') }}"></script>

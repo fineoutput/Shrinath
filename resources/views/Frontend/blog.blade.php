@@ -173,7 +173,7 @@
                                     {!! $value->description !!}
                                 </p>
                                 <div class="bot">
-                                    <a class="tf-btn gap-35" href="{{route('blog')}}">
+                                    <a class="tf-btn gap-35" href="{{route('blog_single')}}">
                                         <span class="text-style">
                                             Continue Reading
                                         </span>

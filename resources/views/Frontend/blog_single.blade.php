@@ -20,7 +20,7 @@
         display: none;
     }
 </style>
-  <div class="page-title page-blog-full-w  ">
+  <div class="page-title page-blog-full-w mt-5">
             <div class="rellax" data-rellax-speed="5">
                 <img src="images/page-title/blog-full-w.jpg" alt="">
             </div>
@@ -64,53 +64,17 @@
             <div class="blog-single">
                 <div class="tf-container w-1290">
                     <div class="row">
-                        <div class="col-lg-8">
+                        <div class="col-lg-12">
                             <div class="content">
                                 <h3 class="title-name fw-bold">
                                     How to Care for Cows to have the Best Quality Meat
                                 </h3>
                                 <div class="entry-meta">
-                                    <ul class="meta-list">
-                                        <li class="entry author">
-                                            <i class="fa-solid fa-circle-user"></i>
-                                            <p>
-                                                <a class="" href="#">
-                                                    By Hardson
-                                                </a>
-                                            </p>
-                                        </li>
-                                        <li class="entry date">
-                                            <i class="fa-solid fs-14 fa-calendar"></i>
-                                            <p class="">
-                                                <a href="#">
-                                                    08 June 2024
-                                                </a>
-                                            </p>
-                                        </li>
-                                        <li class="entry tags">
-                                            <i class="fa-solid fa-tag"></i>
-                                            <p>
-                                                <a href="#">Agriculture</a>,
-                                                <a href="#">Farm</a>
-                                            </p>
-                                        </li>
-                                        <li class="entry comment">
-                                            <i class="fa-solid fa-comment"></i>
-                                            <p>
-                                                <a href="#">0 Comments</a>
-                                            </p>
-                                        </li>
-                                        <li class="entry view">
-                                            <i class="fa-solid fa-eye"></i>
-                                            <p>
-                                                <a href="#">350 View</a>
-                                            </p>
-                                        </li>
-                                    </ul>
+                                  
                                 </div>
                                 <div class="entry-image">
-                                    <img class="lazyload" src="images/blog/blog-1.jpg"
-                                        data-src="./images/blog/blog-1.jpg" alt="">
+                                    <img class="lazyload" src="{{ asset('Front/images/blog/blog-1.jpg') }}"
+                                        data-src="{{ asset('Front/images/blog/blog-1.jpg') }}" alt="">
                                 </div>
                                 <p class="text text-1">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut aliquam mauris.
@@ -128,18 +92,11 @@
                                     commodo lorem. In interdum neque
                                     libero, eget volutpat nibh commodo et.
                                 </p>
-                                <p class="title title-1 fw-bold font-worksans">
-                                    If this is true, you maybe wondering. Why New York?
-                                </p>
-                                <p class="text text-3">
-                                    Fusce hendrerit urna vitae pretium fermentum. Cras scelerisque ornare aliquet. Sed
-                                    dignissim nibh a est tincidunt
-                                    euismod. Nunc tempus sapien a eros suscipit, fermentum viverra libero ullamcorper.
-                                </p>
+                               
                                 <div class="entry-video">
                                     <div class="video-wrap wow fadeInUp" data-wow-delay="0s">
-                                        <img class="lazyload" data-src="images/widget/video-wrap.jpg"
-                                            src="images/widget/video-wrap.jpg" alt="">
+                                        <img class="lazyload" data-src="{{ asset('Front/images/widget/video-wrap.jpg') }}"
+                                            src="{{ asset('Front/images/widget/video-wrap.jpg') }}" alt="">
                                         <a href="https://www.youtube.com/watch?v=MLpWrANjFbI"
                                             class="style-icon-play popup-youtube">
                                             <i class="fa-solid fa-play"></i>
@@ -241,16 +198,36 @@
                                         </p>
                                     </li>
                                 </ul>
-                                <div class="entry-image-2">
-                                    <div class="image img-1 wow fadeInUp" data-wow-delay="0s">
-                                        <img class="lazyload" data-src="images/widget/blog-single-1.jpg"
-                                            src="images/widget/blog-single-1.jpg" alt="">
-                                    </div>
-                                    <div class="image img-2 wow fadeInUp" data-wow-delay="0.1s">
-                                        <img class="lazyload" data-src="images/widget/blog-single-2.jpg"
-                                            src="images/widget/blog-single-2.jpg" alt="">
-                                    </div>
-                                </div>
+                                <div class="splide entry-image-2" id="image-slider">
+  <div class="splide__track">
+    <ul class="splide__list">
+      <li class="splide__slide">
+        <div class="image img-1 wow fadeInUp" data-wow-delay="0s">
+          <img class="lazyload"
+               data-src="{{ asset('Front/images/widget/blog-single-1.jpg') }}"
+               src="{{ asset('Front/images/widget/blog-single-1.jpg') }}"
+               alt="">
+        </div>
+      </li>
+      <li class="splide__slide">
+        <div class="image img-2 wow fadeInUp" data-wow-delay="0.1s">
+          <img class="lazyload"
+               data-src="{{ asset('Front/images/widget/blog-single-2.jpg') }}"
+               src="{{ asset('Front/images/widget/blog-single-2.jpg') }}"
+               alt="">
+        </div>
+      </li>
+      <li class="splide__slide">
+        <div class="image img-2 wow fadeInUp" data-wow-delay="0.1s">
+          <img class="lazyload"
+               data-src="{{ asset('Front/images/widget/blog-single-2.jpg') }}"
+               src="{{ asset('Front/images/widget/blog-single-2.jpg') }}"
+               alt="">
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
                                 <p class="text text-6">
                                     Aenean ut pharetra metus, convallis tincidunt erat. Aliquam vel justo neque. Etiam
                                     at lectus et neque viverra interdum
@@ -258,75 +235,8 @@
                                     tellus sit amet, mollis mauris. Mauris
                                     feugiat metus eget velit tempus, vitae finibus ligula egestas.
                                 </p>
-                                <div class="blog-bot">
-                                    <ul class="tags-list">
-                                        <li><a href="#">bread</a></li>
-                                        <li><a href="#">fruits</a></li>
-                                        <li><a href="#">healthy</a></li>
-                                    </ul>
-                                    <div class="share">
-                                        <div class="icon">
-                                            <i class="fa-solid fa-share-nodes"></i>
-                                        </div>
-                                        <p class="fw-5 font-worksans mr-23">
-                                            Share:
-                                        </p>
-                                        <ul class="social-list style-2">
-                                            <li class="item">
-                                                <a href="#">
-                                                    <i class="icon-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">
-                                                    <i class="icon-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">
-                                                    <i class="fa-brands fa-skype"></i>
-                                                </a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">
-                                                    <i class="fa-brands fa-telegram"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="comment-wrap">
-                                    <h2 class="fw-bold font-worksans wow fadeInUp" data-wow-delay="0s">
-                                        Comments
-                                    </h2>
-                                    <div class="author-wrap">
-                                        <div class="author">
-                                            <div class="image-avt">
-                                                <img src="images/widget/author-comment.jpg" alt="">
-                                            </div>
-                                            <div class="entry">
-                                                <a href="#"
-                                                    class="entry-name font-worksans fw-6 text-upper hover-text-secondary">Christine
-                                                    Rose</a>
-                                                <p class=" font-nunito">
-                                                    July 29, 2024 at 7:35 am
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <a href="#post-comment-wrap"
-                                            class="tf-btn btn-reply style-2 type-2 font-nunito">
-                                            <i class="fa-solid fa-reply"></i>
-                                            Reply
-                                        </a>
-                                    </div>
-                                    <p class="comment font-nunito">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc odio nunc, egestas
-                                        quis efficitur eu, tempus ut nisi.
-                                        Suspendisse dignissim ut massa ac bibendum. Vivamus sit amet felis odio o.
-                                        Phasellus a nisi eleifend, rhoncus massa
-                                        vitae, sodales lacus.
-                                    </p>
-                                </div>
+                               
+                               
                                 <div class="post-comment-wrap" id="post-comment-wrap">
                                     <h2 class="fw-bold font-worksans wow fadeInUp" data-wow-delay="0s">
                                         Leave a Comment
@@ -361,163 +271,20 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="tf-sidebar">
-                                <div class="wg-author-farm mb-40">
-                                    <div class="image-avt wow zoomIn">
-                                        <img src="images/widget/author.jpg" alt="">
-                                    </div>
-                                    <a href="#" class="text-upper font-worksans name hover-text-secondary">Christine
-                                        Rose</a>
-                                    <p class="duty font-nunito">
-                                        DonalFarm Editor Post Blog
-                                    </p>
-                                    <p class="text font-nunito">
-                                        Suspendisse dignissim ut massa acdum. Vivamus sit amet felis odio. Phasellus a
-                                        nisi eleifend, rhoncus massa.
-                                    </p>
-                                    <ul class="social-list style-3 style-2">
-                                        <li class="item">
-                                            <a href="#">
-                                                <i class="icon-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="#">
-                                                <i class="icon-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="#">
-                                                <i class="fa-brands fa-skype"></i>
-                                            </a>
-                                        </li>
-                                        <li class="item">
-                                            <a href="#">
-                                                <i class="fa-brands fa-telegram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="sidebar-item sb-search">
-                                    <h5 class="sb-title">
-                                        Search
-                                    </h5>
-                                    <div class="sb-content">
-                                        <form action="#" class="form-search style-1">
-                                            <fieldset>
-                                                <input type="text" placeholder="Write content..." required>
-                                            </fieldset>
-                                            <button type="submit" class="btn-search">
-                                                <i class="icon-magnifying-glass"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-
-                                </div>
-                                <div class="sidebar-item sb-category">
-                                    <h5 class="sb-title">
-                                        Categories
-                                    </h5>
-                                    <div class="sb-content">
-                                        <ul class="category-list">
-                                            <li class="item">
-                                                <a href="#">Farming</a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">Livestock</a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">Vegetables</a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">Uncategorized</a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">Organic</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="sidebar-item sb-latest-new">
-                                    <h5 class="sb-title">
-                                        Latest News
-                                    </h5>
-                                    <div class="sb-content">
-                                        <ul class="latest-list">
-                                            <li class="item img-hover">
-                                                <div class="image hover-item">
-                                                    <img src="images/widget/last-new-1.jpg" alt="">
-                                                </div>
-                                                <div class="content">
-                                                    <p class="date">12 September 2024</p>
-                                                    <a class="name-post " href="#">
-                                                        FPAC Business Center
-                                                        Continues to Deliver
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li class="item img-hover">
-                                                <div class="image hover-item">
-
-                                                    <img src="images/widget/last-new-2.jpg" alt="">
-                                                </div>
-                                                <div class="content">
-                                                    <p class="date">12 September 2024</p>
-                                                    <a class="name-post " href="#">
-                                                        Breaking Down Barriers
-                                                        to Crop Insurance
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li class="item img-hover">
-                                                <div class="image hover-item">
-                                                    <img src="images/widget/last-new-3.jpg" alt="">
-                                                </div>
-                                                <div class="content">
-                                                    <p class="date">12 September 2024</p>
-                                                    <a class="name-post " href="#">
-                                                        The Potential of Virtual
-                                                        Reality in Agrifood
-                                                    </a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="sidebar-item sb-tag">
-                                    <h5 class="sb-title">
-                                        Tags
-                                    </h5>
-                                    <div class="sb-content">
-
-                                        <ul class="tag-list">
-                                            <li class="item">
-                                                <a href="#">bread</a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">fruits</a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">healthy</a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">juices</a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">organic</a>
-                                            </li>
-                                            <li class="item">
-                                                <a href="#">vegatables</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
         </div><!-- /.Main-content -->
-
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Splide('#image-slider', {
+      type   : 'loop',
+      perPage: 3,
+      autoplay: true,
+      pagination: true,
+      arrows: true,
+    }).mount();
+  });
+</script>
 @endsection

@@ -39,6 +39,7 @@
     <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="{{ asset('Front/images/logo/sdas.png') }}" />
     <link rel="apple-touch-icon-precomposed" href="{{ asset('Front/images/logo/sdas.png') }}" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
 
     <!--[if lt IE 9]>
         <script src="javascript/html5shiv.js"></script>

@@ -123,7 +123,7 @@
                                
                                
                                
-                                <div class="post-comment-wrap" id="post-comment-wrap">
+                                {{-- <div class="post-comment-wrap" id="post-comment-wrap">
                                     <h2 class="fw-bold font-worksans wow fadeInUp" data-wow-delay="0s">
                                         Leave a Comment
                                     </h2>
@@ -154,7 +154,7 @@
                                             </button>
                                         </div>
                                     </form>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                        

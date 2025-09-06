@@ -22,6 +22,11 @@
     display: flex;
     flex-direction: column;
 }
+.mtop {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
 .card-product .image {
     margin-top: 0px !important;
 }

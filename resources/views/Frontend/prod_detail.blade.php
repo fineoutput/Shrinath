@@ -122,6 +122,14 @@
                                             class="lazyload tf-image-zoom">
                                     </div>
                                 </div>
+                                <div class="swiper-slide">
+                                    <div class="image item">
+                                       <video class="lazyload" controls>
+                                         <source src="{{ asset($product->video) }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="swiper-container tf-product-media-thumbs" data-direction="horizontal">
@@ -152,6 +160,14 @@
                                         <img src="{{ asset($product->image_4 ?? '') }}"
                                             data-src="{{ asset($product->image_4 ?? '') }}" alt=""
                                             class="lazyload">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="image item">
+                                       <video class="lazyload" controls>
+                                         <source src="{{ asset($product->video) }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
                                     </div>
                                 </div>
                             </div>

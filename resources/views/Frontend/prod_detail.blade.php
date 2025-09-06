@@ -477,7 +477,7 @@
                                         <img src="{{ asset($product->image_1 ?? '') }}"
                                             data-src="{{ asset($product->image_1 ?? '') }}" alt="" class="lazyload">
                                     </div>
-                                    <a href="#" class="name-product font-worksans hover-text-4">
+                                    <a href="{{ route('prod_detail', $rp->id) }}" class="name-product font-worksans hover-text-4">
                                         {{ $rp->name ?? ''}}
                                     </a>
                                     <div class="pricing-star">

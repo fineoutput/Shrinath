@@ -59,6 +59,8 @@ Route::group(['prefix' => '/'], function () {
     Route::get('blog', [HomeController::class, 'blog'])->name('blog');
     Route::get('our_commitments', [HomeController::class, 'our_commitments'])->name('our_commitments');
     Route::get('blog_single/{id}', [HomeController::class, 'blog_single'])->name('blog_single');
+    Route::get('confidentiality_privacy', [HomeController::class, 'confidentiality_privacy'])->name('confidentiality_privacy');
+    Route::get('legal_information', [HomeController::class, 'legal_information'])->name('legal_information');
 });
 
 Route::get('/test-firebase', function () {

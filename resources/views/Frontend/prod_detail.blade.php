@@ -190,10 +190,15 @@
                                 5.00(1 customer review)
                             </p>
                         </div>
-                        <div class="price-wrap price-left">
-                            <span class=" price-1">₹{{ ($product->mrp ?? 0) > 0 ? $product->mrp : 'Out Of Stock' }}</span>
-                            <span class=" price-2">₹{{ ($product->price ?? 0) > 0 ? $product->price : 'Out Of Stock' }}</span>
+                       <div class="price-wrap price-left">
+                            @if(($product->mrp ?? 0) > 0 && ($product->price ?? 0) > 0)
+                                <span class="price-1">₹{{ $product->mrp }}</span>
+                                <span class="price-2">₹{{ $product->price }}</span>
+                            @else
+                                <span class="price-2">Out Of Stock</span>
+                            @endif
                         </div>
+
                         <p>{!! $product->description !!}</p>
                         {{-- <p class="sub font-nunito">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut aliquam
@@ -455,7 +460,11 @@
                                     </a>
                                     <div class="pricing-star">
                                         <div class="price-wrap">
-                                            <span class=" price-2">₹{{ ($rp->price ?? 0) > 0 ? $rp->price : 'Out Of Stock' }}</span>
+                                            @if(($rp->mrp ?? 0) > 0 && ($rp->price ?? 0) > 0)
+                                                <span class="price-2">₹{{ $rp->price }}</span>
+                                            @else
+                                                <span class="price-2">Out Of Stock</span>
+                                            @endif
                                         </div>
                                         
                                     </div>

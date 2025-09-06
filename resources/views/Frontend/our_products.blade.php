@@ -115,7 +115,11 @@
                 </a>
                 <div class="pricing-star">
                     <div class="price-wrap">
-                        <span class=" price-2">₹ {{ ($value->price ?? 0) > 0 ? $value->price : 'Out Of Stock' }}</span>
+                        @if(($value->price ?? 0) > 0 && ($value->mrp ?? 0) > 0)
+                            <span class="price-2">₹ {{ $value->price }}</span>
+                        @else
+                            <span class="price-2">Out Of Stock</span>
+                        @endif
                     </div>
                     
                 </div>

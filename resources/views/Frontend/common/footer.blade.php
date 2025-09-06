@@ -210,12 +210,12 @@ Nagaur-341001(Raj.)
         </p>
         <ul class="policy-list">
             <li class="item">
-                <a data-bs-toggle="collapse" href="#confidentiality" role="button" aria-expanded="false" aria-controls="confidentiality">
+                <a href="{{route('confidentiality_privacy')}}">
                     Confidentiality & Privacy
                 </a>
             </li>
             <li class="item">
-                <a data-bs-toggle="collapse" href="#legalinfo" role="button" aria-expanded="false" aria-controls="legalinfo">
+                <a href="{{route('legal_information')}}" >
                     Legal Information
                 </a>
             </li>

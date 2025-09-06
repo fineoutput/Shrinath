@@ -48,6 +48,16 @@ class HomeController extends Controller
      
         return view('Frontend/our_commitments')->withTitle('');
     }
+    public function confidentiality_privacy(Request $req)
+    {
+     
+        return view('Frontend/confidentiality_privacy')->withTitle('');
+    }
+    public function legal_information(Request $req)
+    {
+     
+        return view('Frontend/legal_information')->withTitle('');
+    }
     public function blog_single(Request $req, $encryptedId)
     {   
 

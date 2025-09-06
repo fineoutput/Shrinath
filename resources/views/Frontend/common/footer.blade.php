@@ -95,7 +95,8 @@ Nagaur-341001(Raj.)
                                     </li>
                                     <li> <i class="icon-package-box"></i>
                                         <p class="email fs-15">
-                                            Mail: INFO@SHREENATHSPICES.COM
+                                            Mail:info@shreenathspices.com
+
                                         </p>
                                     </li>
                                     <li>
@@ -150,6 +151,16 @@ Nagaur-341001(Raj.)
                                                 </path>
                                             </svg>
                                             Meet The Farmers</a>
+                                    </li>
+                                    <li class="item">
+                                        <a target="_blank" href="https://connect.shreenathspices.com/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="14"
+                                                height="16">
+                                                <path
+                                                    d="M264.547 70.633L440.547 238.633C445.297 243.164 447.984 249.445 447.984 256.008S445.297 268.852 440.547 273.383L264.547 441.383C254.953 450.508 239.766 450.164 230.609 440.57C221.453 431.07 221.797 415.82 231.422 406.633L364.09 280.008H24C10.75 280.008 0 269.258 0 256.008S10.75 232.008 24 232.008H364.09L231.422 105.383C221.797 96.227 221.453 80.977 230.609 71.445C239.766 61.852 254.953 61.508 264.547 70.633Z">
+                                                </path>
+                                            </svg>
+                                            Connect with us</a>
                                     </li>
                                    
                                 </ul>

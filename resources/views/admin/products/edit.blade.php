@@ -141,6 +141,20 @@
                                             </div>
                                         @endif
                                     </div>
+
+                                    <div class="col-sm-6">
+                                        <label>Video</label>
+                                        <input type="file" name="video" class="form-control" accept="video/*">
+
+                                        @if($products->video)
+                                            <div class="mt-2">
+                                                <video width="300" controls>
+                                                    <source src="{{ asset($products->video) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
                             
                                 <div class="form-group row">

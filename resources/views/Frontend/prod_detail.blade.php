@@ -171,8 +171,8 @@
                             </p>
                         </div>
                         <div class="price-wrap price-left">
-                            <span class=" price-1">₹{{$product->mrp ?? ''}}</span>
-                            <span class=" price-2">₹{{$product->price ?? ''}}</span>
+                            <span class=" price-1">₹{{ ($product->mrp ?? 0) > 0 ? $product->mrp : 'Out Of Stock' }}</span>
+                            <span class=" price-2">₹{{ ($product->price ?? 0) > 0 ? $product->price : 'Out Of Stock' }}</span>
                         </div>
                         <p>{!! $product->description !!}</p>
                         {{-- <p class="sub font-nunito">
@@ -435,7 +435,7 @@
                                     </a>
                                     <div class="pricing-star">
                                         <div class="price-wrap">
-                                            <span class=" price-2">₹{{ $rp->price ?? ''}}</span>
+                                            <span class=" price-2">₹{{ ($rp->price ?? 0) > 0 ? $rp->price : 'Out Of Stock' }}</span>
                                         </div>
                                         
                                     </div>

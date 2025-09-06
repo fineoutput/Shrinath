@@ -56,6 +56,7 @@
                         <th data-priority="1">Image 2</th>
                         <th data-priority="1">Image 3</th>
                         <th data-priority="1">Image 4</th>
+                        <th data-priority="1">Video</th>
                         <th data-priority="1">Status</th>
                         <th data-priority="1">Action</th>
                       </tr>
@@ -81,6 +82,12 @@
                         </td>
                         <td>
                             <img width="100" src="{{asset($value->image_4)}}" alt="">
+                        </td>
+                        <td>
+                            <video width="300" controls>
+                              <source src="{{ asset($value->video) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                            </video>
                         </td>
 
                         <td>

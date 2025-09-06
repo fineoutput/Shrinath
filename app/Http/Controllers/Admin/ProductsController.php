@@ -64,9 +64,14 @@ class ProductsController extends Controller
             }
         }
 
+        if ($request->hasFile('video')) {
+            $videoName = time() . '_video.' . $request->file('video')->extension();
+            $request->file('video')->move(public_path('uploads/videos'), $videoName);
+            $product->video = 'uploads/videos/' . $videoName;
+        }
+
         $product->save();
 
-        // ✅ Send Firebase notification on product creation
         $notificationPayload = [
             'title' => 'New Product: ' . $product->name,
             'body' => 'Check out our new product: ' . $product->name,
@@ -172,6 +177,12 @@ class ProductsController extends Controller
             }
         }
 
+        if ($request->hasFile('video')) {
+            $videoName = time() . '_video.' . $request->file('video')->extension();
+            $request->file('video')->move(public_path('uploads/videos'), $videoName);
+            $product->video = 'uploads/videos/' . $videoName;
+        }
+        
         $product->save();
 
         // Now, send the Firebase notification to all users

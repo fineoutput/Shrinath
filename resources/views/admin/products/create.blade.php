@@ -121,6 +121,11 @@
                                         <input type="file" name="image_4" class="form-control"  required>
                                     </div>
 
+                                    <div class="col-sm-6 mt-2">
+                                        <label>Video</label>
+                                        <input type="file" name="video" class="form-control"  required>
+                                    </div>
+
                                 </div>
 
                                 <div class="form-group row">

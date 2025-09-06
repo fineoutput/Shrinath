@@ -15,6 +15,9 @@
     left: 50%;
     transform: translateX(-50%) rotate(-45deg);
 }
+.peloe{
+    color: #f9e433 !important;
+}
 .mtop{
     display: flex;
     flex-direction: column;

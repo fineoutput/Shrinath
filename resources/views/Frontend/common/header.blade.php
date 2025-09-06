@@ -216,13 +216,13 @@
                                         </div>
                                         <div class="contact">
                                             <p class="sub font-snowfall">
-                                                <a style="color: #f9e433" href="https://connect.shreenathspices.com/">Connect with us</a></p>
+                                                <a class="peloe" target="_blank" href="https://connect.shreenathspices.com/">Connect with us</a></p>
                                             
                                         </div>
                                         <div class="contact">
                                             
                                             <p class="number font-worksans">
-                                                <a target="_blank" href="http://127.0.0.1:8000/Front/images/asdas.pdf">Get Our Portfolio</a>
+                                                <a target="_blank" href="HTTPS://BROCHURE.SHREENATHSPICES.COM/">Get Our Portfolio</a>
                                             </p>
                                         </div>
                                     </div>
@@ -450,13 +450,13 @@ Nagaur-341001(Raj.)
                                         </div>
                                         <div class="contact">
                                             <p class="sub font-snowfall">
-                                                <a style="color: #f9e433" href="https://connect.shreenathspices.com/">Connect with us</a></p>
+                                                <a class="peloe" target="_blank" href="https://connect.shreenathspices.com/">Connect with us</a></p>
                                             
                                         </div>
                                         <div class="contact">
                                             
                                             <p class="number font-worksans">
-                                                <a target="_blank" href="http://127.0.0.1:8000/Front/images/asdas.pdf">Get Our Portfolio</a>
+                                                <a target="_blank" href="HTTPS://BROCHURE.SHREENATHSPICES.COM">Get Our Portfolio</a>
                                             </p>
                                         </div>
                                     </div>

@@ -673,14 +673,14 @@ your recipes.
                                     <div class="swiper-wrapper">
                                         @foreach ($product as $value)
                                               <div class="swiper-slide">
-                                                <a href="{{route('our_products')}}">
+                                                <a href="{{ route('prod_detail', $value->id) }}">
                                             <div class="card-product mw-unset style-2 type-2 wow fadeInUp"
                                                 data-wow-delay="0s">
                                               
                                                 <div class="image">
                                                    <img src="{{ asset($value->image_1 ?? '') }}" data-src="{{ asset($value->image_1 ?? '') }}" alt="" class="lazyload">
                                                 </div>
-                                                <a href="{{route('our_products')}}"
+                                                <a href="{{ route('prod_detail', $value->id) }}"
                                                     class="name-product font-worksans hover-text-4">
                                                     {{ $value->name ?? ''}}
                                                 </a>

@@ -682,8 +682,8 @@ your recipes.
                                                 </a>
                                                 <div class="pricing-star">
                                                     <div class="price-wrap mtop">
-                                                        <span class=" price-1">₹ {{ $value->price ?? ''}}</span>
-                                                        <span class=" price-2">₹ {{ $value->mrp ?? ''}}</span>
+                                                        <span class=" price-1">₹ {{ $value->mrp ?? ''}}</span>
+                                                        <span class=" price-2">₹ {{ $value->price ?? ''}}</span>
                                                     </div>
                                                     
                                                 </div>

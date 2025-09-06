@@ -673,6 +673,7 @@ your recipes.
                                     <div class="swiper-wrapper">
                                         @foreach ($product as $value)
                                               <div class="swiper-slide">
+                                                <a href="{{route('our_products')}}">
                                             <div class="card-product mw-unset style-2 type-2 wow fadeInUp"
                                                 data-wow-delay="0s">
                                               
@@ -692,6 +693,7 @@ your recipes.
                                                 </div>
                                                 
                                             </div>
+                                            </a>
                                         </div>
                                         @endforeach
                                       

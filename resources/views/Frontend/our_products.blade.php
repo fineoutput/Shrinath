@@ -105,6 +105,7 @@
     <div class="grid-layout-3 gap-30-20">
         @foreach ($product as $value)
             <div class="card-product style-2 wow fadeInUp" data-wow-delay="0s">
+                <a href="{{ route('prod_detail', $value->id) }}">
                 <div class="image">
                     <img src="{{ asset($value->image_1 ?? '') }}" data-src="{{ asset($value->image_1 ?? '') }}" alt=""
                         class="lazyload">
@@ -118,6 +119,7 @@
                     </div>
                     
                 </div>
+                </a>
             </div>
         @endforeach
     </div>

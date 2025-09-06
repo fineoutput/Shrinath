@@ -90,12 +90,12 @@ Nagaur-341001(Raj.)
                                     <li>
                                         <i class="fa-solid fa-phone"></i>
                                         <p class="phone-number fs-15">
-                                            Call us: +91 7014928528
+                                            Call us: +91 8905015736
                                         </p>
                                     </li>
                                     <li> <i class="icon-package-box"></i>
                                         <p class="email fs-15">
-                                            Mail: Shrinaths@gmail.com
+                                            Mail: INFO@SHREENATHSPICES.COM
                                         </p>
                                     </li>
                                     <li>

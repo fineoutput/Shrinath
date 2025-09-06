@@ -450,7 +450,7 @@ Nagaur-341001(Raj.)
                                         </div>
                                         <div class="contact">
                                             <p class="sub font-snowfall">
-                                                <a class="peloe" target="_blank" href="https://connect.shreenathspices.com/">Connect with us</a></p>
+                                                <a target="_blank" href="https://connect.shreenathspices.com/">Connect with us</a></p>
                                             
                                         </div>
                                         <div class="contact">

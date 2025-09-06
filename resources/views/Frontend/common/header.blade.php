@@ -215,7 +215,8 @@
                                             
                                         </div>
                                         <div class="contact">
-                                            <p class="sub font-snowfall">Connect with us</p>
+                                            <p class="sub font-snowfall">
+                                                <a style="color: #f9e433" href="https://connect.shreenathspices.com/">Connect with us</a></p>
                                             
                                         </div>
                                         <div class="contact">
@@ -448,7 +449,8 @@ Nagaur-341001(Raj.)
                                             
                                         </div>
                                         <div class="contact">
-                                            <p class="sub font-snowfall">Connect with us</p>
+                                            <p class="sub font-snowfall">
+                                                <a style="color: #f9e433" href="https://connect.shreenathspices.com/">Connect with us</a></p>
                                             
                                         </div>
                                         <div class="contact">

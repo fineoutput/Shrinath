@@ -71,54 +71,7 @@
     <section class="s-box-wrap">
         <div class="tf-container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="wrap">
-                        <div class="box-icon style-2 ic-hover wow fadeInUp" data-wow-delay="0s ">
-                            <div class="icon style-circle hover-icon">
-                                <i class="fa-solid fa-rocket"></i>
-                            </div>
-                            <a href="#" class="caption fw-6  font-worksans hover-text-secondary">
-                                Free Shipping
-                            </a>
-                            <p class="text font-nunito">
-                                Ultrices sagittis orci a scelerisque <br> purus semper eget duis at.
-                            </p>
-                        </div>
-                        <div class="box-icon style-2 ic-hover wow fadeInUp" data-wow-delay="0.1s ">
-                            <div class="icon style-circle hover-icon">
-                                <i class="fa-solid fa-coins"></i>
-                            </div>
-                            <a href="#" class="caption fw-6  font-worksans hover-text-secondary">
-                                100% Secure Payment
-                            </a>
-                            <p class="text font-nunito">
-                                Ultrices sagittis orci a scelerisque <br> purus semper eget duis at.
-                            </p>
-                        </div>
-                        <div class="box-icon style-2 ic-hover wow fadeInUp" data-wow-delay="0.2s ">
-                            <div class="icon style-circle hover-icon">
-                                <i class="fa-solid fa-comment-dots"></i>
-                            </div>
-                            <a href="#" class="caption fw-6  font-worksans hover-text-secondary">
-                                24/7 Dedicated Support
-                            </a>
-                            <p class="text font-nunito">
-                                Ultrices sagittis orci a scelerisque <br> purus semper eget duis at.
-                            </p>
-                        </div>
-                        <div class="box-icon style-2 ic-hover wow fadeInUp" data-wow-delay="0.3s ">
-                            <div class="icon style-circle hover-icon">
-                                <i class="fa-solid fa-tag"></i>
-                            </div>
-                            <a href="#" class="caption fw-6  font-worksans hover-text-secondary">
-                                Daily Offers
-                            </a>
-                            <p class="text font-nunito">
-                                Ultrices sagittis orci a scelerisque <br> purus semper eget duis at.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
         <div class="s-img-item item-1">

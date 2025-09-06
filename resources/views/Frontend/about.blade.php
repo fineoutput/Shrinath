@@ -382,7 +382,7 @@ Pradesh.
                                     </div>
                                     <div class="content">
                                         <h3 class="title fw-6 font-worksans">
-                                            First Factory
+                                            Bigger Factory Establishement
                                         </h3>
                                         <p class="text font-nunito ">
                                             Built our first modern factory with hygienic processing facilities.

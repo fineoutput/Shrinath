@@ -18,6 +18,10 @@
     #loading{
         display: none;
     }
+    .item video {
+    width: 100%;
+    height: 100% !important;
+}
     .price-wrap {
     display: flex !important;
     align-items: start !important;

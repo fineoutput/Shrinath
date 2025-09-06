@@ -8772,7 +8772,7 @@ i.fs-12 {
   max-width: 270px;
   width: 100%;
   padding: 30px 25px;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
 }
 .card-product.style-2.mw-unset {
   max-width: unset;

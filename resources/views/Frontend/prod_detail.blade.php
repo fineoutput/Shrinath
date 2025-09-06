@@ -452,8 +452,8 @@
                                         </li> --}}
                                     </ul>
                                     <div class="image">
-                                        <img src="{{ asset($product->image_1 ?? '') }}"
-                                            data-src="{{ asset($product->image_1 ?? '') }}" alt="" class="lazyload">
+                                        <img src="{{ asset($rp->image_1 ?? '') }}"
+                                            data-src="{{ asset($rp->image_1 ?? '') }}" alt="" class="lazyload">
                                     </div>
                                     <a href="{{ route('prod_detail', $rp->id) }}" class="name-product font-worksans hover-text-4">
                                         {{ $rp->name ?? ''}}

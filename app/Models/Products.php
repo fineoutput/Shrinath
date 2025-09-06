@@ -26,6 +26,7 @@ class Products extends Model
         'image_2',
         'image_3',
         'image_4',
+        'video',
     ];
 
 

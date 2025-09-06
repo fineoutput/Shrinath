@@ -842,7 +842,9 @@ public function stockCol()
         'SENSEX',
     ];
 
-    $collection = collect($result);
+    $collection = collect($result)->reject(function ($item) {
+        return $item['name'] === 'JEERAA2_1D';
+    });
 
     $normalItems = $collection->filter(function ($item) use ($specialOrder) {
         return !in_array($item['name'], $specialOrder);

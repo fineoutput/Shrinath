@@ -36,6 +36,9 @@
 .card-product.style-2.type-2 .image img {
     max-width: 215px !important;
 }
+.pricing-star{
+    margin-bottom: 0 !important;
+}
 </style>
        <div class="page-title-home-2">
             <div class="swiper-container slider-home-2">

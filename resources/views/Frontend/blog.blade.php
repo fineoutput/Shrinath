@@ -33,7 +33,7 @@
                             Read The Latest News From Us
                         </p>
                         <h1 class="title">
-                            Blog Full Width
+                            Our Blogs
                         </h1>
                         <div class="icon-img">
                             <img src="{{ asset('Front/images/item/line-throw-title.png') }}" alt="">
@@ -58,78 +58,13 @@
 <!-- Main-content -->
 <div class="main-content">
     <!-- Section sub -->
-    <section class="s-sub">
-        <div class="tf-container w-1290">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="subscribe-wrap">
-                        <div class="has-border">
-                            <div class="notice">
-                                <div class="icon">
-                                    <i class="fa-solid fa-envelope-open-text"></i>
-                                </div>
-                                <div class="content-inner">
-                                    <h3 class="title font-worksans">
-                                        Subscribe to Newsletter
-                                    </h3>
-                                    <p class="text">
-                                        Please sign up to follow the latest news and events from us, we <br> promise not to spam your inbox.
-                                    </p>
-                                </div>
-                            </div>
-                            <form action="#" class="form-email">
-                                <input type="email" class="style-1" placeholder="Email address" required>
-                                <button type="submit" class="btn-send">
-                                    <i class="fa-solid fa-paper-plane"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!-- /.Section sub -->
-
+   
     <!-- Section filter -->
     <section class="s-filter-sorting">
         <div class="tf-container w-1290">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="s-top">
-                        <p class="text font-worksans">
-                            Showing 1–15 of 30 results
-                        </p>
-                        <div class="tf-control-sorting">
-                            <div class="tf-dropdown-sort">
-                                <div class="tf-btn style-2" data-bs-toggle="dropdown">
-                                    <span class="text-sort-value">Latest Posts</span>
-                                    <i class="icon-arrow_down"></i>
-                                </div>
-                                <div class="dropdown-menu">
-                                    <div class="select-item">
-                                        <span class="text-value-item">
-                                            New Post
-                                        </span>
-                                    </div>
-                                    <div class="select-item">
-                                        <span class="text-value-item">
-                                            Regular Post
-                                        </span>
-                                    </div>
-                                    <div class="select-item active">
-                                        <span class="text-value-item">
-                                            Lastest Posts
-                                        </span>
-                                    </div>
-                                    <div class="select-item">
-                                        <span class="text-value-item">
-                                            All Post
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>

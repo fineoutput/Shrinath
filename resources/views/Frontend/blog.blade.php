@@ -116,7 +116,7 @@
                                             <i class="icon-arrow_right"></i>
                                         </div>
                                     </a>
-                                    <div class="share">
+                                    {{-- <div class="share">
                                         <div class="icon">
                                             <i class="fa-solid fa-share-nodes"></i>
                                         </div>
@@ -145,7 +145,7 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </article>

@@ -37,7 +37,7 @@
             <div class="footer-inner">
                 <div class="tf-container w-1290">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="footer-inner-wrap">
                                 <div class="logo">
                                     <a href="{{route('/')}}">
@@ -63,14 +63,12 @@ we at Shreenath Industries have inherited.
                                         <li class="item">
                                             <a href="#"><i class="icon-instagram2"></i></a>
                                         </li>
-                                        <li class="item">
-                                            <a href="#"><i class="icon-pinterest"></i></a>
-                                        </li>
+                                    
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="footer-inner-wrap footer-col-block">
                                 <h4 class="footer-title footer-title-desktop">
                                     Contact Us!
@@ -108,7 +106,7 @@ Nagaur-341001(Raj.)
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 naa col-md-6">
 
 
                             <div class="footer-inner-wrap footer-col-block">
@@ -166,47 +164,7 @@ Nagaur-341001(Raj.)
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="footer-inner-wrap footer-col-block">
-
-                                <h4 class="footer-title footer-title-desktop">
-                                    News Posts
-                                </h4>
-                                <h4 class="footer-title footer-title-mobile">
-                                    News Posts
-                                </h4>
-                                <ul class="new-post-list tf-accordion-content">
-                                    <li class="item">
-                                        <div class="image">
-                                            <img src="images/section/f-new-post-1.jpg" alt="">
-                                        </div>
-                                        <div class="content">
-                                            <a href="{{route('blog')}}" class="title-post hover-text-secondary">
-                                                Learn 10 Best Tips for
-                                                New Formers
-                                            </a>
-                                            <p class="date-release">
-                                                30 Oct, 2024
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="item">
-                                        <div class="image">
-                                            <img src="images/section/f-new-post--2.jpg" alt="">
-                                        </div>
-                                        <div class="content">
-                                            <a href="{{route('blog')}}" class="title-post hover-text-secondary">
-                                                Farmer Sentiment
-                                                Darkens Hopes Fade
-                                            </a>
-                                            <p class="date-release">
-                                                30 Oct, 2024
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>

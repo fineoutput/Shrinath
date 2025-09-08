@@ -707,6 +707,12 @@ public function stockCol()
 
     if ($jeeraa2_1d_yesterday_record) {
         $jeeraa2_1d_yesterday_close = floatval($jeeraa2_1d_yesterday_record->close);
+    } else {
+        // 🛠️ Fallback: Use latest available JEERAA2_1D record
+        $latestJeeraa2Record = $jeeraa2All->sortByDesc('time')->first();
+        if ($latestJeeraa2Record) {
+            $jeeraa2_1d_yesterday_close = floatval($latestJeeraa2Record->close);
+        }
     }
 
     $groupedByName = $todayRecords->groupBy('name');
@@ -775,7 +781,6 @@ public function stockCol()
         ];
     }
 
-    // Special case override for JEERA2's close from JEERAA2_1D
     $jeeraa2_1d_close = null;
     foreach ($result as $item) {
         if ($item['name'] === 'JEERAA2_1D') {

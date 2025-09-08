@@ -123,32 +123,26 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <label>State</label>
-                                        <select name="state" id="state" class="form-control" required>
-                                            <option value="">Select State</option>
-                                            @foreach($states as $state)
-                                                <option value="{{ $state->id }}" {{ $state->id == $depots->state->id ? 'selected' : '' }}>
-                                                    {{ $state->state_name }}
-                                                </option>
-                                            @endforeach
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label>State</label>
+                                <select name="state" id="state" class="form-control" required>
+                                    <option value="">Select State</option>
+                                    @foreach($states as $state)
+                                        <option value="{{ $state->id }}" {{ $state->id == $depots->state_id ? 'selected' : '' }}>
+                                            {{ $state->state_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                                        </select>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <label>City</label>
-                                        <select name="city" id="city" class="form-control" required>
-                                            <option value="">Select City</option>
-                                            @foreach($cities as $city)
-                                                <option value="{{ $city->id }}" {{ $city->id == $depots->city_name ? 'selected' : '' }}>
-                                                    {{ $city->city_name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
+                            <div class="col-sm-6">
+                                <label>City</label>
+                                <select name="city" id="city" class="form-control" required>
+                                    <option value="">Select City</option>
+                                </select>
+                            </div>
+                        </div>
 
                                 <div class="form-group row">
                                     <div class="w-100 text-center">
@@ -169,24 +163,33 @@
 </div> <!-- content -->
 
 
-
 <script>
-    $('#state').on('change', function () {
-        var stateID = $(this).val();
-        if (stateID) {
-            $.ajax({
-                url: '{{ url("get-cities") }}/' + stateID,
-                type: "GET",
-                dataType: "json",
-                success: function (data) {
-                    $('#city').empty().append('<option value="">Select City</option>');
-                    $.each(data, function (key, value) {
-                        $('#city').append('<option value="' + value.id + '">' + value.city_name + '</option>');
-                    });
-                }
-            });
-        } else {
-            $('#city').empty().append('<option value="">Select City</option>');
+    $(document).ready(function () {
+        let selectedCityId = '{{ old("city", $depots->city_id ?? '') }}';
+
+        $('#state').on('change', function () {
+            var stateID = $(this).val();
+            if (stateID) {
+                $.ajax({
+                    url: '{{ url("get-cities") }}/' + stateID,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#city').empty().append('<option value="">Select City</option>');
+                        $.each(data, function (key, value) {
+                            let selected = (value.id == selectedCityId) ? 'selected' : '';
+                            $('#city').append('<option value="' + value.id + '" ' + selected + '>' + value.city_name + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#city').empty().append('<option value="">Select City</option>');
+            }
+        });
+
+        // Trigger change on page load to populate cities for selected state
+        if ($('#state').val()) {
+            $('#state').trigger('change');
         }
     });
 </script>

@@ -296,23 +296,7 @@
                                 </p>
                             </li>
                         </ul> --}}
-                        <div class="bot mt-2">
-                            <p class="font-worksans fw-5 text">Share:</p>
-                            <div class="wg-social style-3">
-                                <ul class="list">
-                                    <li class="item">
-                                        <a href="#"><i class="icon-facebook1"></i></a>
-                                    </li>
-                                    <li class="item">
-                                        <a href="#"><i class="icon-twitter"></i></a>
-                                    </li>
-                                    <li class="item">
-                                        <a href="#"><i class="icon-instagram2"></i></a>
-                                    </li>
-                                   
-                                </ul>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

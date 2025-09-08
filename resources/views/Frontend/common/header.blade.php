@@ -341,10 +341,14 @@
                                                 <a class="item-menu-mobile" href="{{route('our_commitments')}}">Commitments</a>
                                             </li>
                                             <li class="menu-item menu-item-has-children-mobile">
-                                                <a class="item-menu-mobile" target="_blank" href="HTTPS://BROCHURE.SHREENATHSPICES.COM">Get Our Portfolio</a>
+                                                <a class="item-menu-mobile" style="
+    color: #f8c32c;
+" target="_blank" href="HTTPS://BROCHURE.SHREENATHSPICES.COM">Get Our Portfolio</a>
                                             </li>
                                             <li class="menu-item menu-item-has-children-mobile">
-                                                <a class="item-menu-mobile" target="_blank" href="https://connect.shreenathspices.com/">Connect with us</a></p>
+                                                <a class="item-menu-mobile" style="
+    color: #f8c32c;
+" target="_blank" href="https://connect.shreenathspices.com/">Connect with us</a></p>
                                             </li>
                                             </ul>
                                         </nav> 

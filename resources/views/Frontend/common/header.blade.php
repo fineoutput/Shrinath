@@ -254,7 +254,7 @@
                                                   
                                                 </li>
                                                 <li class="menu-item menu-item-has-children-mobile">
-                                                    <a href="{{route('about')}}">About Us</a>
+                                                    <a class="item-menu-mobile" href="{{route('about')}}">About Us</a>
                                                     {{-- <ul class="sub-menu-mobile">
                                                         <li class="menu-item">
                                                             <a href="about-us.html">About Us</a>
@@ -340,8 +340,14 @@
                                             <li class="menu-item menu-item-has-children-mobile">
                                                 <a class="item-menu-mobile" href="{{route('our_commitments')}}">Commitments</a>
                                             </li>
+                                            <li class="menu-item menu-item-has-children-mobile">
+                                                <a class="item-menu-mobile" target="_blank" href="HTTPS://BROCHURE.SHREENATHSPICES.COM">Get Our Portfolio</a>
+                                            </li>
+                                            <li class="menu-item menu-item-has-children-mobile">
+                                                <a class="item-menu-mobile" target="_blank" href="https://connect.shreenathspices.com/">Connect with us</a></p>
+                                            </li>
                                             </ul>
-                                        </nav>
+                                        </nav> 
                                         {{-- <div class="group-icon">
                                             <a class="site-nav-icon header-search" href="#canvasSearch" data-bs-toggle="offcanvas">
                                                 <i class="icon-magnifying-glass fs-21"> </i>
@@ -370,7 +376,7 @@ Nagaur-341001(Raj.)
                                                         Phone:
                                                     </h5>
                                                     <p>
-                                                        +91 7014928528
+                                                        +91 8905015736
                                                     </p>
                                                 </li>
                                                 <li>
@@ -378,7 +384,7 @@ Nagaur-341001(Raj.)
                                                         Email:
                                                     </h5>
                                                     <p>
-                                                        Shrinaths@gmail.com
+                                                        info@shreenathspices.com
                                                     </p>
                                                 </li>
                                             </ul>

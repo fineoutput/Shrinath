@@ -174,7 +174,7 @@ Nagaur-341001(Raj.)
                    <div class="col-lg-12">
     <div class="footer-bottom">
         <p class="no-copy font-nunito">
-            Copyright © 2025 Shrinath 
+            Copyright © 2025 Shreenath 
             All Rights Reserved.
         </p>
         <ul class="policy-list">

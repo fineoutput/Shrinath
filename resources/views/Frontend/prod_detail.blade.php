@@ -91,7 +91,7 @@
         <div class="tf-container w-1290">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="thumbs-slider sticky-top">
+                    <div class="thumbs-slider">
                         <div class="swiper-container tf-product-media-main">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">

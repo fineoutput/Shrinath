@@ -187,8 +187,6 @@
                                     <li><a href="#"><i class="icon-facebook1"></i></a></li>
                                     <li><a href="#"><i class="icon-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-instagram2"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-skype"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -227,8 +225,7 @@
                                     <li><a href="#"><i class="icon-facebook1"></i></a></li>
                                     <li><a href="#"><i class="icon-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-instagram2"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-skype"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -267,8 +264,7 @@
                                     <li><a href="#"><i class="icon-facebook1"></i></a></li>
                                     <li><a href="#"><i class="icon-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-instagram2"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-skype"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -306,8 +302,7 @@
                                     <li><a href="#"><i class="icon-facebook1"></i></a></li>
                                     <li><a href="#"><i class="icon-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-instagram2"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-skype"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -345,8 +340,7 @@
                                     <li><a href="#"><i class="icon-facebook1"></i></a></li>
                                     <li><a href="#"><i class="icon-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-instagram2"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-skype"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+                                   
                                 </ul>
                             </div>
                         </div>

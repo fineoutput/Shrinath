@@ -2994,6 +2994,7 @@ a.text-white {
 .wg-tabs .widget-content-tab .widget-content-inner.active {
   visibility: visible;
   opacity: 1;
+  text-align: left;
 }
 .wg-tabs.style-2 {
   margin-top: 29px;

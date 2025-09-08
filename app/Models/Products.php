@@ -21,6 +21,7 @@ class Products extends Model
         'mrp',
         'weight',
         'description',
+        'short_description',
         'status',
         'image_1',
         'image_2',

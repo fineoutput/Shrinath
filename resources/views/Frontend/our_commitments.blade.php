@@ -43,7 +43,10 @@
       color: #444;
     }
 
-    
+    .cert-item {
+    display: flex;
+    flex-direction: column;
+} 
 
     .cert-grid {
   display: grid;

@@ -186,9 +186,7 @@
                         </h3>
                         <div class="rating-wrap">
                           
-                            <p class="font-nunito">
-                                5.00(1 customer review)
-                            </p>
+                           
                         </div>
                        <div class="price-wrap price-left">
                             @if(($product->mrp ?? 0) > 0 && ($product->price ?? 0) > 0)
@@ -332,9 +330,7 @@
                             <ul class="menu-tab">
                                 <li class="item active"><a href="javascript:void(0)"
                                         class="btn-tab">Description</a></li>
-                                <li class="item"><a href="javascript:void(0)" class="btn-tab">Additional
-                                        information</a>
-                                </li>
+                                
                                
                             </ul>
                         </div>

@@ -137,6 +137,16 @@
                                         @enderror
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mt-3">
+                                        <label class="form-label" for="power">Short Description &nbsp;<span style="color:red;">*</span></label>
+                                        <textarea class="form-control" name="short_description" id="short_description" required>{{ old('short_description') }}</textarea>
+                                        @error('short_description')
+                                            <div style="color:red">{{$message}}</div>
+                                        @enderror
+                                    </div>
+                                </div>
                             
                                 <div class="form-group row">
                                     <div class="w-100 text-center">
@@ -160,6 +170,17 @@
 
 <script>
      CKEDITOR.replace('description', {
+        toolbar: [
+            { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'] },
+            { name: 'paragraph', items: ['NumberedList', 'BulletedList'] },
+            { name: 'insert', items: ['Link', 'Unlink'] },
+            { name: 'styles', items: ['Format', 'FontSize'] },
+            { name: 'colors', items: ['TextColor', 'BGColor'] },
+            { name: 'tools', items: ['Maximize'] }
+        ],
+        height: 200
+    });
+     CKEDITOR.replace('short_description', {
         toolbar: [
             { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'] },
             { name: 'paragraph', items: ['NumberedList', 'BulletedList'] },

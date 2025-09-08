@@ -38,6 +38,7 @@ class ProductsController extends Controller
             'name' => 'required',
             'category_id' => 'required',
             'description' => 'required',
+            'short_description' => 'required',
             'price' => 'required',
             'mrp' => 'required',
             'weight' => 'required',
@@ -54,6 +55,7 @@ class ProductsController extends Controller
         $product->weight = $request->weight;
         $product->category_id = $request->category_id;
         $product->description = $request->description;
+        $product->short_description = $request->short_description;
         $product->status = 1;
 
         foreach (['image_1', 'image_2', 'image_3', 'image_4'] as $imageField) {
@@ -146,6 +148,7 @@ class ProductsController extends Controller
             'name' => 'required',
             'category_id' => 'required',
             'description' => 'required',
+            'short_description' => 'required',
             'price' => 'required',
             'mrp' => 'required',
             'weight' => 'required',
@@ -162,6 +165,7 @@ class ProductsController extends Controller
         $product->weight = $request->weight;
         $product->category_id = $request->category_id;
         $product->description = $request->description;
+        $product->short_description = $request->short_description;
 
         // Handle image uploads
         foreach (['image_1', 'image_2', 'image_3', 'image_4'] as $imageField) {

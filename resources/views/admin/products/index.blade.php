@@ -52,6 +52,7 @@
                         <th data-priority="1">MRP</th>
                         <th data-priority="1">Weight</th>
                         <th data-priority="1">Description</th>
+                        <th data-priority="1">Short Description</th>
                         <th data-priority="1">Image 1</th>
                         <th data-priority="1">Image 2</th>
                         <th data-priority="1">Image 3</th>
@@ -71,6 +72,7 @@
                         <td>{{$value->mrp ?? ''}}</td>
                         <td>{{$value->weight ?? ''}}</td>
                         <td>{{ \Illuminate\Support\Str::limit(strip_tags($value->description), 100) }}</td>
+                        <td>{{ \Illuminate\Support\Str::limit(strip_tags($value->short_description), 100) }}</td>
                         <td>
                             <img width="100" src="{{asset($value->image_1)}}" alt="">
                         </td>

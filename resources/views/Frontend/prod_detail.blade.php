@@ -309,9 +309,7 @@
                                     <li class="item">
                                         <a href="#"><i class="icon-instagram2"></i></a>
                                     </li>
-                                    <li class="item">
-                                        <a href="#"><i class="icon-pinterest"></i></a>
-                                    </li>
+                                   
                                 </ul>
                             </div>
                         </div>

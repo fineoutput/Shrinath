@@ -158,7 +158,7 @@ class BlockController extends Controller
             ], 422);
         }
 
-        $products = Products::where('category_id', $categoryId)->latest()->get();
+        $products = Products::where('status', 1)->where('category_id', $categoryId)->latest()->get();
 
         if ($products->isEmpty()) {
             return response()->json([

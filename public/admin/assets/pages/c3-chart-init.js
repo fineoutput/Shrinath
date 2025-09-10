@@ -50,7 +50,7 @@
                     SonyVaio: '#f0f1f4',
                     iMacs: '#1b82ec',
                     Tablets: '#35a989',
-                    iPhones: '#f16c69',
+                    iPhones: '#336f35',
                     Macbooks: '#f5b225'
                 },
                 groups: [
@@ -128,7 +128,7 @@
 				}
             },
             color: {
-            	pattern: ['#f0f1f4', '#1b82ec', '#f16c69', '#f5b225']
+            	pattern: ['#f0f1f4', '#1b82ec', '#336f35', '#f5b225']
             }
         });
         
@@ -145,7 +145,7 @@
                 type : 'pie'
             },
             color: {
-                pattern: ['#f0f1f4', '#1b82ec', '#f16c69', '#f5b225']
+                pattern: ['#f0f1f4', '#1b82ec', '#336f35', '#f5b225']
             },
             pie: {
 		        label: {

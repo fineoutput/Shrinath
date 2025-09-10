@@ -24,7 +24,7 @@
   }
   .head
   {
-    color: #ed3338;
+    color: #326a32;
   }
   .form-check-input {
  
@@ -82,8 +82,8 @@
 }
 .btn {
     
-    border: 1px solid #ed3338;
-    background-color: #ed3338;
+    border: 1px solid #326a32;
+    background-color: #326a32;
     color: #fff;
     
 }

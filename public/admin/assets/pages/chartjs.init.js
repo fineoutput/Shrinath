@@ -215,7 +215,7 @@
                     18
                 ],
                 backgroundColor: [
-                    "#f16c69",
+                    "#336f35",
                     "#1b82ec",
                     "#ebeff2",
                     "#f5b225"

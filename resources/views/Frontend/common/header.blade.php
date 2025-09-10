@@ -67,7 +67,7 @@
                         <div class="loader">
                         </div>
                         <div class="icon">
-                            <img src="{{asset('admin/assets/images/greenlogo_1.gif')}}" alt="Background" class="bg-gif">
+                            <img src="{{ asset('Front/images/logo/sdas.png') }}" alt="">
                         </div>
                     </div>
                 </div>

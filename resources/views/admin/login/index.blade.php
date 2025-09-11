@@ -58,8 +58,12 @@
 }
 
 .sub-main-w3 {
-    width: 60%;
-    margin-top: 288px !important;
+    width: 50%;
+    /* margin-top: 288px !important; */
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     margin: 111px auto;
     -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
@@ -75,6 +79,7 @@
   height: 100vh;
   overflow: hidden;
   background-color:#f7f7e6; 
+  position: relative;
 }
 .right-w3l{
   display: flex;

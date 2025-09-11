@@ -58,8 +58,8 @@
 }
 
 .sub-main-w3 {
-    width: 30%;
-    margin-top: 600px !important;
+    width: 60%;
+    margin-top: 470px !important;
     margin: 111px auto;
     -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
@@ -73,13 +73,18 @@
 }
 .whas{
   height: 100vh;
+  overflow: hidden;
+}
+.right-w3l{
+  display: flex;
+  justify-content: center;
 }
   </style>
 </head>
 
 <body class="whas">
   <div class="video-w3l">
-  <img src="{{asset('admin/assets/images/greenlogo_1.gif')}}" alt="Background" class="bg-gif">
+  <img style="height: 100vh" src="{{asset('admin/assets/images/greenlogo_1.gif')}}" alt="Background" class="bg-gif">
     
     
     <!--//header-->

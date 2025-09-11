@@ -74,6 +74,7 @@
 .whas{
   height: 100vh;
   overflow: hidden;
+  background-color:#f7f7e6; 
 }
 .right-w3l{
   display: flex;
@@ -84,7 +85,7 @@
 
 <body class="whas">
   <div class="video-w3l">
-  <img style="height: 100vh" src="{{asset('admin/assets/images/greenlogo_1.gif')}}" alt="Background" class="bg-gif">
+  <img style="height: 70vh" src="{{asset('admin/assets/images/greenlogo_1.gif')}}" alt="Background" class="bg-gif">
     
     
     <!--//header-->

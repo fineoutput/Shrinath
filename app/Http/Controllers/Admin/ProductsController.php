@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\adminmodel\Team;
 use App\Models\Category;
+use App\Models\Notifications;
 use App\Models\Products;
 use App\Models\State;
 
@@ -202,8 +203,19 @@ class ProductsController extends Controller
         'screen' => 'ProductDetail',
     ];
 
-    $firebaseService = new FirebaseNotificationService();
-    $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
+   $firebaseService = new FirebaseNotificationService();
+   $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
+
+    Notifications::create([
+        'title' => $notificationPayload['title'],
+        'body' => $notificationPayload['body'],
+        'image' => $notificationPayload['image'],
+        'product_id' => $product->id,
+        'category_id' => $product->category_id,
+        'screen' => $dataPayload['screen'],
+        'name' => $product->name,
+        'time' => now(),
+    ]);
 
     return redirect()->route('products.index')->with('success', 'Product updated successfully.');
 

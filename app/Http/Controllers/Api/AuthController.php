@@ -1379,11 +1379,11 @@ public function stockCol()
                                           'title' => $notification->title,
                                           'body' => $notification->body,
                                           'image' => asset($notification->image),
-                                          'product_id' =>  $notification->product_id,
-                                          'category_id' => $notification->category_id,
+                                          'product_id' => (string) $notification->product_id,
+                                          'category_id' => (string) $notification->category_id,
                                           'screen' => $notification->screen,
                                           'name' => $notification->name,
-                                          'time' => $notification->time->format('Y-m-d H:i:s'),
+                                          'time' => Carbon::parse($notification->time)->format('Y-m-d H:i:s'),
                                       ];
                                   });
 

@@ -59,7 +59,7 @@
 
 .sub-main-w3 {
     width: 60%;
-    margin-top: 470px !important;
+    margin-top: 288px !important;
     margin: 111px auto;
     -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);

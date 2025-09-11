@@ -32,6 +32,8 @@ Route::post('get-stock-col/{name}', [AuthController::class, 'test']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
 
+Route::get('/notifications/recent', [AuthController::class, 'getRecentNotifications']);
+
 
 
 

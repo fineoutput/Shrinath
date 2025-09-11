@@ -90,6 +90,17 @@ class ProductsController extends Controller
         $firebaseService = new FirebaseNotificationService();
         $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
 
+        Notifications::create([
+        'title' => $notificationPayload['title'],
+        'body' => $notificationPayload['body'],
+        'image' => $notificationPayload['image'],
+        'product_id' => $product->id,
+        'category_id' => $product->category_id,
+        'screen' => $dataPayload['screen'],
+        'name' => $product->name,
+        'time' => now(),
+    ]);
+
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 

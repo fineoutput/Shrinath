@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\City;
+use App\Models\Notifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -1362,6 +1363,36 @@ public function stockCol()
         ], 200);
     }
 
+
+
+    public function getRecentNotifications()
+        {
+
+            $twentyFourHoursAgo = Carbon::now()->subHours(24);
+
+           $notifications = Notifications::where('time', '>=', $twentyFourHoursAgo)
+                                  ->orderBy('time', 'desc')
+                                  ->get()
+                                  ->map(function ($notification) {
+                                      return [
+                                          'id' => $notification->id,
+                                          'title' => $notification->title,
+                                          'body' => $notification->body,
+                                          'image' => asset($notification->image),
+                                          'product_id' => (string) $notification->product_id,
+                                          'category_id' => (string) $notification->category_id,
+                                          'screen' => $notification->screen,
+                                          'name' => $notification->name,
+                                          'time' => $notification->time->format('Y-m-d H:i:s'),
+                                      ];
+                                  });
+
+
+            return response()->json([
+                'status' => true,
+                'data' => $notifications,
+            ]);
+        }
 
     
 }

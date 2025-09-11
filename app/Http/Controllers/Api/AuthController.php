@@ -1389,7 +1389,7 @@ public function stockCol()
 
 
             return response()->json([
-                'status' => true,
+                'status' => 200,
                 'data' => $notifications,
             ]);
         }

@@ -9,6 +9,7 @@ use App\Models\Depots;
 use App\Models\Vendor;
 use App\Models\Slider3;
 use App\Models\Gallery;
+use App\Models\GalleryCategory;
 use App\Models\State;
 
 class GalleryController extends Controller
@@ -21,7 +22,8 @@ class GalleryController extends Controller
 
     public function create()
     {
-        return view('admin.gallery.create');
+        $data['category'] = GalleryCategory::where('status',1)->get();
+        return view('admin.gallery.create',$data);
     }
 
     public function store(Request $request)
@@ -36,6 +38,7 @@ class GalleryController extends Controller
 
         $gallery = new Gallery;
         $gallery->title = $request->title;
+        $gallery->category_id = $request->category_id;
         $gallery->image = 'uploads/gallery/' . $imageName; 
         $gallery->status = 1;
         $gallery->save();
@@ -45,8 +48,9 @@ class GalleryController extends Controller
 
     public function edit($id)
     {
-        $gallery = Gallery::findOrFail($id);
-        return view('admin.gallery.edit', compact('gallery'));
+        $data['category'] = GalleryCategory::where('status',1)->get();
+        $data['gallery'] = Gallery::findOrFail($id);
+        return view('admin.gallery.edit',$data);
     }
 
     public function update(Request $request, $id)
@@ -69,6 +73,7 @@ class GalleryController extends Controller
         }
 
         $gallery->title = $request->title;
+        $gallery->category_id = $request->category_id;
         $gallery->save();
 
         return redirect()->route('gallery.index')->with('success', 'Gallery updated successfully.');

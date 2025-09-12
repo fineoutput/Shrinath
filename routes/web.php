@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\BlockController;
 use App\Http\Controllers\Admin\StockController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\AppointmentsController;
+use App\Http\Controllers\Admin\GalleryCategoryController;
 use App\Http\Controllers\Admin\StockColController;
 use App\Http\Controllers\LogViewerController;
 use App\Http\Controllers\Admin\OrderController;
@@ -191,6 +192,14 @@ Route::get('/get-cities/{state_id}', [DepotsController::class, 'getCities']);
     Route::put('/gallery/{id}', [GalleryController::class, 'update'])->name('gallery.update');
     Route::delete('/gallery/{vendor}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
     Route::patch('/gallery/{id}/update-status', [GalleryController::class, 'updateStatus'])->name('gallery.updateStatus');
+
+    Route::get('/gallery-category', [GalleryCategoryController::class, 'index'])->name('gallery_category.index');
+    Route::get('/gallery-category/create', [GalleryCategoryController::class, 'create'])->name('gallery_category.create');
+    Route::post('/gallery-category', [GalleryCategoryController::class, 'store'])->name('gallery_category.store');
+    Route::get('/gallery-category/{id}/edit', [GalleryCategoryController::class, 'edit'])->name('gallery_category.edit');
+    Route::put('/gallery-category/{id}', [GalleryCategoryController::class, 'update'])->name('gallery_category.update');
+    Route::delete('/gallery-category/{vendor}', [GalleryCategoryController::class, 'destroy'])->name('gallery_category.destroy');
+    Route::patch('/gallery-category/{id}/update-status', [GalleryCategoryController::class, 'updateStatus'])->name('gallery_category.updateStatus');
     
     Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
     Route::get('/contact/create', [ContactController::class, 'create'])->name('contact.create');

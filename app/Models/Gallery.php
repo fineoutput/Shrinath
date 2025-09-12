@@ -12,8 +12,14 @@ class Gallery extends Model
     protected $table = 'gallery';
     protected $fillable = [
         'title', 
+        'category_id', 
         'image',
         'status',
     ];
+
+    public function GalleryCategory()
+    {
+        return $this->hasOne(GalleryCategory::class,'id','category_id');
+    }
 
 }

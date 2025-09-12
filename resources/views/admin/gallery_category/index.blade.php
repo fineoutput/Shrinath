@@ -6,10 +6,10 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="page-title-box">
-          <h4 class="page-title">View Gallery List</h4>
+          <h4 class="page-title">View Gallery Category List</h4>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0);">Gallery List</a></li>
-            <li class="breadcrumb-item active">View Gallery List</li>
+            <li class="breadcrumb-item"><a href="javascript:void(0);">Gallery Category List</a></li>
+            <li class="breadcrumb-item active">View Gallery Category List</li>
           </ol>
         </div>
       </div>
@@ -35,9 +35,9 @@
               @endif
               <div class="row">
                 <div class="col-md-10">
-                  <h4 class="mt-0 header-title">View Gallery List</h4>
+                  <h4 class="mt-0 header-title">View Gallery Category List</h4>
                 </div>
-                <div class="col-md-2"> <a class="btn btn-info cticket" href="{{ route('gallery.create')}}" role="button" style="margin-left: 20px;"> Add Gallery</a></div>
+                <div class="col-md-2"> <a class="btn btn-info cticket" href="{{ route('gallery_category.create')}}" role="button" style="margin-left: 20px;"> Add Category</a></div>
               </div>
               <hr style="margin-bottom: 50px;background-color: darkgrey;">
               <div class="table-rep-plugin">
@@ -47,8 +47,6 @@
                       <tr>
                         <th>#</th>
                         <th data-priority="1">Title</th>
-                        <th data-priority="1">Category</th>
-                        <th data-priority="1">Image</th>
                         <th data-priority="1">Status</th>
                         <th data-priority="1">Action</th>
                       </tr>
@@ -58,11 +56,7 @@
                     <tr>
                         <td>{{$key+1}}</td>
                         <td>{{$value->title ?? ''}}</td>
-                        <td>{{$value->GalleryCategory->title ?? ''}}</td>
                         
-                        <td>
-                            <img width="100" src="{{asset($value->image)}}" alt="">
-                        </td>
                        
                         <td>
                           
@@ -74,11 +68,11 @@
                         </td>
 
                         <td width="100px">
-                            <a href="{{ route('gallery.edit', ['id' => $value->id]) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit gallery">
+                            <a href="{{ route('gallery_category.edit', ['id' => $value->id]) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit gallery">
                                 <i class="fas fa-edit"></i>
                             </a>
                         
-                            <form action="{{ route('gallery.destroy', $value->id) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('gallery_category.destroy', $value->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE') 
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this gallery?');" data-toggle="tooltip" data-placement="top" title="Delete gallery">
@@ -86,7 +80,7 @@
                                 </button>
                             </form>
 
-                            <form action="{{ route('gallery.updateStatus', $value->id) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('gallery_category.updateStatus', $value->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('PATCH') 
                                 @if ($value->status == 1) 

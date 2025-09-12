@@ -16,11 +16,11 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
-                    <h4 class="page-title">Add Gallery</h4>
+                    <h4 class="page-title">Add Gallery category</h4>
                     <ol class="breadcrumb" style="display:none">
                         <!-- <li class="breadcrumb-item"><a href="javascript:void(0);">CMS</a></li> -->
-                        <li class="breadcrumb-item"><a href="javascript:void(0);">Gallery</a></li>
-                        <li class="breadcrumb-item active">Add Gallery</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Gallery category</a></li>
+                        <li class="breadcrumb-item active">Add Gallery category</li>
                     </ol>
                 </div>
             </div>
@@ -47,10 +47,10 @@
                             </div>
                             @endif
                             <!-- End show success and error messages -->
-                            <h4 class="mt-0 header-title">Add Gallery Form</h4>
+                            <h4 class="mt-0 header-title">Add Gallery category Form</h4>
                             <hr style="margin-bottom: 50px;background-color: darkgrey;">
 
-                            <form action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('gallery_category.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row">
                                     <div class="col-sm-6">
@@ -58,21 +58,7 @@
                                         <input type="text" name="title" class="form-control"  required>
                                     </div>
 
-                                    <div class="col-sm-6">
-                                        <label>Select Category</label>
-                                        <select class="form-control" name="category_id" id="">
-                                            <option selected disabled>Select</option>
-                                            @foreach ($category as $value)
-                                            <option value="{{$value->id ?? ''}}">{{$value->title ?? ''}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <label>Image</label>
-                                        <input type="file" name="image" class="form-control"  required>
-                                    </div>
-                                    
+                                   
                                 </div>
                             
                                 <div class="form-group row">

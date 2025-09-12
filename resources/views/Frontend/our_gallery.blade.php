@@ -73,8 +73,8 @@
                                     data-wow-delay="0.{{$index+1}}s" 
                                     data-category-id="{{ $value->category_id }}">
                                     
-                                    <div class="image">
-                                        <img class="lazyload" 
+                                    <div class="image" style="height: 350px;">
+                                        <img style="height: 100%; border-radius: 30px;" class="lazyload" 
                                             src="{{ asset($value->image ?? '') }}"
                                             data-src="{{ asset($value->image ?? '') }}" 
                                             alt="">

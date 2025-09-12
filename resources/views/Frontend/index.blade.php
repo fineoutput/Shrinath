@@ -363,11 +363,11 @@
                                         class="title fs-23 fw-6 font-worksans hover-text-secondary">
                                         {{$value->title ?? ''}}
                                     </a>
-                                    <p class="text font-nunito">
+                                    {{-- <p class="text font-nunito">
                                         Ultrices sagittis orci a scelerisque purus semper eget duis at. Sollicitudin
                                         nibh sit amet
                                         commodo nulla.
-                                    </p>
+                                    </p> --}}
                                     {{-- <a href="#" class="tf-btn-read text-white hover-text-secondary">Read
                                         More</a> --}}
                                 </div>

@@ -13085,6 +13085,7 @@ i.fs-12 {
   margin-top: -30px;
   background-size: cover;
   background-repeat: no-repeat;
+  align-items: center;
   z-index: 1;
 }
 .s-service-2 .content-section {

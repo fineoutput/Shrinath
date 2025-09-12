@@ -67,9 +67,9 @@
                     </ul>
                     <div class="widget-content-tab">
                     <div class="widget-content-inner active">
-                        <div class="wg-gallery">
+                        <div class="row">
                             @foreach ($gallery as $index => $value)
-                                <div class="gallery-item item-{{$index+1}} wow fadeInUp" 
+                                <div class="col-lg-4 item-{{$index+1}} wow fadeInUp" 
                                     data-wow-delay="0.{{$index+1}}s" 
                                     data-category-id="{{ $value->category_id }}">
                                     

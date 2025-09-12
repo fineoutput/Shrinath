@@ -55,53 +55,74 @@
             <div class="col-lg-12">
                 <div class="wg-tabs">
                     <ul class="overflow-x-auto menu-tab mb-61">
-                        <li class="item active"><a href="javascript:void(0)" class="btn-tab">All Projects</a></li>
-                        <li class="item"><a href="javascript:void(0)" class="btn-tab">Organic</a></li>
-                        <li class="item"><a href="javascript:void(0)" class="btn-tab">Farms</a></li>
-                        <li class="item"><a href="javascript:void(0)" class="btn-tab">Harvest</a></li>
-                        <li class="item"><a href="javascript:void(0)" class="btn-tab">Vegetable</a></li>
-                        <li class="item"><a href="javascript:void(0)" class="btn-tab">Fruit</a></li>
-                        <li class="item"><a href="javascript:void(0)" class="btn-tab">Cattle</a></li>
+                        @foreach ($GalleryCategory as $index => $value)
+                            <li class="item {{ $index == 0 ? 'active' : '' }}">
+                                <a href="javascript:void(0)" 
+                                class="btn-tab" 
+                                data-category-id="{{ $value->id }}">
+                                {{ $value->title ?? '' }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                     <div class="widget-content-tab">
-                        <div class="widget-content-inner active">
-                            <div class="wg-gallery">
-
-                                @foreach ($gallery as $index => $value)
-                                 <div class="gallery-item item-{{$index+1}} wow fadeInUp" data-wow-delay="0.{{$index+1}}s">
+                    <div class="widget-content-inner active">
+                        <div class="wg-gallery">
+                            @foreach ($gallery as $index => $value)
+                                <div class="gallery-item item-{{$index+1}} wow fadeInUp" 
+                                    data-wow-delay="0.{{$index+1}}s" 
+                                    data-category-id="{{ $value->category_id }}">
+                                    
                                     <div class="image">
-                                        <img class="lazyload" src="{{ asset($value->image ?? '') }}"
-                                            data-src="{{ asset($value->image ?? '') }}" alt="">
+                                        <img class="lazyload" 
+                                            src="{{ asset($value->image ?? '') }}"
+                                            data-src="{{ asset($value->image ?? '') }}" 
+                                            alt="">
                                     </div>
                                     <a href="{{route('our_gallery')}}" class="add-gallery">+</a>
                                 </div>
-                                @endforeach
-                           
-
-                                {{-- <div class="gallery-item item-2 wow fadeInUp" data-wow-delay="0.1s">
-                                    <div class="image">
-                                        <img class="lazyload" src="{{ asset('Front/images/widget/gallery-item-2.jpg') }}"
-                                            data-src="{{ asset('Front/images/widget/gallery-item-2.jpg') }}" alt="">
-                                    </div>
-                                    <a href="{{route('our_gallery')}}" class="add-gallery">+</a>
-                                </div>
-                                
-                                <div class="gallery-item item-3 wow fadeInUp" data-wow-delay="0.2s">
-                                    <div class="image">
-                                        <img class="lazyload" src="{{ asset('Front/images/widget/gallery-item-3.jpg') }}"
-                                            data-src="{{ asset('Front/images/widget/gallery-item-3.jpg') }}" alt="">
-                                    </div>
-                                    <a href="{{route('our_gallery')}}" class="add-gallery">+</a>
-                                </div> --}}
-                              
-                                
-                            </div>
+                            @endforeach
                         </div>
-                        
+                    </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </div><!-- /.Main-content -->
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const tabs = document.querySelectorAll('.btn-tab');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+            const categoryId = this.getAttribute('data-category-id');
+
+            // Remove active class from all tabs
+            tabs.forEach(t => t.parentElement.classList.remove('active'));
+
+            // Add active class to current tab
+            this.parentElement.classList.add('active');
+
+            // Show/Hide gallery items based on category
+            galleryItems.forEach(item => {
+                if (item.getAttribute('data-category-id') === categoryId) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Trigger click on first tab to show default category images
+    if (tabs.length > 0) {
+        tabs[0].click();
+    }
+});
+</script>
 @endsection

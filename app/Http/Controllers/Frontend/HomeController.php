@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Block;
 use App\Models\Category;
 use App\Models\Gallery;
+use App\Models\GalleryCategory;
 use App\Models\Products;
 use App\Models\Slider1;
 use App\Models\Slider2;
@@ -104,6 +105,7 @@ class HomeController extends Controller
     {
 
         $data['gallery'] = Gallery::where('status',1)->orderBy('id','DESC')->get();
+        $data['GalleryCategory'] = GalleryCategory::where('status',1)->orderBy('id','DESC')->get();
      
         return view('Frontend/our_gallery',$data)->withTitle('');
     }

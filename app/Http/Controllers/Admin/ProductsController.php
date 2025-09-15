@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Log;
 use Kreait\Firebase\Messaging\CloudMessage;
 use Kreait\Firebase\Messaging\Notification;
 use App\Services\FirebaseNotificationService;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProductsController extends Controller
@@ -23,7 +24,16 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $products = Products::orderBy('id','DESC')->get();
+        $user = Auth::user();
+        
+        if($user->power != 1){
+
+            $productIds = explode(',', $user->product_id);
+            $products = Products::whereIn('id',$productIds)->orderBy('id','DESC')->get();
+
+        }else{
+            $products = Products::orderBy('id','DESC')->get();
+        }
         return view('admin.products.index', compact('products'));
     }
 
@@ -58,6 +68,7 @@ class ProductsController extends Controller
         $product->description = $request->description;
         $product->short_description = $request->short_description;
         $product->status = 1;
+        $product->auth_id = Auth::id();
 
         foreach (['image_1', 'image_2', 'image_3', 'image_4'] as $imageField) {
             if ($request->hasFile($imageField)) {
@@ -178,6 +189,7 @@ class ProductsController extends Controller
         $product->category_id = $request->category_id;
         $product->description = $request->description;
         $product->short_description = $request->short_description;
+        $product->auth_id = Auth::id();
 
         // Handle image uploads
         foreach (['image_1', 'image_2', 'image_3', 'image_4'] as $imageField) {

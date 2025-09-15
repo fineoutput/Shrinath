@@ -59,6 +59,7 @@
                         <th data-priority="1">Image 4</th>
                         <th data-priority="1">Video</th>
                         <th data-priority="1">Status</th>
+                        <th data-priority="1">Edit By</th>
                         <th data-priority="1">Action</th>
                       </tr>
                     </thead>
@@ -99,6 +100,9 @@
                             @else
                                 <p class="text-danger">Deactivate</p>
                             @endif
+                        </td>
+                        <td>
+                          <p>{{$value->Team->name ?? ''}}</p>
                         </td>
 
                         <td width="100px">

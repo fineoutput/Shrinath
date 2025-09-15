@@ -15,7 +15,7 @@ class Team extends Authenticatable
 	protected $primaryKey = 'id';
 
     protected $fillable = [
-        'name','email','password','phone','address','image','power','services','ip','added_by','is_active'
+        'name','email','password','phone','address','image','power','services','ip','added_by','is_active','product_id'
     ];
     use SoftDeletes;
     protected $del = ['deleted_at'];

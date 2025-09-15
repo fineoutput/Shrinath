@@ -11,6 +11,9 @@ use App\adminmodel\Order1Modal;
 use App\adminmodel\UserModal;
 use App\adminmodel\CategoryModal;
 use App\adminmodel\ProductModal;
+use App\Models\Products;
+use Illuminate\Support\Facades\Auth;
+
 
 class TeamController extends Controller
 {
@@ -34,7 +37,8 @@ class TeamController extends Controller
 	public function add_team_view(Request $req)
 	{
 			$service_data = AdminSidebar::get();
-			return view('admin/team/add_team', compact('service_data'));
+			$product = Products::where('status',1)->orderBy('id', 'desc')->get();
+			return view('admin/team/add_team', compact('service_data','product'));
 	}
 	public function view_team(Request $req)
 	{
@@ -92,53 +96,113 @@ class TeamController extends Controller
 				return Redirect('/view_team')->with('error', "Sorry You Don't Have Permission To Delete Anything.");
 			}
 	}
-	public function add_team_process(Request $req)
+
+
+
+		public function add_team_process(Request $req)
 	{
-			$admin_id = $req->session()->get('admin_id');
-			$req->validate([
-				'name' => 'required',
-				'email' => 'required|unique:admin_teams|email',
-				'password' => 'required',
-				'power' => 'required '
-			]);
-			// dd($req);
-			$service = $req->input('service');
-			$services = $req->input('services');
-			if ($service == 999) {
-				$ser = '["999"]';
+		$admin_id = $req->session()->get('admin_id');
+
+		$req->validate([
+			'name' => 'required',
+			'email' => 'required|unique:admin_teams|email',
+			'password' => 'required',
+			'power' => 'required '
+		]);
+		// dd($req);
+		$service = $req->input('service');
+		$services = $req->input('services');
+		if ($service == 999) {
+			$ser = '["999"]';
+		} else {
+			$ser = json_encode($services);
+		}
+		$fullimagepath = '';
+		if (!empty($req->img)) {
+			$allowedFormats = ['jpeg', 'jpg', 'webp'];
+			$extension = strtolower($req->img->getClientOriginalExtension());
+			if (in_array($extension, $allowedFormats)) {
+				$file = time() . '.' . $req->img->extension();
+				$req->img->move(public_path('uploads/image/Teams/'), $file);
+				$fullimagepath = 'uploads/image/Teams/' . $file;
 			} else {
-				$ser = json_encode($services);
+				// Handle invalid file format (not allowed)
+				return redirect()->back()->with('error', 'Invalid file format. Only jpeg, jpg, and webp files are allowed.');
 			}
-			$fullimagepath = '';
-			if (!empty($req->img)) {
-				$allowedFormats = ['jpeg', 'jpg', 'webp'];
-				$extension = strtolower($req->img->getClientOriginalExtension());
-				if (in_array($extension, $allowedFormats)) {
-					$file = time() . '.' . $req->img->extension();
-					$req->img->move(public_path('uploads/image/Teams/'), $file);
-					$fullimagepath = 'uploads/image/Teams/' . $file;
-				} else {
-					// Handle invalid file format (not allowed)
-					return redirect()->back()->with('error', 'Invalid file format. Only jpeg, jpg, and webp files are allowed.');
-				}
-			}
-			$teamInfo = [
-				'name' => ucwords($req->input('name')),
-				'email' => $req->input('email'),
-				'phone' => $req->input('phone'),
-				'password' => bcrypt($req->input('password')),
-				'address' => $req->input('address'),
-				'services' => $ser,
-				'power' => $req->input('power'),
-				'image' => $fullimagepath,
-				'ip' => $req->ip(),
-				'added_by' => $req->input('admin_id'),
-				'is_active' => 1,
-			];
-			$last_id = Team::create($teamInfo);
-			return Redirect('/view_team')->with('success', 'Data Added Successfully.');
+		}
+		$teamInfo = [
+			'name' => ucwords($req->input('name')),
+			'email' => $req->input('email'),
+			'phone' => $req->input('phone'),
+			'password' => bcrypt($req->input('password')),
+			'address' => $req->input('address'),
+			'services' => $ser,
+			'power' => $req->input('power'),
+			'image' => $fullimagepath,
+			'ip' => $req->ip(),
+			'added_by' => Auth::id(),
+			'product_id' => !empty($req->product_id) ? implode(',', $req->product_id) : null,
+			'is_active' => 1,
+		];
+		$last_id = Team::create($teamInfo);
+		return Redirect('/view_team')->with('success', 'Data Added Successfully.');
 		//return response()->json(['response' => 'OK']);
 	}
+	
+
+	// public function add_team_process(Request $req)
+	// {
+	// 		$admin_id = $req->session()->get('admin_id');
+	// 		$req->validate([
+	// 			'name' => 'required',
+	// 			'email' => 'required|unique:admin_teams|email',
+	// 			'password' => 'required',
+	// 			'power' => 'required '
+	// 		]);
+	// 		// dd($req);
+	// 		$service = $req->input('service');
+	// 		$services = $req->input('services');
+			
+	// 		$service = $req->input('service');
+	// 		$services = $req->input('services');
+	// 		if ($service == 999) {
+	// 			$ser = '["999"]';
+	// 		} else {
+	// 			$ser = json_encode($services);
+	// 		}
+
+	// 		$fullimagepath = '';
+	// 		if (!empty($req->img)) {
+	// 			$allowedFormats = ['jpeg', 'jpg', 'webp'];
+	// 			$extension = strtolower($req->img->getClientOriginalExtension());
+	// 			if (in_array($extension, $allowedFormats)) {
+	// 				$file = time() . '.' . $req->img->extension();
+	// 				$req->img->move(public_path('uploads/image/Teams/'), $file);
+	// 				$fullimagepath = 'uploads/image/Teams/' . $file;
+	// 			} else {
+	// 				// Handle invalid file format (not allowed)
+	// 				return redirect()->back()->with('error', 'Invalid file format. Only jpeg, jpg, and webp files are allowed.');
+	// 			}
+	// 		}
+	// 		$teamInfo = [
+	// 			'name' => ucwords($req->input('name')),
+	// 			'email' => $req->input('email'),
+	// 			'phone' => $req->input('phone'),
+	// 			'password' => bcrypt($req->input('password')),
+	// 			'address' => $req->input('address'),
+	// 			'services' => $ser,
+	// 			'power' => $req->input('power'),
+	// 			'image' => $fullimagepath,
+	// 			'ip' => $req->ip(),
+	// 			'added_by' => Auth::id(),
+	// 			'product_id' => !empty($req->product_id) ? implode(',', $req->product_id) : null,
+	// 			'is_active' => 1,
+	// 		];
+	// 		$last_id = Team::create($teamInfo);
+	// 		return Redirect('/view_team')->with('success', 'Data Added Successfully.');
+	// 	//return response()->json(['response' => 'OK']);
+	// }
+
 	//
 	// public function undoDelete(Request $req,$id){
 	//

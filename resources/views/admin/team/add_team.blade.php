@@ -108,16 +108,34 @@
                                                     <input type="checkbox" class="form-check-input" id="check1" name="service" value="999">All</label>
                                             </div>
                                            
+                                            
                                             @if (!empty($service_data)) 
                                                 @foreach ($service_data as $service)  
                                                     <div class="form-check-inline">
                                                         <label class="form-check-label" for="<?= $service->id ?>">
-                                                            <input type="checkbox" class="form-check-input" id="<?= $service->id ?>" name="services[]" value="<? echo $service->id; ?>">{{$service->name}}
+                                                           <input type="checkbox" class="form-check-input" id="{{ $service->id }}" name="services[]" value="{{ $service->id }}">{{$service->name}}
                                                         </label>
                                                     </div>
                                             @endforeach 
                                              @endif
                                         </div>
+
+                                        <div class="col-sm-12 mt-3">
+                                           
+                                                <label class="form-label" style="margin-left: 10px" for="power">Select Product Multipal</label>
+                                                <div id="output"></div>
+                                                <select data-placeholder="" name="product_id[]" multiple class="chosen-select">
+                                                    @foreach($product as $value)
+                                                    <option value="{{ $value->id ?? ''}}">
+                                                        {{$value->name ?? ''}}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('product_id')
+                                                    <div style="color:red;">{{ $message }}</div>
+                                                @enderror
+
+                                        </div>
+
                                     </div>
                                     <div class="form-group">
                                         <div class="w-100 text-center">
@@ -133,4 +151,17 @@
         <!-- end page content-->
     </div> <!-- container-fluid -->
 </div> <!-- content -->
+
+<link rel="stylesheet" href="https://harvesthq.github.io/chosen/chosen.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://harvesthq.github.io/chosen/chosen.jquery.js"></script>
+{{-- <script>
+    $(document).ready(function() {
+        $('select').select2();  // Initializes Select2 on your select element
+    });
+</script> --}}
+<script>
+    document.getElementById('output').innerHTML = location.search;
+    $(".chosen-select").chosen();
+</script>
 @endsection

@@ -116,8 +116,7 @@ Route::get('/deletesetting/{id}', [CrmController::class, 'deletesetting'])->name
     Route::delete('/vendors/{vendor}', [VendorController::class, 'destroy'])->name('vendors.destroy');
     Route::patch('/vendor/{id}/update-status', [VendorController::class, 'updateStatus'])->name('vendors.updateStatus');
 
-    Route::get('/get-cities/{state_id}', [VendorController::class, 'getCities']);
-
+  Route::get('/get-citiess/{state_id}', [VendorController::class, 'getCities'])->name('get_city');
 
 
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');

@@ -141,7 +141,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script>
+{{-- <script>
     $(document).ready(function () {
         console.log("jQuery ready");
 
@@ -152,7 +152,7 @@
 
             if (stateID) {
                 $.ajax({
-                    url: '/shreenath/public/get-cities/' + stateID,
+                    url: {{ route('get_city', stateID) }},
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
@@ -187,7 +187,62 @@
         @endif
     });
 </script>
+ --}}
 
+
+ <script>
+    const getCityRouteTemplate = "{{ route('get_city', ':id') }}"; // Will be something like "/get-cities/:id"
+
+    $(document).ready(function () {
+        console.log("jQuery ready");
+
+        $(document).on('change', '#stateDropdown', function () {
+            var stateID = $(this).val();
+            console.log("State changed to:", stateID);
+
+            if (stateID) {
+                const getCityUrl = getCityRouteTemplate.replace(':id', stateID);
+
+                $.ajax({
+                    url: getCityUrl,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#cityDropdown').empty().append('<option selected disabled>Select City</option>');
+                        $.each(data, function (key, value) {
+                            $('#cityDropdown').append('<option value="' + value.id + '">' + value.city_name + '</option>');
+                        });
+                    },
+                    error: function (xhr) {
+                        console.error("Error loading cities:", xhr.responseText);
+                    }
+                });
+            } else {
+                $('#cityDropdown').empty().append('<option selected disabled>Select City</option>');
+            }
+        });
+
+        // Preload cities (for edit)
+        @if(old('state_id', $vendor->state_id ?? false))
+            const preloadStateID = "{{ old('state_id', $vendor->state_id ?? 0) }}";
+            const preloadCityID = "{{ old('city_id', $vendor->city_id ?? '') }}";
+            const preloadUrl = getCityRouteTemplate.replace(':id', preloadStateID);
+
+            $.ajax({
+                url: preloadUrl,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $('#cityDropdown').empty().append('<option selected disabled>Select City</option>');
+                    $.each(data, function (key, value) {
+                        const selected = value.id == preloadCityID ? 'selected' : '';
+                        $('#cityDropdown').append('<option ' + selected + ' value="' + value.id + '">' + value.city_name + '</option>');
+                    });
+                }
+            });
+        @endif
+    });
+</script>
 
 
 

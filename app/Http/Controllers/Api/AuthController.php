@@ -1308,17 +1308,26 @@ public function stockCol()
         return $item['name'] === 'JEERAA2_1D';
     });
 
-    $normalItems = $collection->filter(function ($item) use ($specialOrder) {
-        return !in_array($item['name'], $specialOrder);
-    });
+    // $normalItems = $collection->filter(function ($item) use ($specialOrder) {
+    //     return !in_array($item['name'], $specialOrder);
+    // });
 
-    $specialItems = $collection->filter(function ($item) use ($specialOrder) {
+    // $specialItems = $collection->filter(function ($item) use ($specialOrder) {
+    //     return in_array($item['name'], $specialOrder);
+    // })->sortBy(function ($item) use ($specialOrder) {
+    //     return array_search($item['name'], $specialOrder);
+    // });
+
+    // $final = $normalItems->merge($specialItems)->values();
+    
+    $final = collect($result)
+    ->filter(function ($item) use ($specialOrder) {
         return in_array($item['name'], $specialOrder);
-    })->sortBy(function ($item) use ($specialOrder) {
+    })
+    ->sortBy(function ($item) use ($specialOrder) {
         return array_search($item['name'], $specialOrder);
-    });
-
-    $final = $normalItems->merge($specialItems)->values();
+    })
+    ->values();
 
     return response()->json([
         'status' => 200,

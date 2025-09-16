@@ -1305,8 +1305,18 @@ public function stockCol()
     ];
 
     $collection = collect($result)->reject(function ($item) {
-        return $item['name'] === 'JEERAA2_1D';
+     return str_ends_with($item['name'], '_1D'); // or be specific like 'JEERAA2_1D'
     });
+
+    $final = $collection
+        ->filter(function ($item) use ($specialOrder) {
+            return in_array($item['name'], $specialOrder);
+        })
+        ->sortBy(function ($item) use ($specialOrder) {
+            return array_search($item['name'], $specialOrder);
+        })
+        ->values();
+
 
     // $normalItems = $collection->filter(function ($item) use ($specialOrder) {
     //     return !in_array($item['name'], $specialOrder);
@@ -1319,15 +1329,15 @@ public function stockCol()
     // });
 
     // $final = $normalItems->merge($specialItems)->values();
-    
-    $final = collect($result)
-    ->filter(function ($item) use ($specialOrder) {
-        return in_array($item['name'], $specialOrder);
-    })
-    ->sortBy(function ($item) use ($specialOrder) {
-        return array_search($item['name'], $specialOrder);
-    })
-    ->values();
+
+    // $final = collect($result)
+    // ->filter(function ($item) use ($specialOrder) {
+    //     return in_array($item['name'], $specialOrder);
+    // })
+    // ->sortBy(function ($item) use ($specialOrder) {
+    //     return array_search($item['name'], $specialOrder);
+    // })
+    // ->values();
 
     return response()->json([
         'status' => 200,

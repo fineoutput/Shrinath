@@ -1141,8 +1141,8 @@ public function stockCol()
     }
 
     $oneDayCloseMapping = [
-        'JEERA2' => 'JEERAA2_1D',
-        'JEERA3' => 'JEERAA3_1D',
+        'JEERA2' => 'JEERA2_1D',
+        'JEERA3' => 'JEERA3_1D',
         'DHANIYA2' => 'DHANIYA2_1D',
         'DHANIYA' => 'DHANIYA_1D',
         'TURMERIC' => 'TURMERIC_1D',
@@ -1305,7 +1305,7 @@ public function stockCol()
     ];
 
     $collection = collect($result)->reject(function ($item) {
-     return str_ends_with($item['name'], '_1D'); // or be specific like 'JEERAA2_1D'
+     return str_ends_with($item['name'], '_1D'); 
     });
 
     $final = $collection

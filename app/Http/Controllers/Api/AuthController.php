@@ -1192,9 +1192,9 @@ public function stockCol()
 
         $percentageChange = null;
         if (isset($yesterdayCloses[$name]) && $yesterdayCloses[$name] > 0) {
-            $percentageChange = (($lastRecord->open - $yesterdayCloses[$name]) / $yesterdayCloses[$name]) * 100;
+            $percentageChange = (($lastRecord->close - $yesterdayCloses[$name]) / $yesterdayCloses[$name]) * 100;
         } elseif ($previousClose !== null && $previousClose > 0) {
-            $percentageChange = (($lastRecord->open - $previousClose) / $previousClose) * 100;
+            $percentageChange = (($lastRecord->close - $previousClose) / $previousClose) * 100;
         }
 
         $SniPriceDiff = $sniPrice - $sniCurrentPrice ?? null;
@@ -1244,6 +1244,7 @@ public function stockCol()
 
         if ($latestJeeraRecord) {
             $firstOpen = floatval($latestJeeraRecord->open);
+            $firstclose = floatval($latestJeeraRecord->close);
             $sniPrice = $sniPrices['JEERA2']->price ?? null;
             $sniCurrentPrice = $sniPrices['JEERA2']->current_price ?? null;
             $SniPriceDiff = $sniPrice - $sniCurrentPrice ?? null;
@@ -1256,7 +1257,7 @@ public function stockCol()
             $prevClose = $yesterdayCloses['JEERA2'] ?? null;
             $percentageChange = null;
             if ($prevClose !== null && $prevClose > 0) {
-                $percentageChange = (($firstOpen - $prevClose) / $prevClose) * 100;
+                $percentageChange = (($firstclose - $prevClose) / $prevClose) * 100;
             }
 
             $result[] = [

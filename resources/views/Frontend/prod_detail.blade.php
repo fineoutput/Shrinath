@@ -12,7 +12,7 @@
         margin-top: 10px !important;
     }
     .yutes{
-        background: #fff;
+        /* background: #fff; */
         border-radius: 10px;
     }
     #loading{
@@ -182,7 +182,7 @@
                     <div class="tf-zoom-main"></div>
                     <div class="content-inner">
                         <h3 class="fw-6 name font-worksans title">
-                            {{$product->name ?? ''}}
+                            {{$product->name ?? ''}} {{ $product->weight }}gm
                         </h3>
                         <div class="rating-wrap">
                           
@@ -192,6 +192,7 @@
                             @if(($product->mrp ?? 0) > 0 && ($product->price ?? 0) > 0)
                                 <span class="price-1">₹{{ $product->mrp }}</span>
                                 <span class="price-2">₹{{ $product->price }}</span>
+                                {{-- <span class="price-2">{{ $product->weight }}gm</span> --}}
                             @else
                                 <span class="price-2">Out Of Stock</span>
                             @endif

@@ -12,9 +12,13 @@
         margin-top: 10px !important;
     }
     .yutes {
-        background: #fff;
+        /* background: #fff; */
         border-radius: 10px;
     }
+    .yutes a{
+        color: #fff;
+    }
+
 </style>
 <div class="page-title page-our-team">
     <div class="rellax" data-rellax-speed="5">
@@ -250,14 +254,12 @@
                                         Ashok Rathi
                                     </a>
                                     <p class="duty">
-                                        Angel Investor & Venture Capitalist
+                                        Business Advisor
                                     </p>
                                 </div>
                             </div>
                             <p class="text font-nunito">
-                                Ashok is a strategic investor supporting Shreenath’s journey of expansion and innovation. With
-                                proven success in venture funding, he provides financial strength and mentorship, helping the
-                                brand scale confidently into new markets.
+                                Ashok is a Trusted Business Advisor and Supporting Role In Shreenath’s  Journey of Growth and Excellence.With Deep Knowledge Of Strategy,Operations, and market dynamics, he provides valuable guidance to strengthen decision-making and long-term planning. his mentorship helps Shreenath stay innovative,Competitve, and ready to scale into new opportunities. 
                             </p>
                             <div class="wg-social style-2">
                                 <ul class="list">

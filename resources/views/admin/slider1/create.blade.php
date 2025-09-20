@@ -74,6 +74,8 @@
                                 <div class="form-group row">
 
                                     <div class="col-sm-6">
+                                        <span style="color: red">
+Kindly upload banner images with a resolution of (2000x857) to ensure the best UI experience.</span><br>
                                         <label>Image</label>
                                         <input type="file" name="image" class="form-control"  required>
                                     </div>

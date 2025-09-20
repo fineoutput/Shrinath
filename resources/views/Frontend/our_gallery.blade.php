@@ -9,7 +9,7 @@
         display: none
     }   
       .yutes{
-        background: #fff;
+        /* background: #fff; */
         border-radius: 10px;
     }
 </style>

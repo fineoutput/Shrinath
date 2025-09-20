@@ -12,7 +12,7 @@
         margin-top: 10px !important;
     }
     .yutes{
-        background: #fff;
+        /* background: #fff; */
         border-radius: 10px;
     }
     #loading{

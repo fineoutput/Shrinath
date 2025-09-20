@@ -716,6 +716,7 @@ h6,
 
 .font-nunito {
   font-family: "Nunito Sans", sans-serif;
+  font-size: 15px;
 }
 
 .font-worksans {
@@ -9275,6 +9276,7 @@ i.fs-12 {
 
 .box-farmer {
   position: relative;
+  margin-bottom: 20px;
 }
 .box-farmer .image {
   border-radius: 20px 20px 0px 0px;
@@ -19195,3 +19197,10 @@ i.fs-12 {
 }
 
 /*# sourceMappingURL=styles.css.map */
+.title {
+    text-transform: uppercase;
+}
+
+   .yutes a{
+        color: #fff;
+    }

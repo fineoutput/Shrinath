@@ -1791,6 +1791,44 @@ public function stockCol()
 }
 
 
+
+
+
+public function isMarketOpen()
+{
+    $now = Carbon::now();
+    $today = $now->toDateString();
+    $currentTime = $now->format('H:i');
+
+    // Market time window
+    $marketOpenTime = Carbon::parse($today . ' 09:30:00');
+    $marketCloseTime = Carbon::parse($today . ' 17:00:00');
+
+    // Check if current time is within market hours
+    $isWithinMarketTime = $now->between($marketOpenTime, $marketCloseTime);
+
+    // Check if any entry exists today after 09:30 AM (meaning market was active)
+    $marketActivity = StockCol::whereDate('time', $today)
+        ->whereTime('time', '>=', '09:30:00')
+        ->exists();
+
+    $market = false;
+
+    if ($isWithinMarketTime && $marketActivity) {
+        $market = true;
+    }
+
+    return response()->json([
+        'status' => 200,
+        'market' => $market,
+        'message' => $market
+            ? 'Market is currently open.'
+            : 'Market is currently closed.',
+    ]);
+}
+
+
+
     public function sniprice()
     {
         

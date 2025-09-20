@@ -242,6 +242,10 @@ Route::get('/get-cities/{state_id}', [DepotsController::class, 'getCities']);
     Route::delete('/block/{vendor}', [BlockController::class, 'destroy'])->name('block.destroy');
     Route::patch('/block/{id}/update-status', [BlockController::class, 'updateStatus'])->name('block.updateStatus');
 
+
+    
+Route::post('/stock-col/delete-limit', [StockColController::class, 'deleteLimit'])->name('stockcol.deleteLimit');
+
     });
 
 });

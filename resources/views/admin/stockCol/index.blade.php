@@ -37,6 +37,17 @@
                 <div class="col-md-10">
                   <h4 class="mt-0 header-title">View Stock Col List</h4>
                 </div>
+                <div class="col-md-2">
+                  <form method="POST" action="{{ route('stockcol.deleteLimit') }}" onsubmit="return confirm('Are you sure you want to delete the specified number of entries?');">
+                    @csrf
+                    <div class="input-group">
+                      <input type="number" name="limit" class="form-control" min="1" placeholder="Limit" required>
+                      <div class="input-group-append">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
               <hr style="margin-bottom: 50px;background-color: darkgrey;">
               <div class="table-rep-plugin">

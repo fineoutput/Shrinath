@@ -533,7 +533,7 @@ public function verifyOtp(Request $request)
 //             return $r->time->format('H:i') === '17:00';
 //         });
 
-//         $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
+//         $closeValue = $closeRecord ? floatval($closeRecord->close) : '';
 
 //         $result[] = [
 //             'id' => $lastRecord->id,
@@ -753,7 +753,7 @@ public function verifyOtp(Request $request)
 //             return $r->time->format('H:i') === '17:00';
 //         });
 
-//         $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
+//         $closeValue = $closeRecord ? floatval($closeRecord->close) : '';
 
 //         $result[] = [
 //             'id' => $lastRecord->id,
@@ -976,7 +976,7 @@ public function verifyOtp(Request $request)
 //             return $r->time->format('H:i') === '17:00';
 //         });
 
-//         $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
+//         $closeValue = $closeRecord ? floatval($closeRecord->close) : '';
 
 //         $result[] = [
 //             'id' => $lastRecord->id,
@@ -1211,7 +1211,7 @@ public function verifyOtp(Request $request)
 //             return $r->time->format('H:i') === '17:00';
 //         });
 
-//         $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
+//         $closeValue = $closeRecord ? floatval($closeRecord->close) : '';
 
 //         $result[] = [
 //             'id' => $lastRecord->id,
@@ -1471,7 +1471,7 @@ public function verifyOtp(Request $request)
 //             return $r->time->format('H:i') === '17:00';
 //         });
 
-//         $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
+//         $closeValue = $closeRecord ? floatval($closeRecord->close) : '';
 
 //         $result[] = [
 //             'id' => $lastRecord->id ?? '',
@@ -1702,7 +1702,7 @@ public function stockCol()
             return $r->time->format('H:i') === '17:00';
         });
 
-        $closeValue = $closeRecord ? floatval($closeRecord->close) : 'N/A';
+        $closeValue = $closeRecord ? floatval($closeRecord->close) : '';
 
         // Prepare the result array, ensuring to check for null values before using them
         $result[] = [
@@ -1715,20 +1715,20 @@ public function stockCol()
             'interval' => $lastRecord->interval_at ?? '',
             'time' => $lastRecord->time ?? null,
             'date' => $lastRecord->time_2 ?? null,
-            'open' => $firstOpen !== null ? number_format($firstOpen, 2, '.', '') : 'N/A',
-            'close' => $lastRecord->close ?? 'N/A',
-            'current_price' => $firstOpen !== null ? number_format(floatval($firstOpen), 2, '.', '') : 'N/A',
-            'high' => $maxHigh ?? 'N/A',
-            'low' => $minLow ?? 'N/A',
-            'volume' => $lastRecord->volume ?? 'N/A',
-            'quote' => $lastRecord->quote ?? 'N/A',
-            'base' => $lastRecord->base ?? 'N/A',
-            'previous_close' => $yesterdayCloses[$product] ?? $previousClose ?? 'N/A',
+            'open' => $firstOpen !== null ? number_format($firstOpen, 2, '.', '') : '',
+            'close' => $lastRecord->close ?? '',
+            'current_price' => $firstOpen !== null ? number_format(floatval($firstOpen), 2, '.', '') : '',
+            'high' => $maxHigh ?? '',
+            'low' => $minLow ?? '',
+            'volume' => $lastRecord->volume ?? '',
+            'quote' => $lastRecord->quote ?? '',
+            'base' => $lastRecord->base ?? '',
+            'previous_close' => $yesterdayCloses[$product] ?? $previousClose ?? '',
             'percentage_change_from_previous' => $percentageChange !== null
                 ? number_format($percentageChange, 2, '.', '')
-                : 'N/A',
-            'd_pre' => $dPre ?? 'N/A',
-            'SniPriceDiff' => $SniPriceDiff ?? 'N/A',
+                : '',
+            'd_pre' => $dPre ?? '',
+            'SniPriceDiff' => $SniPriceDiff ?? '',
         ];
     }
 
@@ -1765,19 +1765,19 @@ public function stockCol()
                 'time' => $latestJeeraRecord->time ?? null,
                 'date' => $latestJeeraRecord->time_2 ?? null,
                 'open' => number_format($firstOpen, 2, '.', ''),
-                'close' => $prevClose ?? $latestJeeraRecord->close ?? 'N/A',
+                'close' => $prevClose ?? $latestJeeraRecord->close ?? '',
                 'current_price' => number_format($firstOpen, 2, '.', ''),
-                'high' => $latestJeeraRecord->high ?? 'N/A',
-                'low' => $latestJeeraRecord->low ?? 'N/A',
-                'volume' => $latestJeeraRecord->volume ?? 'N/A',
-                'quote' => $latestJeeraRecord->quote ?? 'N/A',
-                'base' => $latestJeeraRecord->base ?? 'N/A',
-                'previous_close' => $prevClose ?? 'N/A',
+                'high' => $latestJeeraRecord->high ?? '',
+                'low' => $latestJeeraRecord->low ?? '',
+                'volume' => $latestJeeraRecord->volume ?? '',
+                'quote' => $latestJeeraRecord->quote ?? '',
+                'base' => $latestJeeraRecord->base ?? '',
+                'previous_close' => $prevClose ?? '',
                 'percentage_change_from_previous' => $percentageChange !== null
                     ? number_format($percentageChange, 2, '.', '')
-                    : 'N/A',
-                'd_pre' => $dPre ?? 'N/A',
-                'SniPriceDiff' => $SniPriceDiff ?? 'N/A',
+                    : '',
+                'd_pre' => $dPre ?? '',
+                'SniPriceDiff' => $SniPriceDiff ?? '',
             ];
         }
     }

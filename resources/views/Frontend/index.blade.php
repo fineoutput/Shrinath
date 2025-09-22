@@ -385,9 +385,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="content-section text-center">
-                            <div class="img-item item-3 tf-animate__box ">
+                            {{-- <div class="img-item item-3 tf-animate__box ">
                                 <img class="lazyload up-down-move" src="{{ asset('Front/images/item/notice-2.png') }}" alt="">
-                            </div>
+                            </div> --}}
                             <div class="clip-color-text font-snowfall text-center">
                                 <p class="clip-text-bg-vertical">
                                     Healthy Life With <br>

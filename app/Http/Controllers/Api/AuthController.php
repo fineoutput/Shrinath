@@ -1872,7 +1872,7 @@ public function stockCol()
 
         $records = $productRecords->sortBy('time')->values();
 
-        $firstOpen = $records->first() ? floatval($records->first()->open) : null;
+        $lastOpen = $records->last() ? floatval($records->last()->open) : null;
         $maxHigh = $records->max('high');
         $minLow = $records->min('low');
         $lastRecord = $records->last();
@@ -1888,9 +1888,10 @@ public function stockCol()
         $sniCurrentPrice = $sniPrices[$product]->current_price ?? null;
         $SniPriceDiff = $sniPrice && $sniCurrentPrice ? ($sniPrice - $sniCurrentPrice) : null;
 
+        
         $dPre = null;
-        if ($sniCurrentPrice !== null && $firstOpen !== null) {
-            $dPre = $sniCurrentPrice - $firstOpen;
+        if ($sniCurrentPrice !== null && $lastOpen !== null) {
+            $dPre = $sniCurrentPrice - $lastOpen;
         }
 
         $percentageChange = null;
@@ -1917,9 +1918,9 @@ public function stockCol()
             'interval' => $lastRecord->interval_at ?? '',
             'time' => $lastRecord->time ?? null,
             'date' => $lastRecord->time_2 ?? null,
-            'open' => $firstOpen !== null ? number_format($firstOpen, 2, '.', '') : '',
+            'open' => $lastOpen !== null ? number_format($lastOpen, 2, '.', '') : '',
             'close' => $closeValue !== '' ? number_format($closeValue, 2, '.', '') : '',
-            'current_price' => $firstOpen !== null ? number_format(floatval($firstOpen), 2, '.', '') : '',
+            'current_price' => $lastOpen !== null ? number_format(floatval($lastOpen), 2, '.', '') : '',
             'high' => $maxHigh ?? '',
             'low' => $minLow ?? '',
             'volume' => $lastRecord->volume ?? '',
@@ -1927,8 +1928,7 @@ public function stockCol()
             'base' => $lastRecord->base ?? '',
             'previous_close' => $yesterdayCloses[$product] ?? $previousClose ?? '',
             'percentage_change_from_previous' => $percentageChange !== null
-                ? number_format($percentageChange, 2, '.', '')
-                : '',
+             ? number_format($percentageChange, 2, '.', '') : '',
             'd_pre' => $dPre ?? '',
             'SniPriceDiff' => $SniPriceDiff ?? '',
         ];

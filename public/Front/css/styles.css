@@ -7993,10 +7993,10 @@ i.fs-12 {
   justify-content: center;
 }
 .video-wrap img {
-  object-fit: cover;
-  width: 100%;
-  max-width: 467px;
-  border-radius: 20px;
+    object-fit: cover;
+    width: 100%;
+    max-width: 177px;
+    border-radius: 20px;
 }
 .video-wrap img.mw-unset {
   max-width: unset;

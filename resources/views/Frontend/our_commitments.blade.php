@@ -121,9 +121,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="content-section text-center">
-                        {{-- <div class="img-item item-3 tf-animate__box">
+                        <div class="img-item item-3 tf-animate__box">
                             <img class="up-down-move" src="{{ asset('Front/images/item/notice-2.png') }}" alt="">
-                        </div> --}}
+                        </div>
                         <div class="heading font-snowfall text-center">
                             <p class=" text-anime-style-2">
                                 Purity Beyond Taste – Processed with Care, Delivered with Trust

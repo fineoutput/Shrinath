@@ -108,7 +108,8 @@ class AuthController extends Controller
 
         $type = $request->type;
         $ipAddress = $request->ip();
-        $otpCode = rand(100000, 999999);
+        // $otpCode = rand(100000, 999999);
+        $otpCode = 123456;
         $dateNow = now();
 
         if ($type == 3) {

@@ -179,7 +179,7 @@
                                 
                             </div>
                             <div class="content">
-                                <ul class="entry-meta">
+                                {{-- <ul class="entry-meta">
                                     <li class="entry author">
                                         <i class="fa-solid fa-circle-user"></i>
                                         <p>
@@ -207,7 +207,7 @@
                                             <a href="#">350 View</a>
                                         </p>
                                     </li>
-                                </ul>
+                                </ul> --}}
                                 <h3 class="title fw-7">
                                     <a href="{{route('blog')}}">
                                          {{ $value->title ?? ''}}
@@ -225,7 +225,7 @@
                                             <i class="icon-arrow_right"></i>
                                         </div>
                                     </a>
-                                    <div class="share">
+                                    {{-- <div class="share">
                                         <div class="icon">
                                             <i class="fa-solid fa-share-nodes"></i>
                                         </div>
@@ -254,7 +254,7 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </article>
@@ -305,7 +305,7 @@
                                             <i class="icon-arrow_right"></i>
                                         </div>
                                     </a>
-                                    <div class="share">
+                                    {{-- <div class="share">
                                         <div class="icon">
                                             <i class="fa-solid fa-share-nodes"></i>
                                         </div>
@@ -334,7 +334,7 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </article>

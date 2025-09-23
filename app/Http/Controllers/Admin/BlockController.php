@@ -25,7 +25,7 @@ class BlockController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'description' => 'required|string',
             'image' => 'nullable|array',
             'image.*' => 'image',
             'video' => 'nullable|mimes:mp4,mov,avi,wmv|max:10240', 

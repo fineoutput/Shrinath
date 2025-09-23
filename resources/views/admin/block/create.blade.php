@@ -85,7 +85,7 @@
 
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea name="description" class="form-control ckeditor"></textarea>
+                                    <textarea name="description" class="form-control ckeditor" required></textarea>
                                     @error('description') <div style="color:red">{{ $message }}</div> @enderror
                                 </div>
 

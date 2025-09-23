@@ -186,13 +186,13 @@
                                 insight. With years of experience in spices & FMCG, he focuses on innovation, sustainability,
                                 and global recognition. His leadership keeps Shreenath rooted in tradition while embracing growth.
                             </p>
-                            <div class="wg-social style-2">
+                            {{-- <div class="wg-social style-2">
                                 <ul class="list">
                                     <li><a href="#"><i class="icon-facebook1"></i></a></li>
                                     <li><a href="#"><i class="icon-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-instagram2"></i></a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="say-hi">
                             <div class="img-item">
@@ -224,14 +224,14 @@
                                 control. He ensures every Shreenath product reflects purity, consistency, and excellence. His
                                 focus is building efficiency across sourcing, manufacturing, and distribution.
                             </p>
-                            <div class="wg-social style-2">
+                            {{-- <div class="wg-social style-2">
                                 <ul class="list">
                                     <li><a href="#"><i class="icon-facebook1"></i></a></li>
                                     <li><a href="#"><i class="icon-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-instagram2"></i></a></li>
                                    
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="say-hi">
                             <div class="img-item">
@@ -261,14 +261,14 @@
                             <p class="text font-nunito">
                                 Ashok is a Trusted Business Advisor and Supporting Role In Shreenath’s  Journey of Growth and Excellence.With Deep Knowledge Of Strategy,Operations, and market dynamics, he provides valuable guidance to strengthen decision-making and long-term planning. his mentorship helps Shreenath stay innovative,Competitve, and ready to scale into new opportunities. 
                             </p>
-                            <div class="wg-social style-2">
+                            {{-- <div class="wg-social style-2">
                                 <ul class="list">
                                     <li><a href="#"><i class="icon-facebook1"></i></a></li>
                                     <li><a href="#"><i class="icon-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-instagram2"></i></a></li>
                                    
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="say-hi">
                             <div class="img-item">
@@ -299,14 +299,14 @@
                                 Subhash’s precision-driven approach ensures spices are processed with the highest hygiene
                                 and compliance standards, making our factory the backbone of authenticity.
                             </p>
-                            <div class="wg-social style-2">
+                            {{-- <div class="wg-social style-2">
                                 <ul class="list">
                                     <li><a href="#"><i class="icon-facebook1"></i></a></li>
                                     <li><a href="#"><i class="icon-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-instagram2"></i></a></li>
                                    
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="say-hi">
                             <div class="img-item">
@@ -337,14 +337,14 @@
                                 Gautam bridges creativity, technology, and finance. With an eye for detail and innovation, he
                                 strengthens Shreenath’s digital presence while ensuring disciplined financial management.
                             </p>
-                            <div class="wg-social style-2">
+                            {{-- <div class="wg-social style-2">
                                 <ul class="list">
                                     <li><a href="#"><i class="icon-facebook1"></i></a></li>
                                     <li><a href="#"><i class="icon-twitter"></i></a></li>
                                     <li><a href="#"><i class="icon-instagram2"></i></a></li>
                                    
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="say-hi">
                             <div class="img-item">

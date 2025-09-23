@@ -168,7 +168,7 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="image item">
-                                       <video class="lazyload" controls>
+                                       <video class="lazyload" contr    ols>
                                          <source src="{{ asset($product->video) }}" type="video/mp4">
                                             Your browser does not support the video tag.
                                         </video>
@@ -182,7 +182,7 @@
                     <div class="tf-zoom-main"></div>
                     <div class="content-inner">
                         <h3 class="fw-6 name font-worksans title">
-                            {{$product->name ?? ''}} {{ $product->weight }}gm
+                            {{$product->name ?? ''}} 
                         </h3>
                         <div class="rating-wrap">
                           
@@ -197,7 +197,10 @@
                                 <span class="price-2">Out Of Stock</span>
                             @endif
                         </div>
-
+                        <div class="price_daeal d-flex align-center">
+                            
+                            {{ $product->weight }}gm
+                        </div>
                         {{-- <p>{!! $product->description !!}</p> --}}
                         <p>{!! $product->short_description !!}</p>
                         {{-- <p class="sub font-nunito">

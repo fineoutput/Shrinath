@@ -7991,11 +7991,12 @@ i.fs-12 {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 127px;
 }
 .video-wrap img {
     object-fit: cover;
     width: 100%;
-    max-width: 177px;
+    max-width: 127px;
     border-radius: 20px;
 }
 .video-wrap img.mw-unset {
@@ -9295,7 +9296,11 @@ i.fs-12 {
   flex-direction: column;
   padding: 0px 33px 50px;
   position: relative;
+  height: 400px;
   z-index: 5;
+}
+.wg-social style-2{
+  display: none;
 }
 .box-farmer .content .author-wrap {
   max-width: 343px;

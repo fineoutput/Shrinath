@@ -138,6 +138,9 @@ Route::get('/deletesetting/{id}', [CrmController::class, 'deletesetting'])->name
 
     Route::get('/stock-col', [StockColController::class, 'index'])->name('stockcol.index');
 
+    Route::get('/stock-col/data', [StockColController::class, 'getData'])->name('stockcol.data');
+
+
 
     Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
     Route::get('/products/create', [ProductsController::class, 'create'])->name('products.create');

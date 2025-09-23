@@ -10,6 +10,8 @@ use App\Models\Stock;
 use App\Models\State;
 use App\Models\StockCol;
 
+use Yajra\DataTables\Facades\DataTables;
+
 class StockColController extends Controller
 {
     public function index()
@@ -18,6 +20,14 @@ class StockColController extends Controller
         return view('admin.stockCol.index', compact('category'));
     }
 
+    public function getData(Request $request)
+    {
+        $data = StockCol::query(); // or your model with filters
+
+        return DataTables::of($data)
+            ->addIndexColumn() // Adds row index column
+            ->make(true);
+    }
     
     public function deleteLimit(Request $request)
     {

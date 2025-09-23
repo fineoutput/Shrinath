@@ -52,26 +52,26 @@
               <hr style="margin-bottom: 50px;background-color: darkgrey;">
               <div class="table-rep-plugin">
                 <div class="table-responsive b-0" data-pattern="priority-columns">
-                  <table id="userTable" class="table  table-striped">
+                  <table id="stockTable" class="table table-striped">
                     <thead>
-                      <tr>
-                        <th>#</th>
-                        <th data-priority="1">Name</th>
-                        <th data-priority="1">Ticker</th>
-                        <th data-priority="1">Exchange</th>
-                        <th data-priority="1">Interval</th>
-                        <th data-priority="1">Time</th>
-                        <th data-priority="1">Date</th>
-                        <th data-priority="1">Open</th>
-                        <th data-priority="1">Close</th>
-                        <th data-priority="1">High</th>
-                        <th data-priority="1">Low</th>
-                        <th data-priority="1">Volume</th>
-                        <th data-priority="1">Quote</th>
-                        <th data-priority="1">Base</th>
-                      </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Ticker</th>
+                            <th>Exchange</th>
+                            <th>Interval</th>
+                            <th>Time</th>
+                            <th>Date</th>
+                            <th>Open</th>
+                            <th>Close</th>
+                            <th>High</th>
+                            <th>Low</th>
+                            <th>Volume</th>
+                            <th>Quote</th>
+                            <th>Base</th>
+                        </tr>
                     </thead>
-                   <tbody>
+                   {{-- <tbody>
                     @foreach ($category as $key => $value)
                     <tr>
                         <td>{{$key+1}}</td>
@@ -93,7 +93,7 @@
                     @endforeach
 
 
-                   </tbody>
+                   </tbody> --}}
                   </table>
                 </div>
               </div>
@@ -105,5 +105,39 @@
     <!-- end page content-->
   </div> <!-- container-fluid -->
 </div> <!-- content -->
+
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
+<!-- jQuery + DataTables JS -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#stockTable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{{ route("stockcol.data") }}',
+        columns: [
+            { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
+            { data: 'name', name: 'name' },
+            { data: 'ticker', name: 'ticker' },
+            { data: 'exchange', name: 'exchange' },
+            { data: 'interval_at', name: 'interval_at' },
+            { data: 'time', name: 'time' },
+            { data: 'time_2', name: 'time_2' },
+            { data: 'open', name: 'open' },
+            { data: 'close', name: 'close' },
+            { data: 'high', name: 'high' },
+            { data: 'low', name: 'low' },
+            { data: 'volume', name: 'volume' },
+            { data: 'quote', name: 'quote' },
+            { data: 'base', name: 'base' },
+        ],
+        pageLength: 15
+    });
+});
+</script>
+
 
 @endsection

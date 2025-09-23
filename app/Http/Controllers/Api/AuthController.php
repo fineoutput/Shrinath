@@ -1996,7 +1996,7 @@ public function isMarketOpen()
         }
 
         $formatted = $category->map(function ($category) {
-            $diff = $category->price - $category->current_price ?? 0;
+            $diff =  $category->current_price - $category->price ?? 0;
             return [
                 'id' => $category->id,
                 'name' => $category->name,

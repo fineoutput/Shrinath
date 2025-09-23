@@ -1929,7 +1929,7 @@ public function stockCol()
             'previous_close' => $yesterdayCloses[$product] ?? $previousClose ?? '',
             'percentage_change_from_previous' => $percentageChange !== null
              ? number_format($percentageChange, 2, '.', '') : '',
-            'd_pre' => $dPre ?? '',
+            'd_pre' => $dPre ?? null,
             'SniPriceDiff' => $SniPriceDiff ?? '',
         ];
     }

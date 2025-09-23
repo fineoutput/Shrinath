@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <input type="hidden" id="base_path" value="{{config('constants.options.SITE_NAME')}}>">
+    <input type="hidden" id="base_path" value="Shreenath">
     <!-- Begin page -->
     <div id="wrapper">
         <!-- Top Bar Start -->

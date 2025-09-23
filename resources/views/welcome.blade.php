@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{config('constants.options.SITE_NAME')}}</title>
+    <title>Login Shreenath</title>
 
 </head>
 <style>

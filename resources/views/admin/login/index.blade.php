@@ -2,11 +2,11 @@
 <html lang="zxx">
 
 <head>
-  <title>Login | {{config('constants.options.SITE_NAME')}}</title>
+  <title>Login | Shreenath</title>
   <!-- Meta tag Keywords -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="icon" href="{{asset('admin/assets/images/favicon.png')}}">
+  <link rel="icon" href="{{asset('Front/images/logo/sdas.png')}}">
   <meta name="keywords" content="" />
   <script>
     addEventListener("load", function() {

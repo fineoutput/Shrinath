@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>{{config('constants.options.SITE_NAME')}} | @if(!empty($title)) {{$title}}@else Admin @endif</title>
+    <title>Shreenath Admin </title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link rel="icon" href="{{asset('admin/assets/images/favicon.png')}}">
+    <link rel="icon" href="{{asset('Front/images/logo/sdas.png')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset('admin/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('admin/assets/css/style.css')}}" rel="stylesheet" type="text/css">

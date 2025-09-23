@@ -1198,7 +1198,7 @@ your recipes.
                                 </div>
                                             </div>
                                             <div class="content">
-                                                <ul class="entry-meta">
+                                                {{-- <ul class="entry-meta">
                                                     <li class="entry author">
                                                         <i class="fa-solid fa-circle-user"></i>
                                                         <p>
@@ -1222,7 +1222,7 @@ your recipes.
                                                                 Comments</a>
                                                         </p>
                                                     </li>
-                                                </ul>
+                                                </ul> --}}
                                                 <h3 class="title fw-6">
                                                     <a href="#">
                                                         {{ $value->title ?? ''}}

@@ -76,10 +76,10 @@ class HomeController extends Controller
             $category_id = $data['category']->first()->id;
         }
 
-        $data['product'] = Products::where('status', 1)
-                                ->where('category_id', $category_id)
-                                ->orderBy('id', 'DESC')
-                                ->paginate(6);
+    $data['product'] = Products::where('status', 1)
+        ->whereRaw("FIND_IN_SET(?, category_id)", [$category_id])
+        ->orderBy('id', 'DESC') 
+        ->paginate(6);
 
         $data['selected_category_id'] = $category_id;
 

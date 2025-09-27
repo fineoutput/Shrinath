@@ -107,8 +107,17 @@ class TeamController extends Controller
 			'name' => 'required',
 			'email' => 'required|unique:admin_teams|email',
 			'password' => 'required',
-			'power' => 'required '
+			'power' => 'required',
+
+			// Validate that either service or services is present
+			'service' => 'required_without:services|nullable',
+			'services' => 'required_without:service|nullable|array|min:1',
+		], [
+			'service.required_without' => 'Please select a service or services.',
+			'services.required_without' => 'Please select a service or services.',
+			'services.min' => 'Please select at least one service in services.',
 		]);
+
 		// dd($req);
 		$service = $req->input('service');
 		$services = $req->input('services');

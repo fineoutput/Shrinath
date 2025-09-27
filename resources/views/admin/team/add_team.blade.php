@@ -1,6 +1,12 @@
 @extends('admin.base_template')
 @section('main')
 <!-- Start content -->
+
+<style>
+    .chosen-container.chosen-container-multi {
+    width: 100%!important;
+}
+</style>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -112,15 +118,20 @@
                                             @if (!empty($service_data)) 
                                                 @foreach ($service_data as $service)  
                                                     <div class="form-check-inline">
-                                                        <label class="form-check-label" for="<?= $service->id ?>">
-                                                           <input type="checkbox" class="form-check-input" id="{{ $service->id }}" name="services[]" value="{{ $service->id }}">{{$service->name}}
+                                                        <label class="form-check-label" for="{{ $service->id }}">
+                                                            <input type="checkbox" 
+                                                                class="form-check-input service-checkbox {{ strtolower($service->name) == 'products' ? 'product-related' : '' }}" 
+                                                                id="{{ $service->id }}" 
+                                                                name="services[]" 
+                                                                value="{{ $service->id }}">
+                                                            {{ $service->name }}
                                                         </label>
                                                     </div>
-                                            @endforeach 
+                                                @endforeach
                                              @endif
                                         </div>
 
-                                        <div class="col-sm-12 mt-3">
+                                        <div class="col-sm-12 mt-3" id="product-section" style="display: none;">
                                            
                                                 <label class="form-label" style="margin-left: 10px" for="power">Select Product Multipal</label>
                                                 <div id="output"></div>
@@ -135,6 +146,8 @@
                                                 @enderror
 
                                         </div>
+
+
 
                                     </div>
                                     <div class="form-group">
@@ -151,6 +164,43 @@
         <!-- end page content-->
     </div> <!-- container-fluid -->
 </div> <!-- content -->
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const checkboxes = document.querySelectorAll('.service-checkbox, input[name="service"]');
+        const productSection = document.getElementById('product-section');
+
+        function toggleProductSection() {
+            let show = false;
+
+            checkboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    const labelText = checkbox.parentElement.textContent.trim().toLowerCase();
+
+                    // Check if label text contains 'products'
+                    if (labelText.includes('products')) {
+                        show = true;
+                    }
+
+                    // Or if 'All' is selected
+                    if (checkbox.name === 'service' && checkbox.value == '999') {
+                        show = true;
+                    }
+                }
+            });
+
+            productSection.style.display = show ? 'block' : 'none';
+        }
+
+        checkboxes.forEach((cb) => {
+            cb.addEventListener('change', toggleProductSection);
+        });
+
+        // Trigger once on load
+        toggleProductSection();
+    });
+</script>
 
 <link rel="stylesheet" href="https://harvesthq.github.io/chosen/chosen.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>

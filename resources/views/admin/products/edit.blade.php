@@ -60,7 +60,7 @@
                                         <input type="text" name="name" class="form-control" value="{{ old('name', $products->name) }}" required>
                                     </div>
                                     
-                                    <div class="col-sm-4">
+                                    {{-- <div class="col-sm-4">
                                         <label>Category <span style="color:red;">*</span></label>
                                         <select class="form-control" name="category_id" id="stateDropdown">
                                             <option selected disabled value="">Select Category</option>
@@ -73,7 +73,28 @@
                                         @error('category_id')
                                             <div style="color:red">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
+
+                                    @php
+    // Convert comma-separated string to array
+    $selectedCategories = explode(',', $products->category_id ?? '');
+@endphp
+
+<div class="col-sm-4"><br>
+    <label class="form-label" style="margin-left: 10px" for="power">Select Meal Multiple</label>
+    <div id="output"></div>
+    <select data-placeholder="" name="category_id[]" multiple class="chosen-select">
+        @foreach ($category as $value)
+            <option value="{{ $value->id }}"
+                {{ in_array($value->id, $selectedCategories) ? 'selected' : '' }}>
+                {{ $value->category_name ?? '' }}
+            </option>
+        @endforeach
+    </select>
+    @error('category_id')
+        <div style="color:red;">{{ $message }}</div>
+    @enderror
+</div>
                                 </div>
                             
                                 <div class="form-group row">
@@ -195,6 +216,15 @@
         <!-- end page content-->
     </div> <!-- container-fluid -->
 </div> <!-- content -->
+
+
+<link rel="stylesheet" href="https://harvesthq.github.io/chosen/chosen.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://harvesthq.github.io/chosen/chosen.jquery.js"></script>
+<script>
+    document.getElementById('output').innerHTML = location.search;
+    $(".chosen-select").chosen();
+</script>
 
 
 <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>

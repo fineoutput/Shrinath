@@ -33,15 +33,19 @@ class Products extends Model
     ];
 
 
-    public function Category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+    // public function Category()
+    // {
+    //     return $this->belongsTo(Category::class);
+    // }
     public function Team()
     {
         return $this->hasOne(Team::class,'id','auth_id');
     }
 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class,'id','category_id');
+    }
 
   
 }

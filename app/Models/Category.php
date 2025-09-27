@@ -22,5 +22,11 @@ class Category extends Model
     ];
 
 
+    public function products()
+    {
+        return $this->belongsToMany(Products::class, 'category_product');
+    }
+
+
   
 }

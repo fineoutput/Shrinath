@@ -44,76 +44,151 @@ class ProductsController extends Controller
     }
     
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'category_id' => 'required',
-            'description' => 'required',
-            'short_description' => 'required',
-            'price' => 'required',
-            'mrp' => 'required',
-            'weight' => 'required',
-            'image_1' => 'nullable',
-            'image_2' => 'nullable',
-            'image_3' => 'nullable',
-            'image_4' => 'nullable',
-        ]);
+{
+    $request->validate([
+        'name' => 'required',
+        'category_id' => 'required|array',
+        'description' => 'required',
+        'short_description' => 'required',
+        'price' => 'required',
+        'mrp' => 'required',
+        'weight' => 'required',
+        'image_1' => 'nullable|image',
+        'image_2' => 'nullable|image',
+        'image_3' => 'nullable|image',
+        'image_4' => 'nullable|image',
+        'video'   => 'nullable|mimes:mp4,mov,avi|max:20000',
+    ]);
 
-        $product = new Products;
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->mrp = $request->mrp;
-        $product->weight = $request->weight;
-        $product->category_id = $request->category_id;
-        $product->description = $request->description;
-        $product->short_description = $request->short_description;
-        $product->status = 1;
-        $product->auth_id = Auth::id();
+    $product = new Products;
+    $product->name = $request->name;
+    $product->price = $request->price;
+    $product->mrp = $request->mrp;
+    $product->category_id = is_array($request->category_id) ? implode(',', $request->category_id) : null;
+    $product->weight = $request->weight;
+    $product->description = $request->description;
+    $product->short_description = $request->short_description;
+    $product->status = 1;
+    $product->auth_id = Auth::id();
 
-        foreach (['image_1', 'image_2', 'image_3', 'image_4'] as $imageField) {
-            if ($request->hasFile($imageField)) {
-                $imageName = time() . '_' . $imageField . '.' . $request->file($imageField)->extension();
-                $request->file($imageField)->move(public_path('uploads/products'), $imageName);
-                $product->$imageField = 'uploads/products/' . $imageName;
-            }
+    // Handle images
+    foreach (['image_1', 'image_2', 'image_3', 'image_4'] as $imageField) {
+        if ($request->hasFile($imageField)) {
+            $imageName = time() . '_' . $imageField . '.' . $request->file($imageField)->extension();
+            $request->file($imageField)->move(public_path('uploads/products'), $imageName);
+            $product->$imageField = 'uploads/products/' . $imageName;
         }
+    }
 
-        if ($request->hasFile('video')) {
-            $videoName = time() . '_video.' . $request->file('video')->extension();
-            $request->file('video')->move(public_path('uploads/videos'), $videoName);
-            $product->video = 'uploads/videos/' . $videoName;
-        }
+    // Handle video
+    if ($request->hasFile('video')) {
+        $videoName = time() . '_video.' . $request->file('video')->extension();
+        $request->file('video')->move(public_path('uploads/videos'), $videoName);
+        $product->video = 'uploads/videos/' . $videoName;
+    }
 
-        $product->save();
+    $product->save();
 
-        $notificationPayload = [
-            'title' => 'New Product: ' . $product->name,
-            'body' => 'Check out our new product: ' . $product->name,
-            'image' => asset($product->image_1),
-        ];
+    $notificationPayload = [
+        'title' => 'New Product: ' . $product->name,
+        'body' => 'Check out our new product: ' . $product->name,
+        'image' => asset($product->image_1),
+    ];
 
-        $dataPayload = [
-            'product_id' => $product->id,
-            'category_id' => $product->category_id,
-            'screen' => 'ProductDetail',
-        ];
+    $dataPayload = [
+        'product_id' => $product->id,
+        'category_id' => $request->category_id[0] ?? null, // first category (for legacy handling)
+        'screen' => 'ProductDetail',
+    ];
 
-        $firebaseService = new FirebaseNotificationService();
-        $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
+    $firebaseService = new FirebaseNotificationService();
+    $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
 
-        Notifications::create([
+    Notifications::create([
         'title' => $notificationPayload['title'],
         'body' => $notificationPayload['body'],
         'image' => $notificationPayload['image'],
         'product_id' => $product->id,
-        'category_id' => $product->category_id,
+        'category_id' => $dataPayload['category_id'],
         'screen' => $dataPayload['screen'],
         'name' => $product->name,
         'time' => now(),
     ]);
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
-    }
+    return redirect()->route('products.index')->with('success', 'Product created successfully with multiple categories.');
+}
+
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => 'required',
+    //         'category_id' => 'required',
+    //         'description' => 'required',
+    //         'short_description' => 'required',
+    //         'price' => 'required',
+    //         'mrp' => 'required',
+    //         'weight' => 'required',
+    //         'image_1' => 'nullable',
+    //         'image_2' => 'nullable',
+    //         'image_3' => 'nullable',
+    //         'image_4' => 'nullable',
+    //     ]);
+
+    //     $product = new Products;
+    //     $product->name = $request->name;
+    //     $product->price = $request->price;
+    //     $product->mrp = $request->mrp;
+    //     $product->weight = $request->weight;
+    //     $product->category_id = $request->category_id;
+    //     $product->description = $request->description;
+    //     $product->short_description = $request->short_description;
+    //     $product->status = 1;
+    //     $product->auth_id = Auth::id();
+
+    //     foreach (['image_1', 'image_2', 'image_3', 'image_4'] as $imageField) {
+    //         if ($request->hasFile($imageField)) {
+    //             $imageName = time() . '_' . $imageField . '.' . $request->file($imageField)->extension();
+    //             $request->file($imageField)->move(public_path('uploads/products'), $imageName);
+    //             $product->$imageField = 'uploads/products/' . $imageName;
+    //         }
+    //     }
+
+    //     if ($request->hasFile('video')) {
+    //         $videoName = time() . '_video.' . $request->file('video')->extension();
+    //         $request->file('video')->move(public_path('uploads/videos'), $videoName);
+    //         $product->video = 'uploads/videos/' . $videoName;
+    //     }
+
+    //     $product->save();
+
+    //     $notificationPayload = [
+    //         'title' => 'New Product: ' . $product->name,
+    //         'body' => 'Check out our new product: ' . $product->name,
+    //         'image' => asset($product->image_1),
+    //     ];
+
+    //     $dataPayload = [
+    //         'product_id' => $product->id,
+    //         'category_id' => $product->category_id,
+    //         'screen' => 'ProductDetail',
+    //     ];
+
+    //     $firebaseService = new FirebaseNotificationService();
+    //     $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
+
+    //     Notifications::create([
+    //     'title' => $notificationPayload['title'],
+    //     'body' => $notificationPayload['body'],
+    //     'image' => $notificationPayload['image'],
+    //     'product_id' => $product->id,
+    //     'category_id' => $product->category_id,
+    //     'screen' => $dataPayload['screen'],
+    //     'name' => $product->name,
+    //     'time' => now(),
+    // ]);
+
+    //     return redirect()->route('products.index')->with('success', 'Product created successfully.');
+    // }
 
 
     public function edit($id)
@@ -164,57 +239,141 @@ class ProductsController extends Controller
     // }
 
 
- public function update(Request $request, $id)
-    {
-        // Validate the request
-        $request->validate([
-            'name' => 'required',
-            'category_id' => 'required',
-            'description' => 'required',
-            'short_description' => 'required',
-            'price' => 'required',
-            'mrp' => 'required',
-            'weight' => 'required',
-            'image_1' => 'nullable',
-            'image_2' => 'nullable',
-            'image_3' => 'nullable',
-            'image_4' => 'nullable',
-        ]);
+//  public function update(Request $request, $id)
+//     {
+//         // Validate the request
+//         $request->validate([
+//             'name' => 'required',
+//             'category_id' => 'required',
+//             'description' => 'required',
+//             'short_description' => 'required',
+//             'price' => 'required',
+//             'mrp' => 'required',
+//             'weight' => 'required',
+//             'image_1' => 'nullable',
+//             'image_2' => 'nullable',
+//             'image_3' => 'nullable',
+//             'image_4' => 'nullable',
+//         ]);
 
-        $product = Products::findOrFail($id);
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->mrp = $request->mrp;
-        $product->weight = $request->weight;
-        $product->category_id = $request->category_id;
-        $product->description = $request->description;
-        $product->short_description = $request->short_description;
-        $product->auth_id = Auth::id();
+//         $product = Products::findOrFail($id);
+//         $product->name = $request->name;
+//         $product->price = $request->price;
+//         $product->mrp = $request->mrp;
+//         $product->weight = $request->weight;
+//         $product->category_id = $request->category_id;
+//         $product->description = $request->description;
+//         $product->short_description = $request->short_description;
+//         $product->auth_id = Auth::id();
 
-        // Handle image uploads
-        foreach (['image_1', 'image_2', 'image_3', 'image_4'] as $imageField) {
-            if ($request->hasFile($imageField)) {
-                // Delete old image if exists
-                if ($product->$imageField && file_exists(public_path($product->$imageField))) {
-                    unlink(public_path($product->$imageField));
-                }
+//         // Handle image uploads
+//         foreach (['image_1', 'image_2', 'image_3', 'image_4'] as $imageField) {
+//             if ($request->hasFile($imageField)) {
+//                 // Delete old image if exists
+//                 if ($product->$imageField && file_exists(public_path($product->$imageField))) {
+//                     unlink(public_path($product->$imageField));
+//                 }
 
-                $imageName = time() . '_' . $imageField . '.' . $request->file($imageField)->extension();
-                $request->file($imageField)->move(public_path('uploads/products'), $imageName);
-                $product->$imageField = 'uploads/products/' . $imageName;
-            }
-        }
+//                 $imageName = time() . '_' . $imageField . '.' . $request->file($imageField)->extension();
+//                 $request->file($imageField)->move(public_path('uploads/products'), $imageName);
+//                 $product->$imageField = 'uploads/products/' . $imageName;
+//             }
+//         }
 
-        if ($request->hasFile('video')) {
-            $videoName = time() . '_video.' . $request->file('video')->extension();
-            $request->file('video')->move(public_path('uploads/videos'), $videoName);
-            $product->video = 'uploads/videos/' . $videoName;
-        }
+//         if ($request->hasFile('video')) {
+//             $videoName = time() . '_video.' . $request->file('video')->extension();
+//             $request->file('video')->move(public_path('uploads/videos'), $videoName);
+//             $product->video = 'uploads/videos/' . $videoName;
+//         }
         
-        $product->save();
+//         $product->save();
 
-        // Now, send the Firebase notification to all users
-       $notificationPayload = [
+//         // Now, send the Firebase notification to all users
+//        $notificationPayload = [
+//         'title' => 'Product Updated: ' . $product->name,
+//         'body' => 'Check out the updated details of ' . $product->name,
+//         'image' => asset($product->image_1),
+//     ];
+
+//     $dataPayload = [
+//         'product_id' => $product->id,
+//         'category_id' => $product->category_id,
+//         'screen' => 'ProductDetail',
+//     ];
+
+//    $firebaseService = new FirebaseNotificationService();
+//    $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
+
+//     Notifications::create([
+//         'title' => $notificationPayload['title'],
+//         'body' => $notificationPayload['body'],
+//         'image' => $notificationPayload['image'],
+//         'product_id' => $product->id,
+//         'category_id' => $product->category_id,
+//         'screen' => $dataPayload['screen'],
+//         'name' => $product->name,
+//         'time' => now(),
+//     ]);
+
+//     return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+
+//     }
+
+
+public function update(Request $request, $id)
+{
+    // ✅ Validate the request
+    $request->validate([
+        'name' => 'required',
+        'category_id' => 'required|array',
+        'description' => 'required',
+        'short_description' => 'required',
+        'price' => 'required',
+        'mrp' => 'required',
+        'weight' => 'required',
+        'image_1' => 'nullable|image',
+        'image_2' => 'nullable|image',
+        'image_3' => 'nullable|image',
+        'image_4' => 'nullable|image',
+        'video' => 'nullable|mimes:mp4,mov,avi|max:20000',
+    ]);
+
+    $product = Products::findOrFail($id);
+    $product->name = $request->name;
+    $product->price = $request->price;
+    $product->mrp = $request->mrp;
+    $product->category_id = is_array($request->category_id) ? implode(',', $request->category_id) : null;
+    $product->weight = $request->weight;
+    $product->description = $request->description;
+    $product->short_description = $request->short_description;
+    $product->auth_id = Auth::id();
+
+    // ✅ Handle image uploads
+    foreach (['image_1', 'image_2', 'image_3', 'image_4'] as $imageField) {
+        if ($request->hasFile($imageField)) {
+            if ($product->$imageField && file_exists(public_path($product->$imageField))) {
+                unlink(public_path($product->$imageField));
+            }
+
+            $imageName = time() . '_' . $imageField . '.' . $request->file($imageField)->extension();
+            $request->file($imageField)->move(public_path('uploads/products'), $imageName);
+            $product->$imageField = 'uploads/products/' . $imageName;
+        }
+    }
+
+    if ($request->hasFile('video')) {
+        if ($product->video && file_exists(public_path($product->video))) {
+            unlink(public_path($product->video));
+        }
+
+        $videoName = time() . '_video.' . $request->file('video')->extension();
+        $request->file('video')->move(public_path('uploads/videos'), $videoName);
+        $product->video = 'uploads/videos/' . $videoName;
+    }
+
+    $product->save();
+
+    $notificationPayload = [
         'title' => 'Product Updated: ' . $product->name,
         'body' => 'Check out the updated details of ' . $product->name,
         'image' => asset($product->image_1),
@@ -222,27 +381,27 @@ class ProductsController extends Controller
 
     $dataPayload = [
         'product_id' => $product->id,
-        'category_id' => $product->category_id,
+        'category_id' => $request->category_id[0] ?? null, // first category
         'screen' => 'ProductDetail',
     ];
 
-   $firebaseService = new FirebaseNotificationService();
-   $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
+    $firebaseService = new FirebaseNotificationService();
+    $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
 
     Notifications::create([
         'title' => $notificationPayload['title'],
         'body' => $notificationPayload['body'],
         'image' => $notificationPayload['image'],
         'product_id' => $product->id,
-        'category_id' => $product->category_id,
+        'category_id' => $dataPayload['category_id'],
         'screen' => $dataPayload['screen'],
         'name' => $product->name,
         'time' => now(),
     ]);
 
-    return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+    return redirect()->route('products.index')->with('success', 'Product updated successfully with multiple categories.');
+}
 
-    }
 
 
     public function destroy($id)

@@ -42,10 +42,13 @@ class Products extends Model
         return $this->hasOne(Team::class,'id','auth_id');
     }
 
-    public function categories()
-    {
-        return $this->belongsToMany(Category::class,'id','category_id');
-    }
+    public function getCategoryNamesAttribute()
+        {
+            if (!$this->category_id) return [];
+
+            $ids = explode(',', $this->category_id);
+            return Category::whereIn('id', $ids)->pluck('category_name')->toArray();
+        }
 
   
 }

@@ -68,7 +68,7 @@
                     <tr>
                         <td>{{$key+1}}</td>
                         <td>{{$value->name ?? ''}}</td>
-                        <td>{{$value->Category->category_name ?? ''}}</td>
+                      <td>{{ implode(', ', $value->category_names) }}</td>
                         <td>{{$value->price ?? ''}}</td>
                         <td>{{$value->mrp ?? ''}}</td>
                         <td>{{$value->weight ?? ''}}</td>

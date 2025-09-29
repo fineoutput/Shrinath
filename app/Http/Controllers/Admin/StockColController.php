@@ -20,12 +20,12 @@ class StockColController extends Controller
         return view('admin.stockCol.index', compact('category'));
     }
 
-    public function getData(Request $request)
+   public function getData(Request $request)
     {
-        $data = StockCol::query(); // or your model with filters
+        $data = StockCol::query()->orderByDesc('id'); 
 
         return DataTables::of($data)
-            ->addIndexColumn() // Adds row index column
+            ->addIndexColumn()
             ->make(true);
     }
     

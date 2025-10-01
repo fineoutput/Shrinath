@@ -1798,7 +1798,7 @@ public function stockCol()
         ->orderBy('time', 'DESC')
         ->orderBy('id', 'ASC')
         ->get();
-
+    $orderedNames = $categories->pluck('name')->unique()->values()->toArray();
     $sniPrices = SniPrice::all()->keyBy('name');
     $result = [];
 
@@ -1959,7 +1959,7 @@ public function stockCol()
 ];
 
 // Preserve original product order
-$orderedNames = collect($result)->pluck('name')->unique()->toArray();
+// $orderedNames = collect($result)->pluck('name')->unique()->toArray();
 
 // Group by product name
 $groupedByProduct = collect($result)->groupBy('name');
@@ -1970,22 +1970,32 @@ $sortedResult = [];
 foreach ($orderedNames as $productName) {
     $group = $groupedByProduct[$productName] ?? collect();
 
-    $sortedGroup = $group->sort(function ($a, $b) use ($monthMap) {
-        preg_match('/([A-Z]+)\s+(\d{4})/', strtoupper($a['app_name']), $aMatch);
-        preg_match('/([A-Z]+)\s+(\d{4})/', strtoupper($b['app_name']), $bMatch);
+   $sortedGroup = $group->sort(function ($a, $b) use ($monthMap) {
+    $parseDate = function ($appName) use ($monthMap) {
+        // Convert to uppercase and normalize whitespace
+        $upper = strtoupper(trim(preg_replace('/\s+/', ' ', $appName)));
 
-        if (!isset($aMatch[1], $aMatch[2], $bMatch[1], $bMatch[2])) {
-            return 0;
+        // Try to match "MONTH YYYY"
+        foreach ($monthMap as $month => $monthNum) {
+            if (preg_match("/\b{$month}\b\s+(\d{4})/", $upper, $matches)) {
+                return [
+                    'year' => intval($matches[1]),
+                    'month' => $monthNum,
+                ];
+            }
         }
 
-        $monthA = $monthMap[$aMatch[1]] ?? 0;
-        $yearA = intval($aMatch[2]);
+        // Fallback if not matched
+        return ['year' => 0, 'month' => 0];
+    };
 
-        $monthB = $monthMap[$bMatch[1]] ?? 0;
-        $yearB = intval($bMatch[2]);
+    $aDate = $parseDate($a['app_name']);
+    $bDate = $parseDate($b['app_name']);
 
-        return ($yearA === $yearB) ? $monthA - $monthB : $yearA - $yearB;
-    });
+    return ($aDate['year'] === $bDate['year'])
+        ? $aDate['month'] - $bDate['month']
+        : $aDate['year'] - $bDate['year'];
+});
 
     $sortedResult = array_merge($sortedResult, $sortedGroup->values()->all());
 }

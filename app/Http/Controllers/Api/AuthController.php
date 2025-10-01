@@ -1953,31 +1953,46 @@ public function stockCol()
     $result = collect($result)->unique('name')->values()->all();
     // 🌟 Sort by contract month/year from app_name
     $monthMap = [
-        'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4,
-        'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8,
-        'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12
-    ];
+    'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4,
+    'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8,
+    'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12
+];
 
-    usort($result, function ($a, $b) use ($monthMap) {
-        preg_match('/([A-Z]+)\s+(\d{4})/', strtoupper($a['app_name']), $matchesA);
-        preg_match('/([A-Z]+)\s+(\d{4})/', strtoupper($b['app_name']), $matchesB);
+// Preserve original product order
+$orderedNames = collect($result)->pluck('name')->unique()->toArray();
 
-        if (!isset($matchesA[1], $matchesA[2], $matchesB[1], $matchesB[2])) {
-            return 0; // fallback if pattern doesn't match
+// Group by product name
+$groupedByProduct = collect($result)->groupBy('name');
+
+// Sort each product group by contract month/year
+$sortedResult = [];
+
+foreach ($orderedNames as $productName) {
+    $group = $groupedByProduct[$productName] ?? collect();
+
+    $sortedGroup = $group->sort(function ($a, $b) use ($monthMap) {
+        preg_match('/([A-Z]+)\s+(\d{4})/', strtoupper($a['app_name']), $aMatch);
+        preg_match('/([A-Z]+)\s+(\d{4})/', strtoupper($b['app_name']), $bMatch);
+
+        if (!isset($aMatch[1], $aMatch[2], $bMatch[1], $bMatch[2])) {
+            return 0;
         }
 
-        $monthA = $monthMap[$matchesA[1]] ?? 0;
-        $yearA = intval($matchesA[2]);
+        $monthA = $monthMap[$aMatch[1]] ?? 0;
+        $yearA = intval($aMatch[2]);
 
-        $monthB = $monthMap[$matchesB[1]] ?? 0;
-        $yearB = intval($matchesB[2]);
+        $monthB = $monthMap[$bMatch[1]] ?? 0;
+        $yearB = intval($bMatch[2]);
 
         return ($yearA === $yearB) ? $monthA - $monthB : $yearA - $yearB;
     });
+
+    $sortedResult = array_merge($sortedResult, $sortedGroup->values()->all());
+}
     return response()->json([
         'status' => 200,
         'message' => 'Latest stock entries with calculations (fallback to latest available if no data for today)',
-        'data' => $result,
+        'data' => $sortedResult,
         'date_used' => $today
     ]);
 }

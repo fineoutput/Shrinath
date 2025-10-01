@@ -1955,18 +1955,21 @@ $orderedNames = array_keys($oneDayCloseMapping);
    $monthMap = [
     'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4,
     'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8,
-    'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12
+    'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12,
 ];
 
+// Group by product name
 $groupedByProduct = collect($result)->groupBy('name');
+
+// Sort according to $oneDayCloseMapping and inside each group by contract month/year
 $sortedResult = [];
 
 foreach ($orderedNames as $productName) {
     $group = $groupedByProduct[$productName] ?? collect();
 
     $sortedGroup = $group->sort(function ($a, $b) use ($monthMap) {
-        $parseDate = function ($appName) use ($monthMap) {
-            $upper = strtoupper(trim(preg_replace('/\s+/', ' ', $appName)));
+        $parseContractDate = function ($appName) use ($monthMap) {
+            $upper = strtoupper($appName);
             foreach ($monthMap as $month => $monthNum) {
                 if (preg_match("/\b{$month}\b\s+(\d{4})/", $upper, $matches)) {
                     return [
@@ -1978,16 +1981,18 @@ foreach ($orderedNames as $productName) {
             return ['year' => 0, 'month' => 0]; // fallback
         };
 
-        $aDate = $parseDate($a['app_name']);
-        $bDate = $parseDate($b['app_name']);
+        $aDate = $parseContractDate($a['app_name']);
+        $bDate = $parseContractDate($b['app_name']);
 
-        return ($aDate['year'] === $bDate['year'])
-            ? $aDate['month'] - $bDate['month']
-            : $aDate['year'] - $bDate['year'];
+        if ($aDate['year'] === $bDate['year']) {
+            return $aDate['month'] - $bDate['month'];
+        }
+        return $aDate['year'] - $bDate['year'];
     });
 
     $sortedResult = array_merge($sortedResult, $sortedGroup->values()->all());
 }
+
     return response()->json([
         'status' => 200,
         'message' => 'Latest stock entries with calculations (fallback to latest available if no data for today)',

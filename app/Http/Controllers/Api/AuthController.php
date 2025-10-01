@@ -1798,7 +1798,7 @@ public function stockCol()
         ->orderBy('time', 'DESC')
         ->orderBy('id', 'ASC')
         ->get();
-    $orderedNames = $categories->pluck('name')->unique()->values()->toArray();
+    
     $sniPrices = SniPrice::all()->keyBy('name');
     $result = [];
 
@@ -1850,7 +1850,7 @@ public function stockCol()
         'GUARSEED' => 'GUARSEED_1D',
         'GUARSEED2' => 'GUARSEED2_1D',
     ];
-
+$orderedNames = array_keys($oneDayCloseMapping);
     $yesterdayCloses = [];
 
     foreach ($oneDayCloseMapping as $mainName => $refName) {
@@ -1952,50 +1952,39 @@ public function stockCol()
     // Remove duplicates by product name just in case
     $result = collect($result)->unique('name')->values()->all();
     // 🌟 Sort by contract month/year from app_name
-    $monthMap = [
+   $monthMap = [
     'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4,
     'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8,
     'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12
 ];
 
-// Preserve original product order
-// $orderedNames = collect($result)->pluck('name')->unique()->toArray();
-
-// Group by product name
 $groupedByProduct = collect($result)->groupBy('name');
-
-// Sort each product group by contract month/year
 $sortedResult = [];
 
 foreach ($orderedNames as $productName) {
     $group = $groupedByProduct[$productName] ?? collect();
 
-   $sortedGroup = $group->sort(function ($a, $b) use ($monthMap) {
-    $parseDate = function ($appName) use ($monthMap) {
-        // Convert to uppercase and normalize whitespace
-        $upper = strtoupper(trim(preg_replace('/\s+/', ' ', $appName)));
-
-        // Try to match "MONTH YYYY"
-        foreach ($monthMap as $month => $monthNum) {
-            if (preg_match("/\b{$month}\b\s+(\d{4})/", $upper, $matches)) {
-                return [
-                    'year' => intval($matches[1]),
-                    'month' => $monthNum,
-                ];
+    $sortedGroup = $group->sort(function ($a, $b) use ($monthMap) {
+        $parseDate = function ($appName) use ($monthMap) {
+            $upper = strtoupper(trim(preg_replace('/\s+/', ' ', $appName)));
+            foreach ($monthMap as $month => $monthNum) {
+                if (preg_match("/\b{$month}\b\s+(\d{4})/", $upper, $matches)) {
+                    return [
+                        'year' => intval($matches[1]),
+                        'month' => $monthNum,
+                    ];
+                }
             }
-        }
+            return ['year' => 0, 'month' => 0]; // fallback
+        };
 
-        // Fallback if not matched
-        return ['year' => 0, 'month' => 0];
-    };
+        $aDate = $parseDate($a['app_name']);
+        $bDate = $parseDate($b['app_name']);
 
-    $aDate = $parseDate($a['app_name']);
-    $bDate = $parseDate($b['app_name']);
-
-    return ($aDate['year'] === $bDate['year'])
-        ? $aDate['month'] - $bDate['month']
-        : $aDate['year'] - $bDate['year'];
-});
+        return ($aDate['year'] === $bDate['year'])
+            ? $aDate['month'] - $bDate['month']
+            : $aDate['year'] - $bDate['year'];
+    });
 
     $sortedResult = array_merge($sortedResult, $sortedGroup->values()->all());
 }

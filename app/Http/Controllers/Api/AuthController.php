@@ -1908,6 +1908,20 @@ public function stockCol()
         });
 
         $closeValue = $closeRecord ? floatval($closeRecord->close) : ($lastRecord->close ?? '');
+        
+      if (
+    $lastRecord === null ||
+    !is_numeric($lastOpen) || $lastOpen == 0 ||
+    !is_numeric($closeValue) || $closeValue == 0 ||
+    !is_numeric($maxHigh) || !is_numeric($minLow) ||
+    empty($lastRecord->volume) ||
+    empty($lastRecord->high) ||
+    empty($lastRecord->low)
+) {
+    Log::info("Skipping $product due to invalid data: open=$lastOpen, close=$closeValue, high=$maxHigh, low=$minLow");
+    continue;
+}
+
 
         $result[] = [
             'id' => $lastRecord->id ?? null,

@@ -1795,10 +1795,10 @@ public function verifyOtp(Request $request)
 public function stockCol()
 {
     $categories = StockCol::orderBy('name')
-        ->orderBy('time', 'DESC')
+        ->orderBy('time', 'ASC')
         ->orderBy('id', 'ASC')
         ->get();
-    
+
     $sniPrices = SniPrice::all()->keyBy('name');
     $result = [];
 
@@ -1850,7 +1850,7 @@ public function stockCol()
         'GUARSEED' => 'GUARSEED_1D',
         'GUARSEED2' => 'GUARSEED2_1D',
     ];
-$orderedNames = array_keys($oneDayCloseMapping);
+
     $yesterdayCloses = [];
 
     foreach ($oneDayCloseMapping as $mainName => $refName) {
@@ -1909,18 +1909,18 @@ $orderedNames = array_keys($oneDayCloseMapping);
 
         $closeValue = $closeRecord ? floatval($closeRecord->close) : ($lastRecord->close ?? '');
         
-                if (
-                $lastRecord === null ||
-                !is_numeric($lastOpen) || $lastOpen == 0 ||
-                !is_numeric($closeValue) || $closeValue == 0 ||
-                !is_numeric($maxHigh) || !is_numeric($minLow) ||
-                empty($lastRecord->volume) ||
-                empty($lastRecord->high) ||
-                empty($lastRecord->low)
-            ) {
-                Log::info("Skipping $product due to invalid data: open=$lastOpen, close=$closeValue, high=$maxHigh, low=$minLow");
-                continue;
-            }
+      if (
+    $lastRecord === null ||
+    !is_numeric($lastOpen) || $lastOpen == 0 ||
+    !is_numeric($closeValue) || $closeValue == 0 ||
+    !is_numeric($maxHigh) || !is_numeric($minLow) ||
+    empty($lastRecord->volume) ||
+    empty($lastRecord->high) ||
+    empty($lastRecord->low)
+) {
+    Log::info("Skipping $product due to invalid data: open=$lastOpen, close=$closeValue, high=$maxHigh, low=$minLow");
+    continue;
+}
 
 
         $result[] = [
@@ -1951,55 +1951,16 @@ $orderedNames = array_keys($oneDayCloseMapping);
 
     // Remove duplicates by product name just in case
     $result = collect($result)->unique('name')->values()->all();
-    // 🌟 Sort by contract month/year from app_name
-   $monthMap = [
-    'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4,
-    'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8,
-    'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12,
-];
-
-// Group by product name
-$groupedByProduct = collect($result)->groupBy('name');
-
-// Sort according to $oneDayCloseMapping and inside each group by contract month/year
-$sortedResult = [];
-
-foreach ($orderedNames as $productName) {
-    $group = $groupedByProduct[$productName] ?? collect();
-
-    $sortedGroup = $group->sort(function ($a, $b) use ($monthMap) {
-        $parseContractDate = function ($appName) use ($monthMap) {
-            $upper = strtoupper($appName);
-            foreach ($monthMap as $month => $monthNum) {
-                if (preg_match("/\b{$month}\b\s+(\d{4})/", $upper, $matches)) {
-                    return [
-                        'year' => intval($matches[1]),
-                        'month' => $monthNum,
-                    ];
-                }
-            }
-            return ['year' => 0, 'month' => 0]; // fallback
-        };
-
-        $aDate = $parseContractDate($a['app_name']);
-        $bDate = $parseContractDate($b['app_name']);
-
-        if ($aDate['year'] === $bDate['year']) {
-            return $aDate['month'] - $bDate['month'];
-        }
-        return $aDate['year'] - $bDate['year'];
-    });
-
-    $sortedResult = array_merge($sortedResult, $sortedGroup->values()->all());
-}
 
     return response()->json([
         'status' => 200,
         'message' => 'Latest stock entries with calculations (fallback to latest available if no data for today)',
-        'data' => $sortedResult,
+        'data' => $result,
         'date_used' => $today
     ]);
 }
+
+
 
 
 

@@ -1951,7 +1951,29 @@ public function stockCol()
 
     // Remove duplicates by product name just in case
     $result = collect($result)->unique('name')->values()->all();
+    // 🌟 Sort by contract month/year from app_name
+    $monthMap = [
+        'JAN' => 1, 'FEB' => 2, 'MAR' => 3, 'APR' => 4,
+        'MAY' => 5, 'JUN' => 6, 'JUL' => 7, 'AUG' => 8,
+        'SEP' => 9, 'OCT' => 10, 'NOV' => 11, 'DEC' => 12
+    ];
 
+    usort($result, function ($a, $b) use ($monthMap) {
+        preg_match('/([A-Z]+)\s+(\d{4})/', strtoupper($a['app_name']), $matchesA);
+        preg_match('/([A-Z]+)\s+(\d{4})/', strtoupper($b['app_name']), $matchesB);
+
+        if (!isset($matchesA[1], $matchesA[2], $matchesB[1], $matchesB[2])) {
+            return 0; // fallback if pattern doesn't match
+        }
+
+        $monthA = $monthMap[$matchesA[1]] ?? 0;
+        $yearA = intval($matchesA[2]);
+
+        $monthB = $monthMap[$matchesB[1]] ?? 0;
+        $yearB = intval($matchesB[2]);
+
+        return ($yearA === $yearB) ? $monthA - $monthB : $yearA - $yearB;
+    });
     return response()->json([
         'status' => 200,
         'message' => 'Latest stock entries with calculations (fallback to latest available if no data for today)',

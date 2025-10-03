@@ -37,7 +37,7 @@
                         <img src="{{asset('Front/images/logo/sdas.png')}}" alt="" style="width: 90px;">
                     </span>
                     <i>
-                        <img src="{{asset('Front/images/logo/sdas.png')}}" alt="" style="width: 90px;">
+                        <img src="{{asset('Front/images/logo/sdas.png')}}" alt="" style="width: 100%;">
                     </i>
                 </a>
             </div>

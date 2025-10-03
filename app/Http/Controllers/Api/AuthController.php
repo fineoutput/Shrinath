@@ -1925,7 +1925,7 @@ public function stockCol()
 
         $result[] = [
             'id' => $lastRecord->id ?? null,
-           '1dClose' => $yesterdayCloses[$product] ?? null,
+           'dClose' => $yesterdayCloses[$product] ?? null,
             'stock_id' => $lastRecord->stock_id ?? null,
             'app_name' => $lastRecord->Stock->app_name ?? '',
             'ticker' => $lastRecord->ticker ?? '',

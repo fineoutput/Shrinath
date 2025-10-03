@@ -118,7 +118,7 @@ class BlockController extends Controller
 
     public function getAllCategories()
     {
-        $categories = Category::latest()->get();
+        $categories = Category::where('status',1)->orderBy('id','DESC')->get();
 
         if ($categories->isEmpty()) {
             return response()->json([

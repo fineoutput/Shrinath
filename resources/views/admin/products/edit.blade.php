@@ -230,22 +230,25 @@
 <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 
 <script>
-     CKEDITOR.replace('description', {
+    CKEDITOR.replace('description', {
         toolbar: [
+            { name: 'document', items: ['Source'] }, // ✅ Source button added here
             { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'] },
             { name: 'paragraph', items: ['NumberedList', 'BulletedList'] },
-            { name: 'insert', items: ['Link', 'Unlink'] },
+            { name: 'insert', items: ['Table', 'Link', 'Unlink'] },
             { name: 'styles', items: ['Format', 'FontSize'] },
             { name: 'colors', items: ['TextColor', 'BGColor'] },
             { name: 'tools', items: ['Maximize'] }
         ],
         height: 200
     });
-     CKEDITOR.replace('short_description', {
+
+    CKEDITOR.replace('short_description', {
         toolbar: [
+            { name: 'document', items: ['Source'] }, // ✅ Source button added here too
             { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'] },
             { name: 'paragraph', items: ['NumberedList', 'BulletedList'] },
-            { name: 'insert', items: ['Link', 'Unlink'] },
+            { name: 'insert', items: ['Table', 'Link', 'Unlink'] },
             { name: 'styles', items: ['Format', 'FontSize'] },
             { name: 'colors', items: ['TextColor', 'BGColor'] },
             { name: 'tools', items: ['Maximize'] }

@@ -681,12 +681,12 @@ public function stockCol()
     $oneDayCloseMapping = [
         'JEERA2' => 'JEERA2_1D',
         'JEERA3' => 'JEERA3_1D',
-        'DHANIYA2' => 'DHANIYA2_1D',
         'DHANIYA' => 'DHANIYA_1D',
+        'DHANIYA2' => 'DHANIYA2_1D',
         'TURMERIC' => 'TURMERIC_1D',
         'TURMERIC2' => 'TURMERIC2_1D',
-        'GUARGUM2' => 'GUARGUM2_1D',
         'GUARGUM' => 'GUARGUM_1D',
+        'GUARGUM2' => 'GUARGUM2_1D',
         'GUARSEED' => 'GUARSEED_1D',
         'GUARSEED2' => 'GUARSEED2_1D',
     ];

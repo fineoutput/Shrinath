@@ -184,9 +184,9 @@
                         <h3 class="fw-6 name font-worksans title">
                             {{$product->name ?? ''}} 
                         </h3>
-                        <div class="rating-wrap">
-                          
-                           
+                         <div class="price_daeal d-flex align-center mb-5">
+                            
+                            {{ $product->weight }}
                         </div>
                        <div class="price-wrap price-left">
                             @if(($product->mrp ?? 0) > 0 && ($product->price ?? 0) > 0)
@@ -197,10 +197,7 @@
                                 <span class="price-2">Out Of Stock</span>
                             @endif
                         </div>
-                        <div class="price_daeal d-flex align-center">
-                            
-                            {{ $product->weight }}gm
-                        </div>
+                       
                         {{-- <p>{!! $product->description !!}</p> --}}
                         <p>{!! $product->short_description !!}</p>
                         {{-- <p class="sub font-nunito">

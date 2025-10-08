@@ -115,7 +115,7 @@
 
                                   <div class="col-sm-6">
                                         <label>Weight</label>
-                                        <input type="number" name="weight" value="{{ old('weight', $products->weight) }}" class="form-control"  required>
+                                        <input type="text" name="weight" value="{{ old('weight', $products->weight) }}" class="form-control"  required>
                                     </div>
 
                                 </div>

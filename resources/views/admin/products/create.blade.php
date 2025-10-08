@@ -105,7 +105,7 @@
 
                                   <div class="col-sm-6">
                                         <label>Weight</label>
-                                        <input type="number" name="weight" class="form-control"  required>
+                                        <input type="text" name="weight" class="form-control"  required>
                                     </div>
 
                                 </div>

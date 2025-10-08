@@ -29,6 +29,10 @@
     /* justify-content: center; */
     gap: 15px;
 }
+
+li {
+    list-style: auto !important;
+}
 </style>
 <div class="page-title page-portfolio-details  ">
     <div class="rellax" data-rellax-speed="5">
@@ -196,7 +200,7 @@
                             @else
                                 <span class="price-2">Out Of Stock</span>
                             @endif
-                        </div>
+                        </div>  
                        
                         {{-- <p>{!! $product->description !!}</p> --}}
                         {!! $product->short_description !!}

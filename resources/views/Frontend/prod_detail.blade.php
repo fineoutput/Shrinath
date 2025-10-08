@@ -31,7 +31,7 @@
 }
 
 li {
-    list-style: auto !important;
+    list-style: unset !important;
 }
 </style>
 <div class="page-title page-portfolio-details  ">

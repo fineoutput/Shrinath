@@ -199,7 +199,7 @@
                         </div>
                        
                         {{-- <p>{!! $product->description !!}</p> --}}
-                        <p>{!! $product->short_description !!}</p>
+                        {!! $product->short_description !!}
                         {{-- <p class="sub font-nunito">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut aliquam
                             mauris.

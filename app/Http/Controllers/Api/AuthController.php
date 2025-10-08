@@ -695,29 +695,29 @@ public function stockCol()
     $dCloseOutput = [];
 
     foreach ($oneDayCloseMapping as $mainName => $refName) {
-        $records = $categories->where('name', $refName)->sortBy('time')->values();
+      $records = $categories->where('name', $refName)->sortBy('time')->values();
 
-        $yesterdayRecord = $records->filter(function ($r) use ($today) {
-            return $r->time->toDateString() < $today;
-        })->last();
-
-        $yesterdayCloses[$mainName] = $yesterdayRecord ? floatval($yesterdayRecord->close) : null;
-
-        // Check if today's *_1D record exists
-        $today1DRecordExists = $records->filter(function ($r) use ($today) {
-            return $r->time->toDateString() === $today;
-        })->isNotEmpty();
-
-        // ✅ dClose logic as per requirement
-       $hasTodayDclose = $categories->where('name', $refName)->filter(function ($r) use ($today) {
+    $todayRecord = $records->first(function ($r) use ($today) {
         return $r->time->toDateString() === $today;
-        })->isNotEmpty();
+    });
 
-        if ($currentTime->format('H:i') >= '17:00' && !$hasTodayDclose) {
+    $yesterdayRecord = $records->filter(function ($r) use ($today) {
+        return $r->time->toDateString() < $today;
+    })->last();
+
+    $hasTodayDclose = $todayRecord !== null;
+
+    if ($hasTodayDclose) {
+        // If today’s 1D record exists, use it directly
+        $dCloseOutput[$mainName] = floatval($todayRecord->close);
+    } else {
+        // no today’s 1D record
+        if ($currentTime->format('H:i') >= '17:00') {
             $dCloseOutput[$mainName] = null;
         } else {
             $dCloseOutput[$mainName] = $yesterdayRecord ? floatval($yesterdayRecord->close) : null;
         }
+    }
     }
 
     $groupedByName = $todayRecords->groupBy('name');
@@ -817,7 +817,7 @@ public function stockCol()
         'd_pre' => $dPre ?? null,
         'SniPriceDiff' => $SniPriceDiff ?? '',
     ];
-}
+ }
 
 
     // foreach ($allProducts as $product) {

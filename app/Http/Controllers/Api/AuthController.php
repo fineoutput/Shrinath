@@ -694,32 +694,45 @@ public function stockCol()
     $yesterdayCloses = [];
     $dCloseOutput = [];
 
-    foreach ($oneDayCloseMapping as $mainName => $refName) {
-      $records = $categories->where('name', $refName)->sortBy('time')->values();
 
-    $todayRecord = $records->first(function ($r) use ($today) {
-        return $r->time->toDateString() === $today;
-    });
+   foreach ($oneDayCloseMapping as $mainName => $refName) {
+        $records = $categories
+            ->where('name', $refName)
+            ->filter(function ($item) {
+                return !empty($item->time_2); // skip null or empty time_2
+            })
+            ->sortBy(function ($item) {
+                return Carbon::parse($item->time_2); // sort by time_2
+            })
+            ->values();
 
-    $yesterdayRecord = $records->filter(function ($r) use ($today) {
-        return $r->time->toDateString() < $today;
-    })->last();
-
-    $hasTodayDclose = $todayRecord !== null;
-
-    if ($hasTodayDclose) {
-        // If today’s 1D record exists, use it directly
-        $dCloseOutput[$mainName] = floatval($todayRecord->close);
-    } else {
-        // no today’s 1D record
-        if ($currentTime->format('H:i') >= '17:00') {
+        // No records? Continue to next
+        if ($records->isEmpty()) {
             $dCloseOutput[$mainName] = null;
+            continue;
+        }
+
+        $todayRecord = $records->first(function ($r) use ($today) {
+            return Carbon::parse($r->time_2)->toDateString() === $today;
+        });
+
+        $yesterdayRecord = $records->filter(function ($r) use ($today) {
+            return Carbon::parse($r->time_2)->toDateString() < $today;
+        })->last();
+
+        $hasTodayDclose = $todayRecord !== null;
+
+        if ($hasTodayDclose) {
+            $dCloseOutput[$mainName] = floatval($todayRecord->close);
         } else {
-            $dCloseOutput[$mainName] = $yesterdayRecord ? floatval($yesterdayRecord->close) : null;
+            if ($currentTime->format('H:i') >= '17:00') {
+                $dCloseOutput[$mainName] = null;
+            } else {
+                $dCloseOutput[$mainName] = $yesterdayRecord ? floatval($yesterdayRecord->close) : null;
+            }
         }
     }
-    }
-
+    
     $groupedByName = $todayRecords->groupBy('name');
     $allProducts = collect($oneDayCloseMapping)->keys();
 
@@ -912,183 +925,6 @@ public function stockCol()
         'date_used' => $today
     ]);
 }
-
-
-// public function stockCol()
-// {
-//     $categories = StockCol::orderBy('name')
-//         ->orderBy('time', 'ASC')
-//         ->orderBy('id', 'ASC')
-//         ->get();
-
-//     $sniPrices = SniPrice::all()->keyBy('name');
-//     $result = [];
-
-//     foreach ($categories as $r) {
-//         $r->time = Carbon::parse($r->time);
-//     }
-
-//     $today = Carbon::now()->toDateString();
-//     $currentTime = Carbon::now();
-
-//     // Filter today's records
-//     $todayRecords = $categories->filter(function ($r) use ($today) {
-//         return $r->time->toDateString() === $today;
-//     });
-
-//     // If no records today, fallback to most recent past date
-//     if ($todayRecords->isEmpty()) {
-//         $previousAvailableDates = $categories->pluck('time')->map(function ($item) {
-//             return Carbon::parse($item)->toDateString();
-//         })->unique()->sortDesc()->values();
-
-//         $latestAvailableDate = $previousAvailableDates->first(function ($date) use ($today) {
-//             return $date < $today;
-//         });
-
-//         if (!$latestAvailableDate) {
-//             return response()->json([
-//                 'status' => 200,
-//                 'message' => 'No past records available',
-//                 'data' => [],
-//             ]);
-//         }
-
-//         $todayRecords = $categories->filter(function ($r) use ($latestAvailableDate) {
-//             return $r->time->toDateString() === $latestAvailableDate;
-//         });
-
-//         $today = $latestAvailableDate;
-//     }
-
-//     $oneDayCloseMapping = [
-//         'JEERA2' => 'JEERA2_1D',
-//         'JEERA3' => 'JEERA3_1D',
-//         'DHANIYA2' => 'DHANIYA2_1D',
-//         'DHANIYA' => 'DHANIYA_1D',
-//         'TURMERIC' => 'TURMERIC_1D',
-//         'TURMERIC2' => 'TURMERIC2_1D',
-//         'GUARGUM2' => 'GUARGUM2_1D',
-//         'GUARGUM' => 'GUARGUM_1D',
-//         'GUARSEED' => 'GUARSEED_1D',
-//         'GUARSEED2' => 'GUARSEED2_1D',
-//     ];
-
-//     $yesterdayCloses = [];
-//     $dCloseOutput = [];
-
-//     foreach ($oneDayCloseMapping as $mainName => $refName) {
-//         $records = $categories->where('name', $refName)->sortBy('time')->values();
-
-//         $yesterdayRecord = $records->filter(function ($r) use ($today) {
-//             return $r->time->toDateString() < $today;
-//         })->last();
-
-//         $yesterdayCloses[$mainName] = $yesterdayRecord ? floatval($yesterdayRecord->close) : null;
-
-//         // Set dCloseOutput to null if current time is after 5:00 PM and no latest entry for today
-//         if ($currentTime->format('H:i') > '17:00' && $todayRecords->where('name', $mainName)->isEmpty()) {
-//             $dCloseOutput[$mainName] = null;
-//         } else {
-//             $dCloseOutput[$mainName] = $yesterdayRecord ? floatval($yesterdayRecord->close) : null;
-//         }
-//     }
-
-//     $groupedByName = $todayRecords->groupBy('name');
-//     $allProducts = collect($oneDayCloseMapping)->keys();
-
-//     foreach ($allProducts as $product) {
-//         $productRecords = $groupedByName->has($product)
-//             ? $groupedByName[$product]
-//             : $categories->where('name', $product)->sortByDesc('time')->values();
-
-//         $records = $productRecords->sortBy('time')->values();
-
-//         $lastOpen = $records->last() ? floatval($records->last()->open) : null;
-//         $maxHigh = $records->max('high');
-//         $minLow = $records->min('low');
-//         $lastRecord = $records->last();
-
-//         $previousCloseRecord = $categories->where('name', $product)
-//             ->filter(function ($r) use ($today) {
-//                 return $r->time->toDateString() < $today;
-//             })->last();
-
-//         $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
-
-//         $sniPrice = $sniPrices[$product]->price ?? null;
-//         $sniCurrentPrice = $sniPrices[$product]->current_price ?? null;
-//         $SniPriceDiff = $sniPrice && $sniCurrentPrice ? ($sniPrice - $sniCurrentPrice) : null;
-
-//         $dPre = null;
-//         if ($sniCurrentPrice !== null && $lastOpen !== null) {
-//             $dPre = $sniCurrentPrice - $lastOpen;
-//         }
-
-//         $percentageChange = null;
-//         if (isset($yesterdayCloses[$product]) && $yesterdayCloses[$product] > 0 && $lastRecord->close) {
-//             $percentageChange = (($lastRecord->close - $yesterdayCloses[$product]) / $yesterdayCloses[$product]) * 100;
-//         } elseif ($previousClose !== null && $previousClose > 0 && $lastRecord->close) {
-//             $percentageChange = (($lastRecord->close - $previousClose) / $previousClose) * 100;
-//         }
-
-//         $marketCloseTime = Carbon::parse($today . ' 17:00:00');
-//         $closeRecord = $records->first(function ($r) use ($marketCloseTime) {
-//             return $r->time->format('H:i') === '17:00';
-//         });
-
-//         $closeValue = $closeRecord ? floatval($closeRecord->close) : ($lastRecord->close ?? '');
-                
-//         if (
-//             $lastRecord === null ||
-//             !is_numeric($lastOpen) || $lastOpen == 0 ||
-//             !is_numeric($closeValue) || $closeValue == 0 ||
-//             !is_numeric($maxHigh) || !is_numeric($minLow) ||
-//             empty($lastRecord->volume) ||
-//             empty($lastRecord->high) ||
-//             empty($lastRecord->low)
-//         ) {
-//             Log::info("Skipping $product due to invalid data: open=$lastOpen, close=$closeValue, high=$maxHigh, low=$minLow");
-//             continue;
-//         }
-
-//         $result[] = [
-//             'id' => $lastRecord->id ?? null,
-//             'dClose' => $dCloseOutput[$product] ?? null,
-//             'stock_id' => $lastRecord->stock_id ?? null,
-//             'app_name' => $lastRecord->Stock->app_name ?? '',
-//             'ticker' => $lastRecord->ticker ?? '',
-//             'name' => $lastRecord->name ?? '',
-//             'exchange' => $lastRecord->exchange ?? '',
-//             'interval' => $lastRecord->interval_at ?? '',
-//             'time' => $lastRecord->time ?? null,
-//             'date' => $lastRecord->time_2 ?? null,
-//             'open' => $lastOpen !== null ? number_format($lastOpen, 2, '.', '') : '',
-//             'close' => $closeValue !== '' ? number_format($closeValue, 2, '.', '') : '',
-//             'current_price' => $lastOpen !== null ? number_format(floatval($lastOpen), 2, '.', '') : '',
-//             'high' => $maxHigh ?? '',
-//             'low' => $minLow ?? '',
-//             'volume' => $lastRecord->volume ?? '',
-//             'quote' => $lastRecord->quote ?? '',
-//             'base' => $lastRecord->base ?? '',
-//             'previous_close' => $yesterdayCloses[$product] ?? $previousClose ?? '',
-//             'percentage_change_from_previous' => $percentageChange !== null
-//                 ? number_format($percentageChange, 2, '.', '') : '',
-//             'd_pre' => $dPre ?? null,
-//             'SniPriceDiff' => $SniPriceDiff ?? '',
-//         ];
-//     }
-
-//     // Remove duplicates by product name just in case
-//     $result = collect($result)->unique('name')->values()->all();
-
-//     return response()->json([
-//         'status' => 200,
-//         'message' => 'Latest stock entries with calculations (fallback to latest available if no data for today)',
-//         'data' => $result,
-//         'date_used' => $today
-//     ]);
-// }
 
 
 

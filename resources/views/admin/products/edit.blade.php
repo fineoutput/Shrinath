@@ -181,7 +181,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12 mt-3">
                                         <label class="form-label" for="description">Description <span style="color:red;">*</span></label>
-                                        <textarea class="form-control" name="description" id="description" required>{{ old('description', $products->description) }}</textarea>
+                                        <textarea class="form-control" name="description" id="editor1" required>{{ old('description', $products->description) }}</textarea>
                                         @error('description')
                                             <div style="color:red">{{ $message }}</div>
                                         @enderror
@@ -190,7 +190,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12 mt-3">
                                         <label class="form-label" for="short_description">Short Description <span style="color:red;">*</span></label>
-                                        <textarea class="form-control" name="short_description" id="short_description" required>{{ old('short_description', $products->short_description) }}</textarea>
+                                        <textarea class="form-control" name="short_description" id="editor2" required>{{ old('short_description', $products->short_description) }}</textarea>
                                         @error('short_description')
                                             <div style="color:red">{{ $message }}</div>
                                         @enderror
@@ -227,6 +227,18 @@
 </script>
 
 
+
+
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<script>
+  CKEDITOR.replace('editor1');
+</script>
+<script>
+  CKEDITOR.replace('editor2');
+</script>
+
+{{-- 
+
 <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 
 <script>
@@ -255,7 +267,7 @@
         ],
         height: 200
     });
-</script>
+</script> --}}
 
 @endsection
 <!-- /booking_portal/public/ -->

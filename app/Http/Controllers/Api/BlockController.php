@@ -188,7 +188,7 @@ class BlockController extends Controller
                 'mrp' => $product->mrp,
                 'weight' => $product->weight,
                 'category_id' => $product->category_id,
-                'description' => strip_tags($product->description),
+                'description' => $this->parseDescription($product->description),
                 'status' => $product->status,
                 'images' => array_values($images),
             ];
@@ -200,6 +200,8 @@ class BlockController extends Controller
             'data' => $formattedProducts
         ]);
     }
+
+
 
 
  public function getProductById(Request $request)
@@ -238,7 +240,7 @@ class BlockController extends Controller
             'mrp' => $product->mrp,
             'weight' => $product->weight,
             'category_id' => $product->category_id,
-            'description' => strip_tags($product->description),
+           'description' => $this->parseDescription($product->description),
             'status' => $product->status,
             'images' => array_values($images),
         ];
@@ -250,6 +252,32 @@ class BlockController extends Controller
         ]);
     }
 
+
+        private function parseDescription($description)
+        {
+            // Remove HTML tags and normalize whitespace
+            $inputString = strip_tags($description);
+            $inputString = preg_replace('/\s+/', ' ', $inputString);
+
+            // Split on commas
+            $inputArray = explode(',', $inputString);
+
+            $result = [];
+
+            for ($i = 0; $i < count($inputArray); $i += 2) {
+                $head = trim($inputArray[$i]);
+                $value = isset($inputArray[$i + 1]) ? trim($inputArray[$i + 1]) : null;
+
+                if (!empty($head) && !empty($value)) {
+                    $result[] = [
+                        'head' => $head,
+                        'value' => $value
+                    ];
+                }
+            }
+
+            return $result;
+        }
 
     public function getAllDepots()
     {

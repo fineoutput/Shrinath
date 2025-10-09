@@ -33,6 +33,7 @@
 li {
     list-style: unset !important;
 }
+
 </style>
 <div class="page-title page-portfolio-details  ">
     <div class="rellax" data-rellax-speed="5">
@@ -324,7 +325,24 @@ li {
                         </div>
                         <div class="widget-content-tab">
                             <div class="widget-content-inner active">
-                                <p class="text-1">{!! $product->description !!}</p>
+
+                                 <table class="table">
+                                    @php
+                                        // Remove any HTML tags (like <p>) and explode by comma
+                                        $cleanDescription = strip_tags($product->description);
+                                        $description = explode(',', $cleanDescription);
+                                        $i = 1;
+                                    @endphp
+                                    <tr>
+                                        @foreach ($description as $desc)
+                                            <td>{{ trim($desc) }}</td>
+                                            @if ($i % 2 == 0)
+                                                </tr><tr>
+                                            @endif
+                                            @php $i++; @endphp
+                                        @endforeach
+                                    </tr>
+                                </table>
                             </div>
                             <div class="widget-content-inner">
                                 <div class="table-infor">

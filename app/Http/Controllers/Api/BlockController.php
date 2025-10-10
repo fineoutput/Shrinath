@@ -254,31 +254,43 @@ class BlockController extends Controller
 
 
         private function parseDescription($description)
-        {
-            // Remove HTML tags and normalize whitespace
-            $inputString = strip_tags($description);
-            $inputString = preg_replace('/\s+/', ' ', $inputString);
+{
+    if (empty($description)) {
+        return '';
+    }
 
-            // Split on commas
-            $inputArray = explode('$', $inputString);
+    // Clean HTML and normalize spacing
+    $inputString = strip_tags($description);
+    $inputString = preg_replace('/\s+/', ' ', $inputString);
 
-            $result = [];
+    // If there's no "$" separator, return plain text
+    if (strpos($inputString, '$') === false) {
+        return trim($inputString);
+    }
 
-            for ($i = 0; $i < count($inputArray); $i += 2) {
-                $head = trim($inputArray[$i]);
-                $value = isset($inputArray[$i + 1]) ? trim($inputArray[$i + 1]) : null;
+    // Split on "$"
+    $inputArray = explode('$', $inputString);
+    $result = [];
 
-                if (!empty($head) && !empty($value)) {
-                    $result[] = [
-                        'head' => $head,
-                        'value' => $value
-                    ];
-                }
-            }
+    for ($i = 0; $i < count($inputArray); $i += 2) {
+        $head = trim($inputArray[$i]);
+        $value = isset($inputArray[$i + 1]) ? trim($inputArray[$i + 1]) : null;
 
-            return $result;
+        if (!empty($head) && !empty($value)) {
+            $result[] = [
+                'head' => $head,
+                'value' => $value
+            ];
         }
+    }
 
+    // If no valid pairs found, just return plain text
+    if (empty($result)) {
+        return trim($inputString);
+    }
+
+    return $result;
+}
     public function getAllDepots()
     {
         $depots = Depots::latest()->get();

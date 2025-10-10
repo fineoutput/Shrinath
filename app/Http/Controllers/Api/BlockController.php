@@ -260,7 +260,7 @@ class BlockController extends Controller
             $inputString = preg_replace('/\s+/', ' ', $inputString);
 
             // Split on commas
-            $inputArray = explode(',', $inputString);
+            $inputArray = explode('$', $inputString);
 
             $result = [];
 

@@ -330,7 +330,7 @@ li {
                                     @php
                                         // Remove any HTML tags (like <p>) and explode by comma
                                         $cleanDescription = strip_tags($product->description);
-                                        $description = explode(',', $cleanDescription);
+                                        $description = explode('$', $cleanDescription);
                                         $i = 1;
                                     @endphp
                                     <tr>

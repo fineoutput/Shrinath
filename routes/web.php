@@ -146,6 +146,7 @@ Route::get('/deletesetting/{id}', [CrmController::class, 'deletesetting'])->name
     Route::get('/products/create', [ProductsController::class, 'create'])->name('products.create');
     Route::post('/products', [ProductsController::class, 'store'])->name('products.store');
     Route::get('/products/{id}/edit', [ProductsController::class, 'edit'])->name('products.edit');
+    Route::get('/edit-by/products/{id}', [ProductsController::class, 'editproduct'])->name('products.editby');
     Route::put('/products/{id}', [ProductsController::class, 'update'])->name('products.update');
     Route::delete('/products/{id}', [ProductsController::class, 'destroy'])->name('products.destroy');
     Route::patch('/products/{id}/update-status', [ProductsController::class, 'updateStatus'])->name('products.updateStatus');

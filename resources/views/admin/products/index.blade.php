@@ -106,14 +106,18 @@
                         </td>
 
                         <td width="100px">
-                            <a href="{{ route('products.edit', ['id' => $value->id]) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit products">
+                            <a href="{{ route('products.edit', ['id' => $value->id]) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit  products">
                                 <i class="fas fa-edit"></i>
+                            </a>
+
+                            <a href="{{ route('products.editby', ['id' => $value->id]) }}" class="btn btn-warning mt-2" data-toggle="tooltip" data-placement="top" title="Edit By">
+                                <i class="fas fa-list"></i>
                             </a>
                         
                             <form action="{{ route('products.destroy', $value->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE') 
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this products?');" data-toggle="tooltip" data-placement="top" title="Delete products">
+                                <button type="submit" class="btn btn-danger mt-2" onclick="return confirm('Are you sure you want to delete this products?');" data-toggle="tooltip" data-placement="top" title="Delete products">
                                     <i class="fas fa-trash"></i> 
                                 </button>
                             </form>

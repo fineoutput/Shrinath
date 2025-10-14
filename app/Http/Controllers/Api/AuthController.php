@@ -139,7 +139,7 @@ class AuthController extends Controller
                 'date' => $dateNow,
             ]);
 
-            $this->sendOtpViaMsg91($vendor->phone_no, $otpCode);
+            $this->sendSignupOtpViaMsg91($vendor->phone_no, $otpCode);
 
             return response()->json([
                 'status' => 200,
@@ -173,7 +173,7 @@ class AuthController extends Controller
                 'is_active' => 1,
                 'date' => $dateNow,
             ]);
-        $this->sendOtpViaMsg91($user->phone, $otpCode);
+        $this->sendSignupOtpViaMsg91($user->phone, $otpCode);
             return response()->json([
                 'status' => 200,
                 'message' => 'User registered successfully. OTP sent.',
@@ -182,32 +182,36 @@ class AuthController extends Controller
         }
     }
 
-
-    private function sendOtpViaMsg91($phone, $otp)
+    private function sendSignupOtpViaMsg91($phone, $otp)
     {
-        $apiKey = 'YOUR_MSG91_API_KEY'; // Replace with actual API key
-        $templateId = '1207175818752782129'; // DLT Template ID
-        $flowId = '68edffcee1082431a00a9a7b'; // MSG91 Flow ID
+        $authKey = env('MSG91_AUTH_KEY_Register');
+        $senderId = 'SHRNTH';
+        $route = 4; // Transactional
+        $dltTemplateId = '1207175818752782129';
 
-        $payload = [
-            "flow_id" => $flowId,
-            "sender" => "SHRNTH", // Replace with approved sender ID from MSG91
-            "mobiles" => "91" . $phone, // Assuming Indian numbers
-            "var" => $otp, // this is used to replace ##var## in the template
+        // Must match DLT Template EXACTLY:
+        $message = "Welcome To Shreenath Spices, Your OTP for Registration is $otp . Valid for 10 Minutes Only. Keep it Confidential. Regards: Shreenath Industries";
+
+        $queryParams = [
+            'authkey' => $authKey,
+            'mobiles' => '91' . $phone,
+            'message' => urlencode($message),
+            'sender' => $senderId,
+            'route' => $route,
+            'DLT_TE_ID' => $dltTemplateId,
         ];
 
-        $response = Http::withHeaders([
-            'authkey' => $apiKey,
-            'Content-Type' => 'application/json',
-        ])->post('https://api.msg91.com/api/v5/flow/', $payload);
+        $response = Http::get('http://api.msg91.com/api/sendhttp.php', $queryParams);
 
-        if ($response->successful()) {
-            Log::info("OTP sent to {$phone} via MSG91");
-        } else {
-            Log::error("Failed to send OTP to {$phone}. Response: " . $response->body());
-        }
+        Log::info('Signup OTP SMS Sent', [
+            'to' => $phone,
+            'response' => $response->body(),
+        ]);
+
+        return $response->successful();
     }
 
+    
 
 //  public function verifyOtp(Request $request)
 //     {
@@ -1031,13 +1035,20 @@ public function isMarketOpen()
 
 
 
-
- public function loginRequestOtp(Request $request)
+public function loginRequestOtp(Request $request)
     {
-        $request->validate([
-            'number' => 'required|string',
+        $validator = Validator::make($request->all(), [
+            'number' => 'required|string|regex:/^[0-9]{10}$/',
             'type' => 'required|in:1,2,3',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'message' => 'Validation errors',
+                'errors' => $validator->errors()
+            ], 422);
+        }
 
         $number = $request->number;
         $type = $request->type;
@@ -1059,8 +1070,9 @@ public function isMarketOpen()
             ], 404);
         }
 
+        // For production uncomment below and comment fixed OTP
         // $otpCode = rand(100000, 999999);
-        $otpCode = 123456;
+        $otpCode = 123456; // Fixed for testing
 
         Otp::updateOrCreate(
             ['contact_no' => $number],
@@ -1071,46 +1083,124 @@ public function isMarketOpen()
                 'otp' => $otpCode,
                 'ip' => $request->ip(),
                 'is_active' => 1,
-                'date' => \Carbon\Carbon::now(),
+                'date' => Carbon::now(),
             ]
         );
-        $this->sendLoginOtpViaMsg91($number, $otpCode);
+
+        $smsResponse = $this->sendOtpViaLegacyHttp($number, $otpCode);
 
         return response()->json([
             'status' => 200,
-            'message' => 'OTP sent successfully',
-            // 'otp' => $otpCode, // for testing
-        ]);
+            'message' => $smsResponse['success'] ? 'OTP sent successfully' : 'OTP saved, but failed to send SMS',
+            'sms_response' => $smsResponse['success'] ? [] : [$smsResponse['error']],
+            // 'otp' => $otpCode, // Uncomment for debugging/testing only
+        ], 200);
     }
 
-
-
-    private function sendLoginOtpViaMsg91($phone, $otp)
+ public function sendOtpViaLegacyHttp($phone, $otp)
     {
-        $apiKey = 'YOUR_MSG91_API_KEY'; // 🔁 Put this in .env ideally
-        $flowId = '68edfff2eb7f5f751a139ecf'; // Login Flow ID
+        // $authKey = env('MSG91_AUTH_KEY');
+        $authKey = '68edfff2eb7f5f751a139ecf';
+        $senderId = 'SHRNTH';
+        $route = 4; // Transactional
+        $dltTemplateId = '1207175818457370480';
 
-        $payload = [
-            "flow_id" => $flowId,
-            "sender" => "SHRNTH", // ✅ Replace with your approved sender ID
-            "mobiles" => "91" . $phone,
-            "var" => "Login", // first ##var##
-            "var1" => $otp,   // second ##var##
+        if (empty($authKey)) {
+            Log::error("MSG91 auth key is missing in .env");
+            return [
+                'success' => false,
+                'error' => [
+                    'phone' => $phone,
+                    'message' => 'MSG91 auth key is not configured',
+                    'status' => 500,
+                ]
+            ];
+        }
+
+        // Clean and format phone number
+        $formattedPhone = preg_replace('/[^0-9]/', '', $phone);
+        if (strlen($formattedPhone) === 10) {
+            $formattedPhone = '91' . $formattedPhone;
+        } elseif (strlen($formattedPhone) !== 12 || strpos($formattedPhone, '91') !== 0) {
+            Log::warning("Invalid phone number format: {$formattedPhone}");
+            return [
+                'success' => false,
+                'error' => [
+                    'phone' => $formattedPhone,
+                    'message' => 'Invalid phone number format',
+                    'status' => 400,
+                ]
+            ];
+        }
+
+        $message = "Welcome To Shreenath Spice's, Your OTP for Login is $otp . Valid For 10 Minutes Only. Keep It Confidential. Regards: Shreenath Industries";
+
+        $queryParams = [
+            'authkey'    => $authKey,
+            'mobiles'    => $formattedPhone,
+            'message'    => $message,
+            'sender'     => $senderId,
+            'route'      => $route,
+            'DLT_TE_ID'  => $dltTemplateId,
         ];
 
-        $response = Http::withHeaders([
-            'authkey' => $apiKey,
-            'Content-Type' => 'application/json',
-        ])->post('https://api.msg91.com/api/v5/flow/', $payload);
+        try {
+            $response = Http::get('http://api.msg91.com/api/sendhttp.php', $queryParams);
+            $responseStatus = $response->status();
+            $responseBody = $response->body();
 
-        if ($response->successful()) {
-            Log::info("Login OTP sent to {$phone} via MSG91");
-        } else {
-            Log::error("Failed to send login OTP to {$phone}. Response: " . $response->body());
+            // Log raw response for debugging
+            Log::info('MSG91 raw response', [
+                'to' => $formattedPhone,
+                'otp' => $otp,
+                'status' => $responseStatus,
+                'raw_body' => $responseBody,
+                'trimmed_body' => trim($responseBody),
+            ]);
+
+            // Clean response body
+            $responseBody = trim($responseBody);
+
+            // Check if response is a 20-character hexadecimal string
+            if ($responseStatus == 200 && preg_match('/^[a-f0-9]{20}$/i', $responseBody)) {
+                return [
+                    'success' => true,
+                    'message_id' => $responseBody,
+                ];
+            }
+
+            // Handle known errors
+            $errorMessage = $responseBody;
+            if (stripos($responseBody, 'authentication') !== false) {
+                $errorMessage = 'Authentication failure';
+            } elseif (stripos($responseBody, 'template') !== false) {
+                $errorMessage = 'Invalid DLT template ID';
+            }
+
+            Log::warning("Failed to send OTP to {$formattedPhone}. Response: {$responseBody}");
+
+            return [
+                'success' => false,
+                'error' => [
+                    'phone' => $formattedPhone,
+                    'message' => "Failed to send OTP: {$errorMessage}",
+                    'status' => $responseStatus ?: 400,
+                ]
+            ];
+
+        } catch (\Exception $e) {
+            Log::error("Error sending OTP to {$formattedPhone}: {$e->getMessage()}");
+
+            return [
+                'success' => false,
+                'error' => [
+                    'phone' => $formattedPhone,
+                    'message' => "Error sending OTP: {$e->getMessage()}",
+                    'status' => 500,
+                ]
+            ];
         }
     }
-
-
 
 
    public function loginVerifyOtp(Request $request)

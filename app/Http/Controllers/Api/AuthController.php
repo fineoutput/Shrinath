@@ -19,6 +19,7 @@ use App\Models\StockCol;
 use App\Models\Stock;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
@@ -138,6 +139,8 @@ class AuthController extends Controller
                 'date' => $dateNow,
             ]);
 
+            $this->sendOtpViaMsg91($vendor->phone_no, $otpCode);
+
             return response()->json([
                 'status' => 200,
                 'message' => 'Vendor registered successfully. OTP sent.',
@@ -170,12 +173,38 @@ class AuthController extends Controller
                 'is_active' => 1,
                 'date' => $dateNow,
             ]);
-
+        $this->sendOtpViaMsg91($user->phone, $otpCode);
             return response()->json([
                 'status' => 200,
                 'message' => 'User registered successfully. OTP sent.',
                 'data' => $user,
             ]);
+        }
+    }
+
+
+    private function sendOtpViaMsg91($phone, $otp)
+    {
+        $apiKey = 'YOUR_MSG91_API_KEY'; // Replace with actual API key
+        $templateId = '1207175818752782129'; // DLT Template ID
+        $flowId = '68edffcee1082431a00a9a7b'; // MSG91 Flow ID
+
+        $payload = [
+            "flow_id" => $flowId,
+            "sender" => "SHRNTH", // Replace with approved sender ID from MSG91
+            "mobiles" => "91" . $phone, // Assuming Indian numbers
+            "var" => $otp, // this is used to replace ##var## in the template
+        ];
+
+        $response = Http::withHeaders([
+            'authkey' => $apiKey,
+            'Content-Type' => 'application/json',
+        ])->post('https://api.msg91.com/api/v5/flow/', $payload);
+
+        if ($response->successful()) {
+            Log::info("OTP sent to {$phone} via MSG91");
+        } else {
+            Log::error("Failed to send OTP to {$phone}. Response: " . $response->body());
         }
     }
 
@@ -826,10 +855,15 @@ public function stockCol()
             $dPre = $sniCurrentPrice - $lastOpen;
         }
 
+        // $percentageChange = null;
+        // if (isset($yesterdayCloses[$product]) && $yesterdayCloses[$product] > 0 && $lastRecord->close) {
+        //     $percentageChange = (($lastRecord->close - $yesterdayCloses[$product]) / $yesterdayCloses[$product]) * 100;
+        // } elseif ($previousClose !== null && $previousClose > 0 && $lastRecord->close) {
+        //     $percentageChange = (($lastRecord->close - $previousClose) / $previousClose) * 100;
+        // }
+
         $percentageChange = null;
-        if (isset($yesterdayCloses[$product]) && $yesterdayCloses[$product] > 0 && $lastRecord->close) {
-            $percentageChange = (($lastRecord->close - $yesterdayCloses[$product]) / $yesterdayCloses[$product]) * 100;
-        } elseif ($previousClose !== null && $previousClose > 0 && $lastRecord->close) {
+        if ($previousClose !== null && $previousClose > 0 && $lastRecord && $lastRecord->close) {
             $percentageChange = (($lastRecord->close - $previousClose) / $previousClose) * 100;
         }
 
@@ -1040,6 +1074,7 @@ public function isMarketOpen()
                 'date' => \Carbon\Carbon::now(),
             ]
         );
+        $this->sendLoginOtpViaMsg91($number, $otpCode);
 
         return response()->json([
             'status' => 200,
@@ -1047,6 +1082,34 @@ public function isMarketOpen()
             // 'otp' => $otpCode, // for testing
         ]);
     }
+
+
+
+    private function sendLoginOtpViaMsg91($phone, $otp)
+    {
+        $apiKey = 'YOUR_MSG91_API_KEY'; // 🔁 Put this in .env ideally
+        $flowId = '68edfff2eb7f5f751a139ecf'; // Login Flow ID
+
+        $payload = [
+            "flow_id" => $flowId,
+            "sender" => "SHRNTH", // ✅ Replace with your approved sender ID
+            "mobiles" => "91" . $phone,
+            "var" => "Login", // first ##var##
+            "var1" => $otp,   // second ##var##
+        ];
+
+        $response = Http::withHeaders([
+            'authkey' => $apiKey,
+            'Content-Type' => 'application/json',
+        ])->post('https://api.msg91.com/api/v5/flow/', $payload);
+
+        if ($response->successful()) {
+            Log::info("Login OTP sent to {$phone} via MSG91");
+        } else {
+            Log::error("Failed to send login OTP to {$phone}. Response: " . $response->body());
+        }
+    }
+
 
 
 

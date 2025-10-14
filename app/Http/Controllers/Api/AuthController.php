@@ -835,7 +835,7 @@ public function stockCol()
         $dayOpen = $firstRecordOfDay ? floatval($firstRecordOfDay->open) : null;
 
         // Modified previousClose logic
-        $twoDaysAgo = Carbon::parse($today)->subDays(2)->toDateString();
+        $twoDaysAgo = Carbon::parse($today)->subDays(1)->toDateString();
         $refName = $oneDayCloseMapping[$product] ?? $product;
         $previousCloseRecord = $categories
             ->where('name', $refName)

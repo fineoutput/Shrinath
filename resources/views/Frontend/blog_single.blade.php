@@ -165,12 +165,29 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     new Splide('#image-slider', {
-      type   : 'loop',
+      type: 'loop',
       perPage: 3,
       autoplay: true,
       pagination: true,
       arrows: true,
+      gap: '1rem', // space between slides
+      breakpoints: {
+        1200: {
+          perPage: 3, // large screens
+        },
+        992: {
+          perPage: 2, // tablets
+        },
+        768: {
+          perPage: 1, // mobile landscape
+        },
+        480: {
+          perPage: 1, // small mobile
+          arrows: false, // hide arrows on very small screens
+        },
+      },
     }).mount();
   });
 </script>
+
 @endsection

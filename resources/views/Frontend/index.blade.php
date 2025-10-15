@@ -1232,7 +1232,7 @@ your recipes.
                                                       {!! $value->description !!}
                                                 </p>
                                                 <div class="bot">
-                                                    <a href="#" class="tf-btn-read hover-text-4">Continue
+                                                    <a href="{{ route('blog_single', $value->id) }}" class="tf-btn-read hover-text-4">Continue
                                                         Reading</a>
                                                 </div>
                                             </div>

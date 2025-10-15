@@ -109,8 +109,8 @@ class AuthController extends Controller
 
         $type = $request->type;
         $ipAddress = $request->ip();
-        // $otpCode = rand(100000, 999999);
-        $otpCode = 123456;
+        $otpCode = rand(100000, 999999);
+        // $otpCode = 123456;
         $dateNow = now();
 
         if ($type == 3) {
@@ -1141,8 +1141,8 @@ public function loginRequestOtp(Request $request)
         }
 
         // For production uncomment below and comment fixed OTP
-        // $otpCode = rand(100000, 999999);
-        $otpCode = 123456; // Fixed for testing
+        $otpCode = rand(100000, 999999);
+        // $otpCode = 123456; // Fixed for testing
 
         Otp::updateOrCreate(
             ['contact_no' => $number],

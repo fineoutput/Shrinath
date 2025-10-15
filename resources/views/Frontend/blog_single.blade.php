@@ -119,7 +119,7 @@
                                              @foreach(json_decode($blog->image, true) as $key => $img)
                                                 <li class="splide__slide">
                                                     <div class="image img-{{ $key + 1 }} wow fadeInUp" data-wow-delay="0.{{ $key }}s">
-                                                        <img class="lazyload revoior"
+                                                        <img style="border-radius: 20px" class="lazyload revoior"
                                                             data-src="{{ asset($img) }}"
                                                             src="{{ asset($img) }}"
                                                             alt="Blog Image {{ $key + 1 }}">

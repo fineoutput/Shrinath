@@ -217,8 +217,11 @@ class AuthController extends Controller
             ];
         }
 
-        $otpFor = 'Signup'; 
-        $message = "Welcome To Shreenath Spices,Your OTP for $otpFor is $otp . Valid for 10 Minutes Only.Keep it Confidential. Regards: Shreenath Industries";
+        $otpFor = 'Signup';
+        $templateContent = "Welcome To Shreenath Spices,\nYour OTP for Registration is ##var## . Valid for 10 Minutes Only.\nKeep it Confidential.\nRegards:\nShreenath Industries";
+
+      $message = str_replace('##var##', $otp, $templateContent);
+
 
         $queryParams = [
             'authkey'    => $authKey,

@@ -77,18 +77,30 @@
                                 <p class="text text-2">
                                    
                                 </p>
-                               
-                                <div class="entry-video">
-                                    <div class="video-wrap wow fadeInUp" data-wow-delay="0s">
-                                        <img class="lazyload" data-src="{{ asset($blog->profile_image) }}"
-                                            src="{{ asset($blog->profile_image) }}" alt="">
-                                        <a href="{{ asset($blog->video) }}"
-                                            class="style-icon-play popup-youtube">
-                                            <i class="fa-solid fa-play"></i>
-                                            <div class="wave"></div>
-                                            <div class="wave-1"></div>
-                                        </a>
-                                    </div>
+                               @php
+    if ($blog->video) {
+        $maze = $blog->profile_image; // optional fallback
+    } else {
+        $maze = $blog->profile_image;
+    }
+@endphp
+
+<div class="entry-video">
+    <div class="video-wrap wow fadeInUp" data-wow-delay="0s">
+        <img class="lazyload" 
+             data-src="{{ asset($maze) }}" 
+             src="{{ asset($maze) }}" 
+             alt="{{ $blog->title ?? 'Blog image' }}">
+        @if($blog->video)
+            <a href="{{ asset($blog->video) }}" class="style-icon-play popup-youtube">
+                <i class="fa-solid fa-play"></i>
+                <div class="wave"></div>
+                <div class="wave-1"></div>
+            </a>
+        @endif
+    </div>
+</div>
+
                                    
                                 </div>
                               

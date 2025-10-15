@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::get('/blog', [BlockController::class, 'getBlock']);
+Route::get('/popup-image', [BlockController::class, 'popup']);
 Route::get('/sliders', [BlockController::class, 'getAllSliders']);
 Route::get('/sliders1', [BlockController::class, 'getAllSliders1']);
 Route::get('/categories', [BlockController::class, 'getAllCategories']);

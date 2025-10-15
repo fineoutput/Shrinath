@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\GalleryCategoryController;
 use App\Http\Controllers\Admin\StockColController;
 use App\Http\Controllers\LogViewerController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PopupController;
 use App\Http\Controllers\Auth\adminlogincontroller;
 use Kreait\Firebase\Factory;
 
@@ -245,6 +246,14 @@ Route::get('/get-cities/{state_id}', [DepotsController::class, 'getCities']);
     Route::put('/block/{id}', [BlockController::class, 'update'])->name('block.update');
     Route::delete('/block/{vendor}', [BlockController::class, 'destroy'])->name('block.destroy');
     Route::patch('/block/{id}/update-status', [BlockController::class, 'updateStatus'])->name('block.updateStatus');
+
+       Route::get('/popup', [PopupController::class, 'index'])->name('popup.index');
+    Route::get('/popup/create', [PopupController::class, 'create'])->name('popup.create');
+    Route::post('/popup', [PopupController::class, 'store'])->name('popup.store');
+    Route::get('/popup/{id}/edit', [PopupController::class, 'edit'])->name('popup.edit');
+    Route::put('/popup/{id}', [PopupController::class, 'update'])->name('popup.update');
+    Route::delete('/popup/{id}', [PopupController::class, 'destroy'])->name('popup.destroy');
+    Route::patch('/popup/{id}/update-status', [PopupController::class, 'updateStatus'])->name('popup.updateStatus');
 
 
     

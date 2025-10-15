@@ -10,6 +10,7 @@ use App\Models\Slider1;
 use App\Models\Category;
 use App\Models\Products;
 use App\Models\Depots;
+use App\Models\Popup;
 
 class BlockController extends Controller
 {
@@ -57,6 +58,30 @@ class BlockController extends Controller
             'status' => 200,
             'message' => 'All blocks fetched successfully',
             'data' => $formattedBlocks
+        ]);
+    }
+
+
+  public function popup()
+    {
+        $block = Popup::orderBy('id', 'DESC')->where('status', 1)->first();
+
+        if (!$block) {
+            return response()->json([
+                'status' => 201,
+                'message' => 'No popup image found',
+                'data' => []
+            ], 404);
+        }
+
+        $imageUrl = $block->image ? asset($block->image) : null;
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Popup image fetched successfully',
+            'data' => [
+                'image' => $imageUrl
+            ]
         ]);
     }
 

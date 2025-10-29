@@ -27,10 +27,12 @@ class StockController extends Controller
     {
         $request->validate([
             'stock_name' => 'required',
+            'stock_1d_name' => 'required',
         ]);
 
         $category = new Stock;
         $category->stock_name = $request->stock_name;
+        $category->stock_1d_name = $request->stock_1d_name;
         $category->app_name = $request->app_name;
         $category->status = 1;
         $category->save();
@@ -53,6 +55,7 @@ class StockController extends Controller
 
         $category = Stock::findOrFail($id);
          $category->stock_name = $request->stock_name;
+        $category->stock_1d_name = $request->stock_1d_name;
          $category->app_name = $request->app_name;
         $category->status = 1;
 

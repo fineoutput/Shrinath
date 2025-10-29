@@ -61,6 +61,13 @@
                                     </div>
 
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>1D Stock Name</label>
+                                        <input type="text" name="stock_1d_name" class="form-control" value="{{ old('stock_1d_name', $category->stock_1d_name) }}" required>
+                                    </div>
+
+                                </div>
 
                                 <div class="form-group row">
                                     <div class="col-sm-6">

@@ -124,7 +124,7 @@ class AuthController extends Controller
                 'state_id' => $request->state_id ?? null,
                 'city_id' => $request->city_id ?? null,
                 'gst_no' => $request->gst_no ?? null,
-                'status' => 0,  
+                'status' => 1,  
             ];
 
             $vendor = UnverifyVendor::create($vendorData);
@@ -159,7 +159,7 @@ class AuthController extends Controller
                 'city' => $request->city ?? null,
                 'address' => $request->address ?? null,
                 'gst_no' => $request->gst_no ?? null,
-                'status' => 0, 
+                'status' => 1, 
             ];
 
             $user = UnverifyUser::create($userData);

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\SniPrice;
 use App\Services\FirebaseNotificationService;
 use App\Models\Notifications;
+use Illuminate\Support\Facades\Log;
+
 
 
 
@@ -52,9 +54,13 @@ class SniPriceController extends Controller
             'screen' => 'NCDEX',
         ];
 
-        $firebaseService = new FirebaseNotificationService();
-        $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
-
+    try {
+          $firebaseService = new FirebaseNotificationService();
+            $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
+        } catch (\Exception $e) {
+            Log::error('Firebase notification failed: ' . $e->getMessage());
+        }
+        
         $SniPrice->save();
 
         return redirect()->route('sni_price.index')->with('success', 'Price entry added.');
@@ -87,7 +93,7 @@ class SniPriceController extends Controller
         $notificationPayload = [
             'title' => 'Sni Price: ' . $request->name,
             'body' => 'Check out our new Price: ' . $request->current_price,
-            'image' => "",
+            // 'image' => "",
         ];
 
         $dataPayload = [
@@ -96,20 +102,12 @@ class SniPriceController extends Controller
             'screen' => 'NCDEX',
         ];
 
-        $firebaseService = new FirebaseNotificationService();
-        $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
-
-        // Notifications::create([
-        //     'title' => $notificationPayload['title'],
-        //     'body' => $notificationPayload['body'],
-        //     'image' => $notificationPayload['image'],
-        //     'product_id' => $product->id,
-        //     'category_id' => $dataPayload['category_id'],
-        //     'screen' => $dataPayload['screen'],
-        //     'name' => $product->name,
-        //     'time' => now(),
-        // ]);
-
+     try {
+          $firebaseService = new FirebaseNotificationService();
+            $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
+        } catch (\Exception $e) {
+            Log::error('Firebase notification failed: ' . $e->getMessage());
+        }
 
         $price->save();
 

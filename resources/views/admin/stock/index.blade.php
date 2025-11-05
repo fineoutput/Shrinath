@@ -48,6 +48,7 @@
                         <th>#</th>
                         <th data-priority="1">Stock Name</th>
                         <th data-priority="1">1D Stock Name</th>
+                        <th data-priority="1">Sequance number</th>
                         <th data-priority="1">App Name</th>
                         <th data-priority="1">Action</th>
                       </tr>
@@ -58,6 +59,7 @@
                         <td>{{$key+1}}</td>
                         <td>{{$value->stock_name ?? ''}}</td>
                         <td>{{$value->stock_1d_name ?? ''}}</td>
+                        <td>{{$value->sq_number ?? ''}}</td>
                         <td>{{$value->app_name ?? ''}}</td>
                        
 

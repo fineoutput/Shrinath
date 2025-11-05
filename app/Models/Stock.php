@@ -13,6 +13,7 @@ class Stock extends Model
         'stock_name',
         'stock_1d_name',
         'app_name',
+        'sq_number',
         'status',
     ];
 

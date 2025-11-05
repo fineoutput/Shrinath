@@ -1063,10 +1063,16 @@ public function stockCol()
     //     'GUARSEED2' => 'GUARSEED2_1D',
     // ];
 
+    // $oneDayCloseMapping = Stock::whereNotNull('stock_name')
+    // ->whereNotNull('stock_1d_name')
+    // ->whereNotNull('app_name')
+    // ->pluck('stock_1d_name', 'stock_name','app_name')
+    // ->toArray();
     $oneDayCloseMapping = Stock::whereNotNull('stock_name')
     ->whereNotNull('stock_1d_name')
     ->whereNotNull('app_name')
-    ->pluck('stock_1d_name', 'stock_name','app_name')
+    ->orderBy('sq_number', 'asc')  
+    ->pluck('stock_1d_name', 'stock_name')
     ->toArray();
     // return $oneDayCloseMapping;
 
@@ -1369,9 +1375,9 @@ public function loginRequestOtp(Request $request)
 
         if (!$userExists) {
             return response()->json([
-                'status' => 404,
+                'status' => 201,
                 'message' => 'No account found for this number and type',
-            ], 404);
+            ], 201);
         }
 
         // For production uncomment below and comment fixed OTP

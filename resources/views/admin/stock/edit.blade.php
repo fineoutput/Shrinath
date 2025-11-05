@@ -68,6 +68,13 @@
                                     </div>
 
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>Sequance number</label>
+                                        <input type="text" name="sq_number" class="form-control" value="{{ old('sq_number', $category->sq_number) }}" required>
+                                    </div>
+
+                                </div>
 
                                 <div class="form-group row">
                                     <div class="col-sm-6">

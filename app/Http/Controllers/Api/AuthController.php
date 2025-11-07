@@ -1063,15 +1063,17 @@ public function stockCol()
     //     'GUARSEED2' => 'GUARSEED2_1D',
     // ];
 
+
     // $oneDayCloseMapping = Stock::whereNotNull('stock_name')
     // ->whereNotNull('stock_1d_name')
     // ->whereNotNull('app_name')
-    // ->pluck('stock_1d_name', 'stock_name','app_name')
+    // ->orderBy('sq_number', 'asc')  
+    // ->pluck('stock_1d_name', 'stock_name')
     // ->toArray();
     $oneDayCloseMapping = Stock::whereNotNull('stock_name')
     ->whereNotNull('stock_1d_name')
     ->whereNotNull('app_name')
-    ->orderBy('sq_number', 'asc')  
+    ->orderByRaw('CAST(sq_number AS UNSIGNED) ASC')
     ->pluck('stock_1d_name', 'stock_name')
     ->toArray();
     // return $oneDayCloseMapping;

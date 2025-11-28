@@ -1167,9 +1167,13 @@ public function stockCol()
         $SniPriceDiff = $sniPrice && $sniCurrentPrice ? ($sniPrice - $sniCurrentPrice) : null;
 
         $dPre = null;
-        if ($sniCurrentPrice !== null && $lastOpen !== null) {
-            $dPre = $sniCurrentPrice - $lastOpen;
-        }
+
+// Check: $sniCurrentPrice must not be null AND greater than 0
+if ($sniCurrentPrice !== null && $sniCurrentPrice > 0 && $lastOpen !== null) {
+    $dPre = $sniCurrentPrice - $lastOpen;
+} else {
+    $dPre = null; // explicitly set null
+}
 
         // $percentageChange = null;
         // if (isset($yesterdayCloses[$product]) && $yesterdayCloses[$product] > 0 && $lastRecord->close) {

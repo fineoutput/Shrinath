@@ -197,7 +197,7 @@ public function update(Request $request, $id)
 
     $notificationPayload = [
         'title' => 'Product Updated: ' . $product->name,
-        'body' => 'Check out the updated details of ' . $product->name,
+        'body' => 'Check out the updated details of ' . $product->name . ' - ₹' . $product->price,
         'image' => asset($product->image_1),
     ];
 

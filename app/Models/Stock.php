@@ -11,7 +11,9 @@ class Stock extends Model
     protected $table = 'tbl_stock';
     protected $fillable = [
         'stock_name',
+        'stock_1d_name',
         'app_name',
+        'sq_number',
         'status',
     ];
 

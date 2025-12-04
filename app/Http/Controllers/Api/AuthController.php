@@ -109,8 +109,8 @@ class AuthController extends Controller
 
         $type = $request->type;
         $ipAddress = $request->ip();
-        // $otpCode = rand(100000, 999999);
-        $otpCode = 123456;
+        $otpCode = rand(100000, 999999);
+        // $otpCode = 123456;
         $dateNow = now();
 
         if ($type == 3) {
@@ -124,7 +124,7 @@ class AuthController extends Controller
                 'state_id' => $request->state_id ?? null,
                 'city_id' => $request->city_id ?? null,
                 'gst_no' => $request->gst_no ?? null,
-                'status' => 0,  
+                'status' => 1,  
             ];
 
             $vendor = UnverifyVendor::create($vendorData);
@@ -159,7 +159,7 @@ class AuthController extends Controller
                 'city' => $request->city ?? null,
                 'address' => $request->address ?? null,
                 'gst_no' => $request->gst_no ?? null,
-                'status' => 0, 
+                'status' => 1, 
             ];
 
             $user = UnverifyUser::create($userData);
@@ -184,31 +184,104 @@ class AuthController extends Controller
 
     private function sendSignupOtpViaMsg91($phone, $otp)
     {
-        $authKey = env('MSG91_AUTH_KEY_Register');
-        $senderId = 'SHRNTH';
-        $route = 4; // Transactional
+      
+        $authKey = env('MSG91_AUTH_KEY');
+        $senderId = 'SNIGRP';
+        $route = 4;
         $dltTemplateId = '1207175818752782129';
 
-        // Must match DLT Template EXACTLY:
-        $message = "Welcome To Shreenath Spices, Your OTP for Registration is $otp . Valid for 10 Minutes Only. Keep it Confidential. Regards: Shreenath Industries";
+        if (empty($authKey)) {
+            Log::error("MSG91 auth key is missing in .env");
+            return [
+                'success' => false,
+                'error' => [
+                    'phone' => $phone,
+                    'message' => 'MSG91 auth key is not configured',
+                    'status' => 500,
+                ]
+            ];
+        }
+
+        $formattedPhone = preg_replace('/[^0-9]/', '', $phone);
+        if (strlen($formattedPhone) === 10) {
+            $formattedPhone = '91' . $formattedPhone;
+        } elseif (strlen($formattedPhone) !== 12 || strpos($formattedPhone, '91') !== 0) {
+            Log::warning("Invalid phone number format: {$formattedPhone}");
+            return [
+                'success' => false,
+                'error' => [
+                    'phone' => $formattedPhone,
+                    'message' => 'Invalid phone number format',
+                    'status' => 400,
+                ]
+            ];
+        }
+
+        $otpFor = 'Signup';
+        $templateContent = "Welcome To Shreenath Spices,\nYour OTP for Registration is ##var## . Valid for 10 Minutes Only.\nKeep it Confidential.\nRegards:\nShreenath Industries";
+
+      $message = str_replace('##var##', $otp, $templateContent);
+
 
         $queryParams = [
-            'authkey' => $authKey,
-            'mobiles' => '91' . $phone,
-            'message' => urlencode($message),
-            'sender' => $senderId,
-            'route' => $route,
-            'DLT_TE_ID' => $dltTemplateId,
+            'authkey'    => $authKey,
+            'mobiles'    => $formattedPhone,
+            'message'    => $message,
+            'sender'     => $senderId,
+            'route'      => $route,
+            'DLT_TE_ID'  => $dltTemplateId,
         ];
 
-        $response = Http::get('http://api.msg91.com/api/sendhttp.php', $queryParams);
+        try {
+            $response = Http::get('http://api.msg91.com/api/sendhttp.php', $queryParams);
+            $responseStatus = $response->status();
+            $responseBody = trim($response->body());
 
-        Log::info('Signup OTP SMS Sent', [
-            'to' => $phone,
-            'response' => $response->body(),
-        ]);
+            Log::info('MSG91 raw response', [
+                'to' => substr($formattedPhone, 0, 4) . 'XXXX' . substr($formattedPhone, -4),
+                'otp' => $otp,
+                'status' => $responseStatus,
+                'raw_body' => $responseBody,
+            ]);
 
-        return $response->successful();
+            // ✅ Check if it's a successful message ID
+            if ($responseStatus == 200 && preg_match('/^[a-f0-9]{20}$/i', $responseBody)) {
+                return [
+                    'success' => true,
+                    'message_id' => $responseBody,
+                ];
+            }
+
+            // ❌ If not a valid message ID, treat as error
+            $errorMessage = $responseBody;
+            if (stripos($responseBody, 'authentication') !== false) {
+                $errorMessage = 'Authentication failure';
+            } elseif (stripos($responseBody, 'template') !== false) {
+                $errorMessage = 'Invalid DLT template ID';
+            }
+
+            Log::warning("Failed to send OTP to {$formattedPhone}. Response: {$responseBody}");
+
+            return [
+                'success' => false,
+                'error' => [
+                    'phone' => $formattedPhone,
+                    'message' => "Failed to send OTP: {$errorMessage}",
+                    'status' => $responseStatus ?: 400,
+                ]
+            ];
+        } catch (\Exception $e) {
+            Log::error("Error sending OTP to {$formattedPhone}: {$e->getMessage()}");
+            return [
+                'success' => false,
+                'error' => [
+                    'phone' => $formattedPhone,
+                    'message' => "Error sending OTP: {$e->getMessage()}",
+                    'status' => 500,
+                ]
+            ];
+        }
+
     }
 
     
@@ -705,7 +778,231 @@ public function verifyOtp(Request $request)
 //     ]);
 // }
 
+// //////////////////////////////// Finetuned latest
+// public function stockCol()
+// {
+//     $categories = StockCol::orderBy('name')
+//         ->orderBy('time', 'ASC')
+//         ->orderBy('id', 'ASC')
+//         ->get();
 
+//     $sniPrices = SniPrice::all()->keyBy('name');
+//     $result = [];
+
+//     foreach ($categories as $r) {
+//         $r->time = Carbon::parse($r->time);
+//     }
+
+//     $today = Carbon::now()->toDateString();
+//     $currentTime = Carbon::now()->setTimezone('Asia/Kolkata');
+
+//     // Filter today's records
+//     $todayRecords = $categories->filter(function ($r) use ($today) {
+//         return $r->time->toDateString() === $today;
+//     });
+
+//     // If no records today, fallback to most recent past date
+//     if ($todayRecords->isEmpty()) {
+//         $previousAvailableDates = $categories->pluck('time')->map(function ($item) {
+//             return Carbon::parse($item)->toDateString();
+//         })->unique()->sortDesc()->values();
+
+//         $latestAvailableDate = $previousAvailableDates->first(function ($date) use ($today) {
+//             return $date < $today;
+//         });
+
+//         if (!$latestAvailableDate) {
+//             return response()->json([
+//                 'status' => 200,
+//                 'message' => 'No past records available',
+//                 'data' => [],
+//             ]);
+//         }
+
+//         $todayRecords = $categories->filter(function ($r) use ($latestAvailableDate) {
+//             return $r->time->toDateString() === $latestAvailableDate;
+//         });
+
+//         $today = $latestAvailableDate;
+//     }
+
+//     $oneDayCloseMapping = [
+//         'JEERA2' => 'JEERA2_1D',
+//         'JEERA3' => 'JEERA3_1D',
+//         'DHANIYA' => 'DHANIYA_1D',
+//         'DHANIYA2' => 'DHANIYA2_1D',
+//         'TURMERIC' => 'TURMERIC_1D',
+//         'TURMERIC2' => 'TURMERIC2_1D',
+//         'GUARGUM' => 'GUARGUM_1D',
+//         'GUARGUM2' => 'GUARGUM2_1D',
+//         'GUARSEED' => 'GUARSEED_1D',
+//         'GUARSEED2' => 'GUARSEED2_1D',
+//     ];
+
+//     $yesterdayCloses = [];
+//     $dCloseOutput = [];
+
+//     foreach ($oneDayCloseMapping as $mainName => $refName) {
+//         $records = $categories
+//             ->where('name', $refName)
+//             ->filter(function ($item) {
+//                 return !empty($item->time_2); // skip null or empty time_2
+//             })
+//             ->sortByDesc(function ($item) {
+//                 return Carbon::parse($item->time_2); // sort by time_2 in descending order
+//             })
+//             ->values();
+
+//         // No records? Continue to next
+//         if ($records->isEmpty()) {
+//             $dCloseOutput[$mainName] = null;
+//             continue;
+//         }
+
+//         $todayRecord = $records->first(function ($r) use ($today) {
+//             return Carbon::parse($r->time_2)->toDateString() === $today;
+//         });
+
+//         $yesterdayRecord = $records->filter(function ($r) use ($today) {
+//             return Carbon::parse($r->time_2)->toDateString() < $today;
+//         })->first(); // Changed to first() for descending order
+
+//         $hasTodayDclose = $todayRecord !== null;
+
+//         if ($hasTodayDclose) {
+//             $dCloseOutput[$mainName] = floatval($todayRecord->close);
+//         } else {
+//             if ($currentTime->format('H:i') >= '17:00') {
+//                 $dCloseOutput[$mainName] = null;
+//             } else {
+//                 $dCloseOutput[$mainName] = $yesterdayRecord ? floatval($yesterdayRecord->close) : null;
+//             }
+//         }
+//     }
+
+//     $groupedByName = $todayRecords->groupBy('name');
+//     $allProducts = collect($oneDayCloseMapping)->keys();
+
+//     foreach ($allProducts as $product) {
+//         $productRecords = $groupedByName->has($product)
+//             ? $groupedByName[$product]
+//             : $categories->where('name', $product)->sortByDesc('time')->values();
+
+//         $records = $productRecords->sortBy('time')->values();
+
+//         $lastOpen = $records->last() ? floatval($records->last()->open) : null;
+//         $maxHigh = $records->max('high');
+//         $minLow = $records->min('low');
+//         $lastRecord = $records->last();
+
+//         $lastDate = Carbon::parse($lastRecord->time_2)->toDateString();
+
+//         $recordsOnLastDate = $records->filter(function ($r) use ($lastDate) {
+//             return Carbon::parse($r->time_2)->toDateString() === $lastDate;
+//         });
+
+//         $firstEntryOnLastDate = $recordsOnLastDate->sortBy('time')->first();
+
+//         $firstRecordOfDay = $records->first();
+
+//         $dayOpen = $firstRecordOfDay ? floatval($firstRecordOfDay->open) : null;
+
+//         // Modified previousClose logic
+//         $twoDaysAgo = Carbon::parse($today)->subDays(1)->toDateString();
+//         $refName = $oneDayCloseMapping[$product] ?? $product;
+//         $previousCloseRecord = $categories
+//             ->where('name', $refName)
+//             ->filter(function ($r) use ($today, $twoDaysAgo) {
+//                 $recordDate = Carbon::parse($r->time_2)->toDateString();
+//                 return $recordDate <= $twoDaysAgo; // Get records from two days ago or earlier
+//             })
+//             ->sortByDesc(function ($r) {
+//                 return Carbon::parse($r->time_2); // Sort in descending order
+//             })
+//             ->first();
+
+//         $previousClose = $previousCloseRecord ? floatval($previousCloseRecord->close) : null;
+
+//         $sniPrice = $sniPrices[$product]->price ?? null;
+//         $sniCurrentPrice = $sniPrices[$product]->current_price ?? null;
+//         $SniPriceDiff = $sniPrice && $sniCurrentPrice ? ($sniPrice - $sniCurrentPrice) : null;
+
+//         $dPre = null;
+//         if ($sniCurrentPrice !== null && $lastOpen !== null) {
+//             $dPre = $sniCurrentPrice - $lastOpen;
+//         }
+
+//         // $percentageChange = null;
+//         // if (isset($yesterdayCloses[$product]) && $yesterdayCloses[$product] > 0 && $lastRecord->close) {
+//         //     $percentageChange = (($lastRecord->close - $yesterdayCloses[$product]) / $yesterdayCloses[$product]) * 100;
+//         // } elseif ($previousClose !== null && $previousClose > 0 && $lastRecord->close) {
+//         //     $percentageChange = (($lastRecord->close - $previousClose) / $previousClose) * 100;
+//         // }
+
+//         $percentageChange = null;
+//         if ($previousClose !== null && $previousClose > 0 && $lastRecord && $lastRecord->close) {
+//             $percentageChange = (($lastRecord->close - $previousClose) / $previousClose) * 100;
+//         }
+
+//         $marketCloseTime = Carbon::parse($today . ' 17:00:00');
+//         $closeRecord = $records->first(function ($r) use ($marketCloseTime) {
+//             return $r->time->format('H:i') === '17:00';
+//         });
+
+//         $closeValue = $closeRecord ? floatval($closeRecord->close) : ($lastRecord->close ?? '');
+
+//         if (
+//             $lastRecord === null ||
+//             !is_numeric($lastOpen) || $lastOpen == 0 ||
+//             !is_numeric($closeValue) || $closeValue == 0 ||
+//             !is_numeric($maxHigh) || !is_numeric($minLow) ||
+//             empty($lastRecord->volume) ||
+//             empty($lastRecord->high) ||
+//             empty($lastRecord->low)
+//         ) {
+//             Log::info("Skipping $product due to invalid data: open=$lastOpen, close=$closeValue, high=$maxHigh, low=$minLow");
+//             continue;
+//         }
+
+//         $result[] = [
+//             'id' => $lastRecord->id ?? null,
+//             'dClose' => $dCloseOutput[$product] ?? null,
+//             'stock_id' => $lastRecord->stock_id ?? null,
+//             'app_name' => $lastRecord->Stock->app_name ?? '',
+//             'ticker' => $lastRecord->ticker ?? '',
+//             'name' => $lastRecord->name ?? '',
+//             'exchange' => $lastRecord->exchange ?? '',
+//             'interval' => $lastRecord->interval_at ?? '',
+//             'time' => $lastRecord->time ?? null,
+//             'date' => $lastRecord->time_2 ?? null,
+//             'open' => $lastOpen !== null ? number_format($lastOpen, 2, '.', '') : '',
+//             'day_open' => $firstEntryOnLastDate->open !== null ? number_format($firstEntryOnLastDate->open, 2, '.', '') : '',
+//             'close' => $closeValue !== '' ? number_format($closeValue, 2, '.', '') : '',
+//             'current_price' => $lastOpen !== null ? number_format(floatval($lastOpen), 2, '.', '') : '',
+//             'high' => $maxHigh ?? '',
+//             'low' => $minLow ?? '',
+//             'volume' => $lastRecord->volume ?? '',
+//             'quote' => $lastRecord->quote ?? '',
+//             'base' => $lastRecord->base ?? '',
+//             'previous_close' => $previousClose !== null ? number_format($previousClose, 2, '.', '') : '',
+//             'percentage_change_from_previous' => $percentageChange !== null
+//                 ? number_format($percentageChange, 2, '.', '') : '',
+//             'd_pre' => $dPre ?? null,
+//             'SniPriceDiff' => $SniPriceDiff ?? '',
+//         ];
+//     }
+
+//     $result = collect($result)->unique('name')->values()->all();
+
+//     return response()->json([
+//         'status' => 200,
+//         'message' => 'Latest stock entries with calculations (fallback to latest available if no data for today)',
+//         'data' => $result,
+//         'date_used' => $today
+//     ]);
+// }
+
+// //////////////////////////////// Change Name With Admin Latest
 public function stockCol()
 {
     $categories = StockCol::orderBy('name')
@@ -753,18 +1050,33 @@ public function stockCol()
         $today = $latestAvailableDate;
     }
 
-    $oneDayCloseMapping = [
-        'JEERA2' => 'JEERA2_1D',
-        'JEERA3' => 'JEERA3_1D',
-        'DHANIYA' => 'DHANIYA_1D',
-        'DHANIYA2' => 'DHANIYA2_1D',
-        'TURMERIC' => 'TURMERIC_1D',
-        'TURMERIC2' => 'TURMERIC2_1D',
-        'GUARGUM' => 'GUARGUM_1D',
-        'GUARGUM2' => 'GUARGUM2_1D',
-        'GUARSEED' => 'GUARSEED_1D',
-        'GUARSEED2' => 'GUARSEED2_1D',
-    ];
+    // $oneDayCloseMapping = [
+    //     'JEERA2' => 'JEERA2_1D',
+    //     'JEERA3' => 'JEERA3_1D',
+    //     'DHANIYA' => 'DHANIYA_1D',
+    //     'DHANIYA2' => 'DHANIYA2_1D',
+    //     'TURMERIC' => 'TURMERIC_1D',
+    //     'TURMERIC2' => 'TURMERIC2_1D',
+    //     'GUARGUM' => 'GUARGUM_1D',
+    //     'GUARGUM2' => 'GUARGUM2_1D',
+    //     'GUARSEED' => 'GUARSEED_1D',
+    //     'GUARSEED2' => 'GUARSEED2_1D',
+    // ];
+
+
+    // $oneDayCloseMapping = Stock::whereNotNull('stock_name')
+    // ->whereNotNull('stock_1d_name')
+    // ->whereNotNull('app_name')
+    // ->orderBy('sq_number', 'asc')  
+    // ->pluck('stock_1d_name', 'stock_name')
+    // ->toArray();
+    $oneDayCloseMapping = Stock::whereNotNull('stock_name')
+    ->whereNotNull('stock_1d_name')
+    ->whereNotNull('app_name')
+    ->orderByRaw('CAST(sq_number AS UNSIGNED) ASC')
+    ->pluck('stock_1d_name', 'stock_name')
+    ->toArray();
+    // return $oneDayCloseMapping;
 
     $yesterdayCloses = [];
     $dCloseOutput = [];
@@ -855,9 +1167,13 @@ public function stockCol()
         $SniPriceDiff = $sniPrice && $sniCurrentPrice ? ($sniPrice - $sniCurrentPrice) : null;
 
         $dPre = null;
-        if ($sniCurrentPrice !== null && $lastOpen !== null) {
-            $dPre = $sniCurrentPrice - $lastOpen;
-        }
+
+// Check: $sniCurrentPrice must not be null AND greater than 0
+if ($sniCurrentPrice !== null && $sniCurrentPrice > 0 && $lastOpen !== null) {
+    $dPre = $sniCurrentPrice - $lastOpen;
+} else {
+    $dPre = null; // explicitly set null
+}
 
         // $percentageChange = null;
         // if (isset($yesterdayCloses[$product]) && $yesterdayCloses[$product] > 0 && $lastRecord->close) {
@@ -1065,14 +1381,14 @@ public function loginRequestOtp(Request $request)
 
         if (!$userExists) {
             return response()->json([
-                'status' => 404,
+                'status' => 201,
                 'message' => 'No account found for this number and type',
-            ], 404);
+            ], 201);
         }
 
         // For production uncomment below and comment fixed OTP
-        // $otpCode = rand(100000, 999999);
-        $otpCode = 123456; // Fixed for testing
+        $otpCode = rand(100000, 999999);
+        // $otpCode = 123456; // Fixed for testing
 
         Otp::updateOrCreate(
             ['contact_no' => $number],
@@ -1091,116 +1407,110 @@ public function loginRequestOtp(Request $request)
 
         return response()->json([
             'status' => 200,
-            'message' => $smsResponse['success'] ? 'OTP sent successfully' : 'OTP saved, but failed to send SMS',
+            'message' => 'OTP sent successfully',
             'sms_response' => $smsResponse['success'] ? [] : [$smsResponse['error']],
             // 'otp' => $otpCode, // Uncomment for debugging/testing only
         ], 200);
     }
 
  public function sendOtpViaLegacyHttp($phone, $otp)
-    {
-        // $authKey = env('MSG91_AUTH_KEY');
-        $authKey = '68edfff2eb7f5f751a139ecf';
-        $senderId = 'SHRNTH';
-        $route = 4; // Transactional
-        $dltTemplateId = '1207175818457370480';
+{
+    $authKey = env('MSG91_AUTH_KEY');
+    $senderId = 'SNIGRP';
+    $route = 4;
+    $dltTemplateId = '1207175818457370480';
 
-        if (empty($authKey)) {
-            Log::error("MSG91 auth key is missing in .env");
-            return [
-                'success' => false,
-                'error' => [
-                    'phone' => $phone,
-                    'message' => 'MSG91 auth key is not configured',
-                    'status' => 500,
-                ]
-            ];
-        }
-
-        // Clean and format phone number
-        $formattedPhone = preg_replace('/[^0-9]/', '', $phone);
-        if (strlen($formattedPhone) === 10) {
-            $formattedPhone = '91' . $formattedPhone;
-        } elseif (strlen($formattedPhone) !== 12 || strpos($formattedPhone, '91') !== 0) {
-            Log::warning("Invalid phone number format: {$formattedPhone}");
-            return [
-                'success' => false,
-                'error' => [
-                    'phone' => $formattedPhone,
-                    'message' => 'Invalid phone number format',
-                    'status' => 400,
-                ]
-            ];
-        }
-
-        $message = "Welcome To Shreenath Spice's, Your OTP for Login is $otp . Valid For 10 Minutes Only. Keep It Confidential. Regards: Shreenath Industries";
-
-        $queryParams = [
-            'authkey'    => $authKey,
-            'mobiles'    => $formattedPhone,
-            'message'    => $message,
-            'sender'     => $senderId,
-            'route'      => $route,
-            'DLT_TE_ID'  => $dltTemplateId,
+    if (empty($authKey)) {
+        Log::error("MSG91 auth key is missing in .env");
+        return [
+            'success' => false,
+            'error' => [
+                'phone' => $phone,
+                'message' => 'MSG91 auth key is not configured',
+                'status' => 500,
+            ]
         ];
+    }
 
-        try {
-            $response = Http::get('http://api.msg91.com/api/sendhttp.php', $queryParams);
-            $responseStatus = $response->status();
-            $responseBody = $response->body();
+    $formattedPhone = preg_replace('/[^0-9]/', '', $phone);
+    if (strlen($formattedPhone) === 10) {
+        $formattedPhone = '91' . $formattedPhone;
+    } elseif (strlen($formattedPhone) !== 12 || strpos($formattedPhone, '91') !== 0) {
+        Log::warning("Invalid phone number format: {$formattedPhone}");
+        return [
+            'success' => false,
+            'error' => [
+                'phone' => $formattedPhone,
+                'message' => 'Invalid phone number format',
+                'status' => 400,
+            ]
+        ];
+    }
 
-            // Log raw response for debugging
-            Log::info('MSG91 raw response', [
-                'to' => $formattedPhone,
-                'otp' => $otp,
-                'status' => $responseStatus,
-                'raw_body' => $responseBody,
-                'trimmed_body' => trim($responseBody),
-            ]);
+    $otpFor = 'Login';
+    $message = "Welcome To Shreenath Spice's, Your OTP for $otpFor is $otp . Valid For 10 Minutes Only. Keep It Confidential. Regards: Shreenath Industries";
 
-            // Clean response body
-            $responseBody = trim($responseBody);
+    $queryParams = [
+        'authkey'    => $authKey,
+        'mobiles'    => $formattedPhone,
+        'message'    => $message,
+        'sender'     => $senderId,
+        'route'      => $route,
+        'DLT_TE_ID'  => $dltTemplateId,
+    ];
 
-            // Check if response is a 20-character hexadecimal string
-            if ($responseStatus == 200 && preg_match('/^[a-f0-9]{20}$/i', $responseBody)) {
-                return [
-                    'success' => true,
-                    'message_id' => $responseBody,
-                ];
-            }
+    try {
+        $response = Http::get('http://api.msg91.com/api/sendhttp.php', $queryParams);
+        $responseStatus = $response->status();
+        $responseBody = trim($response->body());
 
-            // Handle known errors
-            $errorMessage = $responseBody;
-            if (stripos($responseBody, 'authentication') !== false) {
-                $errorMessage = 'Authentication failure';
-            } elseif (stripos($responseBody, 'template') !== false) {
-                $errorMessage = 'Invalid DLT template ID';
-            }
+        Log::info('MSG91 raw response', [
+            'to' => substr($formattedPhone, 0, 4) . 'XXXX' . substr($formattedPhone, -4),
+            'otp' => $otp,
+            'status' => $responseStatus,
+            'raw_body' => $responseBody,
+        ]);
 
-            Log::warning("Failed to send OTP to {$formattedPhone}. Response: {$responseBody}");
-
-            return [
-                'success' => false,
-                'error' => [
-                    'phone' => $formattedPhone,
-                    'message' => "Failed to send OTP: {$errorMessage}",
-                    'status' => $responseStatus ?: 400,
-                ]
-            ];
-
-        } catch (\Exception $e) {
-            Log::error("Error sending OTP to {$formattedPhone}: {$e->getMessage()}");
+        // ✅ If it's a 20-char hex string, it's a valid message ID
+        if ($responseStatus == 200 && preg_match('/^[a-f0-9]{20}$/i', $responseBody)) {
+            Log::info("OTP sent successfully to {$formattedPhone}, message ID: {$responseBody}");
 
             return [
-                'success' => false,
-                'error' => [
-                    'phone' => $formattedPhone,
-                    'message' => "Error sending OTP: {$e->getMessage()}",
-                    'status' => 500,
-                ]
+                'success' => true,
+                'message_id' => $responseBody,
             ];
         }
+
+        $errorMessage = $responseBody;
+        if (stripos($responseBody, 'authentication') !== false) {
+            $errorMessage = 'Authentication failure';
+        } elseif (stripos($responseBody, 'template') !== false) {
+            $errorMessage = 'Invalid DLT template ID';
+        }
+
+        Log::warning("Failed to send OTP to {$formattedPhone}. Response: {$responseBody}");
+
+        return [
+            'success' => false,
+            'error' => [
+                'phone' => $formattedPhone,
+                'message' => "Failed to send OTP: {$errorMessage}",
+                'status' => $responseStatus ?: 400,
+            ]
+        ];
+    } catch (\Exception $e) {
+        Log::error("Error sending OTP to {$formattedPhone}: {$e->getMessage()}");
+        return [
+            'success' => false,
+            'error' => [
+                'phone' => $formattedPhone,
+                'message' => "Error sending OTP: {$e->getMessage()}",
+                'status' => 500,
+            ]
+        ];
     }
+}
+
 
 
    public function loginVerifyOtp(Request $request)

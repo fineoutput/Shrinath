@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SniPrice;
+use App\Services\FirebaseNotificationService;
+use App\Models\Notifications;
+use Illuminate\Support\Facades\Log;
+
+
 
 
 class SniPriceController extends Controller
@@ -37,6 +42,25 @@ class SniPriceController extends Controller
         $SniPrice->current_price = $request->current_price;
         $SniPrice->change_type = $request->change_type;
         // $SniPrice->change_value = $request->change_value;
+        $notificationPayload = [
+            'title' => 'Sni Price: ' . $request->name,
+            'body' => 'Check out our new Price: ' . $request->current_price,
+            'image' => "",
+        ];
+
+        $dataPayload = [
+            // 'product_id' => $product->id,
+            // 'category_id' => $request->category_id[0] ?? null, 
+            'screen' => 'NCDEX',
+        ];
+
+    try {
+          $firebaseService = new FirebaseNotificationService();
+            $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
+        } catch (\Exception $e) {
+            Log::error('Firebase notification failed: ' . $e->getMessage());
+        }
+        
         $SniPrice->save();
 
         return redirect()->route('sni_price.index')->with('success', 'Price entry added.');
@@ -64,6 +88,27 @@ class SniPriceController extends Controller
         $price->current_price = $request->current_price;
         $price->change_type = $request->change_type;
         // $price->change_value = $request->change_value;
+
+        
+        $notificationPayload = [
+            'title' => 'Sni Price: ' . $request->name,
+            'body' => 'Check out our new Price: ' . $request->current_price,
+            // 'image' => "",
+        ];
+
+        $dataPayload = [
+            // 'product_id' => $product->id,
+            // 'category_id' => $request->category_id[0] ?? null, 
+            'screen' => 'NCDEX',
+        ];
+
+     try {
+          $firebaseService = new FirebaseNotificationService();
+            $firebaseService->sendToAllUsers($notificationPayload, $dataPayload);
+        } catch (\Exception $e) {
+            Log::error('Firebase notification failed: ' . $e->getMessage());
+        }
+
         $price->save();
 
         return redirect()->route('sni_price.index')->with('success', 'Price entry updated.');

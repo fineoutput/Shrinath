@@ -695,7 +695,7 @@ your recipes.
                                                 <div class="pricing-star">
                                                    <div class="price-wrap mtop">
                                                     @if(($value->mrp ?? 0) > 0 && ($value->price ?? 0) > 0)
-                                                        <span class="price-1">₹ {{ $value->mrp }}</span>
+                                                        {{-- <span class="price-1">₹ {{ $value->mrp }}</span> --}}
                                                         <span class="price-2">₹ {{ $value->price }}</span>
                                                     @else
                                                         <span class="price-2">Out Of Stock</span>

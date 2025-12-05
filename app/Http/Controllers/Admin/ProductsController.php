@@ -200,7 +200,7 @@ public function update(Request $request, $id)
         'body' => 'Check out the updated details of ' . $product->name . ' - ₹' . $product->price,
         'image' => asset($product->image_1),
     ];
-    log::info('Notification Payload: ', $notificationPayload);
+
     $dataPayload = [
         'product_id' => $product->id,
         'category_id' => $request->category_id[0] ?? null, // first category

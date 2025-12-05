@@ -278,44 +278,61 @@ class BlockController extends Controller
     }
 
 
-        private function parseDescription($description)
+private function parseDescription($description)
 {
     if (empty($description)) {
-        return '';
+        return [];
     }
 
-    // Clean HTML and normalize spacing
-    $inputString = strip_tags($description);
-    $inputString = preg_replace('/\s+/', ' ', $inputString);
+    // Step 1: <p> और <br> को newline में convert करो
+    $raw = preg_replace(['/<\/?p[^>]*>/i', '/<br\s*\/?>/i'], "\n", $description);
+    $raw = strip_tags($raw);
 
-    // If there's no "$" separator, return plain text
-    if (strpos($inputString, '$') === false) {
-        return trim($inputString);
-    }
+    // Step 2: Multiple newlines को single newline में convert करो
+    $raw = preg_replace("/\n+/", "\n", trim($raw));
 
-    // Split on "$"
-    $inputArray = explode('$', $inputString);
-    $result = [];
+    // Step 3: Lines में split करो
+    $lines = array_filter(array_map('trim', explode("\n", $raw)));
 
-    for ($i = 0; $i < count($inputArray); $i += 2) {
-        $head = trim($inputArray[$i]);
-        $value = isset($inputArray[$i + 1]) ? trim($inputArray[$i + 1]) : null;
+    $tables = [];
+    $tableCounter = 1;
 
-        if (!empty($head) && !empty($value)) {
-            $result[] = [
-                'head' => $head,
-                'value' => $value
-            ];
+    foreach ($lines as $line) {
+        $items = explode('$', $line);
+        $items = array_map('trim', $items);
+        $items = array_filter($items); // empty remove
+
+        if (count($items) < 2) continue; // valid data check
+
+        // Pehle 2 items header hamesha S.No. aur Product
+        $header = [$items[0], $items[1]];
+
+        $dataRows = [];
+        for ($i = 2; $i < count($items); $i += 2) {
+            if (isset($items[$i]) && isset($items[$i + 1])) {
+                $dataRows[] = [
+                    'head' => $items[$i],
+                    'value' => $items[$i + 1]
+                ];
+            }
         }
+
+        $tables[] = [
+            'table_number' => $tableCounter++,
+            'header' => [
+                'head' => $header[0],
+                'value' => $header[1]
+            ],
+            'rows' => $dataRows
+        ];
     }
 
-    // If no valid pairs found, just return plain text
-    if (empty($result)) {
-        return trim($inputString);
-    }
-
-    return $result;
+    return $tables;
 }
+
+
+
+
     public function getAllDepots()
     {
         $depots = Depots::latest()->get();

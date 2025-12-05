@@ -284,50 +284,55 @@ private function parseDescription($description)
         return [];
     }
 
-    // Step 1: <p> और <br> को newline में convert करो
+    // Step 1: Convert <p> and <br> to newlines
     $raw = preg_replace(['/<\/?p[^>]*>/i', '/<br\s*\/?>/i'], "\n", $description);
     $raw = strip_tags($raw);
 
-    // Step 2: Multiple newlines को single newline में convert करो
+    // Step 2: Convert multiple newlines to single newline
     $raw = preg_replace("/\n+/", "\n", trim($raw));
 
-    // Step 3: Lines में split करो
+    // Step 3: Split into lines
     $lines = array_filter(array_map('trim', explode("\n", $raw)));
 
-    $tables = [];
+    $result = [];
     $tableCounter = 1;
 
     foreach ($lines as $line) {
-        $items = explode('$', $line);
-        $items = array_map('trim', $items);
-        $items = array_filter($items); // empty remove
+        $items = array_filter(array_map('trim', explode('$', $line)));
 
-        if (count($items) < 2) continue; // valid data check
+        // If line has table-like data (at least 4 items: S.No., Product, 1 row)
+        if (count($items) >= 4) {
+            $header = [$items[0], $items[1]];
 
-        // Pehle 2 items header hamesha S.No. aur Product
-        $header = [$items[0], $items[1]];
-
-        $dataRows = [];
-        for ($i = 2; $i < count($items); $i += 2) {
-            if (isset($items[$i]) && isset($items[$i + 1])) {
-                $dataRows[] = [
-                    'head' => $items[$i],
-                    'value' => $items[$i + 1]
-                ];
+            $dataRows = [];
+            for ($i = 2; $i < count($items); $i += 2) {
+                if (isset($items[$i]) && isset($items[$i + 1])) {
+                    $dataRows[] = [
+                        'head' => $items[$i],
+                        'value' => $items[$i + 1],
+                    ];
+                }
             }
-        }
 
-        $tables[] = [
-            'table_number' => $tableCounter++,
-            'header' => [
-                'head' => $header[0],
-                'value' => $header[1]
-            ],
-            'rows' => $dataRows
-        ];
+            $result[] = [
+                'type' => 'table',
+                'table_number' => $tableCounter++,
+                'header' => [
+                    'head' => $header[0],
+                    'value' => $header[1],
+                ],
+                'rows' => $dataRows,
+            ];
+        } else {
+            // Otherwise treat as normal text
+            $result[] = [
+                'type' => 'text',
+                'content' => $line,
+            ];
+        }
     }
 
-    return $tables;
+    return $result;
 }
 
 

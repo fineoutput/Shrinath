@@ -326,23 +326,99 @@ li {
                         <div class="widget-content-tab">
                             <div class="widget-content-inner active">
 
-                                 <table class="table">
-                                    @php
-                                        // Remove any HTML tags (like <p>) and explode by comma
-                                        $cleanDescription = strip_tags($product->description);
-                                        $description = explode('$', $cleanDescription);
-                                        $i = 1;
-                                    @endphp
-                                    <tr>
-                                        @foreach ($description as $desc)
-                                            <td>{{ trim($desc) }}</td>
-                                            @if ($i % 2 == 0)
-                                                </tr><tr>
-                                            @endif
-                                            @php $i++; @endphp
-                                        @endforeach
-                                    </tr>
-                                </table>
+                              {{-- @php
+    $raw = $product->description;
+
+    $raw = preg_replace(['/<\/?p[^>]*>/i', '/<br\s*\/?>/i'], "\n", $raw);
+    $raw = strip_tags($raw);
+
+    $raw = preg_replace("/\n+/", "\n", trim($raw));
+
+    $lines = array_filter(array_map('trim', explode("\n", $raw)));
+    $tableCounter = 1;
+@endphp
+
+@foreach ($lines as $index => $line)
+    <div class="mb-4">
+        <table class="table ">
+            <thead class="table-dark">
+                <tr>
+                    <th width="100">S.No.</th>
+                    <th>Product</th>
+                </tr>
+            </thead>
+            <tbody>
+                @php
+                    $items = explode('$', $line);
+                    $items = array_map('trim', $items);
+                    $items = array_filter($items); 
+
+                    $dataRows = array_slice($items, 2); 
+                @endphp
+
+                @for ($i = 0; $i < count($dataRows); $i += 2)
+                    @if (isset($dataRows[$i]) && isset($dataRows[$i + 1]))
+                        <tr>
+                            <td class="text-center fw-bold">{{ $dataRows[$i] }}</td>
+                            <td>{{ $dataRows[$i + 1] }}</td>
+                        </tr>
+                    @endif
+                @endfor
+            </tbody>
+        </table>
+    </div>
+@endforeach --}}
+
+@php
+    $raw = $product->description ?? ''; // prevent null error
+
+    // Convert <p> and <br> tags to newlines
+    $raw = preg_replace(['/<\/?p[^>]*>/i', '/<br\s*\/?>/i'], "\n", $raw);
+    $raw = strip_tags($raw);
+
+    // Remove multiple newlines
+    $raw = preg_replace("/\n+/", "\n", trim($raw));
+
+    // Split lines
+    $lines = array_filter(array_map('trim', explode("\n", $raw)));
+@endphp
+
+@if(!empty($lines))
+    @foreach ($lines as $line)
+        @php
+            $items = array_filter(array_map('trim', explode('$', $line)));
+            $dataRows = array_slice($items, 2); // skip "S.No." and "Product"
+        @endphp
+
+        @if(count($dataRows) >= 2)
+            <div class="mb-4">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th width="100">S.No.</th>
+                            <th>Product</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for ($i = 0; $i < count($dataRows); $i += 2)
+                            @if (isset($dataRows[$i]) && isset($dataRows[$i+1]))
+                                <tr>
+                                    <td class="text-center fw-bold">{{ $dataRows[$i] }}</td>
+                                    <td>{{ $dataRows[$i+1] }}</td>
+                                </tr>
+                            @endif
+                        @endfor
+                    </tbody>
+                </table>
+            </div>
+        @else
+            <p>{{ $line }}</p> {{-- Just display plain text --}}
+        @endif
+    @endforeach
+@endif
+
+
+
                             </div>
                             <div class="widget-content-inner">
                                 <div class="table-infor">

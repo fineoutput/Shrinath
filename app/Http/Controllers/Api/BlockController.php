@@ -214,6 +214,7 @@ class BlockController extends Controller
                 'weight' => $product->weight,
                 'category_id' => $product->category_id,
                 'description' => $this->parseDescription($product->description),
+                'short_description' => strip_tags($product->short_description),
                 'status' => $product->status,
                 'images' => array_values($images),
             ];
@@ -266,6 +267,7 @@ class BlockController extends Controller
             'weight' => $product->weight,
             'category_id' => $product->category_id,
            'description' => $this->parseDescription($product->description),
+           'short_description' => strip_tags($product->short_description),
             'status' => $product->status,
             'images' => array_values($images),
         ];

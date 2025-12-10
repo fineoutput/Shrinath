@@ -1382,7 +1382,10 @@ public function loginRequestOtp(Request $request)
 
             if ($userExists) {
 
-               if (in_array($userExists->status, [2, 5])) {
+              
+            $status = (int) $userExists->status;  // convert to integer
+
+            if (in_array($status, [2, 5])) {
                     return response()->json([
                         'status'  => 201,
                         'message' => 'Your vendor account is deactivated. Please contact support.',

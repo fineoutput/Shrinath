@@ -1,5 +1,5 @@
      <footer class="footer style-2" id="footer-main">
-            <div class="footer-top">
+            {{-- <div class="footer-top">
                 <div class="tf-container w-1290">
                     <div class="row">
                         <div class="col-md-6">
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="footer-inner">
                 <div class="tf-container w-1290">

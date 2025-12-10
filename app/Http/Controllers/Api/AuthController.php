@@ -124,7 +124,7 @@ class AuthController extends Controller
                 'state_id' => $request->state_id ?? null,
                 'city_id' => $request->city_id ?? null,
                 'gst_no' => $request->gst_no ?? null,
-                'status' => 1,  
+                'status' => 5,  
             ];
 
             $vendor = UnverifyVendor::create($vendorData);

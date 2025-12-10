@@ -467,7 +467,7 @@ public function verifyOtp(Request $request)
             'state_id'      => $unverifiedVendor->state_id,
             'city_id'       => $unverifiedVendor->city_id,
             'gst_no'        => $unverifiedVendor->gst_no ?? '',
-            'status'        => 1, 
+            'status'        => 2, 
             'device_id'     => $existingUser->device_id ?? null, 
             'fcm_token'     => $existingUser->fcm_token ?? null, 
         ]);

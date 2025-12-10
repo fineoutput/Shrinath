@@ -91,12 +91,12 @@
 
                                   <div class="col-sm-6">
                                         <label>Price</label>
-                                        <input type="number" name="price" class="form-control"  required>
+                                        <input type="text" name="price" class="form-control"  required>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <label>MRP</label>
-                                        <input type="number" name="mrp" class="form-control"  required>
+                                        <input type="text" name="mrp" class="form-control"  required>
                                     </div>
 
                                 </div>

@@ -1378,7 +1378,17 @@ public function loginRequestOtp(Request $request)
         $userExists = false;
 
         if ($type == 3) {
-            $userExists = Vendor::where('phone_no', $number)->exists();
+           $userExists = Vendor::where('phone_no', $number)->first();
+
+            if ($userExists) {
+
+                if ($userExists->status == 1) {
+                    return response()->json([
+                        'status'  => 201,
+                        'message' => 'Your vendor account is deactivated. Please contact support.',
+                    ], 201);
+                }
+            }
         } else {
             $userExists = User::where('phone', $number)
                             ->where('type', $type)

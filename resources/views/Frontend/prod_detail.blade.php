@@ -370,6 +370,66 @@ li {
 @endforeach --}}
 
 @php
+    $raw = $product->description ?? '';
+
+    // Convert <p> and <br> tags to newlines
+    $raw = preg_replace(['/<\/?p[^>]*>/i', '/<br\s*\/?>/i'], "\n", $raw);
+    $raw = strip_tags($raw);
+
+    // Clean newlines
+    $raw = preg_replace("/\n+/", "\n", trim($raw));
+
+    // Split lines
+    $lines = array_filter(array_map('trim', explode("\n", $raw)));
+@endphp
+
+@if(!empty($lines))
+    @foreach ($lines as $line)
+        @php
+            // Split by $
+            $items = array_values(array_filter(array_map('trim', explode('$', $line))));
+        @endphp
+
+        @if(count($items) >= 4)
+            @php
+                // 1st two = HEADER
+                $col1 = $items[0] ?? 'Column 1';
+                $col2 = $items[1] ?? 'Column 2';
+
+                // Remaining = rows
+                $dataRows = array_slice($items, 2);
+            @endphp
+
+            <div class="mb-4">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th width="100">{{ $col1 }}</th>
+                            <th>{{ $col2 }}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @for ($i = 0; $i < count($dataRows); $i += 2)
+                            @if (isset($dataRows[$i]) && isset($dataRows[$i+1]))
+                                <tr>
+                                    <td class="text-center fw-bold">{{ $dataRows[$i] }}</td>
+                                    <td>{{ $dataRows[$i+1] }}</td>
+                                </tr>
+                            @endif
+                        @endfor
+                    </tbody>
+                </table>
+            </div>
+
+        @else
+            <p>{{ $line }}</p>
+        @endif
+
+    @endforeach
+@endif
+
+{{-- @php
     $raw = $product->description ?? ''; // prevent null error
 
     // Convert <p> and <br> tags to newlines
@@ -412,10 +472,10 @@ li {
                 </table>
             </div>
         @else
-            <p>{{ $line }}</p> {{-- Just display plain text --}}
+            <p>{{ $line }}</p> 
         @endif
     @endforeach
-@endif
+@endif --}}
 
 
 

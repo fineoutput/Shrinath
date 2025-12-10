@@ -214,6 +214,7 @@ class BlockController extends Controller
                 'weight' => $product->weight,
                 'category_id' => $product->category_id,
                 'description' => $this->parseDescription($product->description),
+                'short_description' => strip_tags($product->short_description),
                 'status' => $product->status,
                 'images' => array_values($images),
             ];
@@ -266,6 +267,7 @@ class BlockController extends Controller
             'weight' => $product->weight,
             'category_id' => $product->category_id,
            'description' => $this->parseDescription($product->description),
+           'short_description' => strip_tags($product->short_description),
             'status' => $product->status,
             'images' => array_values($images),
         ];
@@ -278,44 +280,66 @@ class BlockController extends Controller
     }
 
 
-        private function parseDescription($description)
+private function parseDescription($description)
 {
     if (empty($description)) {
-        return '';
+        return [];
     }
 
-    // Clean HTML and normalize spacing
-    $inputString = strip_tags($description);
-    $inputString = preg_replace('/\s+/', ' ', $inputString);
+    // Step 1: Convert <p> and <br> to newlines
+    $raw = preg_replace(['/<\/?p[^>]*>/i', '/<br\s*\/?>/i'], "\n", $description);
+    $raw = strip_tags($raw);
 
-    // If there's no "$" separator, return plain text
-    if (strpos($inputString, '$') === false) {
-        return trim($inputString);
-    }
+    // Step 2: Convert multiple newlines to single newline
+    $raw = preg_replace("/\n+/", "\n", trim($raw));
 
-    // Split on "$"
-    $inputArray = explode('$', $inputString);
+    // Step 3: Split into lines
+    $lines = array_filter(array_map('trim', explode("\n", $raw)));
+
     $result = [];
+    $tableCounter = 1;
 
-    for ($i = 0; $i < count($inputArray); $i += 2) {
-        $head = trim($inputArray[$i]);
-        $value = isset($inputArray[$i + 1]) ? trim($inputArray[$i + 1]) : null;
+    foreach ($lines as $line) {
+        $items = array_filter(array_map('trim', explode('$', $line)));
 
-        if (!empty($head) && !empty($value)) {
+        // If line has table-like data (at least 4 items: S.No., Product, 1 row)
+        if (count($items) >= 4) {
+            $header = [$items[0], $items[1]];
+
+            $dataRows = [];
+            for ($i = 2; $i < count($items); $i += 2) {
+                if (isset($items[$i]) && isset($items[$i + 1])) {
+                    $dataRows[] = [
+                        'head' => $items[$i],
+                        'value' => $items[$i + 1],
+                    ];
+                }
+            }
+
             $result[] = [
-                'head' => $head,
-                'value' => $value
+                'type' => 'table',
+                'table_number' => $tableCounter++,
+                'header' => [
+                    'head' => $header[0],
+                    'value' => $header[1],
+                ],
+                'rows' => $dataRows,
+            ];
+        } else {
+            // Otherwise treat as normal text
+            $result[] = [
+                'type' => 'text',
+                'content' => $line,
             ];
         }
     }
 
-    // If no valid pairs found, just return plain text
-    if (empty($result)) {
-        return trim($inputString);
-    }
-
     return $result;
 }
+
+
+
+
     public function getAllDepots()
     {
         $depots = Depots::latest()->get();

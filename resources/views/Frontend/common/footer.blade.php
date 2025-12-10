@@ -1,5 +1,5 @@
      <footer class="footer style-2" id="footer-main">
-            <div class="footer-top">
+            {{-- <div class="footer-top">
                 <div class="tf-container w-1290">
                     <div class="row">
                         <div class="col-md-6">
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="footer-inner">
                 <div class="tf-container w-1290">
@@ -48,9 +48,9 @@
                                 <p class="text font-nunito">
                                   Our Highest Quality Standards is something that has been
 
-passed on from generation to generation and it's something that
+                                  passed on from generation to generation and it's something that
 
-we at Shreenath Industries have inherited.
+                                  we at Shreenath Industries have inherited.
                                 </p>
                                 <div class="wg-social">
                                     <ul class="list">

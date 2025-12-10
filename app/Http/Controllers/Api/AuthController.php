@@ -1006,9 +1006,15 @@ public function verifyOtp(Request $request)
 public function stockCol()
 {
     $categories = StockCol::orderBy('name')
-        ->orderBy('time', 'ASC')
-        ->orderBy('id', 'ASC')
-        ->get();
+    ->orderBy('time', 'ASC')
+    ->orderBy('id', 'ASC')
+    ->get();
+
+    foreach ($categories as $cat) {
+        if ($cat->open === null || $cat->close === null) {
+            $cat->delete(); // soft delete → deleted_at update
+        }
+    }
 
     $sniPrices = SniPrice::all()->keyBy('name');
     $result = [];
@@ -1168,12 +1174,12 @@ public function stockCol()
 
         $dPre = null;
 
-// Check: $sniCurrentPrice must not be null AND greater than 0
-if ($sniCurrentPrice !== null && $sniCurrentPrice > 0 && $lastOpen !== null) {
-    $dPre = $sniCurrentPrice - $lastOpen;
-} else {
-    $dPre = null; // explicitly set null
-}
+        // Check: $sniCurrentPrice must not be null AND greater than 0
+        if ($sniCurrentPrice !== null && $sniCurrentPrice > 0 && $lastOpen !== null) {
+            $dPre = $sniCurrentPrice - $lastOpen;
+        } else {
+            $dPre = null; // explicitly set null
+        }
 
         // $percentageChange = null;
         // if (isset($yesterdayCloses[$product]) && $yesterdayCloses[$product] > 0 && $lastRecord->close) {
@@ -1372,7 +1378,17 @@ public function loginRequestOtp(Request $request)
         $userExists = false;
 
         if ($type == 3) {
-            $userExists = Vendor::where('phone_no', $number)->exists();
+           $userExists = Vendor::where('phone_no', $number)->first();
+
+            if ($userExists) {
+
+               if (in_array($userExists->status, [2, 5])) {
+                    return response()->json([
+                        'status'  => 201,
+                        'message' => 'Your vendor account is deactivated. Please contact support.',
+                    ], 201);
+                }
+            }
         } else {
             $userExists = User::where('phone', $number)
                             ->where('type', $type)

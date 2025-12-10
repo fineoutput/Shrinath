@@ -194,8 +194,8 @@ li {
                             {{ $product->weight }}
                         </div>
                        <div class="price-wrap price-left">
-                            @if(($product->mrp ?? 0) > 0 && ($product->price ?? 0) > 0)
-                                <span class="price-1">₹{{ $product->mrp }}</span>
+                            @if(($product->price ?? 0) > 0)
+                                {{-- <span class="price-1">₹{{ $product->mrp }}</span> --}}
                                 <span class="price-2">₹{{ $product->price }}</span>
                                 {{-- <span class="price-2">{{ $product->weight }}gm</span> --}}
                             @else
@@ -326,23 +326,159 @@ li {
                         <div class="widget-content-tab">
                             <div class="widget-content-inner active">
 
-                                 <table class="table">
-                                    @php
-                                        // Remove any HTML tags (like <p>) and explode by comma
-                                        $cleanDescription = strip_tags($product->description);
-                                        $description = explode('$', $cleanDescription);
-                                        $i = 1;
-                                    @endphp
-                                    <tr>
-                                        @foreach ($description as $desc)
-                                            <td>{{ trim($desc) }}</td>
-                                            @if ($i % 2 == 0)
-                                                </tr><tr>
-                                            @endif
-                                            @php $i++; @endphp
-                                        @endforeach
-                                    </tr>
-                                </table>
+                              {{-- @php
+    $raw = $product->description;
+
+    $raw = preg_replace(['/<\/?p[^>]*>/i', '/<br\s*\/?>/i'], "\n", $raw);
+    $raw = strip_tags($raw);
+
+    $raw = preg_replace("/\n+/", "\n", trim($raw));
+
+    $lines = array_filter(array_map('trim', explode("\n", $raw)));
+    $tableCounter = 1;
+@endphp
+
+@foreach ($lines as $index => $line)
+    <div class="mb-4">
+        <table class="table ">
+            <thead class="table-dark">
+                <tr>
+                    <th width="100">S.No.</th>
+                    <th>Product</th>
+                </tr>
+            </thead>
+            <tbody>
+                @php
+                    $items = explode('$', $line);
+                    $items = array_map('trim', $items);
+                    $items = array_filter($items); 
+
+                    $dataRows = array_slice($items, 2); 
+                @endphp
+
+                @for ($i = 0; $i < count($dataRows); $i += 2)
+                    @if (isset($dataRows[$i]) && isset($dataRows[$i + 1]))
+                        <tr>
+                            <td class="text-center fw-bold">{{ $dataRows[$i] }}</td>
+                            <td>{{ $dataRows[$i + 1] }}</td>
+                        </tr>
+                    @endif
+                @endfor
+            </tbody>
+        </table>
+    </div>
+@endforeach --}}
+
+@php
+    $raw = $product->description ?? '';
+
+    // Convert <p> and <br> tags to newlines
+    $raw = preg_replace(['/<\/?p[^>]*>/i', '/<br\s*\/?>/i'], "\n", $raw);
+    $raw = strip_tags($raw);
+
+    // Clean newlines
+    $raw = preg_replace("/\n+/", "\n", trim($raw));
+
+    // Split lines
+    $lines = array_filter(array_map('trim', explode("\n", $raw)));
+@endphp
+
+@if(!empty($lines))
+    @foreach ($lines as $line)
+        @php
+            // Split by $
+            $items = array_values(array_filter(array_map('trim', explode('$', $line))));
+        @endphp
+
+        @if(count($items) >= 4)
+            @php
+                // 1st two = HEADER
+                $col1 = $items[0] ?? 'Column 1';
+                $col2 = $items[1] ?? 'Column 2';
+
+                // Remaining = rows
+                $dataRows = array_slice($items, 2);
+            @endphp
+
+            <div class="mb-4">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th width="100">{{ $col1 }}</th>
+                            <th>{{ $col2 }}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @for ($i = 0; $i < count($dataRows); $i += 2)
+                            @if (isset($dataRows[$i]) && isset($dataRows[$i+1]))
+                                <tr>
+                                    <td class="text-center fw-bold">{{ $dataRows[$i] }}</td>
+                                    <td>{{ $dataRows[$i+1] }}</td>
+                                </tr>
+                            @endif
+                        @endfor
+                    </tbody>
+                </table>
+            </div>
+
+        @else
+            <p>{{ $line }}</p>
+        @endif
+
+    @endforeach
+@endif
+
+{{-- @php
+    $raw = $product->description ?? ''; // prevent null error
+
+    // Convert <p> and <br> tags to newlines
+    $raw = preg_replace(['/<\/?p[^>]*>/i', '/<br\s*\/?>/i'], "\n", $raw);
+    $raw = strip_tags($raw);
+
+    // Remove multiple newlines
+    $raw = preg_replace("/\n+/", "\n", trim($raw));
+
+    // Split lines
+    $lines = array_filter(array_map('trim', explode("\n", $raw)));
+@endphp
+
+@if(!empty($lines))
+    @foreach ($lines as $line)
+        @php
+            $items = array_filter(array_map('trim', explode('$', $line)));
+            $dataRows = array_slice($items, 2); // skip "S.No." and "Product"
+        @endphp
+
+        @if(count($dataRows) >= 2)
+            <div class="mb-4">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th width="100">S.No.</th>
+                            <th>Product</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for ($i = 0; $i < count($dataRows); $i += 2)
+                            @if (isset($dataRows[$i]) && isset($dataRows[$i+1]))
+                                <tr>
+                                    <td class="text-center fw-bold">{{ $dataRows[$i] }}</td>
+                                    <td>{{ $dataRows[$i+1] }}</td>
+                                </tr>
+                            @endif
+                        @endfor
+                    </tbody>
+                </table>
+            </div>
+        @else
+            <p>{{ $line }}</p> 
+        @endif
+    @endforeach
+@endif --}}
+
+
+
                             </div>
                             <div class="widget-content-inner">
                                 <div class="table-infor">
@@ -462,7 +598,7 @@ li {
                                     </a>
                                     <div class="pricing-star">
                                         <div class="price-wrap">
-                                            @if(($rp->mrp ?? 0) > 0 && ($rp->price ?? 0) > 0)
+                                            @if(($rp->price ?? 0) > 0)
                                                 <span class="price-2">₹{{ $rp->price }}</span>
                                             @else
                                                 <span class="price-2">Out Of Stock</span>

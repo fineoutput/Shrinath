@@ -124,7 +124,7 @@ class AuthController extends Controller
                 'state_id' => $request->state_id ?? null,
                 'city_id' => $request->city_id ?? null,
                 'gst_no' => $request->gst_no ?? null,
-                'status' => 5,  
+                'status' => 2,  
             ];
 
             $vendor = UnverifyVendor::create($vendorData);
@@ -1385,7 +1385,7 @@ public function loginRequestOtp(Request $request)
               
             $status = (int) $userExists->status;  // convert to integer
 
-            if (in_array($status, [2, 5])) {
+            if ($status == 2) {
                     return response()->json([
                         'status'  => 201,
                         'message' => 'Your vendor account is deactivated. Please contact support.',

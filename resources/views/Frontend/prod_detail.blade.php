@@ -194,8 +194,8 @@ li {
                             {{ $product->weight }}
                         </div>
                        <div class="price-wrap price-left">
-                            @if(($product->mrp ?? 0) > 0 && ($product->price ?? 0) > 0)
-                                <span class="price-1">₹{{ $product->mrp }}</span>
+                            @if(($product->price ?? 0) > 0)
+                                {{-- <span class="price-1">₹{{ $product->mrp }}</span> --}}
                                 <span class="price-2">₹{{ $product->price }}</span>
                                 {{-- <span class="price-2">{{ $product->weight }}gm</span> --}}
                             @else
@@ -538,7 +538,7 @@ li {
                                     </a>
                                     <div class="pricing-star">
                                         <div class="price-wrap">
-                                            @if(($rp->mrp ?? 0) > 0 && ($rp->price ?? 0) > 0)
+                                            @if(($rp->price ?? 0) > 0)
                                                 <span class="price-2">₹{{ $rp->price }}</span>
                                             @else
                                                 <span class="price-2">Out Of Stock</span>

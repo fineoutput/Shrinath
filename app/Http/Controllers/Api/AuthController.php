@@ -1681,7 +1681,7 @@ public function loginRequestOtp(Request $request)
         $user->device_id = $request->device_id;
         $user->fcm_token = $request->fcm_token ?? null;
         $user->entry_date = Carbon::now();
-        $user->status = Carbon::now();
+        $user->status = 4;
         $user->save();
 
         return response()->json([

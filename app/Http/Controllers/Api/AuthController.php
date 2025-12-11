@@ -518,7 +518,7 @@ public function verifyOtp(Request $request)
     $existingUser = User::where('device_id', $request->device_id)->first();
 
 
-    $unverifiedUser = UnverifyUser::where('phone', $request->number)->first();
+    $unverifiedUser = UnverifyUser::where('phone', $request->number)->orderBy('id','DESC')->first();
 
     if (!$unverifiedUser) {
         return response()->json([

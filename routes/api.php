@@ -20,6 +20,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
+Route::get('/run-notify-expired-users', [AuthController::class, 'runExpiredUserNotify']);
+
 Route::get('/blog', [BlockController::class, 'getBlock']);
 Route::get('/popup-image', [BlockController::class, 'popup']);
 Route::get('/sliders', [BlockController::class, 'getAllSliders']);

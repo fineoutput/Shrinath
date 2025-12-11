@@ -20,9 +20,25 @@ use App\Models\Stock;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Artisan;
+
 
 class AuthController extends Controller
 {
+
+
+    public function runExpiredUserNotify()
+    {
+        Artisan::call('notify:expired-users');  // Your command
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Expired user notification command executed successfully.'
+        ]);
+    }
+
+
+
   public function test(Request $req, $name)
 {
     Log::info('API Hit: /test', ['name_param' => $name]);

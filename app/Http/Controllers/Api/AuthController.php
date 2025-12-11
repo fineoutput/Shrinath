@@ -1428,9 +1428,9 @@ public function loginRequestOtp(Request $request)
         Otp::updateOrCreate(
             ['contact_no' => $number],
             [
-                'name' => 'Login',
+                'name' => $userExists->name ?? null,
                 'contact_no' => $number,
-                'email' => null,
+                'email' => $userExists->email ?? null,
                 'otp' => $otpCode,
                 'ip' => $request->ip(),
                 'is_active' => 1,

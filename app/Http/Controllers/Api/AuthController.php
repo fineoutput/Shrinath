@@ -452,7 +452,7 @@ public function verifyOtp(Request $request)
 
     $otpRecord->delete();
 
-    $existingUser = User::where('device_id', $request->device_id)->first();
+    $existingUser = User::where('device_id', $request->device_id)->whereNotNull('phone')->first();
 
     $unverifiedVendor = UnverifyVendor::where('phone_no', $request->number)
     ->orderBy('id','DESC')->first();
@@ -515,7 +515,7 @@ public function verifyOtp(Request $request)
 
     $otpRecord->delete();
 
-    $existingUser = User::where('device_id', $request->device_id)->first();
+    $existingUser = User::where('device_id', $request->device_id)->whereNotNull('phone')->first();
 
 
     $unverifiedUser = UnverifyUser::where('phone', $request->number)->orderBy('id','DESC')->first();

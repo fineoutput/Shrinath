@@ -1380,6 +1380,7 @@ public function loginRequestOtp(Request $request)
             'type' => 'required|in:1,2,3',
         ]);
 
+
         if ($validator->fails()) {
             return response()->json([
                 'status' => 422,
@@ -1387,6 +1388,11 @@ public function loginRequestOtp(Request $request)
                 'errors' => $validator->errors()
             ], 422);
         }
+
+         Log::info('Login OTP Request:', [
+        'number' => $request->number,
+        'type'   => $request->type,
+    ]);
 
         $number = $request->number;
         $type = $request->type;

@@ -1411,6 +1411,7 @@ public function loginRequestOtp(Request $request)
         } else {
             $userExists = User::where('phone', $number)
                             ->where('type', $type)
+                            ->where('status', 1)
                             ->exists();
         }
 
@@ -1421,7 +1422,6 @@ public function loginRequestOtp(Request $request)
             ], 201);
         }
 
-        // For production uncomment below and comment fixed OTP
         $otpCode = rand(100000, 999999);
         // $otpCode = 123456; // Fixed for testing
 

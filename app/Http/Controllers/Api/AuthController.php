@@ -1417,7 +1417,6 @@ public function loginRequestOtp(Request $request)
         } else {
             $userExists = User::where('phone', $number)
                             ->where('type', $type)
-                            ->where('status', 1)
                             ->exists();
         }
 

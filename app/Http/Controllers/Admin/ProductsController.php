@@ -226,11 +226,25 @@ public function update(Request $request, $id)
 
 
 
-    public function destroy($id)
+  public function destroy($id)
     {
-        $products = Products::find($id);
-        $products->delete();
-        return redirect()->route('products.index')->with('success', 'products deleted successfully.');
+        $product = Products::find($id);
+
+        if (!$product) {
+            return redirect()->route('products.index')
+                ->with('error', 'Product not found.');
+        }
+
+        $notifications = Notifications::where('product_id', $id)->get();
+
+        if ($notifications->isNotEmpty()) {
+            Notifications::where('product_id', $id)->delete();
+        }
+
+        $product->delete();
+
+        return redirect()->route('products.index')
+            ->with('success', 'Product deleted successfully.');
     }
 
     public function updateStatus($id)

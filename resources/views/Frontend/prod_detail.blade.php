@@ -314,7 +314,7 @@ li {
         <div class="tf-container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="wg-tabs style-2">
+                    <div class="wg-tabs style-2" style="padding:0px 22px 72px;">
                         <div class="flex justify-center">
                             <ul class="menu-tab">
                                 <li class="item active"><a href="javascript:void(0)"

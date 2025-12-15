@@ -342,7 +342,7 @@ private function parseDescription($description)
 
     public function getAllDepots()
     {
-        $depots = Depots::latest()->get();
+        $depots = Depots::where('status',1)->orderBy('id','DESC')->get();
 
         if ($depots->isEmpty()) {
             return response()->json([

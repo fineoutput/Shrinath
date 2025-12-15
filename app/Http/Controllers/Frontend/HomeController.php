@@ -87,18 +87,39 @@ class HomeController extends Controller
     }
 
 
+    // public function prod_detail($product_id = null)
+    // {
+    //       $data['product'] = Products::where('status', 1)
+    //                             ->where('id', $product_id)
+    //                             ->first();
+
+    //       $data['related_product'] = Products::where('status', 1)
+    //                             ->where('category_id',  $data['product']->category_id)->where('id', '!=', $product_id)
+    //                             ->get();
+
+    //     return view('Frontend/prod_detail',$data)->withTitle('');
+    // }
+
     public function prod_detail($product_id = null)
     {
-          $data['product'] = Products::where('status', 1)
-                                ->where('id', $product_id)
-                                ->first();
+        $product = Products::where('status', 1)
+            ->where('id', $product_id)
+            ->first();
 
-          $data['related_product'] = Products::where('status', 1)
-                                ->where('category_id',  $data['product']->category_id)->where('id', '!=', $product_id)
-                                ->get();
+        if (!$product) {
+            abort(404); // or redirect()->back()->with('error', 'Product not found');
+        }
 
-        return view('Frontend/prod_detail',$data)->withTitle('');
+        $data['product'] = $product;
+
+        $data['related_product'] = Products::where('status', 1)
+            ->where('category_id', $product->category_id)
+            ->where('id', '!=', $product_id)
+            ->get();
+
+        return view('Frontend/prod_detail', $data)->withTitle('');
     }
+
 
 
     public function our_gallery(Request $req)

@@ -49,7 +49,7 @@
                         <th data-priority="1">Products Name</th>
                         <th data-priority="1">Category Name</th>
                         <th data-priority="1">Price</th>
-                        <th data-priority="1">MRP</th>
+                        {{-- <th data-priority="1">MRP</th> --}}
                         <th data-priority="1">Weight</th>
                         <th data-priority="1">Description</th>
                         <th data-priority="1">Short Description</th>
@@ -70,7 +70,7 @@
                         <td>{{$value->name ?? ''}}</td>
                       <td>{{ implode(', ', $value->category_names) }}</td>
                         <td>{{$value->price ?? ''}}</td>
-                        <td>{{$value->mrp ?? ''}}</td>
+                        {{-- <td>{{$value->mrp ?? ''}}</td> --}}
                         <td>{{$value->weight ?? ''}}</td>
                         <td>{{ \Illuminate\Support\Str::limit(strip_tags($value->description), 100) }}</td>
                         <td>{{ \Illuminate\Support\Str::limit(strip_tags($value->short_description), 100) }}</td>

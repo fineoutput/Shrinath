@@ -107,7 +107,7 @@ class HomeController extends Controller
             ->first();
 
         if (!$product) {
-            abort(404); // or redirect()->back()->with('error', 'Product not found');
+            redirect()->back()->with('error', 'Product not found');
         }
 
         $data['product'] = $product;

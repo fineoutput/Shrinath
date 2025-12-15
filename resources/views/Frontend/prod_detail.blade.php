@@ -404,7 +404,7 @@ li {
                 <table class="table">
                     <thead class="table-dark">
                         <tr>
-                            <th width="100">{{ $col1 }}</th>
+                            <th >{{ $col1 }}</th>
                             <th>{{ $col2 }}</th>
                         </tr>
                     </thead>

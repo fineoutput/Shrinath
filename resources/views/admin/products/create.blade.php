@@ -119,7 +119,7 @@
 
                                     <div class="col-sm-6">
                                         <label>Image 2</label>
-                                        <input type="file" name="image_2" class="form-control"  required>
+                                        <input type="file" name="image_2" class="form-control"  >
                                     </div>
 
                                 </div>
@@ -128,17 +128,17 @@
 
                                     <div class="col-sm-6">
                                         <label>Image 3</label>
-                                        <input type="file" name="image_3" class="form-control"  required>
+                                        <input type="file" name="image_3" class="form-control"  >
                                     </div>
 
                                     <div class="col-sm-6">
                                         <label>Image 4</label>
-                                        <input type="file" name="image_4" class="form-control"  required>
+                                        <input type="file" name="image_4" class="form-control"  >
                                     </div>
 
                                     <div class="col-sm-6 mt-2">
                                         <label>Video</label>
-                                        <input type="file" name="video" class="form-control"  required>
+                                        <input type="file" name="video" class="form-control"  >
                                     </div>
 
                                 </div>

@@ -54,11 +54,11 @@ class ProductsController extends Controller
             'price' => 'required',
             // 'mrp' => 'required',
             'weight' => 'required',
-            'image_1' => 'nullable|image',
-            'image_2' => 'nullable|image',
-            'image_3' => 'nullable|image',
-            'image_4' => 'nullable|image',
-            'video'   => 'nullable|mimes:mp4,mov,avi|max:20000',
+            'image_1' => 'nullable',
+            'image_2' => 'nullable',
+            'image_3' => 'nullable',
+            'image_4' => 'nullable',
+            'video'   => 'nullable',
         ]);
 
         $product = new Products;
@@ -147,11 +147,11 @@ public function update(Request $request, $id)
         'price' => 'required',
         // 'mrp' => 'required',
         'weight' => 'required',
-        'image_1' => 'nullable|image',
-        'image_2' => 'nullable|image',
-        'image_3' => 'nullable|image',
-        'image_4' => 'nullable|image',
-        'video' => 'nullable|mimes:mp4,mov,avi|max:20000',
+        'image_1' => 'nullable',
+        'image_2' => 'nullable',
+        'image_3' => 'nullable',
+        'image_4' => 'nullable',
+        'video' => 'nullable',
     ]);
 
     $edit_product = new \App\Models\EditProduct();

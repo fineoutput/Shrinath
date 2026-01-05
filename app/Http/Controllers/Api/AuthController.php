@@ -447,7 +447,7 @@ public function verifyOtp(Request $request)
         return response()->json([
             'status' => 201,
             'message' => 'Invalid OTP or number',
-        ], 400);
+        ], 200);
     }
 
     $otpRecord->delete();
@@ -501,7 +501,7 @@ public function verifyOtp(Request $request)
 
     }else {
 
-    $otpRecord = Otp::where('contact_no', $request->number)
+     $otpRecord = Otp::where('contact_no', $request->number)
                     ->where('otp', $request->otp)
                     ->where('is_active', 1)
                     ->first();
@@ -510,13 +510,12 @@ public function verifyOtp(Request $request)
         return response()->json([
             'status' => 201,
             'message' => 'Invalid OTP or number',
-        ], 400);
+        ], 200);
     }
 
     $otpRecord->delete();
 
     $existingUser = User::where('device_id', $request->device_id)->whereNotNull('phone')->first();
-
 
     $unverifiedUser = UnverifyUser::where('phone', $request->number)->orderBy('id','DESC')->first();
 
@@ -527,20 +526,39 @@ public function verifyOtp(Request $request)
         ], 404);
     }
 
-     $existingUser->phone = $unverifiedUser->phone ?? '';
-     $existingUser->email = $unverifiedUser->email ?? '';
-     $existingUser->name = $unverifiedUser->name ?? '';
-     $existingUser->type = $unverifiedUser->type ?? '';
-     $existingUser->business_name = $unverifiedUser->business_name ?? '';
-     $existingUser->city = $unverifiedUser->city ?? '';
-     $existingUser->address = $unverifiedUser->address ?? '';
-     $existingUser->gst_no = $unverifiedUser->gst_no ?? '';
-    //  $existingUser->device_id = $unverifiedUser->device_id;
-     $existingUser->status = 1;
-     $token = $existingUser->createToken('auth')->plainTextToken;
-     $existingUser->save();
+    if ($existingUser) {
+        // Update existing user
+        $existingUser->phone = $unverifiedUser->phone ?? '';
+        $existingUser->email = $unverifiedUser->email ?? '';
+        $existingUser->name = $unverifiedUser->name ?? '';
+        $existingUser->type = $unverifiedUser->type ?? '';
+        $existingUser->business_name = $unverifiedUser->business_name ?? '';
+        $existingUser->city = $unverifiedUser->city ?? '';
+        $existingUser->address = $unverifiedUser->address ?? '';
+        $existingUser->gst_no = $unverifiedUser->gst_no ?? '';
+        $existingUser->status = 1;
+        $existingUser->save();
+    } else {
+        // Create new user if none exists
+        $existingUser = User::create([
+            'phone' => $unverifiedUser->phone ?? '',
+            'email' => $unverifiedUser->email ?? '',
+            'name'  => $unverifiedUser->name ?? '',
+            'type'  => $unverifiedUser->type ?? '',
+            'business_name' => $unverifiedUser->business_name ?? '',
+            'city' => $unverifiedUser->city ?? '',
+            'address' => $unverifiedUser->address ?? '',
+            'gst_no' => $unverifiedUser->gst_no ?? '',
+            'device_id' => $request->device_id,
+            'status' => 1
+        ]);
+    }
 
+    // Delete unverified user
     $unverifiedUser->delete();
+
+    // Generate token
+    $token = $existingUser->createToken('auth')->plainTextToken;
 
     return response()->json([
         'status' => 200,

@@ -527,14 +527,14 @@ public function verifyOtp(Request $request)
         ], 404);
     }
 
-     $existingUser->phone = $unverifiedUser->phone;
-     $existingUser->email = $unverifiedUser->email;
-     $existingUser->name = $unverifiedUser->name;
-     $existingUser->type = $unverifiedUser->type;
-     $existingUser->business_name = $unverifiedUser->business_name;
-     $existingUser->city = $unverifiedUser->city;
-     $existingUser->address = $unverifiedUser->address;
-     $existingUser->gst_no = $unverifiedUser->gst_no;
+     $existingUser->phone = $unverifiedUser->phone ?? '';
+     $existingUser->email = $unverifiedUser->email ?? '';
+     $existingUser->name = $unverifiedUser->name ?? '';
+     $existingUser->type = $unverifiedUser->type ?? '';
+     $existingUser->business_name = $unverifiedUser->business_name ?? '';
+     $existingUser->city = $unverifiedUser->city ?? '';
+     $existingUser->address = $unverifiedUser->address ?? '';
+     $existingUser->gst_no = $unverifiedUser->gst_no ?? '';
     //  $existingUser->device_id = $unverifiedUser->device_id;
      $existingUser->status = 1;
      $token = $existingUser->createToken('auth')->plainTextToken;
